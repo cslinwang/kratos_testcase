@@ -35,6 +35,10 @@ if [[ -d /root/Kratos/libs ]]; then
   echo "libs文件夹已存在，删除中..."
   rm -rf /root/Kratos/libs
 fi
+if [[ -d /root/Kratos/cmake_build ]]; then
+  echo "cmake_build文件夹已存在，删除中..."
+  rm -rf /root/Kratos/cmake_build
+fi
 
 # Delete branch if it exists.
 if git show-ref --quiet "refs/heads/$short_sha"; then
