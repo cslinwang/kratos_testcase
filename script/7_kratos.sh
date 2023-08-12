@@ -32,6 +32,10 @@ if [[ -d /root/Kratos/coverage ]]; then
   echo "coverage文件夹已存在，删除中..."
   rm -rf /root/Kratos/coverage
 fi
+if [[ -d /root/Kratos/libs ]]; then
+  echo "libs文件夹已存在，删除中..."
+  rm -rf /root/Kratos/libs
+fi
 
 # Delete branch if it exists.
 if git show-ref --quiet "refs/heads/$short_sha"; then
