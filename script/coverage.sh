@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # 获取当前命令行目录
-
-current_directory = $1
+current_directory="$1"
 
 # 如果没有指定目录，则使用当前目录
 if [[ -z "$current_directory" ]]; then
@@ -12,6 +11,12 @@ fi
 # 如果指定目录，则拼接成绝对路径
 if [[ ! "$current_directory" = /* ]]; then
   current_directory="/root/kratos_testcase/$current_directory"
+fi
+
+# 检查目录是否存在，如果不存在则创建
+if [[ ! -d "$current_directory" ]]; then
+  echo "目录 $current_directory 不存在，将创建该目录。"
+  mkdir -p "$current_directory"
 fi
 
 # 执行 fastcov 命令，将输出文件保存在当前目录下
