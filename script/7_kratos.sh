@@ -69,6 +69,9 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")|' $CMAKE_FI
 echo "makefile修改成功。"
 
 echo "开始编译Kratos..."
+if [[ ! -d /root/Kratos/cmake_build ]]; then
+  mkdir /root/Kratos/cmake_build
+fi
 cd /root/Kratos/cmake_build
 cp /root/kratos_testcase/script/buildkratosv7.sh /root/Kratos/cmake_build/buildkratosv7.sh
 sh /root/Kratos/cmake_build/buildkratosv7.sh 2>&1 | tee /root/kratos_testcase/script/kratos_build.log
