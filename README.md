@@ -238,6 +238,7 @@ cmake ..                                                                        
 针对新版：运行脚本即可, 记得增加 commit SHA。
 
 ```bash
+export PYTHONPATH=$PYTHONPATH:/root/Kratos/bin/Release
 /root/kratos_testcase/script/runkratos.sh
 ```
 
