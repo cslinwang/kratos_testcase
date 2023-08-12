@@ -7,7 +7,6 @@ export PYTHONPATH=$PYTHONPATH:/root/Kratos
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/Kratos/libs
 
 full_sha="$1"
-year = "$2"
 
 echo "切换分支开始..."
 
