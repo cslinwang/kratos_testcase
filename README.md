@@ -156,6 +156,13 @@ docker run --security-opt seccomp=unconfined -it new_dealii_image /bin/bash
 docker run --privileged -it -d -p 7001:22 --name kratosv1 cslinwang/kratos:v1 /bin/bash
 ```
 
+配置git
+
+```bash
+git config --global user.name "yue ma"
+git config --global user.email "yuema@mail.dlut.edu.cn"
+```
+
 ### 旧版配置
 
 ## 如何修改第三方应用 Application
