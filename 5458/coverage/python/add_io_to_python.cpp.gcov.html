@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -237,42 +237,42 @@
 <a name="175"><span class="lineNum">     175 </span>            : </a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 : void  AddIOToPython(pybind11::module&amp; m)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          2 : void  AddIOToPython(pybind11::module&amp; m)</span></a>
 <a name="179"><span class="lineNum">     179 </span>            : {</a>
 <a name="180"><span class="lineNum">     180 </span>            :     namespace py = pybind11;</a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          6 :     py::class_&lt;IO, IO::Pointer&gt; io_python_interface = py::class_&lt;IO, IO::Pointer&gt;(m,&quot;IO&quot;)</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          3 :     .def(&quot;ReadNode&quot;,&amp;IO::ReadNode)</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          3 :     .def(&quot;ReadNodes&quot;,&amp;IO::ReadNodes)</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          3 :     .def(&quot;WriteNodes&quot;,&amp;IO::WriteNodes)</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     .def(&quot;ReadProperties&quot;,[](IO&amp; self, Properties&amp; rThisProperties){self.ReadProperties(rThisProperties);})</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     .def(&quot;ReadProperties&quot;,[](IO&amp; self,IO::PropertiesContainerType&amp; rThisProperties){self.ReadProperties(rThisProperties);})</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          4 :     py::class_&lt;IO, IO::Pointer&gt; io_python_interface = py::class_&lt;IO, IO::Pointer&gt;(m,&quot;IO&quot;)</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :     .def(&quot;ReadNode&quot;,&amp;IO::ReadNode)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          2 :     .def(&quot;ReadNodes&quot;,&amp;IO::ReadNodes)</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :     .def(&quot;WriteNodes&quot;,&amp;IO::WriteNodes)</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :     .def(&quot;ReadProperties&quot;,[](IO&amp; self, Properties&amp; rThisProperties){self.ReadProperties(rThisProperties);})</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          2 :     .def(&quot;ReadProperties&quot;,[](IO&amp; self,IO::PropertiesContainerType&amp; rThisProperties){self.ReadProperties(rThisProperties);})</span></a>
 <a name="188"><span class="lineNum">     188 </span>            : //     .def(&quot;ReadProperties&quot;,pointer_to_io_read_properties)</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          3 :     .def(&quot;ReadElements&quot;,&amp;IO::ReadElements)</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     .def(&quot;WriteElements&quot;,&amp;IO::WriteElements)</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :     .def(&quot;ReadConditions&quot;,&amp;IO::ReadConditions)</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :     .def(&quot;WriteConditions&quot;,&amp;IO::WriteConditions)</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          3 :     .def(&quot;ReadInitialValues&quot;,&amp;ReadInitialValues1)</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :     .def(&quot;ReadInitialValues&quot;,&amp;ReadInitialValues2)</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :     .def(&quot;ReadMesh&quot;,&amp;IO::ReadMesh)</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :     .def(&quot;ReadModelPart&quot;,&amp;IO::ReadModelPart)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          6 :     .def(&quot;WriteModelPart&quot;,&amp;IO::WriteModelPart)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :     .def(&quot;ReadElements&quot;,&amp;IO::ReadElements)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :     .def(&quot;WriteElements&quot;,&amp;IO::WriteElements)</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          2 :     .def(&quot;ReadConditions&quot;,&amp;IO::ReadConditions)</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          2 :     .def(&quot;WriteConditions&quot;,&amp;IO::WriteConditions)</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          2 :     .def(&quot;ReadInitialValues&quot;,&amp;ReadInitialValues1)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :     .def(&quot;ReadInitialValues&quot;,&amp;ReadInitialValues2)</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          2 :     .def(&quot;ReadMesh&quot;,&amp;IO::ReadMesh)</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          2 :     .def(&quot;ReadModelPart&quot;,&amp;IO::ReadModelPart)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          4 :     .def(&quot;WriteModelPart&quot;,&amp;IO::WriteModelPart)</span></a>
 <a name="198"><span class="lineNum">     198 </span>            :         ;</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          6 :         io_python_interface.attr(&quot;READ&quot;) = IO::READ;</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          6 :         io_python_interface.attr(&quot;WRITE&quot;) =IO::WRITE;</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          6 :         io_python_interface.attr(&quot;APPEND&quot;) = IO::APPEND;</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          6 :         io_python_interface.attr(&quot;IGNORE_VARIABLES_ERROR&quot; ) = IO::IGNORE_VARIABLES_ERROR;</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          6 :   io_python_interface.attr(&quot;SKIP_TIMER&quot; ) = IO::SKIP_TIMER;</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          3 :   io_python_interface.attr(&quot;MESH_ONLY&quot; ) = IO::MESH_ONLY;</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          4 :         io_python_interface.attr(&quot;READ&quot;) = IO::READ;</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          4 :         io_python_interface.attr(&quot;WRITE&quot;) =IO::WRITE;</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          4 :         io_python_interface.attr(&quot;APPEND&quot;) = IO::APPEND;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          4 :         io_python_interface.attr(&quot;IGNORE_VARIABLES_ERROR&quot; ) = IO::IGNORE_VARIABLES_ERROR;</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          4 :   io_python_interface.attr(&quot;SKIP_TIMER&quot; ) = IO::SKIP_TIMER;</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          2 :   io_python_interface.attr(&quot;MESH_ONLY&quot; ) = IO::MESH_ONLY;</span></a>
 <a name="205"><span class="lineNum">     205 </span>            : </a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          3 :     py::class_&lt;ModelPartIO, ModelPartIO::Pointer, IO&gt;(</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          2 :     py::class_&lt;ModelPartIO, ModelPartIO::Pointer, IO&gt;(</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :        m, &quot;ModelPartIO&quot;)</a>
 <a name="208"><span class="lineNum">     208 </span>            :         .def(py::init&lt;std::string const&amp;&gt;())</a>
 <a name="209"><span class="lineNum">     209 </span>            :         .def(py::init&lt;std::string const&amp;, const Flags&gt;())</a>
 <a name="210"><span class="lineNum">     210 </span>            :     ;</a>
 <a name="211"><span class="lineNum">     211 </span>            : </a>
 <a name="212"><span class="lineNum">     212 </span>            : </a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          3 :     py::class_&lt;ReorderConsecutiveModelPartIO, ReorderConsecutiveModelPartIO::Pointer, ModelPartIO&gt;(m,&quot;ReorderConsecutiveModelPartIO&quot;)</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          2 :     py::class_&lt;ReorderConsecutiveModelPartIO, ReorderConsecutiveModelPartIO::Pointer, ModelPartIO&gt;(m,&quot;ReorderConsecutiveModelPartIO&quot;)</span></a>
 <a name="214"><span class="lineNum">     214 </span>            :         .def(py::init&lt;std::string const&amp;&gt;())</a>
 <a name="215"><span class="lineNum">     215 </span>            :         .def(py::init&lt;std::string const&amp;, const Flags&gt;())</a>
 <a name="216"><span class="lineNum">     216 </span>            :     ;</a>
@@ -288,104 +288,104 @@
 <a name="226"><span class="lineNum">     226 </span>            :         &quot;ModelPartIOWithSkipReadFlag&quot;,init&lt;std::string const&amp;, bool const&gt;())</a>
 <a name="227"><span class="lineNum">     227 </span>            :     ;*/</a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          3 :     py::class_&lt;GidIO&lt;&gt;, GidIO&lt;&gt;::Pointer, IO&gt;(m,</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :     py::class_&lt;GidIO&lt;&gt;, GidIO&lt;&gt;::Pointer, IO&gt;(m,</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :         &quot;GidIO&quot;)</a>
 <a name="231"><span class="lineNum">     231 </span>            :     .def(py::init&lt;std::string const&amp;, GiD_PostMode,</a>
 <a name="232"><span class="lineNum">     232 </span>            :         MultiFileFlag,</a>
 <a name="233"><span class="lineNum">     233 </span>            :         WriteDeformedMeshFlag,</a>
 <a name="234"><span class="lineNum">     234 </span>            :         WriteConditionsFlag&gt;())</a>
 <a name="235"><span class="lineNum">     235 </span>            :     //.def(py::init&lt;std::string const&amp;&gt;())</a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          3 :     .def(&quot;WriteMesh&quot;,WriteMesh)</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          3 :     .def(&quot;WriteNodeMesh&quot;,WriteNodeMesh)</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          3 :     .def(&quot;WriteSphereMesh&quot;,WriteSphereMesh)</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          3 :     .def(&quot;WriteCircleMesh&quot;,WriteCircleMesh)</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          3 :     .def(&quot;WriteClusterMesh&quot;,WriteClusterMesh)</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          2 :     .def(&quot;WriteMesh&quot;,WriteMesh)</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          2 :     .def(&quot;WriteNodeMesh&quot;,WriteNodeMesh)</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          2 :     .def(&quot;WriteSphereMesh&quot;,WriteSphereMesh)</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          2 :     .def(&quot;WriteCircleMesh&quot;,WriteCircleMesh)</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          2 :     .def(&quot;WriteClusterMesh&quot;,WriteClusterMesh)</span></a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          3 :     .def(&quot;InitializeMesh&quot;,&amp;GidIO&lt;&gt;::InitializeMesh)</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          3 :     .def(&quot;FinalizeMesh&quot;,&amp;GidIO&lt;&gt;::FinalizeMesh)</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          2 :     .def(&quot;InitializeMesh&quot;,&amp;GidIO&lt;&gt;::InitializeMesh)</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          2 :     .def(&quot;FinalizeMesh&quot;,&amp;GidIO&lt;&gt;::FinalizeMesh)</span></a>
 <a name="244"><span class="lineNum">     244 </span>            : </a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          3 :     .def(&quot;InitializeResults&quot;,&amp;GidIO&lt;&gt;::InitializeResults)</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          3 :     .def(&quot;FinalizeResults&quot;,&amp;GidIO&lt;&gt;::FinalizeResults)</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          2 :     .def(&quot;InitializeResults&quot;,&amp;GidIO&lt;&gt;::InitializeResults)</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          2 :     .def(&quot;FinalizeResults&quot;,&amp;GidIO&lt;&gt;::FinalizeResults)</span></a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResults&quot;,pointer_to_bool_write_nodal_results)</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResults&quot;,pointer_to_double_write_nodal_results)</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResults&quot;,pointer_to_int_write_nodal_results)</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResults&quot;,pointer_to_array1d_write_nodal_results)</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResults&quot;,pointer_to_vector_write_nodal_results)</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResults&quot;,pointer_to_matrix_write_nodal_results)</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResults&quot;,pointer_to_bool_write_nodal_results)</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResults&quot;,pointer_to_double_write_nodal_results)</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResults&quot;,pointer_to_int_write_nodal_results)</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResults&quot;,pointer_to_array1d_write_nodal_results)</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResults&quot;,pointer_to_vector_write_nodal_results)</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResults&quot;,pointer_to_matrix_write_nodal_results)</span></a>
 <a name="254"><span class="lineNum">     254 </span>            : </a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          3 :     .def(&quot;WriteLocalAxesOnNodes&quot;,local_axes_write_nodal_results)</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          2 :     .def(&quot;WriteLocalAxesOnNodes&quot;,local_axes_write_nodal_results)</span></a>
 <a name="256"><span class="lineNum">     256 </span>            :     // NonHistorical</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalFlags&quot;,pointer_to_flags_write_nodal_results_NH)</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_bool_write_nodal_results_NH)</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_double_write_nodal_results_NH)</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_int_write_nodal_results_NH)</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_array1d_write_nodal_results_NH)</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_vector_write_nodal_results_NH)</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          3 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_matrix_write_nodal_results_NH)</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          3 :     .def(&quot;WriteLocalAxesOnNodesNonHistorical&quot;,local_axes_write_nodal_results_NH)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalFlags&quot;,pointer_to_flags_write_nodal_results_NH)</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_bool_write_nodal_results_NH)</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_double_write_nodal_results_NH)</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_int_write_nodal_results_NH)</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_array1d_write_nodal_results_NH)</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_vector_write_nodal_results_NH)</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          2 :     .def(&quot;WriteNodalResultsNonHistorical&quot;,pointer_to_matrix_write_nodal_results_NH)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          2 :     .def(&quot;WriteLocalAxesOnNodesNonHistorical&quot;,local_axes_write_nodal_results_NH)</span></a>
 <a name="265"><span class="lineNum">     265 </span>            : </a>
 <a name="266"><span class="lineNum">     266 </span>            : //                     .def(&quot;PrintOnGaussPoints&quot;, pointer_to_double_print_on_gauss_points)</a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          3 :     .def(&quot;PrintFlagsOnGaussPoints&quot;, FlagsPrintOnGaussPoints)</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          3 :     .def(&quot;PrintOnGaussPoints&quot;, BoolPrintOnGaussPoints)</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          3 :     .def(&quot;PrintOnGaussPoints&quot;, IntPrintOnGaussPoints)</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          3 :     .def(&quot;PrintOnGaussPoints&quot;, DoublePrintOnGaussPoints)</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          3 :     .def(&quot;PrintOnGaussPoints&quot;, Array1DPrintOnGaussPoints)</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          3 :     .def(&quot;PrintOnGaussPoints&quot;, VectorPrintOnGaussPoints)</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          3 :     .def(&quot;PrintOnGaussPoints&quot;, MatrixPrintOnGaussPoints)</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          2 :     .def(&quot;PrintFlagsOnGaussPoints&quot;, FlagsPrintOnGaussPoints)</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          2 :     .def(&quot;PrintOnGaussPoints&quot;, BoolPrintOnGaussPoints)</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          2 :     .def(&quot;PrintOnGaussPoints&quot;, IntPrintOnGaussPoints)</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          2 :     .def(&quot;PrintOnGaussPoints&quot;, DoublePrintOnGaussPoints)</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          2 :     .def(&quot;PrintOnGaussPoints&quot;, Array1DPrintOnGaussPoints)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          2 :     .def(&quot;PrintOnGaussPoints&quot;, VectorPrintOnGaussPoints)</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          2 :     .def(&quot;PrintOnGaussPoints&quot;, MatrixPrintOnGaussPoints)</span></a>
 <a name="274"><span class="lineNum">     274 </span>            : </a>
 <a name="275"><span class="lineNum">     275 </span>            : </a>
 <a name="276"><span class="lineNum">     276 </span>            : //                     .def(&quot;PrintOnGaussPoints&quot;, pointer_to_vector_print_on_gauss_points)</a>
 <a name="277"><span class="lineNum">     277 </span>            : //                     .def(&quot;PrintOnGaussPoints&quot;, pointer_to_matrix_print_on_gauss_points)</a>
 <a name="278"><span class="lineNum">     278 </span>            : //                     .def(&quot;CondPrintOnGaussPoints&quot;, pointer_to_double_cond_print_on_gauss_points)</a>
 <a name="279"><span class="lineNum">     279 </span>            : </a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          3 :     .def(&quot;Flush&quot;,&amp;GidIO&lt;&gt;::Flush)</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          3 :     .def(&quot;ChangeOutputName&quot;,&amp;GidIO&lt;&gt;::ChangeOutputName)</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          3 :     .def(&quot;CloseResultFile&quot;,&amp;GidIO&lt;&gt;::CloseResultFile)</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          2 :     .def(&quot;Flush&quot;,&amp;GidIO&lt;&gt;::Flush)</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          2 :     .def(&quot;ChangeOutputName&quot;,&amp;GidIO&lt;&gt;::ChangeOutputName)</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          2 :     .def(&quot;CloseResultFile&quot;,&amp;GidIO&lt;&gt;::CloseResultFile)</span></a>
 <a name="283"><span class="lineNum">     283 </span>            :     //.def(&quot;&quot;,&amp;DatafileIO::)</a>
 <a name="284"><span class="lineNum">     284 </span>            :     //.def(self_ns::str(self))</a>
 <a name="285"><span class="lineNum">     285 </span>            :     ;</a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          3 :     py::enum_&lt;GiD_PostMode&gt;(m,&quot;GiDPostMode&quot;)</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          3 :     .value(&quot;GiD_PostAscii&quot;, GiD_PostAscii)</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          3 :     .value(&quot;GiD_PostAsciiZipped&quot;, GiD_PostAsciiZipped)</span></a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          3 :     .value(&quot;GiD_PostBinary&quot;, GiD_PostBinary)</span></a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          3 :     .value(&quot;GiD_PostHDF5&quot;, GiD_PostHDF5)</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          2 :     py::enum_&lt;GiD_PostMode&gt;(m,&quot;GiDPostMode&quot;)</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          2 :     .value(&quot;GiD_PostAscii&quot;, GiD_PostAscii)</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          2 :     .value(&quot;GiD_PostAsciiZipped&quot;, GiD_PostAsciiZipped)</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          2 :     .value(&quot;GiD_PostBinary&quot;, GiD_PostBinary)</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          2 :     .value(&quot;GiD_PostHDF5&quot;, GiD_PostHDF5)</span></a>
 <a name="292"><span class="lineNum">     292 </span>            :     ;</a>
 <a name="293"><span class="lineNum">     293 </span>            : </a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          3 :     py::enum_&lt;WriteDeformedMeshFlag&gt;(m,&quot;WriteDeformedMeshFlag&quot;)</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          3 :     .value(&quot;WriteDeformed&quot;, WriteDeformed)</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          3 :     .value(&quot;WriteUndeformed&quot;, WriteUndeformed)</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          2 :     py::enum_&lt;WriteDeformedMeshFlag&gt;(m,&quot;WriteDeformedMeshFlag&quot;)</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          2 :     .value(&quot;WriteDeformed&quot;, WriteDeformed)</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          2 :     .value(&quot;WriteUndeformed&quot;, WriteUndeformed)</span></a>
 <a name="297"><span class="lineNum">     297 </span>            :     ;</a>
 <a name="298"><span class="lineNum">     298 </span>            : </a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          3 :     py::enum_&lt;WriteConditionsFlag&gt;(m,&quot;WriteConditionsFlag&quot;)</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          3 :     .value(&quot;WriteConditions&quot;,WriteConditions)</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          3 :     .value(&quot;WriteElementsOnly&quot;,WriteElementsOnly)</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          3 :     .value(&quot;WriteConditionsOnly&quot;,WriteConditionsOnly)</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          2 :     py::enum_&lt;WriteConditionsFlag&gt;(m,&quot;WriteConditionsFlag&quot;)</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">          2 :     .value(&quot;WriteConditions&quot;,WriteConditions)</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          2 :     .value(&quot;WriteElementsOnly&quot;,WriteElementsOnly)</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">          2 :     .value(&quot;WriteConditionsOnly&quot;,WriteConditionsOnly)</span></a>
 <a name="303"><span class="lineNum">     303 </span>            :     ;</a>
 <a name="304"><span class="lineNum">     304 </span>            : </a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          3 :     py::enum_&lt;MultiFileFlag&gt;(m,&quot;MultiFileFlag&quot;)</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          3 :     .value(&quot;SingleFile&quot;,SingleFile)</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          3 :     .value(&quot;MultipleFiles&quot;,MultipleFiles)</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          2 :     py::enum_&lt;MultiFileFlag&gt;(m,&quot;MultiFileFlag&quot;)</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          2 :     .value(&quot;SingleFile&quot;,SingleFile)</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          2 :     .value(&quot;MultipleFiles&quot;,MultipleFiles)</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :     ;</a>
 <a name="309"><span class="lineNum">     309 </span>            : </a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          3 :     py::class_&lt;VtkOutput, VtkOutput::Pointer, IO&gt;(m, &quot;VtkOutput&quot;)</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          2 :     py::class_&lt;VtkOutput, VtkOutput::Pointer, IO&gt;(m, &quot;VtkOutput&quot;)</span></a>
 <a name="312"><span class="lineNum">     312 </span>            :         .def(py::init&lt; ModelPart&amp;, Parameters &gt;())</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          3 :         .def(&quot;PrintOutput&quot;, &amp;VtkOutput::PrintOutput)</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          3 :         .def_static(&quot;GetDefaultParameters&quot;, &amp;VtkOutput::GetDefaultParameters)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          2 :         .def(&quot;PrintOutput&quot;, &amp;VtkOutput::PrintOutput)</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          2 :         .def_static(&quot;GetDefaultParameters&quot;, &amp;VtkOutput::GetDefaultParameters)</span></a>
 <a name="315"><span class="lineNum">     315 </span>            :         ;</a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          6 :     py::class_&lt;UnvOutput, UnvOutput::Pointer&gt;(m, &quot;UnvOutput&quot;)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          4 :     py::class_&lt;UnvOutput, UnvOutput::Pointer&gt;(m, &quot;UnvOutput&quot;)</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :         .def(py::init&lt;ModelPart&amp;, const std::string &amp;&gt;())</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          3 :         .def(&quot;InitializeMesh&quot;, &amp;UnvOutput::InitializeOutputFile)</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          3 :         .def(&quot;WriteMesh&quot;, &amp;UnvOutput::WriteMesh)</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          3 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;bool&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          3 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;int&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          3 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;double&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          3 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;array_1d&lt;double,3&gt;&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          2 :         .def(&quot;InitializeMesh&quot;, &amp;UnvOutput::InitializeOutputFile)</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          2 :         .def(&quot;WriteMesh&quot;, &amp;UnvOutput::WriteMesh)</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          2 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;bool&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          2 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;int&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          2 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;double&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          2 :         .def(&quot;PrintOutput&quot;, (void (UnvOutput::*)(const Variable&lt;array_1d&lt;double,3&gt;&gt;&amp;, const double)) &amp;UnvOutput::WriteNodalResults)</span></a>
 <a name="325"><span class="lineNum">     325 </span>            :         ;</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          3 : }</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          2 : }</span></a>
 <a name="327"><span class="lineNum">     327 </span>            : }  // namespace Python.</a>
 <a name="328"><span class="lineNum">     328 </span>            : </a>
 <a name="329"><span class="lineNum">     329 </span>            : } // Namespace Kratos</a>

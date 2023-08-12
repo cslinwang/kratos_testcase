@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -387,10 +387,10 @@
 <a name="325"><span class="lineNum">     325 </span>            :     ///@{</a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :     /// Default constructor.</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          3 :     DataCommunicator() {}</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          2 :     DataCommunicator() {}</span></a>
 <a name="329"><span class="lineNum">     329 </span>            : </a>
 <a name="330"><span class="lineNum">     330 </span>            :     /// Destructor.</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          6 :     virtual ~DataCommunicator() {}</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          4 :     virtual ~DataCommunicator() {}</span></a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
 <a name="333"><span class="lineNum">     333 </span>            :     ///@}</a>
 <a name="334"><span class="lineNum">     334 </span>            :     ///@name Operations</a>
@@ -401,9 +401,9 @@
 <a name="339"><span class="lineNum">     339 </span>            :      *  @see ParallelEnvironment.</a>
 <a name="340"><span class="lineNum">     340 </span>            :      *  @return a unique pointer to the new DataCommunicator.</a>
 <a name="341"><span class="lineNum">     341 </span>            :      */</a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          3 :     virtual DataCommunicator::UniquePointer Clone() const</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          2 :     virtual DataCommunicator::UniquePointer Clone() const</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :     {</a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          3 :         return Kratos::make_unique&lt;DataCommunicator&gt;();</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          2 :         return Kratos::make_unique&lt;DataCommunicator&gt;();</span></a>
 <a name="345"><span class="lineNum">     345 </span>            :     }</a>
 <a name="346"><span class="lineNum">     346 </span>            : </a>
 <a name="347"><span class="lineNum">     347 </span>            :     /// Pause program exectution until all threads reach this call.</a>
@@ -633,16 +633,16 @@
 <a name="571"><span class="lineNum">     571 </span>            : </a>
 <a name="572"><span class="lineNum">     572 </span>            :     /// Retrun the parallel rank for this DataCommunicator.</a>
 <a name="573"><span class="lineNum">     573 </span>            :     /** This is a wrapper for calls to MPI_Comm_rank. */</a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">          3 :     virtual int Rank() const</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">          2 :     virtual int Rank() const</span></a>
 <a name="575"><span class="lineNum">     575 </span>            :     {</a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">          3 :         return 0;</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">          2 :         return 0;</span></a>
 <a name="577"><span class="lineNum">     577 </span>            :     }</a>
 <a name="578"><span class="lineNum">     578 </span>            : </a>
 <a name="579"><span class="lineNum">     579 </span>            :     /// Retrun the parallel size for this DataCommunicator.</a>
 <a name="580"><span class="lineNum">     580 </span>            :     /** This is a wrapper for calls to MPI_Comm_size. */</a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineCov">          3 :     virtual int Size() const</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">          2 :     virtual int Size() const</span></a>
 <a name="582"><span class="lineNum">     582 </span>            :     {</a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          3 :         return 1;</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          2 :         return 1;</span></a>
 <a name="584"><span class="lineNum">     584 </span>            :     }</a>
 <a name="585"><span class="lineNum">     585 </span>            : </a>
 <a name="586"><span class="lineNum">     586 </span>            :     /// Check whether this DataCommunicator is aware of parallelism.</a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -94,7 +94,7 @@
 <a name="32"><span class="lineNum">      32 </span>            :     typedef CalculateEmbeddedNodalVariableFromSkinProcess&lt;double, SparseSpaceType, LocalSpaceType, LinearSolverType&gt; EmbeddedNodalVariableProcessDouble;</a>
 <a name="33"><span class="lineNum">      33 </span>            :     typedef CalculateEmbeddedNodalVariableFromSkinProcess&lt;array_1d&lt;double, 3&gt;, SparseSpaceType, LocalSpaceType, LinearSolverType&gt; EmbeddedNodalVariableProcessArray;</a>
 <a name="34"><span class="lineNum">      34 </span>            : </a>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(CalculateEmbeddedNodalVariableFromSkinProcessDouble, KratosCoreFastSuite)</span></a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(CalculateEmbeddedNodalVariableFromSkinProcessDouble, KratosCoreFastSuite)</span></a>
 <a name="36"><span class="lineNum">      36 </span>            :     {</a>
 <a name="37"><span class="lineNum">      37 </span>            :         // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
 <a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :         Node&lt;3&gt;::Pointer p_point_1 = Kratos::make_intrusive&lt;Node&lt;3&gt;&gt;(1, 0.00, 0.00, 0.00);</span></a>
@@ -158,7 +158,7 @@
 <a name="96"><span class="lineNum">      96 </span>            :         }</a>
 <a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(CalculateEmbeddedNodalVariableFromSkinProcessArray, KratosCoreFastSuite)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(CalculateEmbeddedNodalVariableFromSkinProcessArray, KratosCoreFastSuite)</span></a>
 <a name="100"><span class="lineNum">     100 </span>            :     {</a>
 <a name="101"><span class="lineNum">     101 </span>            :         // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :         Node&lt;3&gt;::Pointer p_point_1 = Kratos::make_intrusive&lt;Node&lt;3&gt;&gt;(1, 0.00, 0.00, 0.00);</span></a>

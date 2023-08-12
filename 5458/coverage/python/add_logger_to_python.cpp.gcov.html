@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -211,46 +211,46 @@
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :     printImpl(args, kwargs, Logger::Severity::WARNING, false, LoggerMessage::DistributedFilter::FromAllRanks());</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          3 : void  AddLoggerToPython(pybind11::module&amp; m) {</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          2 : void  AddLoggerToPython(pybind11::module&amp; m) {</span></a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          3 :     py::class_&lt;LoggerOutput, Kratos::shared_ptr&lt;LoggerOutput&gt;&gt;(m,&quot;LoggerOutput&quot;)</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          3 :     .def(&quot;SetMaxLevel&quot;, &amp;LoggerOutput::SetMaxLevel)</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          3 :     .def(&quot;GetMaxLevel&quot;, &amp;LoggerOutput::GetMaxLevel)</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          3 :     .def(&quot;SetSeverity&quot;, &amp;LoggerOutput::SetSeverity)</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          3 :     .def(&quot;GetSeverity&quot;, &amp;LoggerOutput::GetSeverity)</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          3 :     .def(&quot;SetCategory&quot;, &amp;LoggerOutput::SetCategory)</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          3 :     .def(&quot;GetCategory&quot;, &amp;LoggerOutput::GetCategory)</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :     py::class_&lt;LoggerOutput, Kratos::shared_ptr&lt;LoggerOutput&gt;&gt;(m,&quot;LoggerOutput&quot;)</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          2 :     .def(&quot;SetMaxLevel&quot;, &amp;LoggerOutput::SetMaxLevel)</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :     .def(&quot;GetMaxLevel&quot;, &amp;LoggerOutput::GetMaxLevel)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          2 :     .def(&quot;SetSeverity&quot;, &amp;LoggerOutput::SetSeverity)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          2 :     .def(&quot;GetSeverity&quot;, &amp;LoggerOutput::GetSeverity)</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          2 :     .def(&quot;SetCategory&quot;, &amp;LoggerOutput::SetCategory)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          2 :     .def(&quot;GetCategory&quot;, &amp;LoggerOutput::GetCategory)</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :     ;</a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          3 :     py::class_&lt;Logger, Kratos::shared_ptr&lt;Logger&gt;&gt; logger_scope(m,&quot;Logger&quot;);</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          2 :     py::class_&lt;Logger, Kratos::shared_ptr&lt;Logger&gt;&gt; logger_scope(m,&quot;Logger&quot;);</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :     logger_scope.def(py::init&lt;std::string const &amp;&gt;());</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;Print&quot;, printDefault); // raw_function(printDefault,1))</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;PrintInfo&quot;,printInfo); // raw_function(printInfo,1))</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;PrintWarning&quot;, printWarning); //raw_function(printWarning,1))</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;PrintOnAllRanks&quot;, printDefaultOnAllRanks);</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;PrintInfoOnAllRanks&quot;,printInfoOnAllRanks);</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;PrintWarningOnAllRanks&quot;, printWarningOnAllRanks);</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;Flush&quot;, Logger::Flush);</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;GetDefaultOutput&quot;, &amp;Logger::GetDefaultOutputInstance, py::return_value_policy::reference); //_internal )</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          3 :     logger_scope.def_static(&quot;AddOutput&quot;, &amp;Logger::AddOutput);</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;Print&quot;, printDefault); // raw_function(printDefault,1))</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;PrintInfo&quot;,printInfo); // raw_function(printInfo,1))</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;PrintWarning&quot;, printWarning); //raw_function(printWarning,1))</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;PrintOnAllRanks&quot;, printDefaultOnAllRanks);</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;PrintInfoOnAllRanks&quot;,printInfoOnAllRanks);</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;PrintWarningOnAllRanks&quot;, printWarningOnAllRanks);</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;Flush&quot;, Logger::Flush);</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;GetDefaultOutput&quot;, &amp;Logger::GetDefaultOutputInstance, py::return_value_policy::reference); //_internal )</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :     logger_scope.def_static(&quot;AddOutput&quot;, &amp;Logger::AddOutput);</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :     ;</a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>
 <a name="176"><span class="lineNum">     176 </span>            :     // Enums for Severity</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          3 :     py::enum_&lt;Logger::Severity&gt;(logger_scope,&quot;Severity&quot;)</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :     .value(&quot;WARNING&quot;, Logger::Severity::WARNING)</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :     .value(&quot;INFO&quot;, Logger::Severity::INFO)</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     .value(&quot;DETAIL&quot;, Logger::Severity::DETAIL)</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :     .value(&quot;DEBUG&quot;, Logger::Severity::DEBUG)</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          3 :     .value(&quot;TRACE&quot;, Logger::Severity::TRACE);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          2 :     py::enum_&lt;Logger::Severity&gt;(logger_scope,&quot;Severity&quot;)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          2 :     .value(&quot;WARNING&quot;, Logger::Severity::WARNING)</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          2 :     .value(&quot;INFO&quot;, Logger::Severity::INFO)</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          2 :     .value(&quot;DETAIL&quot;, Logger::Severity::DETAIL)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          2 :     .value(&quot;DEBUG&quot;, Logger::Severity::DEBUG)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          2 :     .value(&quot;TRACE&quot;, Logger::Severity::TRACE);</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
 <a name="184"><span class="lineNum">     184 </span>            :     // Enums for Category</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          6 :     py::enum_&lt;Logger::Category&gt;(logger_scope,&quot;Category&quot;)</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     .value(&quot;STATUS&quot;, Logger::Category::STATUS)</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     .value(&quot;CRITICAL&quot;, Logger::Category::CRITICAL)</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :     .value(&quot;STATISTICS&quot;, Logger::Category::STATISTICS)</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          3 :     .value(&quot;PROFILING&quot;, Logger::Category::PROFILING)</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     .value(&quot;CHECKING&quot;, Logger::Category::CHECKING);</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 : }</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          4 :     py::enum_&lt;Logger::Category&gt;(logger_scope,&quot;Category&quot;)</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :     .value(&quot;STATUS&quot;, Logger::Category::STATUS)</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          2 :     .value(&quot;CRITICAL&quot;, Logger::Category::CRITICAL)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          2 :     .value(&quot;STATISTICS&quot;, Logger::Category::STATISTICS)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :     .value(&quot;PROFILING&quot;, Logger::Category::PROFILING)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :     .value(&quot;CHECKING&quot;, Logger::Category::CHECKING);</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          2 : }</span></a>
 <a name="192"><span class="lineNum">     192 </span>            : </a>
 <a name="193"><span class="lineNum">     193 </span>            : }  // namespace Python.</a>
 <a name="194"><span class="lineNum">     194 </span>            : } // Namespace Kratos</a>

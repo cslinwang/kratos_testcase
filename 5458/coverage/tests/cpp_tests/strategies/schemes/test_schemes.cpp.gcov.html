@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -441,7 +441,7 @@
 <a name="379"><span class="lineNum">     379 </span>            :         /**</a>
 <a name="380"><span class="lineNum">     380 </span>            :          * Checks if the Newmark scheme performs correctly the integration</a>
 <a name="381"><span class="lineNum">     381 </span>            :          */</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(DisplacementNewmarkSchemeTest, KratosCoreFastSuite)</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(DisplacementNewmarkSchemeTest, KratosCoreFastSuite)</span></a>
 <a name="383"><span class="lineNum">     383 </span>            :         {</a>
 <a name="384"><span class="lineNum">     384 </span>            :             typedef ResidualBasedNewmarkDisplacementScheme&lt; SparseSpaceType, LocalSpaceType &gt;  ResidualBasedNewmarkDisplacementSchemeType;</a>
 <a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :             SchemeType::Pointer p_scheme = SchemeType::Pointer( new ResidualBasedNewmarkDisplacementSchemeType() );</span></a>
@@ -454,7 +454,7 @@
 <a name="392"><span class="lineNum">     392 </span>            :         /**</a>
 <a name="393"><span class="lineNum">     393 </span>            :          * Checks if the Bossak scheme performs correctly the integration</a>
 <a name="394"><span class="lineNum">     394 </span>            :          */</a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(DisplacementBossakSchemeTest, KratosCoreFastSuite)</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(DisplacementBossakSchemeTest, KratosCoreFastSuite)</span></a>
 <a name="396"><span class="lineNum">     396 </span>            :         {</a>
 <a name="397"><span class="lineNum">     397 </span>            :             typedef ResidualBasedBossakDisplacementScheme&lt; SparseSpaceType, LocalSpaceType &gt;  ResidualBasedBossakDisplacementSchemeType;</a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :             SchemeType::Pointer p_scheme = SchemeType::Pointer( new ResidualBasedBossakDisplacementSchemeType() );</span></a>
@@ -467,7 +467,7 @@
 <a name="405"><span class="lineNum">     405 </span>            :         /**</a>
 <a name="406"><span class="lineNum">     406 </span>            :          * Checks if the BDF2 scheme performs correctly the integration</a>
 <a name="407"><span class="lineNum">     407 </span>            :          */</a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(DisplacementBDF2SchemeTest, KratosCoreFastSuite)</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(DisplacementBDF2SchemeTest, KratosCoreFastSuite)</span></a>
 <a name="409"><span class="lineNum">     409 </span>            :         {</a>
 <a name="410"><span class="lineNum">     410 </span>            :             typedef ResidualBasedBDFDisplacementScheme&lt; SparseSpaceType, LocalSpaceType &gt;  ResidualBasedBDFDisplacementSchemeType;</a>
 <a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :             SchemeType::Pointer p_scheme = SchemeType::Pointer( new ResidualBasedBDFDisplacementSchemeType(2) );</span></a>
@@ -480,7 +480,7 @@
 <a name="418"><span class="lineNum">     418 </span>            :         /**</a>
 <a name="419"><span class="lineNum">     419 </span>            :          * Checks if the custom BDF2 scheme performs correctly the integration</a>
 <a name="420"><span class="lineNum">     420 </span>            :          */</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(CustomBDF2SchemeTest, KratosCoreFastSuite)</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(CustomBDF2SchemeTest, KratosCoreFastSuite)</span></a>
 <a name="422"><span class="lineNum">     422 </span>            :         {</a>
 <a name="423"><span class="lineNum">     423 </span>            :             typedef ResidualBasedBDFCustomScheme&lt; SparseSpaceType, LocalSpaceType &gt;  ResidualBasedBDFCustomSchemeType;</a>
 <a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :             SchemeType::Pointer p_scheme = SchemeType::Pointer( new ResidualBasedBDFCustomSchemeType(2) );</span></a>

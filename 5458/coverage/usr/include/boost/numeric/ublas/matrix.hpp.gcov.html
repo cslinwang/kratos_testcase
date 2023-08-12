@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -151,7 +151,7 @@
 <a name="89"><span class="lineNum">      89 </span>            :      * \tparam A the type of Storage array. Default is \c unbounded_array</a>
 <a name="90"><span class="lineNum">      90 </span>            :      */</a>
 <a name="91"><span class="lineNum">      91 </span>            :     template&lt;class T, class L, class A&gt;</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">      56484 :     class matrix:</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">      37656 :     class matrix:</span></a>
 <a name="93"><span class="lineNum">      93 </span>            :         public matrix_container&lt;matrix&lt;T, L, A&gt; &gt; {</a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
 <a name="95"><span class="lineNum">      95 </span>            :         typedef T *pointer;</a>
@@ -181,9 +181,9 @@
 <a name="119"><span class="lineNum">     119 </span>            :           </a>
 <a name="120"><span class="lineNum">     120 </span>            :           /// Default dense matrix constructor. Make a dense matrix of size (0,0)</a>
 <a name="121"><span class="lineNum">     121 </span>            :             BOOST_UBLAS_INLINE</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          3 :             matrix ():</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          2 :             matrix ():</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :                 matrix_container&lt;self_type&gt; (),</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">      14448 :                 size1_ (0), size2_ (0), data_ () {}</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       9632 :                 size1_ (0), size2_ (0), data_ () {}</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :         </a>
 <a name="126"><span class="lineNum">     126 </span>            :           /** Dense matrix constructor with defined size</a>
 <a name="127"><span class="lineNum">     127 </span>            :            * \param size1 number of rows</a>
@@ -192,7 +192,7 @@
 <a name="130"><span class="lineNum">     130 </span>            :             BOOST_UBLAS_INLINE</a>
 <a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :             matrix (size_type size1, size_type size2):</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :                 matrix_container&lt;self_type&gt; (),</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       7254 :                 size1_ (size1), size2_ (size2), data_ (layout_type::storage_size (size1, size2)) {</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       4836 :                 size1_ (size1), size2_ (size2), data_ (layout_type::storage_size (size1, size2)) {</span></a>
 <a name="134"><span class="lineNum">     134 </span>            :             }</a>
 <a name="135"><span class="lineNum">     135 </span>            :         </a>
 <a name="136"><span class="lineNum">     136 </span>            :           /** Dense matrix constructor with defined size a initial value for all the matrix elements</a>
@@ -219,20 +219,20 @@
 <a name="157"><span class="lineNum">     157 </span>            :            * \param m is a dense matrix</a>
 <a name="158"><span class="lineNum">     158 </span>            :            */</a>
 <a name="159"><span class="lineNum">     159 </span>            :         BOOST_UBLAS_INLINE</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      28737 :         matrix (const matrix &amp;m):</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">      19158 :         matrix (const matrix &amp;m):</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :             matrix_container&lt;self_type&gt; (),</a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      28737 :             size1_ (m.size1_), size2_ (m.size2_), data_ (m.data_) {}</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">      19158 :             size1_ (m.size1_), size2_ (m.size2_), data_ (m.data_) {}</span></a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
 <a name="164"><span class="lineNum">     164 </span>            :           /** Copy-constructor of a dense matrix from a matrix expression</a>
 <a name="165"><span class="lineNum">     165 </span>            :            * \param ae is a matrix expression</a>
 <a name="166"><span class="lineNum">     166 </span>            :            */</a>
 <a name="167"><span class="lineNum">     167 </span>            :         template&lt;class AE&gt;</a>
 <a name="168"><span class="lineNum">     168 </span>            :         BOOST_UBLAS_INLINE</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       6201 :         matrix (const matrix_expression&lt;AE&gt; &amp;ae):</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       4134 :         matrix (const matrix_expression&lt;AE&gt; &amp;ae):</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :             matrix_container&lt;self_type&gt; (),</a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       6201 :             size1_ (ae ().size1 ()), size2_ (ae ().size2 ()), data_ (layout_type::storage_size (size1_, size2_)) {</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       4134 :             size1_ (ae ().size1 ()), size2_ (ae ().size2 ()), data_ (layout_type::storage_size (size1_, size2_)) {</span></a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :             matrix_assign&lt;scalar_assign&gt; (*this, ae);</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       6201 :         }</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">       4134 :         }</span></a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
 <a name="175"><span class="lineNum">     175 </span>            :         // Accessors</a>
 <a name="176"><span class="lineNum">     176 </span>            :           /** Return the number of rows of the matrix</a>
@@ -264,7 +264,7 @@
 <a name="202"><span class="lineNum">     202 </span>            :            */</a>
 <a name="203"><span class="lineNum">     203 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="204"><span class="lineNum">     204 </span>            :         array_type &amp;data () {</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       2061 :             return data_;</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       1374 :             return data_;</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :         }</a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
 <a name="208"><span class="lineNum">     208 </span>            :         // Resizing</a>
@@ -276,17 +276,17 @@
 <a name="214"><span class="lineNum">     214 </span>            :            * \param preserve a boolean to say if one wants the data to be preserved during the resizing. Default is true.</a>
 <a name="215"><span class="lineNum">     215 </span>            :            */</a>
 <a name="216"><span class="lineNum">     216 </span>            :         BOOST_UBLAS_INLINE</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       2061 :         void resize (size_type size1, size_type size2, bool preserve = true) {</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       2061 :             if (preserve) {</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1374 :         void resize (size_type size1, size_type size2, bool preserve = true) {</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       1374 :             if (preserve) {</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :                 self_type temporary (size1, size2);</a>
 <a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :                 detail::matrix_resize_preserve&lt;layout_type&gt; (*this, temporary);</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :             }</a>
 <a name="222"><span class="lineNum">     222 </span>            :             else {</a>
 <a name="223"><span class="lineNum">     223 </span>            :                 data ().resize (layout_type::storage_size (size1, size2));</a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       2061 :                 size1_ = size1;</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       2061 :                 size2_ = size2;</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">       1374 :                 size1_ = size1;</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       1374 :                 size2_ = size2;</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :             }</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       2061 :         }</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       1374 :         }</span></a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
 <a name="229"><span class="lineNum">     229 </span>            :         // Element access</a>
 <a name="230"><span class="lineNum">     230 </span>            :     </a>
@@ -307,7 +307,7 @@
 <a name="245"><span class="lineNum">     245 </span>            :      */</a>
 <a name="246"><span class="lineNum">     246 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="247"><span class="lineNum">     247 </span>            :         reference at_element (size_type i, size_type j) {</a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">      31332 :             return data () [layout_type::element (i, size1_, j, size2_)];</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">      20888 :             return data () [layout_type::element (i, size1_, j, size2_)];</span></a>
 <a name="249"><span class="lineNum">     249 </span>            :         }</a>
 <a name="250"><span class="lineNum">     250 </span>            : </a>
 <a name="251"><span class="lineNum">     251 </span>            :     /** Access a matrix element. Here we return a reference</a>
@@ -391,18 +391,18 @@
 <a name="329"><span class="lineNum">     329 </span>            : #else</a>
 <a name="330"><span class="lineNum">     330 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="331"><span class="lineNum">     331 </span>            :         matrix &amp;operator = (const matrix &amp;m) {</a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">      12327 :             size1_ = m.size1_;</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      12327 :             size2_ = m.size2_;</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">      12327 :             data () = m.data ();</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">      12093 :             return *this;</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       8218 :             size1_ = m.size1_;</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">       8218 :             size2_ = m.size2_;</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">       8218 :             data () = m.data ();</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">       8062 :             return *this;</span></a>
 <a name="336"><span class="lineNum">     336 </span>            :         }</a>
 <a name="337"><span class="lineNum">     337 </span>            : #endif</a>
 <a name="338"><span class="lineNum">     338 </span>            :         template&lt;class C&gt;          // Container assignment without temporary</a>
 <a name="339"><span class="lineNum">     339 </span>            :         BOOST_UBLAS_INLINE</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       2061 :         matrix &amp;operator = (const matrix_container&lt;C&gt; &amp;m) {</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">       2061 :             resize (m ().size1 (), m ().size2 (), false);</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">       1374 :         matrix &amp;operator = (const matrix_container&lt;C&gt; &amp;m) {</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">       1374 :             resize (m ().size1 (), m ().size2 (), false);</span></a>
 <a name="342"><span class="lineNum">     342 </span>            :             assign (m);</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       2061 :             return *this;</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       1374 :             return *this;</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :         }</a>
 <a name="345"><span class="lineNum">     345 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="346"><span class="lineNum">     346 </span>            :         matrix &amp;assign_temporary (matrix &amp;m) {</a>
@@ -3513,7 +3513,7 @@
 <a name="3451"><span class="lineNum">    3451 </span>            :      * \tparam ALLOC an allocator for storing the zero element. By default, a standar allocator is used.</a>
 <a name="3452"><span class="lineNum">    3452 </span>            :      */</a>
 <a name="3453"><span class="lineNum">    3453 </span>            :     template&lt;class T, class ALLOC&gt;</a>
-<a name="3454"><span class="lineNum">    3454 </span><span class="lineCov">       8262 :     class zero_matrix:</span></a>
+<a name="3454"><span class="lineNum">    3454 </span><span class="lineCov">       5508 :     class zero_matrix:</span></a>
 <a name="3455"><span class="lineNum">    3455 </span>            :         public matrix_container&lt;zero_matrix&lt;T, ALLOC&gt; &gt; {</a>
 <a name="3456"><span class="lineNum">    3456 </span>            : </a>
 <a name="3457"><span class="lineNum">    3457 </span>            :         typedef const T *const_pointer;</a>
@@ -3542,9 +3542,9 @@
 <a name="3480"><span class="lineNum">    3480 </span>            :             matrix_container&lt;self_type&gt; (),</a>
 <a name="3481"><span class="lineNum">    3481 </span>            :             size1_ (size), size2_ (size) {}</a>
 <a name="3482"><span class="lineNum">    3482 </span>            :         BOOST_UBLAS_INLINE</a>
-<a name="3483"><span class="lineNum">    3483 </span><span class="lineCov">       8262 :         zero_matrix (size_type size1, size_type size2):</span></a>
+<a name="3483"><span class="lineNum">    3483 </span><span class="lineCov">       5508 :         zero_matrix (size_type size1, size_type size2):</span></a>
 <a name="3484"><span class="lineNum">    3484 </span>            :             matrix_container&lt;self_type&gt; (),</a>
-<a name="3485"><span class="lineNum">    3485 </span><span class="lineCov">       8262 :             size1_ (size1), size2_ (size2) {}</span></a>
+<a name="3485"><span class="lineNum">    3485 </span><span class="lineCov">       5508 :             size1_ (size1), size2_ (size2) {}</span></a>
 <a name="3486"><span class="lineNum">    3486 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="3487"><span class="lineNum">    3487 </span>            :         zero_matrix (const zero_matrix &amp;m):</a>
 <a name="3488"><span class="lineNum">    3488 </span>            :             matrix_container&lt;self_type&gt; (),</a>
@@ -3553,11 +3553,11 @@
 <a name="3491"><span class="lineNum">    3491 </span>            :         // Accessors</a>
 <a name="3492"><span class="lineNum">    3492 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="3493"><span class="lineNum">    3493 </span>            :         size_type size1 () const {</a>
-<a name="3494"><span class="lineNum">    3494 </span><span class="lineCov">       8262 :             return size1_;</span></a>
+<a name="3494"><span class="lineNum">    3494 </span><span class="lineCov">       5508 :             return size1_;</span></a>
 <a name="3495"><span class="lineNum">    3495 </span>            :         }</a>
 <a name="3496"><span class="lineNum">    3496 </span>            :         BOOST_UBLAS_INLINE</a>
 <a name="3497"><span class="lineNum">    3497 </span>            :         size_type size2 () const {</a>
-<a name="3498"><span class="lineNum">    3498 </span><span class="lineCov">       8262 :             return size2_;</span></a>
+<a name="3498"><span class="lineNum">    3498 </span><span class="lineCov">       5508 :             return size2_;</span></a>
 <a name="3499"><span class="lineNum">    3499 </span>            :         }</a>
 <a name="3500"><span class="lineNum">    3500 </span>            : </a>
 <a name="3501"><span class="lineNum">    3501 </span>            :         // Resizing</a>

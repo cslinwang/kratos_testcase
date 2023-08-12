@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -81,7 +81,7 @@
 <a name="19"><span class="lineNum">      19 </span>            : namespace Kratos {</a>
 <a name="20"><span class="lineNum">      20 </span>            : namespace Testing {</a>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorTriangleElement, KratosCoreFastSuite)</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorTriangleElement, KratosCoreFastSuite)</span></a>
 <a name="23"><span class="lineNum">      23 </span>            : {</a>
 <a name="24"><span class="lineNum">      24 </span>            :     Model current_model;</a>
 <a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :     ModelPart&amp; model_part = current_model.CreateModelPart(&quot;Triangle&quot;);</span></a>
@@ -110,7 +110,7 @@
 <a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_NEAR(shape_function_values[2], 0.25, 1e-06);</span></a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="50"><span class="lineNum">      50 </span>            : </a>
-<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorQuadrilateralElement, KratosCoreFastSuite)</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorQuadrilateralElement, KratosCoreFastSuite)</span></a>
 <a name="52"><span class="lineNum">      52 </span>            : {</a>
 <a name="53"><span class="lineNum">      53 </span>            :     Model current_model;</a>
 <a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :     ModelPart&amp; model_part = current_model.CreateModelPart(&quot;Quadrilateral&quot;);</span></a>
@@ -142,7 +142,7 @@
 <a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_NEAR(shape_function_values[3], 0.48245, 1e-06);</span></a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorTetrahedraElement, KratosCoreFastSuite)</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorTetrahedraElement, KratosCoreFastSuite)</span></a>
 <a name="84"><span class="lineNum">      84 </span>            : {</a>
 <a name="85"><span class="lineNum">      85 </span>            :     Model current_model;</a>
 <a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :     ModelPart&amp; model_part = current_model.CreateModelPart(&quot;Tetrahedral&quot;);</span></a>
@@ -174,7 +174,7 @@
 <a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_NEAR(shape_function_values[3], 0.271263, 1e-06);</span></a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorHexahedraElement, KratosCoreFastSuite)</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorHexahedraElement, KratosCoreFastSuite)</span></a>
 <a name="116"><span class="lineNum">     116 </span>            : {</a>
 <a name="117"><span class="lineNum">     117 </span>            :     Model current_model;</a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :     ModelPart&amp; model_part = current_model.CreateModelPart(&quot;Hexahedral&quot;);</span></a>
@@ -214,7 +214,7 @@
 <a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_NEAR(shape_function_values[7], 0.142949, 1e-06);</span></a>
 <a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorNode, KratosCoreFastSuite)</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorNode, KratosCoreFastSuite)</span></a>
 <a name="156"><span class="lineNum">     156 </span>            : {</a>
 <a name="157"><span class="lineNum">     157 </span>            :     Model current_model;</a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :     ModelPart&amp; model_part = current_model.CreateModelPart(&quot;ForTest&quot;);</span></a>
@@ -238,7 +238,7 @@
 <a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_EQUAL(found_id, node_id_to_be_found);</span></a>
 <a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorQuadrilateralCondition, KratosCoreFastSuite)</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(BruteForcePointLocatorQuadrilateralCondition, KratosCoreFastSuite)</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : {</a>
 <a name="181"><span class="lineNum">     181 </span>            :     Model current_model;</a>
 <a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :     ModelPart&amp; model_part = current_model.CreateModelPart(&quot;Quadrilateral&quot;);</span></a>

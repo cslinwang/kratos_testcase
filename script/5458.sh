@@ -39,12 +39,4 @@ python3 /root/Kratos/applications/SwimmingDEMApplication/tests/SmallTests.py
 echo "BUG $bug_id 测试用例运行完成。"
 
 # 生成覆盖率报告
-echo "开始生成 BUG $bug_id 覆盖率报告..."
-/root/kratos_testcase/script/coverage.sh 5458
-echo "BUG $bug_id 覆盖率报告生成完成。"
-
-
-# 存档bug_id脚本
-echo "开始存档 BUG $bug_id 脚本..."
-cp "/root/kratos_testcase/script/$bug_id.sh" "/root/kratos_testcase/$bug_id/$bug_id.sh"
-echo "存档 BUG $bug_id 脚本完成。"
+# /root/kratos_testcase/script/coverage.sh 5458

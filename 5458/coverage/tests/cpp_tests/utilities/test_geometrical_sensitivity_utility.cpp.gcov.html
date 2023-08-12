@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -219,35 +219,35 @@
 <a name="157"><span class="lineNum">     157 </span>            :     }</a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Quadrilateral2D4N_GAUSS_2, KratosSensitivityTestSuite)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Quadrilateral2D4N_GAUSS_2, KratosSensitivityTestSuite)</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : {</a>
 <a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :     Geometry&lt;Point&gt;::Pointer p_geom = CreateQuadrilateral2D4N();</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :     Geometry&lt;Point&gt;&amp; r_geom = *p_geom;</a>
 <a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :     TestThisGeometry(r_geom, GeometryData::GI_GAUSS_2);</span></a>
 <a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Quadrilateral2D4N_GAUSS_1, KratosSensitivityTestSuite)</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Quadrilateral2D4N_GAUSS_1, KratosSensitivityTestSuite)</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : {</a>
 <a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     Geometry&lt;Point&gt;::Pointer p_geom = CreateQuadrilateral2D4N();</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :     Geometry&lt;Point&gt;&amp; r_geom = *p_geom;</a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :     TestThisGeometry(r_geom, GeometryData::GI_GAUSS_1);</span></a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Hexahedra3D8N_GAUSS_2, KratosSensitivityTestSuite)</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Hexahedra3D8N_GAUSS_2, KratosSensitivityTestSuite)</span></a>
 <a name="175"><span class="lineNum">     175 </span>            : {</a>
 <a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :     Geometry&lt;Point&gt;::Pointer p_geom = CreateHexahedra3D8N();</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :     Geometry&lt;Point&gt;&amp; r_geom = *p_geom;</a>
 <a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :     TestThisGeometry(r_geom, GeometryData::GI_GAUSS_2);</span></a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Triangle2D3N_GAUSS_1, KratosSensitivityTestSuite)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Triangle2D3N_GAUSS_1, KratosSensitivityTestSuite)</span></a>
 <a name="182"><span class="lineNum">     182 </span>            : {</a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :     Geometry&lt;Point&gt;::Pointer p_geom = CreateTriangle2D3N();</span></a>
 <a name="184"><span class="lineNum">     184 </span>            :     Geometry&lt;Point&gt;&amp; r_geom = *p_geom;</a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :     TestThisGeometry(r_geom, GeometryData::GI_GAUSS_1, 1e-8);</span></a>
 <a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Tetrahedra3D4N_GAUSS_1, KratosSensitivityTestSuite)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GeometricalSensitivityUtility_Tetrahedra3D4N_GAUSS_1, KratosSensitivityTestSuite)</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : {</a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :     Geometry&lt;Point&gt;::Pointer p_geom = CreateTetrahedra3D4N();</span></a>
 <a name="191"><span class="lineNum">     191 </span>            :     Geometry&lt;Point&gt;&amp; r_geom = *p_geom;</a>

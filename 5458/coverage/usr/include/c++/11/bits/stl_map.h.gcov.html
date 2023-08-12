@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">33</td>
@@ -361,7 +361,7 @@
 <a name="299"><span class="lineNum">     299 </span>            :        *  themselves are pointers, the pointed-to memory is not touched in any</a>
 <a name="300"><span class="lineNum">     300 </span>            :        *  way.  Managing the pointer is the user's responsibility.</a>
 <a name="301"><span class="lineNum">     301 </span>            :        */</a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         96 :       ~map() = default;</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">         64 :       ~map() = default;</span></a>
 <a name="303"><span class="lineNum">     303 </span>            : #endif</a>
 <a name="304"><span class="lineNum">     304 </span>            : </a>
 <a name="305"><span class="lineNum">     305 </span>            :       /**</a>
@@ -551,22 +551,22 @@
 <a name="489"><span class="lineNum">     489 </span>            :        *  Lookup requires logarithmic time.</a>
 <a name="490"><span class="lineNum">     490 </span>            :        */</a>
 <a name="491"><span class="lineNum">     491 </span>            :       mapped_type&amp;</a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       5751 :       operator[](const key_type&amp; __k)</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">       3834 :       operator[](const key_type&amp; __k)</span></a>
 <a name="493"><span class="lineNum">     493 </span>            :       {</a>
 <a name="494"><span class="lineNum">     494 </span>            :         // concept requirements</a>
 <a name="495"><span class="lineNum">     495 </span>            :         __glibcxx_function_requires(_DefaultConstructibleConcept&lt;mapped_type&gt;)</a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            :         iterator __i = lower_bound(__k);</a>
 <a name="498"><span class="lineNum">     498 </span>            :         // __i-&gt;first is greater than or equivalent to __k.</a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       5751 :         if (__i == end() || key_comp()(__k, (*__i).first))</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       3834 :         if (__i == end() || key_comp()(__k, (*__i).first))</span></a>
 <a name="500"><span class="lineNum">     500 </span>            : #if __cplusplus &gt;= 201103L</a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">       1932 :           __i = _M_t._M_emplace_hint_unique(__i, std::piecewise_construct,</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">       1932 :                                             std::tuple&lt;const key_type&amp;&gt;(__k),</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">       1932 :                                             std::tuple&lt;&gt;());</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">       1288 :           __i = _M_t._M_emplace_hint_unique(__i, std::piecewise_construct,</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">       1288 :                                             std::tuple&lt;const key_type&amp;&gt;(__k),</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">       1288 :                                             std::tuple&lt;&gt;());</span></a>
 <a name="504"><span class="lineNum">     504 </span>            : #else</a>
 <a name="505"><span class="lineNum">     505 </span>            :           __i = insert(__i, value_type(__k, mapped_type()));</a>
 <a name="506"><span class="lineNum">     506 </span>            : #endif</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">       5751 :         return (*__i).second;</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">       3834 :         return (*__i).second;</span></a>
 <a name="508"><span class="lineNum">     508 </span>            :       }</a>
 <a name="509"><span class="lineNum">     509 </span>            : </a>
 <a name="510"><span class="lineNum">     510 </span>            : #if __cplusplus &gt;= 201103L</a>
@@ -870,7 +870,7 @@
 <a name="808"><span class="lineNum">     808 </span>            :       // 2354. Unnecessary copying when inserting into maps with braced-init</a>
 <a name="809"><span class="lineNum">     809 </span>            :       std::pair&lt;iterator, bool&gt;</a>
 <a name="810"><span class="lineNum">     810 </span>            :       insert(value_type&amp;&amp; __x)</a>
-<a name="811"><span class="lineNum">     811 </span><span class="lineCov">       7455 :       { return _M_t._M_insert_unique(std::move(__x)); }</span></a>
+<a name="811"><span class="lineNum">     811 </span><span class="lineCov">       4970 :       { return _M_t._M_insert_unique(std::move(__x)); }</span></a>
 <a name="812"><span class="lineNum">     812 </span>            : </a>
 <a name="813"><span class="lineNum">     813 </span>            :       template&lt;typename _Pair&gt;</a>
 <a name="814"><span class="lineNum">     814 </span>            :         __enable_if_t&lt;is_constructible&lt;value_type, _Pair&gt;::value,</a>
@@ -1229,7 +1229,7 @@
 <a name="1167"><span class="lineNum">    1167 </span>            : </a>
 <a name="1168"><span class="lineNum">    1168 </span>            :       iterator</a>
 <a name="1169"><span class="lineNum">    1169 </span>            :       find(const key_type&amp; __x)</a>
-<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">      13233 :       { return _M_t.find(__x); }</span></a>
+<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">       8822 :       { return _M_t.find(__x); }</span></a>
 <a name="1171"><span class="lineNum">    1171 </span>            : </a>
 <a name="1172"><span class="lineNum">    1172 </span>            : #if __cplusplus &gt; 201103L</a>
 <a name="1173"><span class="lineNum">    1173 </span>            :       template&lt;typename _Kt&gt;</a>
@@ -1318,7 +1318,7 @@
 <a name="1256"><span class="lineNum">    1256 </span>            :        */</a>
 <a name="1257"><span class="lineNum">    1257 </span>            :       iterator</a>
 <a name="1258"><span class="lineNum">    1258 </span>            :       lower_bound(const key_type&amp; __x)</a>
-<a name="1259"><span class="lineNum">    1259 </span><span class="lineCov">       5751 :       { return _M_t.lower_bound(__x); }</span></a>
+<a name="1259"><span class="lineNum">    1259 </span><span class="lineCov">       3834 :       { return _M_t.lower_bound(__x); }</span></a>
 <a name="1260"><span class="lineNum">    1260 </span>            : </a>
 <a name="1261"><span class="lineNum">    1261 </span>            : #if __cplusplus &gt; 201103L</a>
 <a name="1262"><span class="lineNum">    1262 </span>            :       template&lt;typename _Kt&gt;</a>

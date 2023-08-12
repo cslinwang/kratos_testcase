@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -147,9 +147,9 @@
 <a name="85"><span class="lineNum">      85 </span>            :                 ///@{</a>
 <a name="86"><span class="lineNum">      86 </span>            : </a>
 <a name="87"><span class="lineNum">      87 </span>            :                 /// Default constructor. mPosition should have at least on entry.</a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          3 :         VariablesList()</span></a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          3 :                 : mReferenceCounter(0)</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          3 :                 {}</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          2 :         VariablesList()</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          2 :                 : mReferenceCounter(0)</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          2 :                 {}</span></a>
 <a name="91"><span class="lineNum">      91 </span>            : </a>
 <a name="92"><span class="lineNum">      92 </span>            :         template &lt;class TInputIteratorType&gt;</a>
 <a name="93"><span class="lineNum">      93 </span>            :                 VariablesList(TInputIteratorType First, TInputIteratorType Last)</a>
@@ -169,9 +169,9 @@
 <a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :                         {}</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
 <a name="109"><span class="lineNum">     109 </span>            :                 /// Destructor.</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          6 :                 virtual ~VariablesList()</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          3 :                 {</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          6 :                 }</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          4 :                 virtual ~VariablesList()</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          2 :                 {</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          4 :                 }</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            :                 ///@}</a>
@@ -348,7 +348,7 @@
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            :                 SizeType DataSize() const</a>
 <a name="288"><span class="lineNum">     288 </span>            :                 {</a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">         12 :                         return mDataSize;</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          8 :                         return mDataSize;</span></a>
 <a name="290"><span class="lineNum">     290 </span>            :                 }</a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span>            : </a>
@@ -426,15 +426,15 @@
 <a name="364"><span class="lineNum">     364 </span>            :                 friend void intrusive_ptr_add_ref(const VariablesList* x)</a>
 <a name="365"><span class="lineNum">     365 </span>            :                 {</a>
 <a name="366"><span class="lineNum">     366 </span>            :                         x-&gt;mReferenceCounter.fetch_add(1, std::memory_order_relaxed);</a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          6 :                 }</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          4 :                 }</span></a>
 <a name="368"><span class="lineNum">     368 </span>            : </a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          9 :                 friend void intrusive_ptr_release(const VariablesList* x)</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          6 :                 friend void intrusive_ptr_release(const VariablesList* x)</span></a>
 <a name="370"><span class="lineNum">     370 </span>            :                 {</a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          9 :                         if (x-&gt;mReferenceCounter.fetch_sub(1, std::memory_order_release) == 1) {</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          6 :                         if (x-&gt;mReferenceCounter.fetch_sub(1, std::memory_order_release) == 1) {</span></a>
 <a name="372"><span class="lineNum">     372 </span>            :                         std::atomic_thread_fence(std::memory_order_acquire);</a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          3 :                         delete x;</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          2 :                         delete x;</span></a>
 <a name="374"><span class="lineNum">     374 </span>            :                         }</a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          9 :                 }</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          6 :                 }</span></a>
 <a name="376"><span class="lineNum">     376 </span>            : </a>
 <a name="377"><span class="lineNum">     377 </span>            :                 ///@}</a>
 <a name="378"><span class="lineNum">     378 </span>            :                 ///@name Private Operations</a>

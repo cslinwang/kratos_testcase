@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -81,7 +81,7 @@
 <a name="19"><span class="lineNum">      19 </span>            : namespace Kratos {</a>
 <a name="20"><span class="lineNum">      20 </span>            : namespace Testing {</a>
 <a name="21"><span class="lineNum">      21 </span>            : </a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsSetResetClear, KratosCoreFastSuite) {</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsSetResetClear, KratosCoreFastSuite) {</span></a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
 <a name="24"><span class="lineNum">      24 </span>            :     Kratos::Flags flags;</a>
 <a name="25"><span class="lineNum">      25 </span>            : </a>
@@ -134,7 +134,7 @@
 <a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_EQUAL(flags.Is(INTERFACE), false);</span></a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsSetMultiple, KratosCoreFastSuite) {</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsSetMultiple, KratosCoreFastSuite) {</span></a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
 <a name="77"><span class="lineNum">      77 </span>            :     Kratos::Flags flags;</a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
@@ -180,7 +180,7 @@
 <a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_EQUAL(flags.Is(VISITED), true);</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsEquality, KratosCoreFastSuite) {</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsEquality, KratosCoreFastSuite) {</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
 <a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_EQUAL( INLET == NOT_INLET, false );</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_EQUAL( INLET != NOT_INLET, true );</span></a>
@@ -188,7 +188,7 @@
 <a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_EQUAL( (~INLET &amp; INLET) == NOT_INLET, true );</span></a>
 <a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsOperators, KratosCoreFastSuite) {</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(KratosFlagsOperators, KratosCoreFastSuite) {</span></a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
 <a name="131"><span class="lineNum">     131 </span>            :     const Kratos::Flags flags1(INLET);</a>
 <a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :     const Kratos::Flags flags2(NOT_INLET | OUTLET);</span></a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -1470,7 +1470,7 @@
 <a name="1408"><span class="lineNum">    1408 </span>            :         size_type storage_size (size_type size_i, size_type size_j) {</a>
 <a name="1409"><span class="lineNum">    1409 </span>            :             // Guard against size_type overflow</a>
 <a name="1410"><span class="lineNum">    1410 </span>            :             BOOST_UBLAS_CHECK (size_j == 0 || size_i &lt;= (std::numeric_limits&lt;size_type&gt;::max) () / size_j, bad_size ());</a>
-<a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">       9522 :             return size_i * size_j;</span></a>
+<a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">       6348 :             return size_i * size_j;</span></a>
 <a name="1412"><span class="lineNum">    1412 </span>            :         }</a>
 <a name="1413"><span class="lineNum">    1413 </span>            : </a>
 <a name="1414"><span class="lineNum">    1414 </span>            :         // Indexing conversion to storage element</a>
@@ -1482,7 +1482,7 @@
 <a name="1420"><span class="lineNum">    1420 </span>            :             detail::ignore_unused_variable_warning(size_i);</a>
 <a name="1421"><span class="lineNum">    1421 </span>            :             // Guard against size_type overflow</a>
 <a name="1422"><span class="lineNum">    1422 </span>            :             BOOST_UBLAS_CHECK (i &lt;= ((std::numeric_limits&lt;size_type&gt;::max) () - j) / size_j, bad_index ());</a>
-<a name="1423"><span class="lineNum">    1423 </span><span class="lineCov">      29793 :             return i * size_j + j;</span></a>
+<a name="1423"><span class="lineNum">    1423 </span><span class="lineCov">      19862 :             return i * size_j + j;</span></a>
 <a name="1424"><span class="lineNum">    1424 </span>            :         }</a>
 <a name="1425"><span class="lineNum">    1425 </span>            :         static</a>
 <a name="1426"><span class="lineNum">    1426 </span>            :         BOOST_UBLAS_INLINE</a>

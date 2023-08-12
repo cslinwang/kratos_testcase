@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -182,30 +182,30 @@
 <a name="120"><span class="lineNum">     120 </span>            :     ///@{</a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
 <a name="122"><span class="lineNum">     122 </span>            :     /// Default constructor.</a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          6 :     Node()</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          4 :     Node()</span></a>
 <a name="124"><span class="lineNum">     124 </span>            :         : BaseType()</a>
 <a name="125"><span class="lineNum">     125 </span>            :         , IndexedObject(0)</a>
 <a name="126"><span class="lineNum">     126 </span>            :         , Flags()</a>
 <a name="127"><span class="lineNum">     127 </span>            :         , mDofs()</a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          6 :         , mData()</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          6 :         , mSolutionStepsNodalData()</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          4 :         , mData()</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          4 :         , mSolutionStepsNodalData()</span></a>
 <a name="130"><span class="lineNum">     130 </span>            :         , mInitialPosition()</a>
 <a name="131"><span class="lineNum">     131 </span>            : #ifdef _OPENMP</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">         24 :         , mNodeLock()</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">         16 :         , mNodeLock()</span></a>
 <a name="133"><span class="lineNum">     133 </span>            : #endif</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          6 :         , mReferenceCounter(0)</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          4 :         , mReferenceCounter(0)</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :     {</a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span>            :         CreateSolutionStepData();</a>
 <a name="138"><span class="lineNum">     138 </span>            : //      mDofs.SetMaxBufferSize(0);</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
 <a name="140"><span class="lineNum">     140 </span>            : #ifdef _OPENMP</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          6 :         omp_init_lock(&amp;mNodeLock);</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          4 :         omp_init_lock(&amp;mNodeLock);</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : #endif</a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          6 :     }</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          4 :     }</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :     explicit Node(IndexType NewId )</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :         : BaseType()</a>
@@ -416,12 +416,12 @@
 <a name="354"><span class="lineNum">     354 </span>            :     }</a>
 <a name="355"><span class="lineNum">     355 </span>            : </a>
 <a name="356"><span class="lineNum">     356 </span>            :     /// Destructor.</a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          6 :     ~Node() override</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          4 :     ~Node() override</span></a>
 <a name="358"><span class="lineNum">     358 </span>            :     {</a>
 <a name="359"><span class="lineNum">     359 </span>            : #ifdef _OPENMP</a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          6 :         omp_destroy_lock(&amp;mNodeLock);</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          4 :         omp_destroy_lock(&amp;mNodeLock);</span></a>
 <a name="361"><span class="lineNum">     361 </span>            : #endif</a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          6 :     }</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          4 :     }</span></a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
 <a name="364"><span class="lineNum">     364 </span>            :     //*********************************************</a>
 <a name="365"><span class="lineNum">     365 </span>            :     //public API of intrusive_ptr  </a>
@@ -558,8 +558,8 @@
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            :     void CreateSolutionStepData()</a>
 <a name="498"><span class="lineNum">     498 </span>            :     {</a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          6 :         mSolutionStepsNodalData.PushFront();</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          6 :     }</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          4 :         mSolutionStepsNodalData.PushFront();</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          4 :     }</span></a>
 <a name="501"><span class="lineNum">     501 </span>            : </a>
 <a name="502"><span class="lineNum">     502 </span>            :     void CloneSolutionStepData()</a>
 <a name="503"><span class="lineNum">     503 </span>            :     {</a>

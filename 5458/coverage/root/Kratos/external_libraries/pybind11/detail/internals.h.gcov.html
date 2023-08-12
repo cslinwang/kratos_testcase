@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -114,7 +114,7 @@
 <a name="52"><span class="lineNum">      52 </span>            : // which works.  If not under a known-good stl, provide our own name-based hash and equality</a>
 <a name="53"><span class="lineNum">      53 </span>            : // functions that use the type name.</a>
 <a name="54"><span class="lineNum">      54 </span>            : #if defined(__GLIBCXX__)</a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       3423 : inline bool same_type(const std::type_info &amp;lhs, const std::type_info &amp;rhs) { return lhs == rhs; }</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">       2282 : inline bool same_type(const std::type_info &amp;lhs, const std::type_info &amp;rhs) { return lhs == rhs; }</span></a>
 <a name="56"><span class="lineNum">      56 </span>            : using type_hash = std::hash&lt;std::type_index&gt;;</a>
 <a name="57"><span class="lineNum">      57 </span>            : using type_equal_to = std::equal_to&lt;std::type_index&gt;;</a>
 <a name="58"><span class="lineNum">      58 </span>            : #else</a>
@@ -222,14 +222,14 @@
 <a name="160"><span class="lineNum">     160 </span>            : }</a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            : /// Return a reference to the current `internals` data</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      65964 : PYBIND11_NOINLINE inline internals &amp;get_internals() {</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      43976 : PYBIND11_NOINLINE inline internals &amp;get_internals() {</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :     auto **&amp;internals_pp = get_internals_pp();</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      65964 :     if (internals_pp &amp;&amp; *internals_pp)</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">      43976 :     if (internals_pp &amp;&amp; *internals_pp)</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :         return **internals_pp;</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          3 :     constexpr auto *id = PYBIND11_INTERNALS_ID;</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          3 :     auto builtins = handle(PyEval_GetBuiltins());</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :     if (builtins.contains(id) &amp;&amp; isinstance&lt;capsule&gt;(builtins[id])) {</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          2 :     constexpr auto *id = PYBIND11_INTERNALS_ID;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :     auto builtins = handle(PyEval_GetBuiltins());</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :     if (builtins.contains(id) &amp;&amp; isinstance&lt;capsule&gt;(builtins[id])) {</span></a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :         internals_pp = static_cast&lt;internals **&gt;(capsule(builtins[id]));</span></a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
 <a name="173"><span class="lineNum">     173 </span>            :         // We loaded builtins through python's builtins, which means that our `error_already_set`</a>
@@ -249,27 +249,27 @@
 <a name="187"><span class="lineNum">     187 </span>            :         );</a>
 <a name="188"><span class="lineNum">     188 </span>            : #endif</a>
 <a name="189"><span class="lineNum">     189 </span>            :     } else {</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :         if (!internals_pp) internals_pp = new internals*();</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :         auto *&amp;internals_ptr = *internals_pp;</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :         internals_ptr = new internals();</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :         if (!internals_pp) internals_pp = new internals*();</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          2 :         auto *&amp;internals_ptr = *internals_pp;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          2 :         internals_ptr = new internals();</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : #if defined(WITH_THREAD)</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :         PyEval_InitThreads();</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :         PyThreadState *tstate = PyThreadState_Get();</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :         PyEval_InitThreads();</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          2 :         PyThreadState *tstate = PyThreadState_Get();</span></a>
 <a name="196"><span class="lineNum">     196 </span>            :         #if PY_VERSION_HEX &gt;= 0x03070000</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          3 :             internals_ptr-&gt;tstate = PyThread_tss_alloc();</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          3 :             if (!internals_ptr-&gt;tstate || PyThread_tss_create(internals_ptr-&gt;tstate))</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          2 :             internals_ptr-&gt;tstate = PyThread_tss_alloc();</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          2 :             if (!internals_ptr-&gt;tstate || PyThread_tss_create(internals_ptr-&gt;tstate))</span></a>
 <a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :                 pybind11_fail(&quot;get_internals: could not successfully initialize the TSS key!&quot;);</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          3 :             PyThread_tss_set(internals_ptr-&gt;tstate, tstate);</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          2 :             PyThread_tss_set(internals_ptr-&gt;tstate, tstate);</span></a>
 <a name="201"><span class="lineNum">     201 </span>            :         #else</a>
 <a name="202"><span class="lineNum">     202 </span>            :             internals_ptr-&gt;tstate = PyThread_create_key();</a>
 <a name="203"><span class="lineNum">     203 </span>            :             if (internals_ptr-&gt;tstate == -1)</a>
 <a name="204"><span class="lineNum">     204 </span>            :                 pybind11_fail(&quot;get_internals: could not successfully initialize the TLS key!&quot;);</a>
 <a name="205"><span class="lineNum">     205 </span>            :             PyThread_set_key_value(internals_ptr-&gt;tstate, tstate);</a>
 <a name="206"><span class="lineNum">     206 </span>            :         #endif</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          3 :         internals_ptr-&gt;istate = tstate-&gt;interp;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          2 :         internals_ptr-&gt;istate = tstate-&gt;interp;</span></a>
 <a name="208"><span class="lineNum">     208 </span>            : #endif</a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          6 :         builtins[id] = capsule(internals_pp);</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          3 :         internals_ptr-&gt;registered_exception_translators.push_front(</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          4 :         builtins[id] = capsule(internals_pp);</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          2 :         internals_ptr-&gt;registered_exception_translators.push_front(</span></a>
 <a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :             [](std::exception_ptr p) -&gt; void {</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :                 try {</a>
 <a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :                     if (p) std::rethrow_exception(p);</span></a>
@@ -288,17 +288,17 @@
 <a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :                 }</span></a>
 <a name="227"><span class="lineNum">     227 </span>            :             }</a>
 <a name="228"><span class="lineNum">     228 </span>            :         );</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          3 :         internals_ptr-&gt;static_property_type = make_static_property_type();</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          3 :         internals_ptr-&gt;default_metaclass = make_default_metaclass();</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          3 :         internals_ptr-&gt;instance_base = make_object_base_type(internals_ptr-&gt;default_metaclass);</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :         internals_ptr-&gt;static_property_type = make_static_property_type();</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          2 :         internals_ptr-&gt;default_metaclass = make_default_metaclass();</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          2 :         internals_ptr-&gt;instance_base = make_object_base_type(internals_ptr-&gt;default_metaclass);</span></a>
 <a name="232"><span class="lineNum">     232 </span>            :     }</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          3 :     return **internals_pp;</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          2 :     return **internals_pp;</span></a>
 <a name="234"><span class="lineNum">     234 </span>            : }</a>
 <a name="235"><span class="lineNum">     235 </span>            : </a>
 <a name="236"><span class="lineNum">     236 </span>            : /// Works like `internals.registered_types_cpp`, but for module-local registered types:</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">      27330 : inline type_map&lt;type_info *&gt; &amp;registered_local_types_cpp() {</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">      27330 :     static type_map&lt;type_info *&gt; locals{};</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">      27330 :     return locals;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">      18220 : inline type_map&lt;type_info *&gt; &amp;registered_local_types_cpp() {</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">      18220 :     static type_map&lt;type_info *&gt; locals{};</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">      18220 :     return locals;</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : }</a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
 <a name="242"><span class="lineNum">     242 </span>            : /// Constructs a std::string with the given arguments, stores it in `internals`, and returns its</a>
@@ -306,10 +306,10 @@
 <a name="244"><span class="lineNum">     244 </span>            : /// cleared when the program exits or after interpreter shutdown (when embedding), and so are</a>
 <a name="245"><span class="lineNum">     245 </span>            : /// suitable for c-style strings needed by Python internals (such as PyTypeObject's tp_name).</a>
 <a name="246"><span class="lineNum">     246 </span>            : template &lt;typename... Args&gt;</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        873 : const char *c_str(Args &amp;&amp;...args) {</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        873 :     auto &amp;strings = get_internals().static_strings;</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">        582 : const char *c_str(Args &amp;&amp;...args) {</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">        582 :     auto &amp;strings = get_internals().static_strings;</span></a>
 <a name="249"><span class="lineNum">     249 </span>            :     strings.emplace_front(std::forward&lt;Args&gt;(args)...);</a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">        873 :     return strings.front().c_str();</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">        582 :     return strings.front().c_str();</span></a>
 <a name="251"><span class="lineNum">     251 </span>            : }</a>
 <a name="252"><span class="lineNum">     252 </span>            : </a>
 <a name="253"><span class="lineNum">     253 </span>            : NAMESPACE_END(detail)</a>

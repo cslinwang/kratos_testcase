@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">19</td>
@@ -151,7 +151,7 @@
 <a name="89"><span class="lineNum">      89 </span>            :         /* Testing the Datatypes that for which the</a>
 <a name="90"><span class="lineNum">      90 </span>            :            &quot;KRATOS_SERIALIZATION_DIRECT_LOAD&quot; macro is used */</a>
 <a name="91"><span class="lineNum">      91 </span>            :         /*********************************************************************/</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerBool, KratosCoreFastSuite)</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerBool, KratosCoreFastSuite)</span></a>
 <a name="93"><span class="lineNum">      93 </span>            :         {</a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :             bool object_to_be_saved = true;</span></a>
 <a name="95"><span class="lineNum">      95 </span>            :             bool object_to_be_loaded;</a>
@@ -159,7 +159,7 @@
 <a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="99"><span class="lineNum">      99 </span>            : </a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerInt, KratosCoreFastSuite)</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerInt, KratosCoreFastSuite)</span></a>
 <a name="101"><span class="lineNum">     101 </span>            :         {</a>
 <a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :             int object_to_be_saved = -105;</span></a>
 <a name="103"><span class="lineNum">     103 </span>            :             int object_to_be_loaded;</a>
@@ -167,7 +167,7 @@
 <a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerLong, KratosCoreFastSuite)</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerLong, KratosCoreFastSuite)</span></a>
 <a name="109"><span class="lineNum">     109 </span>            :         {</a>
 <a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :             long object_to_be_saved = -1598456605;</span></a>
 <a name="111"><span class="lineNum">     111 </span>            :             long object_to_be_loaded;</a>
@@ -175,7 +175,7 @@
 <a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : </a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerDouble, KratosCoreFastSuite)</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerDouble, KratosCoreFastSuite)</span></a>
 <a name="117"><span class="lineNum">     117 </span>            :         {</a>
 <a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :             double object_to_be_saved = -159845.6605;</span></a>
 <a name="119"><span class="lineNum">     119 </span>            :             double object_to_be_loaded;</a>
@@ -183,7 +183,7 @@
 <a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUnsignedLong, KratosCoreFastSuite)</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUnsignedLong, KratosCoreFastSuite)</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :         {</a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :             unsigned long object_to_be_saved = 1598456605;</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :             unsigned long object_to_be_loaded;</a>
@@ -191,7 +191,7 @@
 <a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUnsignedInt, KratosCoreFastSuite)</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUnsignedInt, KratosCoreFastSuite)</span></a>
 <a name="133"><span class="lineNum">     133 </span>            :         {</a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :             unsigned int object_to_be_saved = 15905;</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :             unsigned int object_to_be_loaded;</a>
@@ -199,7 +199,7 @@
 <a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerStdString, KratosCoreFastSuite)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerStdString, KratosCoreFastSuite)</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :         {</a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :             std::string object_to_be_saved = &quot;MyStringToBeSerialized&quot;;</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :             std::string object_to_be_loaded;</a>
@@ -207,7 +207,7 @@
 <a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerMatrix, KratosCoreFastSuite)</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerMatrix, KratosCoreFastSuite)</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :         {</a>
 <a name="150"><span class="lineNum">     150 </span>            :             Matrix object_to_be_saved(5,3);</a>
 <a name="151"><span class="lineNum">     151 </span>            :             Matrix object_to_be_loaded;</a>
@@ -217,7 +217,7 @@
 <a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :             TestObjectSerializationComponentwise2D(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerLongLong, KratosCoreFastSuite)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerLongLong, KratosCoreFastSuite)</span></a>
 <a name="159"><span class="lineNum">     159 </span>            :         {</a>
 <a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :             long long object_to_be_saved = -1598456546843565605;</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :             long long object_to_be_loaded;</a>
@@ -229,7 +229,7 @@
 <a name="167"><span class="lineNum">     167 </span>            :         /* Testing the Datatypes that have a specific save/load implementation */</a>
 <a name="168"><span class="lineNum">     168 </span>            :         /*********************************************************************/</a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerKratosSharedPtr, KratosCoreFastSuite)</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerKratosSharedPtr, KratosCoreFastSuite)</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :         {</a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :             StreamSerializer serializer;</span></a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
@@ -253,7 +253,7 @@
 <a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :                 KRATOS_CHECK_EQUAL((*p_loaded_array)[i], (*p_array)[i]);</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerStdArray, KratosCoreFastSuite)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerStdArray, KratosCoreFastSuite)</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :         {</a>
 <a name="196"><span class="lineNum">     196 </span>            :             using Array5Dbl = std::array&lt;double,5&gt;;</a>
 <a name="197"><span class="lineNum">     197 </span>            :             using Array7Int = std::array&lt;int,7&gt;;</a>
@@ -270,7 +270,7 @@
 <a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :             TestObjectSerializationComponentwise1D(object_to_be_saved_2, object_to_be_loaded_2);</span></a>
 <a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="210"><span class="lineNum">     210 </span>            : </a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerStdVector, KratosCoreFastSuite)</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerStdVector, KratosCoreFastSuite)</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :         {</a>
 <a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :             std::vector&lt;double&gt; object_to_be_saved(5);</span></a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :             std::vector&lt;double&gt; object_to_be_loaded(3); // initialized smaller to check if resizing works</span></a>
@@ -280,7 +280,7 @@
 <a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :             TestObjectSerializationComponentwise1D(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUblasVector, KratosCoreFastSuite)</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUblasVector, KratosCoreFastSuite)</span></a>
 <a name="222"><span class="lineNum">     222 </span>            :         {</a>
 <a name="223"><span class="lineNum">     223 </span>            :             Vector object_to_be_saved(5);</a>
 <a name="224"><span class="lineNum">     224 </span>            :             Vector object_to_be_loaded(3); // initialized smaller to check if resizing works</a>
@@ -290,7 +290,7 @@
 <a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :             TestObjectSerializationComponentwise1D(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerMap, KratosCoreFastSuite)</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerMap, KratosCoreFastSuite)</span></a>
 <a name="232"><span class="lineNum">     232 </span>            :         {</a>
 <a name="233"><span class="lineNum">     233 </span>            :             std::map &lt;std::string, double&gt; object_to_be_saved {</a>
 <a name="234"><span class="lineNum">     234 </span>            :                 { &quot;42&quot;, -30.556 },</a>
@@ -301,7 +301,7 @@
 <a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUnorderedMap, KratosCoreFastSuite)</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerUnorderedMap, KratosCoreFastSuite)</span></a>
 <a name="243"><span class="lineNum">     243 </span>            :         {</a>
 <a name="244"><span class="lineNum">     244 </span>            :             std::unordered_map &lt;std::string, double&gt; object_to_be_saved {</a>
 <a name="245"><span class="lineNum">     245 </span>            :                 { &quot;42&quot;, -30.556 },</a>
@@ -312,7 +312,7 @@
 <a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerArray1D, KratosCoreFastSuite)</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerArray1D, KratosCoreFastSuite)</span></a>
 <a name="254"><span class="lineNum">     254 </span>            :         {</a>
 <a name="255"><span class="lineNum">     255 </span>            :             constexpr std::size_t size_object = 5;</a>
 <a name="256"><span class="lineNum">     256 </span>            :             array_1d&lt;double, size_object&gt; object_to_be_saved;</a>
@@ -323,7 +323,7 @@
 <a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :             TestObjectSerializationComponentwise1D(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="263"><span class="lineNum">     263 </span>            : </a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerPair, KratosCoreFastSuite)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerPair, KratosCoreFastSuite)</span></a>
 <a name="265"><span class="lineNum">     265 </span>            :         {</a>
 <a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :             std::pair&lt;int, double&gt; object_to_be_saved(42, 0.123);</span></a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :             std::pair&lt;int, double&gt; object_to_be_loaded(42, 0.123);</span></a>
@@ -331,7 +331,7 @@
 <a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :             TestObjectSerialization(object_to_be_saved, object_to_be_loaded);</span></a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="271"><span class="lineNum">     271 </span>            : </a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerBoundedVector, KratosCoreFastSuite)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerBoundedVector, KratosCoreFastSuite)</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :         {</a>
 <a name="274"><span class="lineNum">     274 </span>            :             using Vector5Double = BoundedVector&lt;double,5&gt;;</a>
 <a name="275"><span class="lineNum">     275 </span>            :             using Vector6Int = BoundedVector&lt;int,6&gt;;</a>
@@ -348,7 +348,7 @@
 <a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :             TestObjectSerializationComponentwise1D(object_to_be_saved_2, object_to_be_loaded_2);</span></a>
 <a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(SerializerBoundedMatrix, KratosCoreFastSuite)</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(SerializerBoundedMatrix, KratosCoreFastSuite)</span></a>
 <a name="290"><span class="lineNum">     290 </span>            :         {</a>
 <a name="291"><span class="lineNum">     291 </span>            :             using Matrix53Double = BoundedMatrix&lt;double,5,3&gt;;</a>
 <a name="292"><span class="lineNum">     292 </span>            :             using Matrix26Int = BoundedMatrix&lt;int,2,6&gt;;</a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -793,241 +793,241 @@
 <a name="731"><span class="lineNum">     731 </span><span class="lineNoCov">          0 :     return rCommunicator.GetDataCommunicator().Barrier();</span></a>
 <a name="732"><span class="lineNum">     732 </span>            : }</a>
 <a name="733"><span class="lineNum">     733 </span>            : </a>
-<a name="734"><span class="lineNum">     734 </span><span class="lineCov">          3 : void AddModelPartToPython(pybind11::module&amp; m)</span></a>
+<a name="734"><span class="lineNum">     734 </span><span class="lineCov">          2 : void AddModelPartToPython(pybind11::module&amp; m)</span></a>
 <a name="735"><span class="lineNum">     735 </span>            : {</a>
 <a name="736"><span class="lineNum">     736 </span>            : </a>
-<a name="737"><span class="lineNum">     737 </span><span class="lineCov">          3 :     ModelPart::IndexType(ModelPart::*pointer_to_clone_time_step_1)(void) = &amp;ModelPart::CloneTimeStep;</span></a>
-<a name="738"><span class="lineNum">     738 </span><span class="lineCov">          3 :     ModelPart::IndexType(ModelPart::*pointer_to_clone_time_step_2)(double) = &amp;ModelPart::CloneTimeStep;</span></a>
-<a name="739"><span class="lineNum">     739 </span><span class="lineCov">          3 :     ProcessInfo::Pointer(ModelPart::*pointer_to_get_process_info)(void) = &amp;ModelPart::pGetProcessInfo;</span></a>
-<a name="740"><span class="lineNum">     740 </span><span class="lineCov">          3 :     void (ModelPart::*pointer_to_set_process_info)(ProcessInfo::Pointer) = &amp;ModelPart::SetProcessInfo;</span></a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">          2 :     ModelPart::IndexType(ModelPart::*pointer_to_clone_time_step_1)(void) = &amp;ModelPart::CloneTimeStep;</span></a>
+<a name="738"><span class="lineNum">     738 </span><span class="lineCov">          2 :     ModelPart::IndexType(ModelPart::*pointer_to_clone_time_step_2)(double) = &amp;ModelPart::CloneTimeStep;</span></a>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">          2 :     ProcessInfo::Pointer(ModelPart::*pointer_to_get_process_info)(void) = &amp;ModelPart::pGetProcessInfo;</span></a>
+<a name="740"><span class="lineNum">     740 </span><span class="lineCov">          2 :     void (ModelPart::*pointer_to_set_process_info)(ProcessInfo::Pointer) = &amp;ModelPart::SetProcessInfo;</span></a>
 <a name="741"><span class="lineNum">     741 </span>            :     // ModelPart::MeshType::Pointer (ModelPart::*pointer_to_get_mesh)() = &amp;ModelPart::pGetMesh;</a>
 <a name="742"><span class="lineNum">     742 </span>            :     //      std::string&amp; (ModelPart::*pointer_to_name)(void) = &amp;ModelPart::Name;</a>
 <a name="743"><span class="lineNum">     743 </span>            : </a>
 <a name="744"><span class="lineNum">     744 </span>            : </a>
 <a name="745"><span class="lineNum">     745 </span>            :     namespace py = pybind11;</a>
 <a name="746"><span class="lineNum">     746 </span>            : </a>
-<a name="747"><span class="lineNum">     747 </span><span class="lineCov">          3 :     py::class_&lt;Communicator &gt; (m,&quot;Communicator&quot;)</span></a>
+<a name="747"><span class="lineNum">     747 </span><span class="lineCov">          2 :     py::class_&lt;Communicator &gt; (m,&quot;Communicator&quot;)</span></a>
 <a name="748"><span class="lineNum">     748 </span>            :         .def(py::init&lt;&gt;())</a>
-<a name="749"><span class="lineNum">     749 </span><span class="lineCov">          3 :         .def(&quot;MyPID&quot;, &amp;Communicator::MyPID)</span></a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          3 :         .def(&quot;Barrier&quot;, CommunicatorBarrier)</span></a>
-<a name="751"><span class="lineNum">     751 </span><span class="lineCov">          3 :         .def(&quot;TotalProcesses&quot;, &amp;Communicator::TotalProcesses)</span></a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineCov">          3 :         .def(&quot;GetNumberOfColors&quot;, &amp;Communicator::GetNumberOfColors)</span></a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">          3 :         .def(&quot;NeighbourIndices&quot;, NeighbourIndicesConst, py::return_value_policy::reference_internal)</span></a>
-<a name="754"><span class="lineNum">     754 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeNodalSolutionStepsData&quot;, &amp;Communicator::SynchronizeNodalSolutionStepsData)</span></a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeDofs&quot;, &amp;Communicator::SynchronizeDofs)</span></a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">          3 :         .def(&quot;LocalMesh&quot;, CommunicatorGetLocalMesh, py::return_value_policy::reference_internal )</span></a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">          3 :         .def(&quot;LocalMesh&quot;, CommunicatorGetLocalMeshWithIndex, py::return_value_policy::reference_internal )</span></a>
-<a name="758"><span class="lineNum">     758 </span><span class="lineCov">          3 :         .def(&quot;GhostMesh&quot;, CommunicatorGetGhostMesh, py::return_value_policy::reference_internal )</span></a>
-<a name="759"><span class="lineNum">     759 </span><span class="lineCov">          3 :         .def(&quot;GhostMesh&quot;, CommunicatorGetGhostMeshWithIndex, py::return_value_policy::reference_internal )</span></a>
-<a name="760"><span class="lineNum">     760 </span><span class="lineCov">          3 :         .def(&quot;InterfaceMesh&quot;, CommunicatorGetInterfaceMesh, py::return_value_policy::reference_internal )</span></a>
-<a name="761"><span class="lineNum">     761 </span><span class="lineCov">          3 :         .def(&quot;InterfaceMesh&quot;, CommunicatorGetInterfaceMeshWithIndex, py::return_value_policy::reference_internal )</span></a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">          6 :         .def(&quot;GetDataCommunicator&quot;, &amp;Communicator::GetDataCommunicator, py::return_value_policy::reference_internal )</span></a>
-<a name="763"><span class="lineNum">     763 </span><span class="lineCov">          3 :         .def(&quot;SumAll&quot;, CommunicatorSumAll&lt;int&gt; )</span></a>
-<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          3 :         .def(&quot;SumAll&quot;, CommunicatorSumAll&lt;double&gt; )</span></a>
-<a name="765"><span class="lineNum">     765 </span><span class="lineCov">          3 :         .def(&quot;SumAll&quot;, CommunicatorSumAll&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
-<a name="766"><span class="lineNum">     766 </span><span class="lineCov">          3 :         .def(&quot;MinAll&quot;, CommunicatorMinAll&lt;int&gt; )</span></a>
-<a name="767"><span class="lineNum">     767 </span><span class="lineCov">          3 :         .def(&quot;MinAll&quot;, CommunicatorMinAll&lt;double&gt; )</span></a>
-<a name="768"><span class="lineNum">     768 </span><span class="lineCov">          3 :         .def(&quot;MaxAll&quot;, CommunicatorMaxAll&lt;int&gt; )</span></a>
-<a name="769"><span class="lineNum">     769 </span><span class="lineCov">          3 :         .def(&quot;MaxAll&quot;, CommunicatorMaxAll&lt;double&gt; )</span></a>
-<a name="770"><span class="lineNum">     770 </span><span class="lineCov">          3 :         .def(&quot;ScanSum&quot;, CommunicatorScanSum&lt;int&gt; )</span></a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">          3 :         .def(&quot;ScanSum&quot;, CommunicatorScanSum&lt;double&gt; )</span></a>
-<a name="772"><span class="lineNum">     772 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;int&gt; )</span></a>
-<a name="773"><span class="lineNum">     773 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;double&gt; )</span></a>
-<a name="774"><span class="lineNum">     774 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;Vector&gt; )</span></a>
-<a name="776"><span class="lineNum">     776 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;Matrix&gt; )</span></a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;int&gt; )</span></a>
-<a name="778"><span class="lineNum">     778 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;double&gt; )</span></a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;Vector&gt; )</span></a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">          3 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;Matrix&gt; )</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">          3 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;int&gt; )</span></a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineCov">          3 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;double&gt; )</span></a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineCov">          3 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          3 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;Vector&gt; )</span></a>
-<a name="786"><span class="lineNum">     786 </span><span class="lineCov">          3 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;Matrix&gt; )</span></a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">          3 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;int&gt; )</span></a>
-<a name="788"><span class="lineNum">     788 </span><span class="lineCov">          3 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;double&gt; )</span></a>
-<a name="789"><span class="lineNum">     789 </span><span class="lineCov">          3 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
-<a name="790"><span class="lineNum">     790 </span><span class="lineCov">          3 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;Vector&gt; )</span></a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          3 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;Matrix&gt; )</span></a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">          3 :         .def(&quot;__str__&quot;, PrintObject&lt;Communicator&gt;);</span></a>
+<a name="749"><span class="lineNum">     749 </span><span class="lineCov">          2 :         .def(&quot;MyPID&quot;, &amp;Communicator::MyPID)</span></a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">          2 :         .def(&quot;Barrier&quot;, CommunicatorBarrier)</span></a>
+<a name="751"><span class="lineNum">     751 </span><span class="lineCov">          2 :         .def(&quot;TotalProcesses&quot;, &amp;Communicator::TotalProcesses)</span></a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">          2 :         .def(&quot;GetNumberOfColors&quot;, &amp;Communicator::GetNumberOfColors)</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">          2 :         .def(&quot;NeighbourIndices&quot;, NeighbourIndicesConst, py::return_value_policy::reference_internal)</span></a>
+<a name="754"><span class="lineNum">     754 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeNodalSolutionStepsData&quot;, &amp;Communicator::SynchronizeNodalSolutionStepsData)</span></a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeDofs&quot;, &amp;Communicator::SynchronizeDofs)</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">          2 :         .def(&quot;LocalMesh&quot;, CommunicatorGetLocalMesh, py::return_value_policy::reference_internal )</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">          2 :         .def(&quot;LocalMesh&quot;, CommunicatorGetLocalMeshWithIndex, py::return_value_policy::reference_internal )</span></a>
+<a name="758"><span class="lineNum">     758 </span><span class="lineCov">          2 :         .def(&quot;GhostMesh&quot;, CommunicatorGetGhostMesh, py::return_value_policy::reference_internal )</span></a>
+<a name="759"><span class="lineNum">     759 </span><span class="lineCov">          2 :         .def(&quot;GhostMesh&quot;, CommunicatorGetGhostMeshWithIndex, py::return_value_policy::reference_internal )</span></a>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">          2 :         .def(&quot;InterfaceMesh&quot;, CommunicatorGetInterfaceMesh, py::return_value_policy::reference_internal )</span></a>
+<a name="761"><span class="lineNum">     761 </span><span class="lineCov">          2 :         .def(&quot;InterfaceMesh&quot;, CommunicatorGetInterfaceMeshWithIndex, py::return_value_policy::reference_internal )</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">          4 :         .def(&quot;GetDataCommunicator&quot;, &amp;Communicator::GetDataCommunicator, py::return_value_policy::reference_internal )</span></a>
+<a name="763"><span class="lineNum">     763 </span><span class="lineCov">          2 :         .def(&quot;SumAll&quot;, CommunicatorSumAll&lt;int&gt; )</span></a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          2 :         .def(&quot;SumAll&quot;, CommunicatorSumAll&lt;double&gt; )</span></a>
+<a name="765"><span class="lineNum">     765 </span><span class="lineCov">          2 :         .def(&quot;SumAll&quot;, CommunicatorSumAll&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
+<a name="766"><span class="lineNum">     766 </span><span class="lineCov">          2 :         .def(&quot;MinAll&quot;, CommunicatorMinAll&lt;int&gt; )</span></a>
+<a name="767"><span class="lineNum">     767 </span><span class="lineCov">          2 :         .def(&quot;MinAll&quot;, CommunicatorMinAll&lt;double&gt; )</span></a>
+<a name="768"><span class="lineNum">     768 </span><span class="lineCov">          2 :         .def(&quot;MaxAll&quot;, CommunicatorMaxAll&lt;int&gt; )</span></a>
+<a name="769"><span class="lineNum">     769 </span><span class="lineCov">          2 :         .def(&quot;MaxAll&quot;, CommunicatorMaxAll&lt;double&gt; )</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">          2 :         .def(&quot;ScanSum&quot;, CommunicatorScanSum&lt;int&gt; )</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">          2 :         .def(&quot;ScanSum&quot;, CommunicatorScanSum&lt;double&gt; )</span></a>
+<a name="772"><span class="lineNum">     772 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;int&gt; )</span></a>
+<a name="773"><span class="lineNum">     773 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;double&gt; )</span></a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;Vector&gt; )</span></a>
+<a name="776"><span class="lineNum">     776 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeVariable&quot;, CommunicatorSynchronizeVariable&lt;Matrix&gt; )</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;int&gt; )</span></a>
+<a name="778"><span class="lineNum">     778 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;double&gt; )</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;Vector&gt; )</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">          2 :         .def(&quot;SynchronizeNonHistoricalVariable&quot;, CommunicatorSynchronizeNonHistoricalVariable&lt;Matrix&gt; )</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">          2 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;int&gt; )</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">          2 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;double&gt; )</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">          2 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          2 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;Vector&gt; )</span></a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">          2 :         .def(&quot;AssembleCurrentData&quot;, CommunicatorAssembleCurrentData&lt;Matrix&gt; )</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">          2 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;int&gt; )</span></a>
+<a name="788"><span class="lineNum">     788 </span><span class="lineCov">          2 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;double&gt; )</span></a>
+<a name="789"><span class="lineNum">     789 </span><span class="lineCov">          2 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;array_1d&lt;double,3&gt; &gt; )</span></a>
+<a name="790"><span class="lineNum">     790 </span><span class="lineCov">          2 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;Vector&gt; )</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">          2 :         .def(&quot;AssembleNonHistoricalData&quot;, CommunicatorAssembleNonHistoricalData&lt;Matrix&gt; )</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">          2 :         .def(&quot;__str__&quot;, PrintObject&lt;Communicator&gt;);</span></a>
 <a name="793"><span class="lineNum">     793 </span>            :         ;</a>
 <a name="794"><span class="lineNum">     794 </span>            : </a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">          6 :         py::class_&lt;typename ModelPart::SubModelPartsContainerType &gt;(m, &quot;SubModelPartsContainerType&quot;)</span></a>
-<a name="796"><span class="lineNum">     796 </span><span class="lineCov">          3 :         .def(&quot;__iter__&quot;, [](typename ModelPart::SubModelPartsContainerType&amp; self){ return py::make_iterator(self.begin(), self.end());},  py::keep_alive&lt;0,1&gt;())</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">          4 :         py::class_&lt;typename ModelPart::SubModelPartsContainerType &gt;(m, &quot;SubModelPartsContainerType&quot;)</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">          2 :         .def(&quot;__iter__&quot;, [](typename ModelPart::SubModelPartsContainerType&amp; self){ return py::make_iterator(self.begin(), self.end());},  py::keep_alive&lt;0,1&gt;())</span></a>
 <a name="797"><span class="lineNum">     797 </span>            :         ;</a>
 <a name="798"><span class="lineNum">     798 </span>            : </a>
-<a name="799"><span class="lineNum">     799 </span><span class="lineCov">          6 :     PointerVectorSetPythonInterface&lt;ModelPart::MasterSlaveConstraintContainerType&gt;().CreateInterface(m,&quot;MasterSlaveConstraintsArray&quot;);</span></a>
+<a name="799"><span class="lineNum">     799 </span><span class="lineCov">          4 :     PointerVectorSetPythonInterface&lt;ModelPart::MasterSlaveConstraintContainerType&gt;().CreateInterface(m,&quot;MasterSlaveConstraintsArray&quot;);</span></a>
 <a name="800"><span class="lineNum">     800 </span>            : </a>
-<a name="801"><span class="lineNum">     801 </span><span class="lineCov">          3 :     py::class_&lt;ModelPart, Kratos::shared_ptr&lt;ModelPart&gt;, DataValueContainer, Flags &gt;(m,&quot;ModelPart&quot;)</span></a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          3 :         .def_property(&quot;Name&quot;, GetModelPartName, SetModelPartName)</span></a>
+<a name="801"><span class="lineNum">     801 </span><span class="lineCov">          2 :     py::class_&lt;ModelPart, Kratos::shared_ptr&lt;ModelPart&gt;, DataValueContainer, Flags &gt;(m,&quot;ModelPart&quot;)</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          2 :         .def_property(&quot;Name&quot;, GetModelPartName, SetModelPartName)</span></a>
 <a name="803"><span class="lineNum">     803 </span>            :         //  .def_property(&quot;ProcessInfo&quot;, GetProcessInfo, SetProcessInfo)</a>
-<a name="804"><span class="lineNum">     804 </span><span class="lineCov">          3 :         .def_property(&quot;ProcessInfo&quot;, pointer_to_get_process_info, pointer_to_set_process_info)</span></a>
-<a name="805"><span class="lineNum">     805 </span><span class="lineCov">          3 :         .def(&quot;CreateSolutionStep&quot;, &amp;ModelPart::CreateSolutionStep)</span></a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">          3 :         .def(&quot;CloneSolutionStep&quot;, &amp;ModelPart::CloneSolutionStep)</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          3 :         .def(&quot;CreateTimeStep&quot;, &amp;ModelPart::CreateTimeStep)</span></a>
-<a name="808"><span class="lineNum">     808 </span><span class="lineCov">          3 :         .def(&quot;ReduceTimeStep&quot;, &amp;ModelPart::ReduceTimeStep)</span></a>
-<a name="809"><span class="lineNum">     809 </span><span class="lineCov">          3 :         .def(&quot;CloneTimeStep&quot;, pointer_to_clone_time_step_1)</span></a>
-<a name="810"><span class="lineNum">     810 </span><span class="lineCov">          3 :         .def(&quot;CloneTimeStep&quot;, pointer_to_clone_time_step_2)</span></a>
+<a name="804"><span class="lineNum">     804 </span><span class="lineCov">          2 :         .def_property(&quot;ProcessInfo&quot;, pointer_to_get_process_info, pointer_to_set_process_info)</span></a>
+<a name="805"><span class="lineNum">     805 </span><span class="lineCov">          2 :         .def(&quot;CreateSolutionStep&quot;, &amp;ModelPart::CreateSolutionStep)</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">          2 :         .def(&quot;CloneSolutionStep&quot;, &amp;ModelPart::CloneSolutionStep)</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          2 :         .def(&quot;CreateTimeStep&quot;, &amp;ModelPart::CreateTimeStep)</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">          2 :         .def(&quot;ReduceTimeStep&quot;, &amp;ModelPart::ReduceTimeStep)</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">          2 :         .def(&quot;CloneTimeStep&quot;, pointer_to_clone_time_step_1)</span></a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineCov">          2 :         .def(&quot;CloneTimeStep&quot;, pointer_to_clone_time_step_2)</span></a>
 <a name="811"><span class="lineNum">     811 </span>            :         //       .def(&quot;CopySolutionStepData&quot;,&amp;ModelPart::CopySolutionStepData)</a>
-<a name="812"><span class="lineNum">     812 </span><span class="lineCov">          3 :         .def(&quot;NumberOfNodes&quot;, &amp;ModelPart::NumberOfNodes)</span></a>
-<a name="813"><span class="lineNum">     813 </span><span class="lineCov">          3 :         .def(&quot;NumberOfNodes&quot;, ModelPartNumberOfNodes1)</span></a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">          3 :         .def(&quot;SetBufferSize&quot;, &amp;ModelPart::SetBufferSize)</span></a>
-<a name="815"><span class="lineNum">     815 </span><span class="lineCov">          3 :         .def(&quot;GetBufferSize&quot;, &amp;ModelPart::GetBufferSize)</span></a>
-<a name="816"><span class="lineNum">     816 </span><span class="lineCov">          3 :         .def(&quot;NumberOfElements&quot;, ModelPartNumberOfElements1)</span></a>
-<a name="817"><span class="lineNum">     817 </span><span class="lineCov">          3 :         .def(&quot;NumberOfElements&quot;, &amp;ModelPart::NumberOfElements)</span></a>
-<a name="818"><span class="lineNum">     818 </span><span class="lineCov">          3 :         .def(&quot;NumberOfConditions&quot;, ModelPartNumberOfConditions1)</span></a>
-<a name="819"><span class="lineNum">     819 </span><span class="lineCov">          3 :         .def(&quot;NumberOfConditions&quot;, &amp;ModelPart::NumberOfConditions)</span></a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          3 :         .def(&quot;NumberOfMasterSlaveConstraints&quot;, ModelPartNumberOfMasterSlaveConstraints1)</span></a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          3 :         .def(&quot;NumberOfMasterSlaveConstraints&quot;, &amp;ModelPart::NumberOfMasterSlaveConstraints)</span></a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          3 :         .def(&quot;NumberOfMeshes&quot;, &amp;ModelPart::NumberOfMeshes)</span></a>
-<a name="823"><span class="lineNum">     823 </span><span class="lineCov">          3 :         .def(&quot;NumberOfProperties&quot;, &amp;ModelPart::NumberOfProperties)</span></a>
-<a name="824"><span class="lineNum">     824 </span><span class="lineCov">          3 :         .def(&quot;NumberOfProperties&quot;, ModelPartNumberOfProperties1)</span></a>
-<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          3 :         .def(&quot;GetMesh&quot;, ModelPartGetMesh)</span></a>
-<a name="826"><span class="lineNum">     826 </span><span class="lineCov">          3 :         .def(&quot;GetMesh&quot;, ModelPartGetMesh2)</span></a>
-<a name="827"><span class="lineNum">     827 </span><span class="lineCov">          3 :         .def_property(&quot;Nodes&quot;, ModelPartGetNodes1, ModelPartSetNodes1)</span></a>
-<a name="828"><span class="lineNum">     828 </span><span class="lineCov">          3 :         .def(&quot;GetNode&quot;, ModelPartGetNode1)</span></a>
-<a name="829"><span class="lineNum">     829 </span><span class="lineCov">          3 :         .def(&quot;GetNode&quot;, ModelPartGetNode2)</span></a>
-<a name="830"><span class="lineNum">     830 </span><span class="lineCov">          3 :         .def(&quot;GetNodes&quot;, ModelPartGetNodes1)</span></a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">          3 :         .def(&quot;SetNodes&quot;, ModelPartSetNodes1)</span></a>
-<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          3 :         .def(&quot;GetNodes&quot;, ModelPartGetNodes2)</span></a>
-<a name="833"><span class="lineNum">     833 </span><span class="lineCov">          3 :         .def(&quot;SetNodes&quot;, ModelPartSetNodes2)</span></a>
-<a name="834"><span class="lineNum">     834 </span><span class="lineCov">          3 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode1)</span></a>
-<a name="835"><span class="lineNum">     835 </span><span class="lineCov">          3 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode2)</span></a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">          3 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode3)</span></a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineCov">          3 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode4)</span></a>
-<a name="838"><span class="lineNum">     838 </span><span class="lineCov">          3 :         .def(&quot;RemoveNodes&quot;, &amp;ModelPart::RemoveNodes)</span></a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">          3 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels1)</span></a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          3 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels2)</span></a>
-<a name="841"><span class="lineNum">     841 </span><span class="lineCov">          3 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels3)</span></a>
-<a name="842"><span class="lineNum">     842 </span><span class="lineCov">          3 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels4)</span></a>
-<a name="843"><span class="lineNum">     843 </span><span class="lineCov">          3 :         .def(&quot;RemoveNodesFromAllLevels&quot;, ModelPartRemoveNodesFromAllLevels)</span></a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          3 :         .def(&quot;NodesArray&quot;, &amp;ModelPart::NodesArray, py::return_value_policy::reference_internal)</span></a>
-<a name="845"><span class="lineNum">     845 </span><span class="lineCov">          3 :         .def(&quot;NumberOfTables&quot;, &amp;ModelPart::NumberOfTables)</span></a>
-<a name="846"><span class="lineNum">     846 </span><span class="lineCov">          3 :         .def(&quot;AddTable&quot;, &amp;ModelPart::AddTable)</span></a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          3 :         .def(&quot;GetTable&quot;, &amp;ModelPart::pGetTable)</span></a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">          3 :         .def(&quot;HasProperties&quot;, ModelPartHasPropertiesById1)</span></a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">          3 :         .def(&quot;HasProperties&quot;, ModelPartHasPropertiesById2)</span></a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineCov">          3 :         .def(&quot;RecursivelyHasProperties&quot;, ModelPartRecursivelyHasPropertiesById1)</span></a>
-<a name="851"><span class="lineNum">     851 </span><span class="lineCov">          3 :         .def(&quot;RecursivelyHasProperties&quot;, ModelPartRecursivelyHasPropertiesById2)</span></a>
-<a name="852"><span class="lineNum">     852 </span><span class="lineCov">          3 :         .def(&quot;CreateNewProperties&quot;, ModelPartCreateNewPropertiesById1)</span></a>
-<a name="853"><span class="lineNum">     853 </span><span class="lineCov">          3 :         .def(&quot;CreateNewProperties&quot;, ModelPartCreateNewPropertiesById2)</span></a>
-<a name="854"><span class="lineNum">     854 </span><span class="lineCov">          3 :         .def(&quot;GetProperties&quot;, ModelPartGetPropertiesById1)</span></a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">          2 :         .def(&quot;NumberOfNodes&quot;, &amp;ModelPart::NumberOfNodes)</span></a>
+<a name="813"><span class="lineNum">     813 </span><span class="lineCov">          2 :         .def(&quot;NumberOfNodes&quot;, ModelPartNumberOfNodes1)</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">          2 :         .def(&quot;SetBufferSize&quot;, &amp;ModelPart::SetBufferSize)</span></a>
+<a name="815"><span class="lineNum">     815 </span><span class="lineCov">          2 :         .def(&quot;GetBufferSize&quot;, &amp;ModelPart::GetBufferSize)</span></a>
+<a name="816"><span class="lineNum">     816 </span><span class="lineCov">          2 :         .def(&quot;NumberOfElements&quot;, ModelPartNumberOfElements1)</span></a>
+<a name="817"><span class="lineNum">     817 </span><span class="lineCov">          2 :         .def(&quot;NumberOfElements&quot;, &amp;ModelPart::NumberOfElements)</span></a>
+<a name="818"><span class="lineNum">     818 </span><span class="lineCov">          2 :         .def(&quot;NumberOfConditions&quot;, ModelPartNumberOfConditions1)</span></a>
+<a name="819"><span class="lineNum">     819 </span><span class="lineCov">          2 :         .def(&quot;NumberOfConditions&quot;, &amp;ModelPart::NumberOfConditions)</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          2 :         .def(&quot;NumberOfMasterSlaveConstraints&quot;, ModelPartNumberOfMasterSlaveConstraints1)</span></a>
+<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          2 :         .def(&quot;NumberOfMasterSlaveConstraints&quot;, &amp;ModelPart::NumberOfMasterSlaveConstraints)</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          2 :         .def(&quot;NumberOfMeshes&quot;, &amp;ModelPart::NumberOfMeshes)</span></a>
+<a name="823"><span class="lineNum">     823 </span><span class="lineCov">          2 :         .def(&quot;NumberOfProperties&quot;, &amp;ModelPart::NumberOfProperties)</span></a>
+<a name="824"><span class="lineNum">     824 </span><span class="lineCov">          2 :         .def(&quot;NumberOfProperties&quot;, ModelPartNumberOfProperties1)</span></a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">          2 :         .def(&quot;GetMesh&quot;, ModelPartGetMesh)</span></a>
+<a name="826"><span class="lineNum">     826 </span><span class="lineCov">          2 :         .def(&quot;GetMesh&quot;, ModelPartGetMesh2)</span></a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">          2 :         .def_property(&quot;Nodes&quot;, ModelPartGetNodes1, ModelPartSetNodes1)</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">          2 :         .def(&quot;GetNode&quot;, ModelPartGetNode1)</span></a>
+<a name="829"><span class="lineNum">     829 </span><span class="lineCov">          2 :         .def(&quot;GetNode&quot;, ModelPartGetNode2)</span></a>
+<a name="830"><span class="lineNum">     830 </span><span class="lineCov">          2 :         .def(&quot;GetNodes&quot;, ModelPartGetNodes1)</span></a>
+<a name="831"><span class="lineNum">     831 </span><span class="lineCov">          2 :         .def(&quot;SetNodes&quot;, ModelPartSetNodes1)</span></a>
+<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          2 :         .def(&quot;GetNodes&quot;, ModelPartGetNodes2)</span></a>
+<a name="833"><span class="lineNum">     833 </span><span class="lineCov">          2 :         .def(&quot;SetNodes&quot;, ModelPartSetNodes2)</span></a>
+<a name="834"><span class="lineNum">     834 </span><span class="lineCov">          2 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode1)</span></a>
+<a name="835"><span class="lineNum">     835 </span><span class="lineCov">          2 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode2)</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">          2 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode3)</span></a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">          2 :         .def(&quot;RemoveNode&quot;, ModelPartRemoveNode4)</span></a>
+<a name="838"><span class="lineNum">     838 </span><span class="lineCov">          2 :         .def(&quot;RemoveNodes&quot;, &amp;ModelPart::RemoveNodes)</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">          2 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels1)</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">          2 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels2)</span></a>
+<a name="841"><span class="lineNum">     841 </span><span class="lineCov">          2 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels3)</span></a>
+<a name="842"><span class="lineNum">     842 </span><span class="lineCov">          2 :         .def(&quot;RemoveNodeFromAllLevels&quot;, ModelPartRemoveNodeFromAllLevels4)</span></a>
+<a name="843"><span class="lineNum">     843 </span><span class="lineCov">          2 :         .def(&quot;RemoveNodesFromAllLevels&quot;, ModelPartRemoveNodesFromAllLevels)</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">          2 :         .def(&quot;NodesArray&quot;, &amp;ModelPart::NodesArray, py::return_value_policy::reference_internal)</span></a>
+<a name="845"><span class="lineNum">     845 </span><span class="lineCov">          2 :         .def(&quot;NumberOfTables&quot;, &amp;ModelPart::NumberOfTables)</span></a>
+<a name="846"><span class="lineNum">     846 </span><span class="lineCov">          2 :         .def(&quot;AddTable&quot;, &amp;ModelPart::AddTable)</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">          2 :         .def(&quot;GetTable&quot;, &amp;ModelPart::pGetTable)</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">          2 :         .def(&quot;HasProperties&quot;, ModelPartHasPropertiesById1)</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">          2 :         .def(&quot;HasProperties&quot;, ModelPartHasPropertiesById2)</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">          2 :         .def(&quot;RecursivelyHasProperties&quot;, ModelPartRecursivelyHasPropertiesById1)</span></a>
+<a name="851"><span class="lineNum">     851 </span><span class="lineCov">          2 :         .def(&quot;RecursivelyHasProperties&quot;, ModelPartRecursivelyHasPropertiesById2)</span></a>
+<a name="852"><span class="lineNum">     852 </span><span class="lineCov">          2 :         .def(&quot;CreateNewProperties&quot;, ModelPartCreateNewPropertiesById1)</span></a>
+<a name="853"><span class="lineNum">     853 </span><span class="lineCov">          2 :         .def(&quot;CreateNewProperties&quot;, ModelPartCreateNewPropertiesById2)</span></a>
+<a name="854"><span class="lineNum">     854 </span><span class="lineCov">          2 :         .def(&quot;GetProperties&quot;, ModelPartGetPropertiesById1)</span></a>
 <a name="855"><span class="lineNum">     855 </span>            : //         .def(&quot;GetProperties&quot;, ModelPartGetPropertiesById2) // NOTE: This method conflicts with the other GetProperties methods</a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">          3 :         .def_property(&quot;Properties&quot;, ModelPartGetProperties1, ModelPartSetProperties1)</span></a>
-<a name="857"><span class="lineNum">     857 </span><span class="lineCov">          3 :         .def(&quot;AddProperties&quot;, ModelPartAddProperties1)</span></a>
-<a name="858"><span class="lineNum">     858 </span><span class="lineCov">          3 :         .def(&quot;AddProperties&quot;, ModelPartAddProperties2)</span></a>
-<a name="859"><span class="lineNum">     859 </span><span class="lineCov">          3 :         .def(&quot;GetProperties&quot;, ModelPartGetProperties1)</span></a>
-<a name="860"><span class="lineNum">     860 </span><span class="lineCov">          3 :         .def(&quot;SetProperties&quot;, ModelPartSetProperties1)</span></a>
-<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          3 :         .def(&quot;GetProperties&quot;, ModelPartGetProperties2)</span></a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineCov">          3 :         .def(&quot;SetProperties&quot;, ModelPartSetProperties2)</span></a>
-<a name="863"><span class="lineNum">     863 </span><span class="lineCov">          3 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties1)</span></a>
-<a name="864"><span class="lineNum">     864 </span><span class="lineCov">          3 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties2)</span></a>
-<a name="865"><span class="lineNum">     865 </span><span class="lineCov">          3 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties3)</span></a>
-<a name="866"><span class="lineNum">     866 </span><span class="lineCov">          3 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties4)</span></a>
-<a name="867"><span class="lineNum">     867 </span><span class="lineCov">          3 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels1)</span></a>
-<a name="868"><span class="lineNum">     868 </span><span class="lineCov">          3 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels2)</span></a>
-<a name="869"><span class="lineNum">     869 </span><span class="lineCov">          3 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels3)</span></a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineCov">          3 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels4)</span></a>
-<a name="871"><span class="lineNum">     871 </span><span class="lineCov">          3 :         .def(&quot;PropertiesArray&quot;, &amp;ModelPart::PropertiesArray, py::return_value_policy::reference_internal)</span></a>
-<a name="872"><span class="lineNum">     872 </span><span class="lineCov">          3 :         .def_property(&quot;Elements&quot;, ModelPartGetElements1, ModelPartSetElements1)</span></a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">          3 :         .def(&quot;GetElement&quot;, ModelPartGetElement1)</span></a>
-<a name="874"><span class="lineNum">     874 </span><span class="lineCov">          3 :         .def(&quot;GetElement&quot;, ModelPartGetElement2)</span></a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineCov">          3 :         .def(&quot;GetElements&quot;, ModelPartGetElements1)</span></a>
-<a name="876"><span class="lineNum">     876 </span><span class="lineCov">          3 :         .def(&quot;SetElements&quot;, ModelPartSetElements1)</span></a>
-<a name="877"><span class="lineNum">     877 </span><span class="lineCov">          3 :         .def(&quot;GetElements&quot;, ModelPartGetElements2)</span></a>
-<a name="878"><span class="lineNum">     878 </span><span class="lineCov">          3 :         .def(&quot;SetElements&quot;, ModelPartSetElements2)</span></a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">          3 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement1)</span></a>
-<a name="880"><span class="lineNum">     880 </span><span class="lineCov">          3 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement2)</span></a>
-<a name="881"><span class="lineNum">     881 </span><span class="lineCov">          3 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement3)</span></a>
-<a name="882"><span class="lineNum">     882 </span><span class="lineCov">          3 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement4)</span></a>
-<a name="883"><span class="lineNum">     883 </span><span class="lineCov">          3 :         .def(&quot;RemoveElements&quot;, &amp;ModelPart::RemoveElements)</span></a>
-<a name="884"><span class="lineNum">     884 </span><span class="lineCov">          3 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels1)</span></a>
-<a name="885"><span class="lineNum">     885 </span><span class="lineCov">          3 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels2)</span></a>
-<a name="886"><span class="lineNum">     886 </span><span class="lineCov">          3 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels3)</span></a>
-<a name="887"><span class="lineNum">     887 </span><span class="lineCov">          3 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels4)</span></a>
-<a name="888"><span class="lineNum">     888 </span><span class="lineCov">          3 :         .def(&quot;RemoveElementsFromAllLevels&quot;, ModelPartRemoveElementsFromAllLevels)</span></a>
-<a name="889"><span class="lineNum">     889 </span><span class="lineCov">          3 :         .def(&quot;ElementsArray&quot;, &amp;ModelPart::ElementsArray, py::return_value_policy::reference_internal)</span></a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          3 :         .def_property(&quot;Conditions&quot;, ModelPartGetConditions1, ModelPartSetConditions1)</span></a>
-<a name="891"><span class="lineNum">     891 </span><span class="lineCov">          3 :         .def(&quot;GetCondition&quot;, ModelPartGetCondition1)</span></a>
-<a name="892"><span class="lineNum">     892 </span><span class="lineCov">          3 :         .def(&quot;GetCondition&quot;, ModelPartGetCondition2)</span></a>
-<a name="893"><span class="lineNum">     893 </span><span class="lineCov">          3 :         .def(&quot;GetConditions&quot;, ModelPartGetConditions1)</span></a>
-<a name="894"><span class="lineNum">     894 </span><span class="lineCov">          3 :         .def(&quot;SetConditions&quot;, ModelPartSetConditions1)</span></a>
-<a name="895"><span class="lineNum">     895 </span><span class="lineCov">          3 :         .def(&quot;GetConditions&quot;, ModelPartGetConditions2)</span></a>
-<a name="896"><span class="lineNum">     896 </span><span class="lineCov">          3 :         .def(&quot;SetConditions&quot;, ModelPartSetConditions2)</span></a>
-<a name="897"><span class="lineNum">     897 </span><span class="lineCov">          3 :         .def(&quot;AddCondition&quot;, ModelPartAddCondition1)</span></a>
-<a name="898"><span class="lineNum">     898 </span><span class="lineCov">          3 :         .def(&quot;AddCondition&quot;, ModelPartAddCondition2)</span></a>
-<a name="899"><span class="lineNum">     899 </span><span class="lineCov">          3 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition1)</span></a>
-<a name="900"><span class="lineNum">     900 </span><span class="lineCov">          3 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition2)</span></a>
-<a name="901"><span class="lineNum">     901 </span><span class="lineCov">          3 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition3)</span></a>
-<a name="902"><span class="lineNum">     902 </span><span class="lineCov">          3 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition4)</span></a>
-<a name="903"><span class="lineNum">     903 </span><span class="lineCov">          3 :         .def(&quot;RemoveConditions&quot;, &amp;ModelPart::RemoveConditions)</span></a>
-<a name="904"><span class="lineNum">     904 </span><span class="lineCov">          3 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels1)</span></a>
-<a name="905"><span class="lineNum">     905 </span><span class="lineCov">          3 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels2)</span></a>
-<a name="906"><span class="lineNum">     906 </span><span class="lineCov">          3 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels3)</span></a>
-<a name="907"><span class="lineNum">     907 </span><span class="lineCov">          3 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels4)</span></a>
-<a name="908"><span class="lineNum">     908 </span><span class="lineCov">          3 :         .def(&quot;RemoveConditionsFromAllLevels&quot;, ModelPartRemoveConditionsFromAllLevels)</span></a>
-<a name="909"><span class="lineNum">     909 </span><span class="lineCov">          3 :         .def(&quot;CreateSubModelPart&quot;, &amp;ModelPart::CreateSubModelPart, py::return_value_policy::reference_internal)</span></a>
-<a name="910"><span class="lineNum">     910 </span><span class="lineCov">          3 :         .def(&quot;NumberOfSubModelParts&quot;, &amp;ModelPart::NumberOfSubModelParts)</span></a>
-<a name="911"><span class="lineNum">     911 </span><span class="lineCov">          3 :         .def(&quot;GetSubModelPart&quot;, &amp;ModelPart::GetSubModelPart, py::return_value_policy::reference_internal)</span></a>
-<a name="912"><span class="lineNum">     912 </span><span class="lineCov">          3 :         .def(&quot;RemoveSubModelPart&quot;, RemoveSubModelPart1)</span></a>
-<a name="913"><span class="lineNum">     913 </span><span class="lineCov">          3 :         .def(&quot;RemoveSubModelPart&quot;, RemoveSubModelPart2)</span></a>
-<a name="914"><span class="lineNum">     914 </span><span class="lineCov">          3 :         .def(&quot;HasSubModelPart&quot;, &amp;ModelPart::HasSubModelPart)</span></a>
-<a name="915"><span class="lineNum">     915 </span><span class="lineCov">          3 :         .def(&quot;ConditionsArray&quot;, &amp;ModelPart::ConditionsArray, py::return_value_policy::reference_internal)</span></a>
-<a name="916"><span class="lineNum">     916 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;bool&gt;)</span></a>
-<a name="917"><span class="lineNum">     917 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;int&gt;)</span></a>
-<a name="918"><span class="lineNum">     918 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;double&gt;)</span></a>
-<a name="919"><span class="lineNum">     919 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;array_1d&lt;double, 3 &gt; &gt;)</span></a>
-<a name="920"><span class="lineNum">     920 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;Vector&gt;)</span></a>
-<a name="921"><span class="lineNum">     921 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;Matrix&gt;)</span></a>
-<a name="922"><span class="lineNum">     922 </span><span class="lineCov">          3 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;Quaternion&lt;double&gt; &gt;)</span></a>
-<a name="923"><span class="lineNum">     923 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;bool&gt;)</span></a>
-<a name="924"><span class="lineNum">     924 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;int&gt;)</span></a>
-<a name="925"><span class="lineNum">     925 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;double&gt;)</span></a>
-<a name="926"><span class="lineNum">     926 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;array_1d&lt;double, 3 &gt; &gt;)</span></a>
-<a name="927"><span class="lineNum">     927 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;Vector&gt;)</span></a>
-<a name="928"><span class="lineNum">     928 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;Matrix&gt;)</span></a>
-<a name="929"><span class="lineNum">     929 </span><span class="lineCov">          3 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;Quaternion&lt;double&gt; &gt;)</span></a>
-<a name="930"><span class="lineNum">     930 </span><span class="lineCov">          3 :         .def(&quot;GetNodalSolutionStepDataSize&quot;, &amp;ModelPart::GetNodalSolutionStepDataSize)</span></a>
-<a name="931"><span class="lineNum">     931 </span><span class="lineCov">          3 :         .def(&quot;GetNodalSolutionStepTotalDataSize&quot;, &amp;ModelPart::GetNodalSolutionStepTotalDataSize)</span></a>
-<a name="932"><span class="lineNum">     932 </span><span class="lineCov">          3 :         .def(&quot;OverwriteSolutionStepData&quot;, &amp;ModelPart::OverwriteSolutionStepData)</span></a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineCov">          3 :         .def(&quot;CreateNewNode&quot;, ModelPartCreateNewNode)</span></a>
-<a name="934"><span class="lineNum">     934 </span><span class="lineCov">          3 :         .def(&quot;CreateNewElement&quot;, ModelPartCreateNewElement)</span></a>
-<a name="935"><span class="lineNum">     935 </span><span class="lineCov">          3 :         .def(&quot;CreateNewCondition&quot;, ModelPartCreateNewCondition)</span></a>
-<a name="936"><span class="lineNum">     936 </span><span class="lineCov">          3 :         .def(&quot;GetCommunicator&quot;, ModelPartGetCommunicator, py::return_value_policy::reference_internal)</span></a>
-<a name="937"><span class="lineNum">     937 </span><span class="lineCov">          3 :         .def(&quot;Check&quot;, &amp;ModelPart::Check)</span></a>
-<a name="938"><span class="lineNum">     938 </span><span class="lineCov">          3 :         .def(&quot;IsSubModelPart&quot;, &amp;ModelPart::IsSubModelPart)</span></a>
-<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          3 :         .def(&quot;IsDistributed&quot;, &amp;ModelPart::IsDistributed)</span></a>
-<a name="940"><span class="lineNum">     940 </span><span class="lineCov">          3 :         .def(&quot;AddNode&quot;, &amp;ModelPart::AddNode)</span></a>
-<a name="941"><span class="lineNum">     941 </span><span class="lineCov">          3 :         .def(&quot;AddNodes&quot;,AddNodesByIds)</span></a>
-<a name="942"><span class="lineNum">     942 </span><span class="lineCov">          3 :         .def(&quot;AddCondition&quot;, &amp;ModelPart::AddCondition)</span></a>
-<a name="943"><span class="lineNum">     943 </span><span class="lineCov">          3 :         .def(&quot;AddConditions&quot;,AddConditionsByIds)</span></a>
-<a name="944"><span class="lineNum">     944 </span><span class="lineCov">          3 :         .def(&quot;AddElement&quot;, &amp;ModelPart::AddElement)</span></a>
-<a name="945"><span class="lineNum">     945 </span><span class="lineCov">          3 :         .def(&quot;AddElements&quot;,AddElementsByIds)</span></a>
-<a name="946"><span class="lineNum">     946 </span><span class="lineCov">          3 :         .def(&quot;GetParentModelPart&quot;, &amp;ModelPart::GetParentModelPart, py::return_value_policy::reference_internal)</span></a>
-<a name="947"><span class="lineNum">     947 </span><span class="lineCov">          3 :         .def(&quot;GetRootModelPart&quot;, &amp;ModelPart::GetRootModelPart, py::return_value_policy::reference_internal)</span></a>
-<a name="948"><span class="lineNum">     948 </span><span class="lineCov">          3 :         .def(&quot;GetModel&quot;, &amp;ModelPart::GetModel, py::return_value_policy::reference_internal)</span></a>
-<a name="949"><span class="lineNum">     949 </span><span class="lineCov">          3 :         .def_property(&quot;SubModelParts&quot;,  [](ModelPart&amp; self){ return self.SubModelParts(); },</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">          2 :         .def_property(&quot;Properties&quot;, ModelPartGetProperties1, ModelPartSetProperties1)</span></a>
+<a name="857"><span class="lineNum">     857 </span><span class="lineCov">          2 :         .def(&quot;AddProperties&quot;, ModelPartAddProperties1)</span></a>
+<a name="858"><span class="lineNum">     858 </span><span class="lineCov">          2 :         .def(&quot;AddProperties&quot;, ModelPartAddProperties2)</span></a>
+<a name="859"><span class="lineNum">     859 </span><span class="lineCov">          2 :         .def(&quot;GetProperties&quot;, ModelPartGetProperties1)</span></a>
+<a name="860"><span class="lineNum">     860 </span><span class="lineCov">          2 :         .def(&quot;SetProperties&quot;, ModelPartSetProperties1)</span></a>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          2 :         .def(&quot;GetProperties&quot;, ModelPartGetProperties2)</span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">          2 :         .def(&quot;SetProperties&quot;, ModelPartSetProperties2)</span></a>
+<a name="863"><span class="lineNum">     863 </span><span class="lineCov">          2 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties1)</span></a>
+<a name="864"><span class="lineNum">     864 </span><span class="lineCov">          2 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties2)</span></a>
+<a name="865"><span class="lineNum">     865 </span><span class="lineCov">          2 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties3)</span></a>
+<a name="866"><span class="lineNum">     866 </span><span class="lineCov">          2 :         .def(&quot;RemoveProperties&quot;, ModelPartRemoveProperties4)</span></a>
+<a name="867"><span class="lineNum">     867 </span><span class="lineCov">          2 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels1)</span></a>
+<a name="868"><span class="lineNum">     868 </span><span class="lineCov">          2 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels2)</span></a>
+<a name="869"><span class="lineNum">     869 </span><span class="lineCov">          2 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels3)</span></a>
+<a name="870"><span class="lineNum">     870 </span><span class="lineCov">          2 :         .def(&quot;RemovePropertiesFromAllLevels&quot;, ModelPartRemovePropertiesFromAllLevels4)</span></a>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">          2 :         .def(&quot;PropertiesArray&quot;, &amp;ModelPart::PropertiesArray, py::return_value_policy::reference_internal)</span></a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">          2 :         .def_property(&quot;Elements&quot;, ModelPartGetElements1, ModelPartSetElements1)</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">          2 :         .def(&quot;GetElement&quot;, ModelPartGetElement1)</span></a>
+<a name="874"><span class="lineNum">     874 </span><span class="lineCov">          2 :         .def(&quot;GetElement&quot;, ModelPartGetElement2)</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">          2 :         .def(&quot;GetElements&quot;, ModelPartGetElements1)</span></a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">          2 :         .def(&quot;SetElements&quot;, ModelPartSetElements1)</span></a>
+<a name="877"><span class="lineNum">     877 </span><span class="lineCov">          2 :         .def(&quot;GetElements&quot;, ModelPartGetElements2)</span></a>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">          2 :         .def(&quot;SetElements&quot;, ModelPartSetElements2)</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">          2 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement1)</span></a>
+<a name="880"><span class="lineNum">     880 </span><span class="lineCov">          2 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement2)</span></a>
+<a name="881"><span class="lineNum">     881 </span><span class="lineCov">          2 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement3)</span></a>
+<a name="882"><span class="lineNum">     882 </span><span class="lineCov">          2 :         .def(&quot;RemoveElement&quot;, ModelPartRemoveElement4)</span></a>
+<a name="883"><span class="lineNum">     883 </span><span class="lineCov">          2 :         .def(&quot;RemoveElements&quot;, &amp;ModelPart::RemoveElements)</span></a>
+<a name="884"><span class="lineNum">     884 </span><span class="lineCov">          2 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels1)</span></a>
+<a name="885"><span class="lineNum">     885 </span><span class="lineCov">          2 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels2)</span></a>
+<a name="886"><span class="lineNum">     886 </span><span class="lineCov">          2 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels3)</span></a>
+<a name="887"><span class="lineNum">     887 </span><span class="lineCov">          2 :         .def(&quot;RemoveElementFromAllLevels&quot;, ModelPartRemoveElementFromAllLevels4)</span></a>
+<a name="888"><span class="lineNum">     888 </span><span class="lineCov">          2 :         .def(&quot;RemoveElementsFromAllLevels&quot;, ModelPartRemoveElementsFromAllLevels)</span></a>
+<a name="889"><span class="lineNum">     889 </span><span class="lineCov">          2 :         .def(&quot;ElementsArray&quot;, &amp;ModelPart::ElementsArray, py::return_value_policy::reference_internal)</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">          2 :         .def_property(&quot;Conditions&quot;, ModelPartGetConditions1, ModelPartSetConditions1)</span></a>
+<a name="891"><span class="lineNum">     891 </span><span class="lineCov">          2 :         .def(&quot;GetCondition&quot;, ModelPartGetCondition1)</span></a>
+<a name="892"><span class="lineNum">     892 </span><span class="lineCov">          2 :         .def(&quot;GetCondition&quot;, ModelPartGetCondition2)</span></a>
+<a name="893"><span class="lineNum">     893 </span><span class="lineCov">          2 :         .def(&quot;GetConditions&quot;, ModelPartGetConditions1)</span></a>
+<a name="894"><span class="lineNum">     894 </span><span class="lineCov">          2 :         .def(&quot;SetConditions&quot;, ModelPartSetConditions1)</span></a>
+<a name="895"><span class="lineNum">     895 </span><span class="lineCov">          2 :         .def(&quot;GetConditions&quot;, ModelPartGetConditions2)</span></a>
+<a name="896"><span class="lineNum">     896 </span><span class="lineCov">          2 :         .def(&quot;SetConditions&quot;, ModelPartSetConditions2)</span></a>
+<a name="897"><span class="lineNum">     897 </span><span class="lineCov">          2 :         .def(&quot;AddCondition&quot;, ModelPartAddCondition1)</span></a>
+<a name="898"><span class="lineNum">     898 </span><span class="lineCov">          2 :         .def(&quot;AddCondition&quot;, ModelPartAddCondition2)</span></a>
+<a name="899"><span class="lineNum">     899 </span><span class="lineCov">          2 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition1)</span></a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">          2 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition2)</span></a>
+<a name="901"><span class="lineNum">     901 </span><span class="lineCov">          2 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition3)</span></a>
+<a name="902"><span class="lineNum">     902 </span><span class="lineCov">          2 :         .def(&quot;RemoveCondition&quot;, ModelPartRemoveCondition4)</span></a>
+<a name="903"><span class="lineNum">     903 </span><span class="lineCov">          2 :         .def(&quot;RemoveConditions&quot;, &amp;ModelPart::RemoveConditions)</span></a>
+<a name="904"><span class="lineNum">     904 </span><span class="lineCov">          2 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels1)</span></a>
+<a name="905"><span class="lineNum">     905 </span><span class="lineCov">          2 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels2)</span></a>
+<a name="906"><span class="lineNum">     906 </span><span class="lineCov">          2 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels3)</span></a>
+<a name="907"><span class="lineNum">     907 </span><span class="lineCov">          2 :         .def(&quot;RemoveConditionFromAllLevels&quot;, ModelPartRemoveConditionFromAllLevels4)</span></a>
+<a name="908"><span class="lineNum">     908 </span><span class="lineCov">          2 :         .def(&quot;RemoveConditionsFromAllLevels&quot;, ModelPartRemoveConditionsFromAllLevels)</span></a>
+<a name="909"><span class="lineNum">     909 </span><span class="lineCov">          2 :         .def(&quot;CreateSubModelPart&quot;, &amp;ModelPart::CreateSubModelPart, py::return_value_policy::reference_internal)</span></a>
+<a name="910"><span class="lineNum">     910 </span><span class="lineCov">          2 :         .def(&quot;NumberOfSubModelParts&quot;, &amp;ModelPart::NumberOfSubModelParts)</span></a>
+<a name="911"><span class="lineNum">     911 </span><span class="lineCov">          2 :         .def(&quot;GetSubModelPart&quot;, &amp;ModelPart::GetSubModelPart, py::return_value_policy::reference_internal)</span></a>
+<a name="912"><span class="lineNum">     912 </span><span class="lineCov">          2 :         .def(&quot;RemoveSubModelPart&quot;, RemoveSubModelPart1)</span></a>
+<a name="913"><span class="lineNum">     913 </span><span class="lineCov">          2 :         .def(&quot;RemoveSubModelPart&quot;, RemoveSubModelPart2)</span></a>
+<a name="914"><span class="lineNum">     914 </span><span class="lineCov">          2 :         .def(&quot;HasSubModelPart&quot;, &amp;ModelPart::HasSubModelPart)</span></a>
+<a name="915"><span class="lineNum">     915 </span><span class="lineCov">          2 :         .def(&quot;ConditionsArray&quot;, &amp;ModelPart::ConditionsArray, py::return_value_policy::reference_internal)</span></a>
+<a name="916"><span class="lineNum">     916 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;bool&gt;)</span></a>
+<a name="917"><span class="lineNum">     917 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;int&gt;)</span></a>
+<a name="918"><span class="lineNum">     918 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;double&gt;)</span></a>
+<a name="919"><span class="lineNum">     919 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;array_1d&lt;double, 3 &gt; &gt;)</span></a>
+<a name="920"><span class="lineNum">     920 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;Vector&gt;)</span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;Matrix&gt;)</span></a>
+<a name="922"><span class="lineNum">     922 </span><span class="lineCov">          2 :         .def(&quot;AddNodalSolutionStepVariable&quot;, AddNodalSolutionStepVariable&lt;Quaternion&lt;double&gt; &gt;)</span></a>
+<a name="923"><span class="lineNum">     923 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;bool&gt;)</span></a>
+<a name="924"><span class="lineNum">     924 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;int&gt;)</span></a>
+<a name="925"><span class="lineNum">     925 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;double&gt;)</span></a>
+<a name="926"><span class="lineNum">     926 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;array_1d&lt;double, 3 &gt; &gt;)</span></a>
+<a name="927"><span class="lineNum">     927 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;Vector&gt;)</span></a>
+<a name="928"><span class="lineNum">     928 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;Matrix&gt;)</span></a>
+<a name="929"><span class="lineNum">     929 </span><span class="lineCov">          2 :         .def(&quot;HasNodalSolutionStepVariable&quot;, HasNodalSolutionStepVariable&lt;Quaternion&lt;double&gt; &gt;)</span></a>
+<a name="930"><span class="lineNum">     930 </span><span class="lineCov">          2 :         .def(&quot;GetNodalSolutionStepDataSize&quot;, &amp;ModelPart::GetNodalSolutionStepDataSize)</span></a>
+<a name="931"><span class="lineNum">     931 </span><span class="lineCov">          2 :         .def(&quot;GetNodalSolutionStepTotalDataSize&quot;, &amp;ModelPart::GetNodalSolutionStepTotalDataSize)</span></a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineCov">          2 :         .def(&quot;OverwriteSolutionStepData&quot;, &amp;ModelPart::OverwriteSolutionStepData)</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">          2 :         .def(&quot;CreateNewNode&quot;, ModelPartCreateNewNode)</span></a>
+<a name="934"><span class="lineNum">     934 </span><span class="lineCov">          2 :         .def(&quot;CreateNewElement&quot;, ModelPartCreateNewElement)</span></a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineCov">          2 :         .def(&quot;CreateNewCondition&quot;, ModelPartCreateNewCondition)</span></a>
+<a name="936"><span class="lineNum">     936 </span><span class="lineCov">          2 :         .def(&quot;GetCommunicator&quot;, ModelPartGetCommunicator, py::return_value_policy::reference_internal)</span></a>
+<a name="937"><span class="lineNum">     937 </span><span class="lineCov">          2 :         .def(&quot;Check&quot;, &amp;ModelPart::Check)</span></a>
+<a name="938"><span class="lineNum">     938 </span><span class="lineCov">          2 :         .def(&quot;IsSubModelPart&quot;, &amp;ModelPart::IsSubModelPart)</span></a>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          2 :         .def(&quot;IsDistributed&quot;, &amp;ModelPart::IsDistributed)</span></a>
+<a name="940"><span class="lineNum">     940 </span><span class="lineCov">          2 :         .def(&quot;AddNode&quot;, &amp;ModelPart::AddNode)</span></a>
+<a name="941"><span class="lineNum">     941 </span><span class="lineCov">          2 :         .def(&quot;AddNodes&quot;,AddNodesByIds)</span></a>
+<a name="942"><span class="lineNum">     942 </span><span class="lineCov">          2 :         .def(&quot;AddCondition&quot;, &amp;ModelPart::AddCondition)</span></a>
+<a name="943"><span class="lineNum">     943 </span><span class="lineCov">          2 :         .def(&quot;AddConditions&quot;,AddConditionsByIds)</span></a>
+<a name="944"><span class="lineNum">     944 </span><span class="lineCov">          2 :         .def(&quot;AddElement&quot;, &amp;ModelPart::AddElement)</span></a>
+<a name="945"><span class="lineNum">     945 </span><span class="lineCov">          2 :         .def(&quot;AddElements&quot;,AddElementsByIds)</span></a>
+<a name="946"><span class="lineNum">     946 </span><span class="lineCov">          2 :         .def(&quot;GetParentModelPart&quot;, &amp;ModelPart::GetParentModelPart, py::return_value_policy::reference_internal)</span></a>
+<a name="947"><span class="lineNum">     947 </span><span class="lineCov">          2 :         .def(&quot;GetRootModelPart&quot;, &amp;ModelPart::GetRootModelPart, py::return_value_policy::reference_internal)</span></a>
+<a name="948"><span class="lineNum">     948 </span><span class="lineCov">          2 :         .def(&quot;GetModel&quot;, &amp;ModelPart::GetModel, py::return_value_policy::reference_internal)</span></a>
+<a name="949"><span class="lineNum">     949 </span><span class="lineCov">          2 :         .def_property(&quot;SubModelParts&quot;,  [](ModelPart&amp; self){ return self.SubModelParts(); },</span></a>
 <a name="950"><span class="lineNum">     950 </span><span class="lineNoCov">          0 :                                         [](ModelPart&amp; self, ModelPart::SubModelPartsContainerType&amp; subs){ KRATOS_ERROR &lt;&lt; &quot;setting submodelparts is not allowed&quot;; })</span></a>
 <a name="951"><span class="lineNum">     951 </span>            : </a>
-<a name="952"><span class="lineNum">     952 </span><span class="lineCov">          3 :         .def_property_readonly(&quot;MasterSlaveConstraints&quot;, ModelPartGetMasterSlaveConstraints1)</span></a>
-<a name="953"><span class="lineNum">     953 </span><span class="lineCov">          3 :         .def(&quot;GetMasterSlaveConstraint&quot;, ModelPartGetMasterSlaveConstraint1)</span></a>
-<a name="954"><span class="lineNum">     954 </span><span class="lineCov">          3 :         .def(&quot;GetMasterSlaveConstraints&quot;, ModelPartGetMasterSlaveConstraints1)</span></a>
-<a name="955"><span class="lineNum">     955 </span><span class="lineCov">          3 :         .def(&quot;RemoveMasterSlaveConstraint&quot;, ModelPartRemoveMasterSlaveConstraint1)</span></a>
-<a name="956"><span class="lineNum">     956 </span><span class="lineCov">          3 :         .def(&quot;RemoveMasterSlaveConstraint&quot;, ModelPartRemoveMasterSlaveConstraint2)</span></a>
-<a name="957"><span class="lineNum">     957 </span><span class="lineCov">          3 :         .def(&quot;RemoveMasterSlaveConstraintFromAllLevels&quot;, ModelPartRemoveMasterSlaveConstraintFromAllLevels1)</span></a>
-<a name="958"><span class="lineNum">     958 </span><span class="lineCov">          3 :         .def(&quot;RemoveMasterSlaveConstraintFromAllLevels&quot;, ModelPartRemoveMasterSlaveConstraintFromAllLevels2)</span></a>
-<a name="959"><span class="lineNum">     959 </span><span class="lineCov">          3 :         .def(&quot;RemoveMasterSlaveConstraints&quot;, &amp;ModelPart::RemoveMasterSlaveConstraints)</span></a>
-<a name="960"><span class="lineNum">     960 </span><span class="lineCov">          3 :         .def(&quot;RemoveMasterSlaveConstraintsFromAllLevels&quot;, &amp;ModelPart::RemoveMasterSlaveConstraintsFromAllLevels)</span></a>
-<a name="961"><span class="lineNum">     961 </span><span class="lineCov">          3 :         .def(&quot;AddMasterSlaveConstraint&quot;, ModelPartAddMasterSlaveConstraint)</span></a>
-<a name="962"><span class="lineNum">     962 </span><span class="lineCov">          3 :         .def(&quot;AddMasterSlaveConstraints&quot;, AddMasterSlaveConstraintsByIds)</span></a>
-<a name="963"><span class="lineNum">     963 </span><span class="lineCov">          3 :         .def(&quot;CreateNewMasterSlaveConstraint&quot;,CreateNewMasterSlaveConstraint1, py::return_value_policy::reference_internal)</span></a>
-<a name="964"><span class="lineNum">     964 </span><span class="lineCov">          3 :         .def(&quot;CreateNewMasterSlaveConstraint&quot;,CreateNewMasterSlaveConstraint2, py::return_value_policy::reference_internal)</span></a>
-<a name="965"><span class="lineNum">     965 </span><span class="lineCov">          6 :         .def(&quot;CreateNewMasterSlaveConstraint&quot;,CreateNewMasterSlaveConstraint3, py::return_value_policy::reference_internal)</span></a>
-<a name="966"><span class="lineNum">     966 </span><span class="lineCov">          3 :         .def(&quot;__str__&quot;, PrintObject&lt;ModelPart&gt;)</span></a>
+<a name="952"><span class="lineNum">     952 </span><span class="lineCov">          2 :         .def_property_readonly(&quot;MasterSlaveConstraints&quot;, ModelPartGetMasterSlaveConstraints1)</span></a>
+<a name="953"><span class="lineNum">     953 </span><span class="lineCov">          2 :         .def(&quot;GetMasterSlaveConstraint&quot;, ModelPartGetMasterSlaveConstraint1)</span></a>
+<a name="954"><span class="lineNum">     954 </span><span class="lineCov">          2 :         .def(&quot;GetMasterSlaveConstraints&quot;, ModelPartGetMasterSlaveConstraints1)</span></a>
+<a name="955"><span class="lineNum">     955 </span><span class="lineCov">          2 :         .def(&quot;RemoveMasterSlaveConstraint&quot;, ModelPartRemoveMasterSlaveConstraint1)</span></a>
+<a name="956"><span class="lineNum">     956 </span><span class="lineCov">          2 :         .def(&quot;RemoveMasterSlaveConstraint&quot;, ModelPartRemoveMasterSlaveConstraint2)</span></a>
+<a name="957"><span class="lineNum">     957 </span><span class="lineCov">          2 :         .def(&quot;RemoveMasterSlaveConstraintFromAllLevels&quot;, ModelPartRemoveMasterSlaveConstraintFromAllLevels1)</span></a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">          2 :         .def(&quot;RemoveMasterSlaveConstraintFromAllLevels&quot;, ModelPartRemoveMasterSlaveConstraintFromAllLevels2)</span></a>
+<a name="959"><span class="lineNum">     959 </span><span class="lineCov">          2 :         .def(&quot;RemoveMasterSlaveConstraints&quot;, &amp;ModelPart::RemoveMasterSlaveConstraints)</span></a>
+<a name="960"><span class="lineNum">     960 </span><span class="lineCov">          2 :         .def(&quot;RemoveMasterSlaveConstraintsFromAllLevels&quot;, &amp;ModelPart::RemoveMasterSlaveConstraintsFromAllLevels)</span></a>
+<a name="961"><span class="lineNum">     961 </span><span class="lineCov">          2 :         .def(&quot;AddMasterSlaveConstraint&quot;, ModelPartAddMasterSlaveConstraint)</span></a>
+<a name="962"><span class="lineNum">     962 </span><span class="lineCov">          2 :         .def(&quot;AddMasterSlaveConstraints&quot;, AddMasterSlaveConstraintsByIds)</span></a>
+<a name="963"><span class="lineNum">     963 </span><span class="lineCov">          2 :         .def(&quot;CreateNewMasterSlaveConstraint&quot;,CreateNewMasterSlaveConstraint1, py::return_value_policy::reference_internal)</span></a>
+<a name="964"><span class="lineNum">     964 </span><span class="lineCov">          2 :         .def(&quot;CreateNewMasterSlaveConstraint&quot;,CreateNewMasterSlaveConstraint2, py::return_value_policy::reference_internal)</span></a>
+<a name="965"><span class="lineNum">     965 </span><span class="lineCov">          4 :         .def(&quot;CreateNewMasterSlaveConstraint&quot;,CreateNewMasterSlaveConstraint3, py::return_value_policy::reference_internal)</span></a>
+<a name="966"><span class="lineNum">     966 </span><span class="lineCov">          2 :         .def(&quot;__str__&quot;, PrintObject&lt;ModelPart&gt;)</span></a>
 <a name="967"><span class="lineNum">     967 </span>            :         ;</a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineCov">          3 : }</span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">          2 : }</span></a>
 <a name="969"><span class="lineNum">     969 </span>            : </a>
 <a name="970"><span class="lineNum">     970 </span>            : } // namespace Python.</a>
 <a name="971"><span class="lineNum">     971 </span>            : </a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">16</td>
@@ -80,12 +80,12 @@
 <a name="18"><span class="lineNum">      18 </span>            : class type_caster&lt;value_and_holder&gt; {</a>
 <a name="19"><span class="lineNum">      19 </span>            : public:</a>
 <a name="20"><span class="lineNum">      20 </span>            :     bool load(handle h, bool) {</a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          3 :         value = reinterpret_cast&lt;value_and_holder *&gt;(h.ptr());</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          2 :         value = reinterpret_cast&lt;value_and_holder *&gt;(h.ptr());</span></a>
 <a name="22"><span class="lineNum">      22 </span>            :         return true;</a>
 <a name="23"><span class="lineNum">      23 </span>            :     }</a>
 <a name="24"><span class="lineNum">      24 </span>            : </a>
 <a name="25"><span class="lineNum">      25 </span>            :     template &lt;typename&gt; using cast_op_type = value_and_holder &amp;;</a>
-<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          3 :     operator value_and_holder &amp;() { return *value; }</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          2 :     operator value_and_holder &amp;() { return *value; }</span></a>
 <a name="27"><span class="lineNum">      27 </span>            :     static PYBIND11_DESCR name() { return type_descr(_&lt;value_and_holder&gt;()); }</a>
 <a name="28"><span class="lineNum">      28 </span>            : </a>
 <a name="29"><span class="lineNum">      29 </span>            : private:</a>
@@ -120,7 +120,7 @@
 <a name="58"><span class="lineNum">      58 </span>            : // non-aggregate types, we need to use an ordinary T(...) constructor (invoking as `T{...}` usually</a>
 <a name="59"><span class="lineNum">      59 </span>            : // works, but will not do the expected thing when `T` has an `initializer_list&lt;T&gt;` constructor).</a>
 <a name="60"><span class="lineNum">      60 </span>            : template &lt;typename Class, typename... Args, detail::enable_if_t&lt;std::is_constructible&lt;Class, Args...&gt;::value, int&gt; = 0&gt;</a>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          3 : inline Class *construct_or_initialize(Args &amp;&amp;...args) { return new Class(std::forward&lt;Args&gt;(args)...); }</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">          2 : inline Class *construct_or_initialize(Args &amp;&amp;...args) { return new Class(std::forward&lt;Args&gt;(args)...); }</span></a>
 <a name="62"><span class="lineNum">      62 </span>            : template &lt;typename Class, typename... Args, detail::enable_if_t&lt;!std::is_constructible&lt;Class, Args...&gt;::value, int&gt; = 0&gt;</a>
 <a name="63"><span class="lineNum">      63 </span>            : inline Class *construct_or_initialize(Args &amp;&amp;...args) { return new Class{std::forward&lt;Args&gt;(args)...}; }</a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
@@ -232,9 +232,9 @@
 <a name="170"><span class="lineNum">     170 </span>            : struct constructor {</a>
 <a name="171"><span class="lineNum">     171 </span>            :     template &lt;typename Class, typename... Extra, enable_if_t&lt;!Class::has_alias, int&gt; = 0&gt;</a>
 <a name="172"><span class="lineNum">     172 </span>            :     static void execute(Class &amp;cl, const Extra&amp;... extra) {</a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        726 :         cl.def(&quot;__init__&quot;, [](value_and_holder &amp;v_h, Args... args) {</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          3 :             v_h.value_ptr() = construct_or_initialize&lt;Cpp&lt;Class&gt;&gt;(std::forward&lt;Args&gt;(args)...);</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        726 :         }, is_new_style_constructor(), extra...);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        484 :         cl.def(&quot;__init__&quot;, [](value_and_holder &amp;v_h, Args... args) {</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          2 :             v_h.value_ptr() = construct_or_initialize&lt;Cpp&lt;Class&gt;&gt;(std::forward&lt;Args&gt;(args)...);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        484 :         }, is_new_style_constructor(), extra...);</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :     }</a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            :     template &lt;typename Class, typename... Extra,</a>
@@ -253,9 +253,9 @@
 <a name="191"><span class="lineNum">     191 </span>            :               enable_if_t&lt;Class::has_alias &amp;&amp;</a>
 <a name="192"><span class="lineNum">     192 </span>            :                           !std::is_constructible&lt;Cpp&lt;Class&gt;, Args...&gt;::value, int&gt; = 0&gt;</a>
 <a name="193"><span class="lineNum">     193 </span>            :     static void execute(Class &amp;cl, const Extra&amp;... extra) {</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :         cl.def(&quot;__init__&quot;, [](value_and_holder &amp;v_h, Args... args) {</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :         cl.def(&quot;__init__&quot;, [](value_and_holder &amp;v_h, Args... args) {</span></a>
 <a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :             v_h.value_ptr() = construct_or_initialize&lt;Alias&lt;Class&gt;&gt;(std::forward&lt;Args&gt;(args)...);</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :         }, is_new_style_constructor(), extra...);</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          2 :         }, is_new_style_constructor(), extra...);</span></a>
 <a name="197"><span class="lineNum">     197 </span>            :     }</a>
 <a name="198"><span class="lineNum">     198 </span>            : };</a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
@@ -290,7 +290,7 @@
 <a name="228"><span class="lineNum">     228 </span>            :     template &lt;typename Class, typename... Extra&gt;</a>
 <a name="229"><span class="lineNum">     229 </span>            :     void execute(Class &amp;cl, const Extra &amp;...extra) &amp;&amp; {</a>
 <a name="230"><span class="lineNum">     230 </span>            :         #if defined(PYBIND11_CPP14)</a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         72 :         cl.def(&quot;__init__&quot;, [func = std::move(class_factory)]</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">         48 :         cl.def(&quot;__init__&quot;, [func = std::move(class_factory)]</span></a>
 <a name="232"><span class="lineNum">     232 </span>            :         #else</a>
 <a name="233"><span class="lineNum">     233 </span>            :         auto &amp;func = class_factory;</a>
 <a name="234"><span class="lineNum">     234 </span>            :         cl.def(&quot;__init__&quot;, [func]</a>
@@ -298,7 +298,7 @@
 <a name="236"><span class="lineNum">     236 </span>            :         (value_and_holder &amp;v_h, Args... args) {</a>
 <a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :             construct&lt;Class&gt;(v_h, func(std::forward&lt;Args&gt;(args)...),</span></a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :                              Py_TYPE(v_h.inst) != v_h.type-&gt;type);</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         72 :         }, is_new_style_constructor(), extra...);</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">         48 :         }, is_new_style_constructor(), extra...);</span></a>
 <a name="240"><span class="lineNum">     240 </span>            :     }</a>
 <a name="241"><span class="lineNum">     241 </span>            : };</a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
@@ -376,11 +376,11 @@
 <a name="314"><span class="lineNum">     314 </span>            :         : get(std::forward&lt;Get&gt;(get)), set(std::forward&lt;Set&gt;(set)) { }</a>
 <a name="315"><span class="lineNum">     315 </span>            : </a>
 <a name="316"><span class="lineNum">     316 </span>            :     template &lt;typename Class, typename... Extra&gt;</a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         45 :     void execute(Class &amp;cl, const Extra &amp;...extra) &amp;&amp; {</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         45 :         cl.def(&quot;__getstate__&quot;, std::move(get));</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         30 :     void execute(Class &amp;cl, const Extra &amp;...extra) &amp;&amp; {</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         30 :         cl.def(&quot;__getstate__&quot;, std::move(get));</span></a>
 <a name="319"><span class="lineNum">     319 </span>            : </a>
 <a name="320"><span class="lineNum">     320 </span>            : #if defined(PYBIND11_CPP14)</a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">         45 :         cl.def(&quot;__setstate__&quot;, [func = std::move(set)]</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">         30 :         cl.def(&quot;__setstate__&quot;, [func = std::move(set)]</span></a>
 <a name="322"><span class="lineNum">     322 </span>            : #else</a>
 <a name="323"><span class="lineNum">     323 </span>            :         auto &amp;func = set;</a>
 <a name="324"><span class="lineNum">     324 </span>            :         cl.def(&quot;__setstate__&quot;, [func]</a>
@@ -388,8 +388,8 @@
 <a name="326"><span class="lineNum">     326 </span>            :         (value_and_holder &amp;v_h, ArgState state) {</a>
 <a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :             setstate&lt;Class&gt;(v_h, func(std::forward&lt;ArgState&gt;(state)),</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :                             Py_TYPE(v_h.inst) != v_h.type-&gt;type);</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         45 :         }, is_new_style_constructor(), extra...);</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         45 :     }</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         30 :         }, is_new_style_constructor(), extra...);</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         30 :     }</span></a>
 <a name="331"><span class="lineNum">     331 </span>            : };</a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
 <a name="333"><span class="lineNum">     333 </span>            : NAMESPACE_END(initimpl)</a>

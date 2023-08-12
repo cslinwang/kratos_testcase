@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -1425,42 +1425,42 @@
 <a name="1363"><span class="lineNum">    1363 </span>            :      * @return the matrix of values of every shape function in each integration point</a>
 <a name="1364"><span class="lineNum">    1364 </span>            :      * :KLUDGE: number of points is hard-coded -&gt; be careful if you want to copy and paste!</a>
 <a name="1365"><span class="lineNum">    1365 </span>            :      */</a>
-<a name="1366"><span class="lineNum">    1366 </span><span class="lineCov">          6 :     static Matrix CalculateShapeFunctionsIntegrationPointsValues(</span></a>
+<a name="1366"><span class="lineNum">    1366 </span><span class="lineCov">          4 :     static Matrix CalculateShapeFunctionsIntegrationPointsValues(</span></a>
 <a name="1367"><span class="lineNum">    1367 </span>            :         typename BaseType::IntegrationMethod ThisMethod )</a>
 <a name="1368"><span class="lineNum">    1368 </span>            :     {</a>
-<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">          6 :         IntegrationPointsContainerType all_integration_points =</span></a>
+<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">          4 :         IntegrationPointsContainerType all_integration_points =</span></a>
 <a name="1370"><span class="lineNum">    1370 </span>            :             AllIntegrationPoints();</a>
-<a name="1371"><span class="lineNum">    1371 </span><span class="lineCov">          6 :         IntegrationPointsArrayType integration_points =</span></a>
-<a name="1372"><span class="lineNum">    1372 </span><span class="lineCov">          6 :             all_integration_points[ThisMethod];</span></a>
+<a name="1371"><span class="lineNum">    1371 </span><span class="lineCov">          4 :         IntegrationPointsArrayType integration_points =</span></a>
+<a name="1372"><span class="lineNum">    1372 </span><span class="lineCov">          4 :             all_integration_points[ThisMethod];</span></a>
 <a name="1373"><span class="lineNum">    1373 </span>            :         //number of integration points</a>
-<a name="1374"><span class="lineNum">    1374 </span><span class="lineCov">          6 :         const int integration_points_number = integration_points.size();</span></a>
+<a name="1374"><span class="lineNum">    1374 </span><span class="lineCov">          4 :         const int integration_points_number = integration_points.size();</span></a>
 <a name="1375"><span class="lineNum">    1375 </span>            :         //number of nodes in current geometry</a>
 <a name="1376"><span class="lineNum">    1376 </span>            :         const int points_number = 6;</a>
 <a name="1377"><span class="lineNum">    1377 </span>            :         //setting up return matrix</a>
-<a name="1378"><span class="lineNum">    1378 </span><span class="lineCov">          6 :         Matrix shape_function_values( integration_points_number, points_number );</span></a>
+<a name="1378"><span class="lineNum">    1378 </span><span class="lineCov">          4 :         Matrix shape_function_values( integration_points_number, points_number );</span></a>
 <a name="1379"><span class="lineNum">    1379 </span>            :         //loop over all integration points</a>
 <a name="1380"><span class="lineNum">    1380 </span>            : </a>
-<a name="1381"><span class="lineNum">    1381 </span><span class="lineCov">         33 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
+<a name="1381"><span class="lineNum">    1381 </span><span class="lineCov">         22 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
 <a name="1382"><span class="lineNum">    1382 </span>            :         {</a>
-<a name="1383"><span class="lineNum">    1383 </span><span class="lineCov">         27 :             shape_function_values ( pnt, 0 ) =  ( 1.0</span></a>
-<a name="1384"><span class="lineNum">    1384 </span><span class="lineCov">         27 :                                                 - integration_points[pnt].X()</span></a>
-<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">         27 :                                                 - integration_points[pnt].Y()</span></a>
-<a name="1386"><span class="lineNum">    1386 </span><span class="lineCov">         27 :                                                 - integration_points[pnt].Z()</span></a>
-<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">         27 :                                                 + ( integration_points[pnt].X() * integration_points[pnt].Z() )</span></a>
-<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">         27 :                                                 + ( integration_points[pnt].Y() * integration_points[pnt].Z() ) );</span></a>
-<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">         27 :             shape_function_values( pnt, 1 ) = integration_points[pnt].X()</span></a>
-<a name="1390"><span class="lineNum">    1390 </span><span class="lineCov">         27 :                                               - ( integration_points[pnt].X() * integration_points[pnt].Z() );</span></a>
-<a name="1391"><span class="lineNum">    1391 </span><span class="lineCov">         27 :             shape_function_values( pnt, 2 ) = integration_points[pnt].Y()</span></a>
-<a name="1392"><span class="lineNum">    1392 </span><span class="lineCov">         27 :                                               - ( integration_points[pnt].Y() * integration_points[pnt].Z() );</span></a>
-<a name="1393"><span class="lineNum">    1393 </span><span class="lineCov">         27 :             shape_function_values( pnt, 3 ) = integration_points[pnt].Z()</span></a>
-<a name="1394"><span class="lineNum">    1394 </span><span class="lineCov">         27 :                                               - ( integration_points[pnt].X() * integration_points[pnt].Z() )</span></a>
-<a name="1395"><span class="lineNum">    1395 </span><span class="lineCov">         27 :                                               - ( integration_points[pnt].Y() * integration_points[pnt].Z() );</span></a>
-<a name="1396"><span class="lineNum">    1396 </span><span class="lineCov">         27 :             shape_function_values( pnt, 4 ) = ( integration_points[pnt].X() * integration_points[pnt].Z() );</span></a>
-<a name="1397"><span class="lineNum">    1397 </span><span class="lineCov">         27 :             shape_function_values( pnt, 5 ) = ( integration_points[pnt].Y() * integration_points[pnt].Z() );</span></a>
+<a name="1383"><span class="lineNum">    1383 </span><span class="lineCov">         18 :             shape_function_values ( pnt, 0 ) =  ( 1.0</span></a>
+<a name="1384"><span class="lineNum">    1384 </span><span class="lineCov">         18 :                                                 - integration_points[pnt].X()</span></a>
+<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">         18 :                                                 - integration_points[pnt].Y()</span></a>
+<a name="1386"><span class="lineNum">    1386 </span><span class="lineCov">         18 :                                                 - integration_points[pnt].Z()</span></a>
+<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">         18 :                                                 + ( integration_points[pnt].X() * integration_points[pnt].Z() )</span></a>
+<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">         18 :                                                 + ( integration_points[pnt].Y() * integration_points[pnt].Z() ) );</span></a>
+<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">         18 :             shape_function_values( pnt, 1 ) = integration_points[pnt].X()</span></a>
+<a name="1390"><span class="lineNum">    1390 </span><span class="lineCov">         18 :                                               - ( integration_points[pnt].X() * integration_points[pnt].Z() );</span></a>
+<a name="1391"><span class="lineNum">    1391 </span><span class="lineCov">         18 :             shape_function_values( pnt, 2 ) = integration_points[pnt].Y()</span></a>
+<a name="1392"><span class="lineNum">    1392 </span><span class="lineCov">         18 :                                               - ( integration_points[pnt].Y() * integration_points[pnt].Z() );</span></a>
+<a name="1393"><span class="lineNum">    1393 </span><span class="lineCov">         18 :             shape_function_values( pnt, 3 ) = integration_points[pnt].Z()</span></a>
+<a name="1394"><span class="lineNum">    1394 </span><span class="lineCov">         18 :                                               - ( integration_points[pnt].X() * integration_points[pnt].Z() )</span></a>
+<a name="1395"><span class="lineNum">    1395 </span><span class="lineCov">         18 :                                               - ( integration_points[pnt].Y() * integration_points[pnt].Z() );</span></a>
+<a name="1396"><span class="lineNum">    1396 </span><span class="lineCov">         18 :             shape_function_values( pnt, 4 ) = ( integration_points[pnt].X() * integration_points[pnt].Z() );</span></a>
+<a name="1397"><span class="lineNum">    1397 </span><span class="lineCov">         18 :             shape_function_values( pnt, 5 ) = ( integration_points[pnt].Y() * integration_points[pnt].Z() );</span></a>
 <a name="1398"><span class="lineNum">    1398 </span>            :         }</a>
 <a name="1399"><span class="lineNum">    1399 </span>            : </a>
-<a name="1400"><span class="lineNum">    1400 </span><span class="lineCov">          6 :         return shape_function_values;</span></a>
-<a name="1401"><span class="lineNum">    1401 </span><span class="lineCov">          6 :     }</span></a>
+<a name="1400"><span class="lineNum">    1400 </span><span class="lineCov">          4 :         return shape_function_values;</span></a>
+<a name="1401"><span class="lineNum">    1401 </span><span class="lineCov">          4 :     }</span></a>
 <a name="1402"><span class="lineNum">    1402 </span>            : </a>
 <a name="1403"><span class="lineNum">    1403 </span>            :     /**</a>
 <a name="1404"><span class="lineNum">    1404 </span>            :      * TODO: implemented but not yet tested</a>
@@ -1474,53 +1474,53 @@
 <a name="1412"><span class="lineNum">    1412 </span>            :      * @return the vector of the gradients of all shape functions</a>
 <a name="1413"><span class="lineNum">    1413 </span>            :      * in each integration point</a>
 <a name="1414"><span class="lineNum">    1414 </span>            :      */</a>
-<a name="1415"><span class="lineNum">    1415 </span><span class="lineCov">          6 :     static ShapeFunctionsGradientsType CalculateShapeFunctionsIntegrationPointsLocalGradients(</span></a>
+<a name="1415"><span class="lineNum">    1415 </span><span class="lineCov">          4 :     static ShapeFunctionsGradientsType CalculateShapeFunctionsIntegrationPointsLocalGradients(</span></a>
 <a name="1416"><span class="lineNum">    1416 </span>            :         typename BaseType::IntegrationMethod ThisMethod )</a>
 <a name="1417"><span class="lineNum">    1417 </span>            :     {</a>
-<a name="1418"><span class="lineNum">    1418 </span><span class="lineCov">          6 :         IntegrationPointsContainerType all_integration_points =</span></a>
+<a name="1418"><span class="lineNum">    1418 </span><span class="lineCov">          4 :         IntegrationPointsContainerType all_integration_points =</span></a>
 <a name="1419"><span class="lineNum">    1419 </span>            :             AllIntegrationPoints();</a>
-<a name="1420"><span class="lineNum">    1420 </span><span class="lineCov">          6 :         IntegrationPointsArrayType integration_points =</span></a>
-<a name="1421"><span class="lineNum">    1421 </span><span class="lineCov">          6 :             all_integration_points[ThisMethod];</span></a>
+<a name="1420"><span class="lineNum">    1420 </span><span class="lineCov">          4 :         IntegrationPointsArrayType integration_points =</span></a>
+<a name="1421"><span class="lineNum">    1421 </span><span class="lineCov">          4 :             all_integration_points[ThisMethod];</span></a>
 <a name="1422"><span class="lineNum">    1422 </span>            :         //number of integration points</a>
-<a name="1423"><span class="lineNum">    1423 </span><span class="lineCov">          6 :         const int integration_points_number = integration_points.size();</span></a>
-<a name="1424"><span class="lineNum">    1424 </span><span class="lineCov">          6 :         ShapeFunctionsGradientsType d_shape_f_values( integration_points_number );</span></a>
+<a name="1423"><span class="lineNum">    1423 </span><span class="lineCov">          4 :         const int integration_points_number = integration_points.size();</span></a>
+<a name="1424"><span class="lineNum">    1424 </span><span class="lineCov">          4 :         ShapeFunctionsGradientsType d_shape_f_values( integration_points_number );</span></a>
 <a name="1425"><span class="lineNum">    1425 </span>            :         //initialising container</a>
 <a name="1426"><span class="lineNum">    1426 </span>            :         //std::fill(d_shape_f_values.begin(), d_shape_f_values.end(), Matrix(4,2));</a>
 <a name="1427"><span class="lineNum">    1427 </span>            :         //loop over all integration points</a>
 <a name="1428"><span class="lineNum">    1428 </span>            : </a>
-<a name="1429"><span class="lineNum">    1429 </span><span class="lineCov">         33 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
+<a name="1429"><span class="lineNum">    1429 </span><span class="lineCov">         22 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
 <a name="1430"><span class="lineNum">    1430 </span>            :         {</a>
-<a name="1431"><span class="lineNum">    1431 </span><span class="lineCov">         27 :             Matrix result = ZeroMatrix( 6, 3 );</span></a>
-<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">         27 :             result( 0, 0 ) = -1.0 + integration_points[pnt].Z();</span></a>
-<a name="1433"><span class="lineNum">    1433 </span><span class="lineCov">         27 :             result( 0, 1 ) = -1.0 + integration_points[pnt].Z();</span></a>
-<a name="1434"><span class="lineNum">    1434 </span><span class="lineCov">         27 :             result( 0, 2 ) = -1.0 + integration_points[pnt].X() + integration_points[pnt].Y();</span></a>
-<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">         27 :             result( 1, 0 ) =  1.0 - integration_points[pnt].Z();</span></a>
-<a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">         27 :             result( 1, 1 ) =  0.0;</span></a>
-<a name="1437"><span class="lineNum">    1437 </span><span class="lineCov">         27 :             result( 1, 2 ) =  -integration_points[pnt].X();</span></a>
-<a name="1438"><span class="lineNum">    1438 </span><span class="lineCov">         27 :             result( 2, 0 ) =  0.0;</span></a>
-<a name="1439"><span class="lineNum">    1439 </span><span class="lineCov">         27 :             result( 2, 1 ) =  1.0 - integration_points[pnt].Z();</span></a>
-<a name="1440"><span class="lineNum">    1440 </span><span class="lineCov">         27 :             result( 2, 2 ) =  -integration_points[pnt].Y();</span></a>
-<a name="1441"><span class="lineNum">    1441 </span><span class="lineCov">         27 :             result( 3, 0 ) =  -integration_points[pnt].Z();</span></a>
-<a name="1442"><span class="lineNum">    1442 </span><span class="lineCov">         27 :             result( 3, 1 ) =  -integration_points[pnt].Z();</span></a>
-<a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">         27 :             result( 3, 2 ) =  1.0 - integration_points[pnt].X() - integration_points[pnt].Y();</span></a>
-<a name="1444"><span class="lineNum">    1444 </span><span class="lineCov">         27 :             result( 4, 0 ) =  integration_points[pnt].Z();</span></a>
-<a name="1445"><span class="lineNum">    1445 </span><span class="lineCov">         27 :             result( 4, 1 ) =  0.0;</span></a>
-<a name="1446"><span class="lineNum">    1446 </span><span class="lineCov">         27 :             result( 4, 2 ) =  integration_points[pnt].X();</span></a>
-<a name="1447"><span class="lineNum">    1447 </span><span class="lineCov">         27 :             result( 5, 0 ) =  0.0;</span></a>
-<a name="1448"><span class="lineNum">    1448 </span><span class="lineCov">         27 :             result( 5, 1 ) =  integration_points[pnt].Z();</span></a>
-<a name="1449"><span class="lineNum">    1449 </span><span class="lineCov">         27 :             result( 5, 2 ) =  integration_points[pnt].Y();</span></a>
+<a name="1431"><span class="lineNum">    1431 </span><span class="lineCov">         18 :             Matrix result = ZeroMatrix( 6, 3 );</span></a>
+<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">         18 :             result( 0, 0 ) = -1.0 + integration_points[pnt].Z();</span></a>
+<a name="1433"><span class="lineNum">    1433 </span><span class="lineCov">         18 :             result( 0, 1 ) = -1.0 + integration_points[pnt].Z();</span></a>
+<a name="1434"><span class="lineNum">    1434 </span><span class="lineCov">         18 :             result( 0, 2 ) = -1.0 + integration_points[pnt].X() + integration_points[pnt].Y();</span></a>
+<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">         18 :             result( 1, 0 ) =  1.0 - integration_points[pnt].Z();</span></a>
+<a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">         18 :             result( 1, 1 ) =  0.0;</span></a>
+<a name="1437"><span class="lineNum">    1437 </span><span class="lineCov">         18 :             result( 1, 2 ) =  -integration_points[pnt].X();</span></a>
+<a name="1438"><span class="lineNum">    1438 </span><span class="lineCov">         18 :             result( 2, 0 ) =  0.0;</span></a>
+<a name="1439"><span class="lineNum">    1439 </span><span class="lineCov">         18 :             result( 2, 1 ) =  1.0 - integration_points[pnt].Z();</span></a>
+<a name="1440"><span class="lineNum">    1440 </span><span class="lineCov">         18 :             result( 2, 2 ) =  -integration_points[pnt].Y();</span></a>
+<a name="1441"><span class="lineNum">    1441 </span><span class="lineCov">         18 :             result( 3, 0 ) =  -integration_points[pnt].Z();</span></a>
+<a name="1442"><span class="lineNum">    1442 </span><span class="lineCov">         18 :             result( 3, 1 ) =  -integration_points[pnt].Z();</span></a>
+<a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">         18 :             result( 3, 2 ) =  1.0 - integration_points[pnt].X() - integration_points[pnt].Y();</span></a>
+<a name="1444"><span class="lineNum">    1444 </span><span class="lineCov">         18 :             result( 4, 0 ) =  integration_points[pnt].Z();</span></a>
+<a name="1445"><span class="lineNum">    1445 </span><span class="lineCov">         18 :             result( 4, 1 ) =  0.0;</span></a>
+<a name="1446"><span class="lineNum">    1446 </span><span class="lineCov">         18 :             result( 4, 2 ) =  integration_points[pnt].X();</span></a>
+<a name="1447"><span class="lineNum">    1447 </span><span class="lineCov">         18 :             result( 5, 0 ) =  0.0;</span></a>
+<a name="1448"><span class="lineNum">    1448 </span><span class="lineCov">         18 :             result( 5, 1 ) =  integration_points[pnt].Z();</span></a>
+<a name="1449"><span class="lineNum">    1449 </span><span class="lineCov">         18 :             result( 5, 2 ) =  integration_points[pnt].Y();</span></a>
 <a name="1450"><span class="lineNum">    1450 </span>            :             d_shape_f_values[pnt] = result;</a>
 <a name="1451"><span class="lineNum">    1451 </span>            :         }</a>
 <a name="1452"><span class="lineNum">    1452 </span>            : </a>
-<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">          6 :         return d_shape_f_values;</span></a>
-<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">          6 :     }</span></a>
+<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">          4 :         return d_shape_f_values;</span></a>
+<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">          4 :     }</span></a>
 <a name="1455"><span class="lineNum">    1455 </span>            : </a>
 <a name="1456"><span class="lineNum">    1456 </span>            :     /**</a>
 <a name="1457"><span class="lineNum">    1457 </span>            :      * TODO: testing</a>
 <a name="1458"><span class="lineNum">    1458 </span>            :      */</a>
-<a name="1459"><span class="lineNum">    1459 </span><span class="lineCov">         15 :     static const IntegrationPointsContainerType AllIntegrationPoints()</span></a>
+<a name="1459"><span class="lineNum">    1459 </span><span class="lineCov">         10 :     static const IntegrationPointsContainerType AllIntegrationPoints()</span></a>
 <a name="1460"><span class="lineNum">    1460 </span>            :     {</a>
-<a name="1461"><span class="lineNum">    1461 </span><span class="lineCov">         15 :         IntegrationPointsContainerType integration_points =</span></a>
+<a name="1461"><span class="lineNum">    1461 </span><span class="lineCov">         10 :         IntegrationPointsContainerType integration_points =</span></a>
 <a name="1462"><span class="lineNum">    1462 </span>            :         {</a>
 <a name="1463"><span class="lineNum">    1463 </span>            :             {</a>
 <a name="1464"><span class="lineNum">    1464 </span>            :                 Quadrature&lt;PrismGaussLobattoIntegrationPoints1,</a>
@@ -1532,15 +1532,15 @@
 <a name="1470"><span class="lineNum">    1470 </span>            :             }</a>
 <a name="1471"><span class="lineNum">    1471 </span>            :         };</a>
 <a name="1472"><span class="lineNum">    1472 </span>            : </a>
-<a name="1473"><span class="lineNum">    1473 </span><span class="lineCov">         15 :         return integration_points;</span></a>
+<a name="1473"><span class="lineNum">    1473 </span><span class="lineCov">         10 :         return integration_points;</span></a>
 <a name="1474"><span class="lineNum">    1474 </span>            :     }</a>
 <a name="1475"><span class="lineNum">    1475 </span>            : </a>
 <a name="1476"><span class="lineNum">    1476 </span>            :     /**</a>
 <a name="1477"><span class="lineNum">    1477 </span>            :      * TODO: testing</a>
 <a name="1478"><span class="lineNum">    1478 </span>            :      */</a>
-<a name="1479"><span class="lineNum">    1479 </span><span class="lineCov">          3 :     static const ShapeFunctionsValuesContainerType AllShapeFunctionsValues()</span></a>
+<a name="1479"><span class="lineNum">    1479 </span><span class="lineCov">          2 :     static const ShapeFunctionsValuesContainerType AllShapeFunctionsValues()</span></a>
 <a name="1480"><span class="lineNum">    1480 </span>            :     {</a>
-<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">          3 :         ShapeFunctionsValuesContainerType shape_functions_values =</span></a>
+<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">          2 :         ShapeFunctionsValuesContainerType shape_functions_values =</span></a>
 <a name="1482"><span class="lineNum">    1482 </span>            :         {</a>
 <a name="1483"><span class="lineNum">    1483 </span>            :             {</a>
 <a name="1484"><span class="lineNum">    1484 </span>            :                 PrismInterface3D6&lt;TPointType&gt;::CalculateShapeFunctionsIntegrationPointsValues(</a>
@@ -1551,16 +1551,16 @@
 <a name="1489"><span class="lineNum">    1489 </span>            :                 Matrix()</a>
 <a name="1490"><span class="lineNum">    1490 </span>            :             }</a>
 <a name="1491"><span class="lineNum">    1491 </span>            :         };</a>
-<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">          3 :         return shape_functions_values;</span></a>
+<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">          2 :         return shape_functions_values;</span></a>
 <a name="1493"><span class="lineNum">    1493 </span>            :     }</a>
 <a name="1494"><span class="lineNum">    1494 </span>            : </a>
 <a name="1495"><span class="lineNum">    1495 </span>            :     /**</a>
 <a name="1496"><span class="lineNum">    1496 </span>            :      * TODO: testing</a>
 <a name="1497"><span class="lineNum">    1497 </span>            :      */</a>
 <a name="1498"><span class="lineNum">    1498 </span>            :     static const ShapeFunctionsLocalGradientsContainerType</a>
-<a name="1499"><span class="lineNum">    1499 </span><span class="lineCov">          3 :     AllShapeFunctionsLocalGradients()</span></a>
+<a name="1499"><span class="lineNum">    1499 </span><span class="lineCov">          2 :     AllShapeFunctionsLocalGradients()</span></a>
 <a name="1500"><span class="lineNum">    1500 </span>            :     {</a>
-<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">          3 :         ShapeFunctionsLocalGradientsContainerType shape_functions_local_gradients =</span></a>
+<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">          2 :         ShapeFunctionsLocalGradientsContainerType shape_functions_local_gradients =</span></a>
 <a name="1502"><span class="lineNum">    1502 </span>            :         {</a>
 <a name="1503"><span class="lineNum">    1503 </span>            :             {</a>
 <a name="1504"><span class="lineNum">    1504 </span>            :                 PrismInterface3D6&lt;TPointType&gt;::CalculateShapeFunctionsIntegrationPointsLocalGradients( GeometryData::GI_GAUSS_1 ),</a>
@@ -1569,7 +1569,7 @@
 <a name="1507"><span class="lineNum">    1507 </span>            :                 ShapeFunctionsGradientsType(),</a>
 <a name="1508"><span class="lineNum">    1508 </span>            :             }</a>
 <a name="1509"><span class="lineNum">    1509 </span>            :         };</a>
-<a name="1510"><span class="lineNum">    1510 </span><span class="lineCov">          3 :         return shape_functions_local_gradients;</span></a>
+<a name="1510"><span class="lineNum">    1510 </span><span class="lineCov">          2 :         return shape_functions_local_gradients;</span></a>
 <a name="1511"><span class="lineNum">    1511 </span>            :     }</a>
 <a name="1512"><span class="lineNum">    1512 </span>            : </a>
 <a name="1513"><span class="lineNum">    1513 </span>            :     ///@}</a>

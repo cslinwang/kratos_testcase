@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -339,7 +339,7 @@
 <a name="277"><span class="lineNum">     277 </span>            :         /**</a>
 <a name="278"><span class="lineNum">     278 </span>            :          * Checks if the block builder and solver performs correctly the assemble of the system</a>
 <a name="279"><span class="lineNum">     279 </span>            :          */</a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(BasicDisplacementBlockBuilderAndSolver, KratosCoreFastSuite)</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(BasicDisplacementBlockBuilderAndSolver, KratosCoreFastSuite)</span></a>
 <a name="281"><span class="lineNum">     281 </span>            :         {</a>
 <a name="282"><span class="lineNum">     282 </span>            :             Model current_model;</a>
 <a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :             ModelPart&amp; r_model_part = current_model.CreateModelPart(&quot;Main&quot;, 3);</span></a>
@@ -439,7 +439,7 @@
 <a name="377"><span class="lineNum">     377 </span>            :         /**</a>
 <a name="378"><span class="lineNum">     378 </span>            :          * Checks if the elimination builder and solver performs correctly the assemble of the system</a>
 <a name="379"><span class="lineNum">     379 </span>            :          */</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(BasicDisplacementEliminationBuilderAndSolver, KratosCoreFastSuite)</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(BasicDisplacementEliminationBuilderAndSolver, KratosCoreFastSuite)</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :         {</a>
 <a name="382"><span class="lineNum">     382 </span>            :             Model current_model;</a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :             ModelPart&amp; r_model_part = current_model.CreateModelPart(&quot;Main&quot;, 3);</span></a>
@@ -469,7 +469,7 @@
 <a name="407"><span class="lineNum">     407 </span>            :         /**</a>
 <a name="408"><span class="lineNum">     408 </span>            :          * Checks if the elimination builder and solver (with constraints) performs correctly the assemble of the system</a>
 <a name="409"><span class="lineNum">     409 </span>            :          */</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(BasicDisplacementEliminationBuilderAndSolverWithConstraints, KratosCoreFastSuite)</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(BasicDisplacementEliminationBuilderAndSolverWithConstraints, KratosCoreFastSuite)</span></a>
 <a name="411"><span class="lineNum">     411 </span>            :         {</a>
 <a name="412"><span class="lineNum">     412 </span>            :             Model current_model;</a>
 <a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :             ModelPart&amp; r_model_part = current_model.CreateModelPart(&quot;Main&quot;, 3);</span></a>
@@ -495,7 +495,7 @@
 <a name="433"><span class="lineNum">     433 </span>            :         /**</a>
 <a name="434"><span class="lineNum">     434 </span>            :          * Checks if the block builder and solver performs correctly the assemble of the system</a>
 <a name="435"><span class="lineNum">     435 </span>            :          */</a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(ExtendedDisplacementBlockBuilderAndSolver, KratosCoreFastSuite)</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(ExtendedDisplacementBlockBuilderAndSolver, KratosCoreFastSuite)</span></a>
 <a name="437"><span class="lineNum">     437 </span>            :         {</a>
 <a name="438"><span class="lineNum">     438 </span>            :             Model current_model;</a>
 <a name="439"><span class="lineNum">     439 </span><span class="lineNoCov">          0 :             ModelPart&amp; r_model_part = current_model.CreateModelPart(&quot;Main&quot;, 3);</span></a>
@@ -771,7 +771,7 @@
 <a name="709"><span class="lineNum">     709 </span>            :         /**</a>
 <a name="710"><span class="lineNum">     710 </span>            :          * Checks if the elimination builder and solver performs correctly the assemble of the system</a>
 <a name="711"><span class="lineNum">     711 </span>            :          */</a>
-<a name="712"><span class="lineNum">     712 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(ExtendedDisplacementEliminationBuilderAndSolver, KratosCoreFastSuite)</span></a>
+<a name="712"><span class="lineNum">     712 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(ExtendedDisplacementEliminationBuilderAndSolver, KratosCoreFastSuite)</span></a>
 <a name="713"><span class="lineNum">     713 </span>            :         {</a>
 <a name="714"><span class="lineNum">     714 </span>            :             Model current_model;</a>
 <a name="715"><span class="lineNum">     715 </span><span class="lineNoCov">          0 :             ModelPart&amp; r_model_part = current_model.CreateModelPart(&quot;Main&quot;, 3);</span></a>
@@ -907,7 +907,7 @@
 <a name="845"><span class="lineNum">     845 </span>            :         /**</a>
 <a name="846"><span class="lineNum">     846 </span>            :          * Checks if the elimination builder and solver (with constraints) performs correctly the assemble of the system</a>
 <a name="847"><span class="lineNum">     847 </span>            :          */</a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(ExtendedDisplacementEliminationBuilderAndSolverWithConstraints, KratosCoreFastSuite)</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(ExtendedDisplacementEliminationBuilderAndSolverWithConstraints, KratosCoreFastSuite)</span></a>
 <a name="849"><span class="lineNum">     849 </span>            :         {</a>
 <a name="850"><span class="lineNum">     850 </span>            :             Model current_model;</a>
 <a name="851"><span class="lineNum">     851 </span><span class="lineNoCov">          0 :             ModelPart&amp; r_model_part = current_model.CreateModelPart(&quot;Main&quot;, 3);</span></a>

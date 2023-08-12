@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -122,11 +122,11 @@
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            :     typedef T element_type;</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        951 :     constexpr intrusive_ptr() noexcept : px( 0 )</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">        634 :     constexpr intrusive_ptr() noexcept : px( 0 )</span></a>
 <a name="64"><span class="lineNum">      64 </span>            :     {</a>
 <a name="65"><span class="lineNum">      65 </span>            :     }</a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          3 :     intrusive_ptr( T * p, bool add_ref = true ): px( p )</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          2 :     intrusive_ptr( T * p, bool add_ref = true ): px( p )</span></a>
 <a name="68"><span class="lineNum">      68 </span>            :     {</a>
 <a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 :         if( px != 0 &amp;&amp; add_ref ) intrusive_ptr_add_ref( px );</span></a>
 <a name="70"><span class="lineNum">      70 </span>            :     }</a>
@@ -142,15 +142,15 @@
 <a name="80"><span class="lineNum">      80 </span>            : </a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        957 :     intrusive_ptr(intrusive_ptr const &amp; rhs): px( rhs.px )</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">        638 :     intrusive_ptr(intrusive_ptr const &amp; rhs): px( rhs.px )</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :     {</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        957 :         if( px != 0 ) intrusive_ptr_add_ref( px );</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        638 :         if( px != 0 ) intrusive_ptr_add_ref( px );</span></a>
 <a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="87"><span class="lineNum">      87 </span>            : </a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          9 :     ~intrusive_ptr()</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          6 :     ~intrusive_ptr()</span></a>
 <a name="89"><span class="lineNum">      89 </span>            :     {</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       1917 :         if( px != 0 ) intrusive_ptr_release( px );</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1908 :     }</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       1278 :         if( px != 0 ) intrusive_ptr_release( px );</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1272 :     }</span></a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
@@ -235,7 +235,7 @@
 <a name="173"><span class="lineNum">     173 </span>            :     T * operator-&gt;() const noexcept</a>
 <a name="174"><span class="lineNum">     174 </span>            :     {</a>
 <a name="175"><span class="lineNum">     175 </span>            :         (static_cast&lt;void&gt; (0));</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         12 :         return px;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          8 :         return px;</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :     }</a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
 <a name="179"><span class="lineNum">     179 </span>            :     explicit operator bool () const noexcept</a>

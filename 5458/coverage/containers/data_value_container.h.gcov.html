@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -156,7 +156,7 @@
 <a name="94"><span class="lineNum">      94 </span>            :     ///@{</a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
 <a name="96"><span class="lineNum">      96 </span>            :     /// Default constructor.</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">         21 :     DataValueContainer() {}</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">         14 :     DataValueContainer() {}</span></a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
 <a name="99"><span class="lineNum">      99 </span>            :     /// Copy constructor.</a>
 <a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 :     DataValueContainer(DataValueContainer const&amp; rOther)</span></a>
@@ -166,11 +166,11 @@
 <a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="105"><span class="lineNum">     105 </span>            : </a>
 <a name="106"><span class="lineNum">     106 </span>            :     /// Destructor.</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        141 :     virtual ~DataValueContainer()</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">        141 :     {</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        141 :         for(iterator i = mData.begin() ; i != mData.end() ; ++i)</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         94 :     virtual ~DataValueContainer()</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         94 :     {</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">         94 :         for(iterator i = mData.begin() ; i != mData.end() ; ++i)</span></a>
 <a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :             i-&gt;first-&gt;Delete(i-&gt;second);</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">        141 :     }</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         94 :     }</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
 <a name="113"><span class="lineNum">     113 </span>            : </a>
 <a name="114"><span class="lineNum">     114 </span>            :     ///@}</a>

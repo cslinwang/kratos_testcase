@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -101,19 +101,19 @@
 <a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="40"><span class="lineNum">      40 </span>            : </a>
 <a name="41"><span class="lineNum">      41 </span>            : </a>
-<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          3 : void AddKratosApplicationToPython(pybind11::module&amp; m) {</span></a>
-<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          3 :     py::class_&lt;KratosApplication, KratosApplication::Pointer&gt;(m,&quot;KratosApplication&quot;)</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineCov">          2 : void AddKratosApplicationToPython(pybind11::module&amp; m) {</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          2 :     py::class_&lt;KratosApplication, KratosApplication::Pointer&gt;(m,&quot;KratosApplication&quot;)</span></a>
 <a name="44"><span class="lineNum">      44 </span>            :         .def(py::init&lt;std::string&gt;())</a>
-<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          6 :         .def(&quot;Register&quot;, [](KratosApplication&amp; self){</span></a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineCov">          4 :         .def(&quot;Register&quot;, [](KratosApplication&amp; self){</span></a>
 <a name="46"><span class="lineNum">      46 </span>            :             std::cout &lt;&lt; &quot;*************************************&quot; &lt;&lt; std::endl;</a>
 <a name="47"><span class="lineNum">      47 </span>            :             std::cout &lt;&lt; &quot;application name = &quot; &lt;&lt; self.Name() &lt;&lt; std::endl;</a>
 <a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :             self.Register();</span></a>
 <a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :             RegisterToPythonApplicationVariables(self.Name());</span></a>
 <a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="51"><span class="lineNum">      51 </span>            :         )</a>
-<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          3 :         .def(&quot;__str__&quot;, PrintObject&lt;KratosApplication&gt;)</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineCov">          2 :         .def(&quot;__str__&quot;, PrintObject&lt;KratosApplication&gt;)</span></a>
 <a name="53"><span class="lineNum">      53 </span>            :         ;</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          3 : }</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          2 : }</span></a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <a name="56"><span class="lineNum">      56 </span>            : }  // namespace Python.</a>
 <a name="57"><span class="lineNum">      57 </span>            : </a>

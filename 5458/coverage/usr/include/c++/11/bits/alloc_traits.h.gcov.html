@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -523,7 +523,7 @@
 <a name="461"><span class="lineNum">     461 </span>            :       */</a>
 <a name="462"><span class="lineNum">     462 </span>            :       _GLIBCXX_NODISCARD static _GLIBCXX20_CONSTEXPR pointer</a>
 <a name="463"><span class="lineNum">     463 </span>            :       allocate(allocator_type&amp; __a, size_type __n)</a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">     118308 :       { return __a.allocate(__n); }</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">      78872 :       { return __a.allocate(__n); }</span></a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
 <a name="466"><span class="lineNum">     466 </span>            :       /**</a>
 <a name="467"><span class="lineNum">     467 </span>            :        *  @brief  Allocate memory.</a>
@@ -555,7 +555,7 @@
 <a name="493"><span class="lineNum">     493 </span>            :       */</a>
 <a name="494"><span class="lineNum">     494 </span>            :       static _GLIBCXX20_CONSTEXPR void</a>
 <a name="495"><span class="lineNum">     495 </span>            :       deallocate(allocator_type&amp; __a, pointer __p, size_type __n)</a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">      89673 :       { __a.deallocate(__p, __n); }</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">      59782 :       { __a.deallocate(__p, __n); }</span></a>
 <a name="497"><span class="lineNum">     497 </span>            : </a>
 <a name="498"><span class="lineNum">     498 </span>            :       /**</a>
 <a name="499"><span class="lineNum">     499 </span>            :        *  @brief  Construct an object of type `_Up`</a>
@@ -575,11 +575,11 @@
 <a name="513"><span class="lineNum">     513 </span>            :         noexcept(std::is_nothrow_constructible&lt;_Up, _Args...&gt;::value)</a>
 <a name="514"><span class="lineNum">     514 </span>            :         {</a>
 <a name="515"><span class="lineNum">     515 </span>            : #if __cplusplus &lt;= 201703L</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          3 :           __a.construct(__p, std::forward&lt;_Args&gt;(__args)...);</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          2 :           __a.construct(__p, std::forward&lt;_Args&gt;(__args)...);</span></a>
 <a name="517"><span class="lineNum">     517 </span>            : #else</a>
 <a name="518"><span class="lineNum">     518 </span>            :           std::construct_at(__p, std::forward&lt;_Args&gt;(__args)...);</a>
 <a name="519"><span class="lineNum">     519 </span>            : #endif</a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">        126 :         }</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         84 :         }</span></a>
 <a name="521"><span class="lineNum">     521 </span>            : </a>
 <a name="522"><span class="lineNum">     522 </span>            :       /**</a>
 <a name="523"><span class="lineNum">     523 </span>            :        *  @brief  Destroy an object of type @a _Up</a>

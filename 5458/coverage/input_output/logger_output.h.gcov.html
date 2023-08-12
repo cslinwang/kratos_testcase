@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -124,13 +124,13 @@
 <a name="62"><span class="lineNum">      62 </span>            :   ///@{</a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
 <a name="64"><span class="lineNum">      64 </span>            :   explicit LoggerOutput(std::ostream&amp; rOutputStream)</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          3 :     : mrStream(rOutputStream), mMaxLevel(1), mSeverity(LoggerMessage::Severity::INFO), mCategory(LoggerMessage::Category::STATUS) {}</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          2 :     : mrStream(rOutputStream), mMaxLevel(1), mSeverity(LoggerMessage::Severity::INFO), mCategory(LoggerMessage::Category::STATUS) {}</span></a>
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            :   LoggerOutput(LoggerOutput const&amp; Other)</a>
 <a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :     : mrStream(Other.mrStream), mMaxLevel(Other.mMaxLevel), mSeverity(Other.mSeverity), mCategory(Other.mCategory) {}</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            :   /// Destructor.</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          3 :   virtual ~LoggerOutput() {}</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          2 :   virtual ~LoggerOutput() {}</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
 <a name="74"><span class="lineNum">      74 </span>            :   ///@}</a>

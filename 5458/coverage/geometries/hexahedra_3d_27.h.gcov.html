@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -339,12 +339,12 @@
 <a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :         this-&gt;Points().push_back( pPoint27 );</span></a>
 <a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="279"><span class="lineNum">     279 </span>            : </a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          3 :     Hexahedra3D27( const PointsArrayType&amp; ThisPoints )</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          3 :         : BaseType( ThisPoints, &amp;msGeometryData )</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">          2 :     Hexahedra3D27( const PointsArrayType&amp; ThisPoints )</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          2 :         : BaseType( ThisPoints, &amp;msGeometryData )</span></a>
 <a name="282"><span class="lineNum">     282 </span>            :     {</a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          3 :         if ( this-&gt;PointsNumber() != 27 )</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          2 :         if ( this-&gt;PointsNumber() != 27 )</span></a>
 <a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :             KRATOS_ERROR &lt;&lt; &quot;Invalid points number. Expected 27, given &quot; &lt;&lt; this-&gt;PointsNumber() &lt;&lt; std::endl;</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          3 :     }</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          2 :     }</span></a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            :     /**</a>
 <a name="288"><span class="lineNum">     288 </span>            :      * Copy constructor.</a>
@@ -378,7 +378,7 @@
 <a name="316"><span class="lineNum">     316 </span>            :     }</a>
 <a name="317"><span class="lineNum">     317 </span>            : </a>
 <a name="318"><span class="lineNum">     318 </span>            :     /// Destructor. Does nothing!!!</a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          3 :     ~Hexahedra3D27() override {}</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          2 :     ~Hexahedra3D27() override {}</span></a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
 <a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :     GeometryData::KratosGeometryFamily GetGeometryFamily() const override</span></a>
 <a name="322"><span class="lineNum">     322 </span>            :     {</a>
@@ -1202,64 +1202,64 @@
 <a name="1140"><span class="lineNum">    1140 </span>            :      *</a>
 <a name="1141"><span class="lineNum">    1141 </span>            :      * KLUDGE: values are hard-coded!</a>
 <a name="1142"><span class="lineNum">    1142 </span>            :      */</a>
-<a name="1143"><span class="lineNum">    1143 </span><span class="lineCov">         30 :     static Matrix CalculateShapeFunctionsIntegrationPointsValues(</span></a>
+<a name="1143"><span class="lineNum">    1143 </span><span class="lineCov">         20 :     static Matrix CalculateShapeFunctionsIntegrationPointsValues(</span></a>
 <a name="1144"><span class="lineNum">    1144 </span>            :         typename BaseType::IntegrationMethod ThisMethod )</a>
 <a name="1145"><span class="lineNum">    1145 </span>            :     {</a>
-<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">         30 :         IntegrationPointsContainerType all_integration_points =</span></a>
+<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">         20 :         IntegrationPointsContainerType all_integration_points =</span></a>
 <a name="1147"><span class="lineNum">    1147 </span>            :             AllIntegrationPoints();</a>
-<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">         30 :         IntegrationPointsArrayType integration_points =</span></a>
-<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">         30 :             all_integration_points[ThisMethod];</span></a>
+<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">         20 :         IntegrationPointsArrayType integration_points =</span></a>
+<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">         20 :             all_integration_points[ThisMethod];</span></a>
 <a name="1150"><span class="lineNum">    1150 </span>            :         //number of integration points</a>
-<a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">         30 :         const int integration_points_number = integration_points.size();</span></a>
+<a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">         20 :         const int integration_points_number = integration_points.size();</span></a>
 <a name="1152"><span class="lineNum">    1152 </span>            :         //number of nodes in current geometry</a>
 <a name="1153"><span class="lineNum">    1153 </span>            :         const int points_number = 27;</a>
 <a name="1154"><span class="lineNum">    1154 </span>            :         //setting up return matrix</a>
-<a name="1155"><span class="lineNum">    1155 </span><span class="lineCov">         30 :         Matrix shape_function_values( integration_points_number, points_number );</span></a>
+<a name="1155"><span class="lineNum">    1155 </span><span class="lineCov">         20 :         Matrix shape_function_values( integration_points_number, points_number );</span></a>
 <a name="1156"><span class="lineNum">    1156 </span>            :         //loop over all integration points</a>
 <a name="1157"><span class="lineNum">    1157 </span>            : </a>
-<a name="1158"><span class="lineNum">    1158 </span><span class="lineCov">       1380 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
+<a name="1158"><span class="lineNum">    1158 </span><span class="lineCov">        920 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
 <a name="1159"><span class="lineNum">    1159 </span>            :         {</a>
-<a name="1160"><span class="lineNum">    1160 </span><span class="lineCov">       1350 :             double fx1 = 0.5 * ( integration_points[pnt].X() - 1.0 ) * ( integration_points[pnt].X() );</span></a>
-<a name="1161"><span class="lineNum">    1161 </span><span class="lineCov">       1350 :             double fx2 = 0.5 * ( integration_points[pnt].X() + 1.0 ) * ( integration_points[pnt].X() );</span></a>
-<a name="1162"><span class="lineNum">    1162 </span><span class="lineCov">       1350 :             double fx3 = 1.0 - ( integration_points[pnt].X() * integration_points[pnt].X() );</span></a>
-<a name="1163"><span class="lineNum">    1163 </span><span class="lineCov">       1350 :             double fy1 = 0.5 * ( integration_points[pnt].Y() - 1.0 ) * ( integration_points[pnt].Y() );</span></a>
-<a name="1164"><span class="lineNum">    1164 </span><span class="lineCov">       1350 :             double fy2 = 0.5 * ( integration_points[pnt].Y() + 1.0 ) * ( integration_points[pnt].Y() );</span></a>
-<a name="1165"><span class="lineNum">    1165 </span><span class="lineCov">       1350 :             double fy3 = 1.0 - ( integration_points[pnt].Y() * integration_points[pnt].Y() );</span></a>
-<a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">       1350 :             double fz1 = 0.5 * ( integration_points[pnt].Z() - 1.0 ) * ( integration_points[pnt].Z() );</span></a>
-<a name="1167"><span class="lineNum">    1167 </span><span class="lineCov">       1350 :             double fz2 = 0.5 * ( integration_points[pnt].Z() + 1.0 ) * ( integration_points[pnt].Z() );</span></a>
-<a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">       1350 :             double fz3 = 1.0 - ( integration_points[pnt].Z() * integration_points[pnt].Z() );</span></a>
+<a name="1160"><span class="lineNum">    1160 </span><span class="lineCov">        900 :             double fx1 = 0.5 * ( integration_points[pnt].X() - 1.0 ) * ( integration_points[pnt].X() );</span></a>
+<a name="1161"><span class="lineNum">    1161 </span><span class="lineCov">        900 :             double fx2 = 0.5 * ( integration_points[pnt].X() + 1.0 ) * ( integration_points[pnt].X() );</span></a>
+<a name="1162"><span class="lineNum">    1162 </span><span class="lineCov">        900 :             double fx3 = 1.0 - ( integration_points[pnt].X() * integration_points[pnt].X() );</span></a>
+<a name="1163"><span class="lineNum">    1163 </span><span class="lineCov">        900 :             double fy1 = 0.5 * ( integration_points[pnt].Y() - 1.0 ) * ( integration_points[pnt].Y() );</span></a>
+<a name="1164"><span class="lineNum">    1164 </span><span class="lineCov">        900 :             double fy2 = 0.5 * ( integration_points[pnt].Y() + 1.0 ) * ( integration_points[pnt].Y() );</span></a>
+<a name="1165"><span class="lineNum">    1165 </span><span class="lineCov">        900 :             double fy3 = 1.0 - ( integration_points[pnt].Y() * integration_points[pnt].Y() );</span></a>
+<a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">        900 :             double fz1 = 0.5 * ( integration_points[pnt].Z() - 1.0 ) * ( integration_points[pnt].Z() );</span></a>
+<a name="1167"><span class="lineNum">    1167 </span><span class="lineCov">        900 :             double fz2 = 0.5 * ( integration_points[pnt].Z() + 1.0 ) * ( integration_points[pnt].Z() );</span></a>
+<a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">        900 :             double fz3 = 1.0 - ( integration_points[pnt].Z() * integration_points[pnt].Z() );</span></a>
 <a name="1169"><span class="lineNum">    1169 </span>            : </a>
-<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 0 ) = ( fx1 * fy1 * fz1 );</span></a>
-<a name="1171"><span class="lineNum">    1171 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 1 ) = ( fx2 * fy1 * fz1 );</span></a>
-<a name="1172"><span class="lineNum">    1172 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 2 ) = ( fx2 * fy2 * fz1 );</span></a>
-<a name="1173"><span class="lineNum">    1173 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 3 ) = ( fx1 * fy2 * fz1 );</span></a>
-<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 4 ) = ( fx1 * fy1 * fz2 );</span></a>
-<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 5 ) = ( fx2 * fy1 * fz2 );</span></a>
-<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 6 ) = ( fx2 * fy2 * fz2 );</span></a>
-<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 7 ) = ( fx1 * fy2 * fz2 );</span></a>
-<a name="1178"><span class="lineNum">    1178 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 8 ) = ( fx3 * fy1 * fz1 );</span></a>
-<a name="1179"><span class="lineNum">    1179 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 9 ) = ( fx2 * fy3 * fz1 );</span></a>
-<a name="1180"><span class="lineNum">    1180 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 10 ) = ( fx3 * fy2 * fz1 );</span></a>
-<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 11 ) = ( fx1 * fy3 * fz1 );</span></a>
-<a name="1182"><span class="lineNum">    1182 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 12 ) = ( fx1 * fy1 * fz3 );</span></a>
-<a name="1183"><span class="lineNum">    1183 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 13 ) = ( fx2 * fy1 * fz3 );</span></a>
-<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 14 ) = ( fx2 * fy2 * fz3 );</span></a>
-<a name="1185"><span class="lineNum">    1185 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 15 ) = ( fx1 * fy2 * fz3 );</span></a>
-<a name="1186"><span class="lineNum">    1186 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 16 ) = ( fx3 * fy1 * fz2 );</span></a>
-<a name="1187"><span class="lineNum">    1187 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 17 ) = ( fx2 * fy3 * fz2 );</span></a>
-<a name="1188"><span class="lineNum">    1188 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 18 ) = ( fx3 * fy2 * fz2 );</span></a>
-<a name="1189"><span class="lineNum">    1189 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 19 ) = ( fx1 * fy3 * fz2 );</span></a>
-<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 20 ) = ( fx3 * fy3 * fz1 );</span></a>
-<a name="1191"><span class="lineNum">    1191 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 21 ) = ( fx3 * fy1 * fz3 );</span></a>
-<a name="1192"><span class="lineNum">    1192 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 22 ) = ( fx2 * fy3 * fz3 );</span></a>
-<a name="1193"><span class="lineNum">    1193 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 23 ) = ( fx3 * fy2 * fz3 );</span></a>
-<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 24 ) = ( fx1 * fy3 * fz3 );</span></a>
-<a name="1195"><span class="lineNum">    1195 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 25 ) = ( fx3 * fy3 * fz2 );</span></a>
-<a name="1196"><span class="lineNum">    1196 </span><span class="lineCov">       1350 :             shape_function_values( pnt, 26 ) = ( fx3 * fy3 * fz3 );</span></a>
+<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">        900 :             shape_function_values( pnt, 0 ) = ( fx1 * fy1 * fz1 );</span></a>
+<a name="1171"><span class="lineNum">    1171 </span><span class="lineCov">        900 :             shape_function_values( pnt, 1 ) = ( fx2 * fy1 * fz1 );</span></a>
+<a name="1172"><span class="lineNum">    1172 </span><span class="lineCov">        900 :             shape_function_values( pnt, 2 ) = ( fx2 * fy2 * fz1 );</span></a>
+<a name="1173"><span class="lineNum">    1173 </span><span class="lineCov">        900 :             shape_function_values( pnt, 3 ) = ( fx1 * fy2 * fz1 );</span></a>
+<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">        900 :             shape_function_values( pnt, 4 ) = ( fx1 * fy1 * fz2 );</span></a>
+<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">        900 :             shape_function_values( pnt, 5 ) = ( fx2 * fy1 * fz2 );</span></a>
+<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">        900 :             shape_function_values( pnt, 6 ) = ( fx2 * fy2 * fz2 );</span></a>
+<a name="1177"><span class="lineNum">    1177 </span><span class="lineCov">        900 :             shape_function_values( pnt, 7 ) = ( fx1 * fy2 * fz2 );</span></a>
+<a name="1178"><span class="lineNum">    1178 </span><span class="lineCov">        900 :             shape_function_values( pnt, 8 ) = ( fx3 * fy1 * fz1 );</span></a>
+<a name="1179"><span class="lineNum">    1179 </span><span class="lineCov">        900 :             shape_function_values( pnt, 9 ) = ( fx2 * fy3 * fz1 );</span></a>
+<a name="1180"><span class="lineNum">    1180 </span><span class="lineCov">        900 :             shape_function_values( pnt, 10 ) = ( fx3 * fy2 * fz1 );</span></a>
+<a name="1181"><span class="lineNum">    1181 </span><span class="lineCov">        900 :             shape_function_values( pnt, 11 ) = ( fx1 * fy3 * fz1 );</span></a>
+<a name="1182"><span class="lineNum">    1182 </span><span class="lineCov">        900 :             shape_function_values( pnt, 12 ) = ( fx1 * fy1 * fz3 );</span></a>
+<a name="1183"><span class="lineNum">    1183 </span><span class="lineCov">        900 :             shape_function_values( pnt, 13 ) = ( fx2 * fy1 * fz3 );</span></a>
+<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">        900 :             shape_function_values( pnt, 14 ) = ( fx2 * fy2 * fz3 );</span></a>
+<a name="1185"><span class="lineNum">    1185 </span><span class="lineCov">        900 :             shape_function_values( pnt, 15 ) = ( fx1 * fy2 * fz3 );</span></a>
+<a name="1186"><span class="lineNum">    1186 </span><span class="lineCov">        900 :             shape_function_values( pnt, 16 ) = ( fx3 * fy1 * fz2 );</span></a>
+<a name="1187"><span class="lineNum">    1187 </span><span class="lineCov">        900 :             shape_function_values( pnt, 17 ) = ( fx2 * fy3 * fz2 );</span></a>
+<a name="1188"><span class="lineNum">    1188 </span><span class="lineCov">        900 :             shape_function_values( pnt, 18 ) = ( fx3 * fy2 * fz2 );</span></a>
+<a name="1189"><span class="lineNum">    1189 </span><span class="lineCov">        900 :             shape_function_values( pnt, 19 ) = ( fx1 * fy3 * fz2 );</span></a>
+<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">        900 :             shape_function_values( pnt, 20 ) = ( fx3 * fy3 * fz1 );</span></a>
+<a name="1191"><span class="lineNum">    1191 </span><span class="lineCov">        900 :             shape_function_values( pnt, 21 ) = ( fx3 * fy1 * fz3 );</span></a>
+<a name="1192"><span class="lineNum">    1192 </span><span class="lineCov">        900 :             shape_function_values( pnt, 22 ) = ( fx2 * fy3 * fz3 );</span></a>
+<a name="1193"><span class="lineNum">    1193 </span><span class="lineCov">        900 :             shape_function_values( pnt, 23 ) = ( fx3 * fy2 * fz3 );</span></a>
+<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">        900 :             shape_function_values( pnt, 24 ) = ( fx1 * fy3 * fz3 );</span></a>
+<a name="1195"><span class="lineNum">    1195 </span><span class="lineCov">        900 :             shape_function_values( pnt, 25 ) = ( fx3 * fy3 * fz2 );</span></a>
+<a name="1196"><span class="lineNum">    1196 </span><span class="lineCov">        900 :             shape_function_values( pnt, 26 ) = ( fx3 * fy3 * fz3 );</span></a>
 <a name="1197"><span class="lineNum">    1197 </span>            :         }</a>
 <a name="1198"><span class="lineNum">    1198 </span>            : </a>
-<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">         30 :         return shape_function_values;</span></a>
-<a name="1200"><span class="lineNum">    1200 </span><span class="lineCov">         30 :     }</span></a>
+<a name="1199"><span class="lineNum">    1199 </span><span class="lineCov">         20 :         return shape_function_values;</span></a>
+<a name="1200"><span class="lineNum">    1200 </span><span class="lineCov">         20 :     }</span></a>
 <a name="1201"><span class="lineNum">    1201 </span>            : </a>
 <a name="1202"><span class="lineNum">    1202 </span>            :     /**</a>
 <a name="1203"><span class="lineNum">    1203 </span>            :      * TODO: TO BE VERIFIED</a>
@@ -1273,162 +1273,162 @@
 <a name="1211"><span class="lineNum">    1211 </span>            :      * in each integration point</a>
 <a name="1212"><span class="lineNum">    1212 </span>            :      */</a>
 <a name="1213"><span class="lineNum">    1213 </span>            :     static ShapeFunctionsGradientsType</a>
-<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">         30 :     CalculateShapeFunctionsIntegrationPointsLocalGradients(</span></a>
+<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">         20 :     CalculateShapeFunctionsIntegrationPointsLocalGradients(</span></a>
 <a name="1215"><span class="lineNum">    1215 </span>            :         typename BaseType::IntegrationMethod ThisMethod )</a>
 <a name="1216"><span class="lineNum">    1216 </span>            :     {</a>
-<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">         30 :         const IntegrationPointsContainerType all_integration_points =</span></a>
+<a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">         20 :         const IntegrationPointsContainerType all_integration_points =</span></a>
 <a name="1218"><span class="lineNum">    1218 </span>            :             AllIntegrationPoints();</a>
-<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">         30 :         const IntegrationPointsArrayType integration_points =</span></a>
-<a name="1220"><span class="lineNum">    1220 </span><span class="lineCov">         30 :             all_integration_points[ThisMethod];</span></a>
+<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">         20 :         const IntegrationPointsArrayType integration_points =</span></a>
+<a name="1220"><span class="lineNum">    1220 </span><span class="lineCov">         20 :             all_integration_points[ThisMethod];</span></a>
 <a name="1221"><span class="lineNum">    1221 </span>            :         //number of integration points</a>
-<a name="1222"><span class="lineNum">    1222 </span><span class="lineCov">         30 :         const int integration_points_number = integration_points.size();</span></a>
-<a name="1223"><span class="lineNum">    1223 </span><span class="lineCov">         30 :         ShapeFunctionsGradientsType d_shape_f_values( integration_points_number );</span></a>
+<a name="1222"><span class="lineNum">    1222 </span><span class="lineCov">         20 :         const int integration_points_number = integration_points.size();</span></a>
+<a name="1223"><span class="lineNum">    1223 </span><span class="lineCov">         20 :         ShapeFunctionsGradientsType d_shape_f_values( integration_points_number );</span></a>
 <a name="1224"><span class="lineNum">    1224 </span>            :         //initialising container                //loop over all integration points</a>
 <a name="1225"><span class="lineNum">    1225 </span>            : </a>
-<a name="1226"><span class="lineNum">    1226 </span><span class="lineCov">       1380 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
+<a name="1226"><span class="lineNum">    1226 </span><span class="lineCov">        920 :         for ( int pnt = 0; pnt &lt; integration_points_number; pnt++ )</span></a>
 <a name="1227"><span class="lineNum">    1227 </span>            :         {</a>
-<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">       1350 :             double fx1 = 0.5 * ( integration_points[pnt].X() - 1.0 ) * ( integration_points[pnt].X() );</span></a>
-<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">       1350 :             double fx2 = 0.5 * ( integration_points[pnt].X() + 1.0 ) * ( integration_points[pnt].X() );</span></a>
-<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">       1350 :             double fx3 = 1.0 - ( integration_points[pnt].X() * integration_points[pnt].X() );</span></a>
-<a name="1231"><span class="lineNum">    1231 </span><span class="lineCov">       1350 :             double fy1 = 0.5 * ( integration_points[pnt].Y() - 1.0 ) * ( integration_points[pnt].Y() );</span></a>
-<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">       1350 :             double fy2 = 0.5 * ( integration_points[pnt].Y() + 1.0 ) * ( integration_points[pnt].Y() );</span></a>
-<a name="1233"><span class="lineNum">    1233 </span><span class="lineCov">       1350 :             double fy3 = 1.0 - ( integration_points[pnt].Y() * integration_points[pnt].Y() );</span></a>
-<a name="1234"><span class="lineNum">    1234 </span><span class="lineCov">       1350 :             double fz1 = 0.5 * ( integration_points[pnt].Z() - 1.0 ) * ( integration_points[pnt].Z() );</span></a>
-<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">       1350 :             double fz2 = 0.5 * ( integration_points[pnt].Z() + 1.0 ) * ( integration_points[pnt].Z() );</span></a>
-<a name="1236"><span class="lineNum">    1236 </span><span class="lineCov">       1350 :             double fz3 = 1.0 - ( integration_points[pnt].Z() * integration_points[pnt].Z() );</span></a>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">        900 :             double fx1 = 0.5 * ( integration_points[pnt].X() - 1.0 ) * ( integration_points[pnt].X() );</span></a>
+<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">        900 :             double fx2 = 0.5 * ( integration_points[pnt].X() + 1.0 ) * ( integration_points[pnt].X() );</span></a>
+<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">        900 :             double fx3 = 1.0 - ( integration_points[pnt].X() * integration_points[pnt].X() );</span></a>
+<a name="1231"><span class="lineNum">    1231 </span><span class="lineCov">        900 :             double fy1 = 0.5 * ( integration_points[pnt].Y() - 1.0 ) * ( integration_points[pnt].Y() );</span></a>
+<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">        900 :             double fy2 = 0.5 * ( integration_points[pnt].Y() + 1.0 ) * ( integration_points[pnt].Y() );</span></a>
+<a name="1233"><span class="lineNum">    1233 </span><span class="lineCov">        900 :             double fy3 = 1.0 - ( integration_points[pnt].Y() * integration_points[pnt].Y() );</span></a>
+<a name="1234"><span class="lineNum">    1234 </span><span class="lineCov">        900 :             double fz1 = 0.5 * ( integration_points[pnt].Z() - 1.0 ) * ( integration_points[pnt].Z() );</span></a>
+<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">        900 :             double fz2 = 0.5 * ( integration_points[pnt].Z() + 1.0 ) * ( integration_points[pnt].Z() );</span></a>
+<a name="1236"><span class="lineNum">    1236 </span><span class="lineCov">        900 :             double fz3 = 1.0 - ( integration_points[pnt].Z() * integration_points[pnt].Z() );</span></a>
 <a name="1237"><span class="lineNum">    1237 </span>            : </a>
-<a name="1238"><span class="lineNum">    1238 </span><span class="lineCov">       1350 :             double gx1 = 0.5 * ( 2.0 * integration_points[pnt].X() - 1.0 );</span></a>
-<a name="1239"><span class="lineNum">    1239 </span><span class="lineCov">       1350 :             double gx2 = 0.5 * ( 2.0 * integration_points[pnt].X() + 1.0 );</span></a>
+<a name="1238"><span class="lineNum">    1238 </span><span class="lineCov">        900 :             double gx1 = 0.5 * ( 2.0 * integration_points[pnt].X() - 1.0 );</span></a>
+<a name="1239"><span class="lineNum">    1239 </span><span class="lineCov">        900 :             double gx2 = 0.5 * ( 2.0 * integration_points[pnt].X() + 1.0 );</span></a>
 <a name="1240"><span class="lineNum">    1240 </span>            :             double gx3 = -2 * integration_points[pnt].X();</a>
-<a name="1241"><span class="lineNum">    1241 </span><span class="lineCov">       1350 :             double gy1 = 0.5 * ( 2.0 * integration_points[pnt].Y() - 1.0 );</span></a>
-<a name="1242"><span class="lineNum">    1242 </span><span class="lineCov">       1350 :             double gy2 = 0.5 * ( 2.0 * integration_points[pnt].Y() + 1.0 );</span></a>
+<a name="1241"><span class="lineNum">    1241 </span><span class="lineCov">        900 :             double gy1 = 0.5 * ( 2.0 * integration_points[pnt].Y() - 1.0 );</span></a>
+<a name="1242"><span class="lineNum">    1242 </span><span class="lineCov">        900 :             double gy2 = 0.5 * ( 2.0 * integration_points[pnt].Y() + 1.0 );</span></a>
 <a name="1243"><span class="lineNum">    1243 </span>            :             double gy3 = -2 * integration_points[pnt].Y();</a>
-<a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">       1350 :             double gz1 = 0.5 * ( 2.0 * integration_points[pnt].Z() - 1.0 );</span></a>
-<a name="1245"><span class="lineNum">    1245 </span><span class="lineCov">       1350 :             double gz2 = 0.5 * ( 2.0 * integration_points[pnt].Z() + 1.0 );</span></a>
+<a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">        900 :             double gz1 = 0.5 * ( 2.0 * integration_points[pnt].Z() - 1.0 );</span></a>
+<a name="1245"><span class="lineNum">    1245 </span><span class="lineCov">        900 :             double gz2 = 0.5 * ( 2.0 * integration_points[pnt].Z() + 1.0 );</span></a>
 <a name="1246"><span class="lineNum">    1246 </span>            :             double gz3 = -2 * integration_points[pnt].Z();</a>
 <a name="1247"><span class="lineNum">    1247 </span>            :             //setting up result matrix</a>
-<a name="1248"><span class="lineNum">    1248 </span><span class="lineCov">       1350 :             Matrix result = ZeroMatrix( 27, 3 );</span></a>
+<a name="1248"><span class="lineNum">    1248 </span><span class="lineCov">        900 :             Matrix result = ZeroMatrix( 27, 3 );</span></a>
 <a name="1249"><span class="lineNum">    1249 </span>            : </a>
-<a name="1250"><span class="lineNum">    1250 </span><span class="lineCov">       1350 :             result( 0, 0 ) = gx1 * fy1 * fz1;</span></a>
-<a name="1251"><span class="lineNum">    1251 </span><span class="lineCov">       1350 :             result( 0, 1 ) = fx1 * gy1 * fz1;</span></a>
-<a name="1252"><span class="lineNum">    1252 </span><span class="lineCov">       1350 :             result( 0, 2 ) = fx1 * fy1 * gz1;</span></a>
+<a name="1250"><span class="lineNum">    1250 </span><span class="lineCov">        900 :             result( 0, 0 ) = gx1 * fy1 * fz1;</span></a>
+<a name="1251"><span class="lineNum">    1251 </span><span class="lineCov">        900 :             result( 0, 1 ) = fx1 * gy1 * fz1;</span></a>
+<a name="1252"><span class="lineNum">    1252 </span><span class="lineCov">        900 :             result( 0, 2 ) = fx1 * fy1 * gz1;</span></a>
 <a name="1253"><span class="lineNum">    1253 </span>            : </a>
-<a name="1254"><span class="lineNum">    1254 </span><span class="lineCov">       1350 :             result( 1, 0 ) = gx2 * fy1 * fz1;</span></a>
-<a name="1255"><span class="lineNum">    1255 </span><span class="lineCov">       1350 :             result( 1, 1 ) = fx2 * gy1 * fz1;</span></a>
-<a name="1256"><span class="lineNum">    1256 </span><span class="lineCov">       1350 :             result( 1, 2 ) = fx2 * fy1 * gz1;</span></a>
+<a name="1254"><span class="lineNum">    1254 </span><span class="lineCov">        900 :             result( 1, 0 ) = gx2 * fy1 * fz1;</span></a>
+<a name="1255"><span class="lineNum">    1255 </span><span class="lineCov">        900 :             result( 1, 1 ) = fx2 * gy1 * fz1;</span></a>
+<a name="1256"><span class="lineNum">    1256 </span><span class="lineCov">        900 :             result( 1, 2 ) = fx2 * fy1 * gz1;</span></a>
 <a name="1257"><span class="lineNum">    1257 </span>            : </a>
-<a name="1258"><span class="lineNum">    1258 </span><span class="lineCov">       1350 :             result( 2, 0 ) = gx2 * fy2 * fz1;</span></a>
-<a name="1259"><span class="lineNum">    1259 </span><span class="lineCov">       1350 :             result( 2, 1 ) = fx2 * gy2 * fz1;</span></a>
-<a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">       1350 :             result( 2, 2 ) = fx2 * fy2 * gz1;</span></a>
+<a name="1258"><span class="lineNum">    1258 </span><span class="lineCov">        900 :             result( 2, 0 ) = gx2 * fy2 * fz1;</span></a>
+<a name="1259"><span class="lineNum">    1259 </span><span class="lineCov">        900 :             result( 2, 1 ) = fx2 * gy2 * fz1;</span></a>
+<a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">        900 :             result( 2, 2 ) = fx2 * fy2 * gz1;</span></a>
 <a name="1261"><span class="lineNum">    1261 </span>            : </a>
-<a name="1262"><span class="lineNum">    1262 </span><span class="lineCov">       1350 :             result( 3, 0 ) = gx1 * fy2 * fz1;</span></a>
-<a name="1263"><span class="lineNum">    1263 </span><span class="lineCov">       1350 :             result( 3, 1 ) = fx1 * gy2 * fz1;</span></a>
-<a name="1264"><span class="lineNum">    1264 </span><span class="lineCov">       1350 :             result( 3, 2 ) = fx1 * fy2 * gz1;</span></a>
+<a name="1262"><span class="lineNum">    1262 </span><span class="lineCov">        900 :             result( 3, 0 ) = gx1 * fy2 * fz1;</span></a>
+<a name="1263"><span class="lineNum">    1263 </span><span class="lineCov">        900 :             result( 3, 1 ) = fx1 * gy2 * fz1;</span></a>
+<a name="1264"><span class="lineNum">    1264 </span><span class="lineCov">        900 :             result( 3, 2 ) = fx1 * fy2 * gz1;</span></a>
 <a name="1265"><span class="lineNum">    1265 </span>            : </a>
-<a name="1266"><span class="lineNum">    1266 </span><span class="lineCov">       1350 :             result( 4, 0 ) = gx1 * fy1 * fz2;</span></a>
-<a name="1267"><span class="lineNum">    1267 </span><span class="lineCov">       1350 :             result( 4, 1 ) = fx1 * gy1 * fz2;</span></a>
-<a name="1268"><span class="lineNum">    1268 </span><span class="lineCov">       1350 :             result( 4, 2 ) = fx1 * fy1 * gz2;</span></a>
+<a name="1266"><span class="lineNum">    1266 </span><span class="lineCov">        900 :             result( 4, 0 ) = gx1 * fy1 * fz2;</span></a>
+<a name="1267"><span class="lineNum">    1267 </span><span class="lineCov">        900 :             result( 4, 1 ) = fx1 * gy1 * fz2;</span></a>
+<a name="1268"><span class="lineNum">    1268 </span><span class="lineCov">        900 :             result( 4, 2 ) = fx1 * fy1 * gz2;</span></a>
 <a name="1269"><span class="lineNum">    1269 </span>            : </a>
-<a name="1270"><span class="lineNum">    1270 </span><span class="lineCov">       1350 :             result( 5, 0 ) = gx2 * fy1 * fz2;</span></a>
-<a name="1271"><span class="lineNum">    1271 </span><span class="lineCov">       1350 :             result( 5, 1 ) = fx2 * gy1 * fz2;</span></a>
-<a name="1272"><span class="lineNum">    1272 </span><span class="lineCov">       1350 :             result( 5, 2 ) = fx2 * fy1 * gz2;</span></a>
+<a name="1270"><span class="lineNum">    1270 </span><span class="lineCov">        900 :             result( 5, 0 ) = gx2 * fy1 * fz2;</span></a>
+<a name="1271"><span class="lineNum">    1271 </span><span class="lineCov">        900 :             result( 5, 1 ) = fx2 * gy1 * fz2;</span></a>
+<a name="1272"><span class="lineNum">    1272 </span><span class="lineCov">        900 :             result( 5, 2 ) = fx2 * fy1 * gz2;</span></a>
 <a name="1273"><span class="lineNum">    1273 </span>            : </a>
-<a name="1274"><span class="lineNum">    1274 </span><span class="lineCov">       1350 :             result( 6, 0 ) = gx2 * fy2 * fz2;</span></a>
-<a name="1275"><span class="lineNum">    1275 </span><span class="lineCov">       1350 :             result( 6, 1 ) = fx2 * gy2 * fz2;</span></a>
-<a name="1276"><span class="lineNum">    1276 </span><span class="lineCov">       1350 :             result( 6, 2 ) = fx2 * fy2 * gz2;</span></a>
+<a name="1274"><span class="lineNum">    1274 </span><span class="lineCov">        900 :             result( 6, 0 ) = gx2 * fy2 * fz2;</span></a>
+<a name="1275"><span class="lineNum">    1275 </span><span class="lineCov">        900 :             result( 6, 1 ) = fx2 * gy2 * fz2;</span></a>
+<a name="1276"><span class="lineNum">    1276 </span><span class="lineCov">        900 :             result( 6, 2 ) = fx2 * fy2 * gz2;</span></a>
 <a name="1277"><span class="lineNum">    1277 </span>            : </a>
-<a name="1278"><span class="lineNum">    1278 </span><span class="lineCov">       1350 :             result( 7, 0 ) = gx1 * fy2 * fz2;</span></a>
-<a name="1279"><span class="lineNum">    1279 </span><span class="lineCov">       1350 :             result( 7, 1 ) = fx1 * gy2 * fz2;</span></a>
-<a name="1280"><span class="lineNum">    1280 </span><span class="lineCov">       1350 :             result( 7, 2 ) = fx1 * fy2 * gz2;</span></a>
+<a name="1278"><span class="lineNum">    1278 </span><span class="lineCov">        900 :             result( 7, 0 ) = gx1 * fy2 * fz2;</span></a>
+<a name="1279"><span class="lineNum">    1279 </span><span class="lineCov">        900 :             result( 7, 1 ) = fx1 * gy2 * fz2;</span></a>
+<a name="1280"><span class="lineNum">    1280 </span><span class="lineCov">        900 :             result( 7, 2 ) = fx1 * fy2 * gz2;</span></a>
 <a name="1281"><span class="lineNum">    1281 </span>            : </a>
-<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">       1350 :             result( 8, 0 ) = gx3 * fy1 * fz1;</span></a>
-<a name="1283"><span class="lineNum">    1283 </span><span class="lineCov">       1350 :             result( 8, 1 ) = fx3 * gy1 * fz1;</span></a>
-<a name="1284"><span class="lineNum">    1284 </span><span class="lineCov">       1350 :             result( 8, 2 ) = fx3 * fy1 * gz1;</span></a>
+<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">        900 :             result( 8, 0 ) = gx3 * fy1 * fz1;</span></a>
+<a name="1283"><span class="lineNum">    1283 </span><span class="lineCov">        900 :             result( 8, 1 ) = fx3 * gy1 * fz1;</span></a>
+<a name="1284"><span class="lineNum">    1284 </span><span class="lineCov">        900 :             result( 8, 2 ) = fx3 * fy1 * gz1;</span></a>
 <a name="1285"><span class="lineNum">    1285 </span>            : </a>
-<a name="1286"><span class="lineNum">    1286 </span><span class="lineCov">       1350 :             result( 9, 0 ) = gx2 * fy3 * fz1;</span></a>
-<a name="1287"><span class="lineNum">    1287 </span><span class="lineCov">       1350 :             result( 9, 1 ) = fx2 * gy3 * fz1;</span></a>
-<a name="1288"><span class="lineNum">    1288 </span><span class="lineCov">       1350 :             result( 9, 2 ) = fx2 * fy3 * gz1;</span></a>
+<a name="1286"><span class="lineNum">    1286 </span><span class="lineCov">        900 :             result( 9, 0 ) = gx2 * fy3 * fz1;</span></a>
+<a name="1287"><span class="lineNum">    1287 </span><span class="lineCov">        900 :             result( 9, 1 ) = fx2 * gy3 * fz1;</span></a>
+<a name="1288"><span class="lineNum">    1288 </span><span class="lineCov">        900 :             result( 9, 2 ) = fx2 * fy3 * gz1;</span></a>
 <a name="1289"><span class="lineNum">    1289 </span>            : </a>
-<a name="1290"><span class="lineNum">    1290 </span><span class="lineCov">       1350 :             result( 10, 0 ) = gx3 * fy2 * fz1;</span></a>
-<a name="1291"><span class="lineNum">    1291 </span><span class="lineCov">       1350 :             result( 10, 1 ) = fx3 * gy2 * fz1;</span></a>
-<a name="1292"><span class="lineNum">    1292 </span><span class="lineCov">       1350 :             result( 10, 2 ) = fx3 * fy2 * gz1;</span></a>
+<a name="1290"><span class="lineNum">    1290 </span><span class="lineCov">        900 :             result( 10, 0 ) = gx3 * fy2 * fz1;</span></a>
+<a name="1291"><span class="lineNum">    1291 </span><span class="lineCov">        900 :             result( 10, 1 ) = fx3 * gy2 * fz1;</span></a>
+<a name="1292"><span class="lineNum">    1292 </span><span class="lineCov">        900 :             result( 10, 2 ) = fx3 * fy2 * gz1;</span></a>
 <a name="1293"><span class="lineNum">    1293 </span>            : </a>
-<a name="1294"><span class="lineNum">    1294 </span><span class="lineCov">       1350 :             result( 11, 0 ) = gx1 * fy3 * fz1;</span></a>
-<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">       1350 :             result( 11, 1 ) = fx1 * gy3 * fz1;</span></a>
-<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">       1350 :             result( 11, 2 ) = fx1 * fy3 * gz1;</span></a>
+<a name="1294"><span class="lineNum">    1294 </span><span class="lineCov">        900 :             result( 11, 0 ) = gx1 * fy3 * fz1;</span></a>
+<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">        900 :             result( 11, 1 ) = fx1 * gy3 * fz1;</span></a>
+<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">        900 :             result( 11, 2 ) = fx1 * fy3 * gz1;</span></a>
 <a name="1297"><span class="lineNum">    1297 </span>            : </a>
-<a name="1298"><span class="lineNum">    1298 </span><span class="lineCov">       1350 :             result( 12, 0 ) = gx1 * fy1 * fz3;</span></a>
-<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">       1350 :             result( 12, 1 ) = fx1 * gy1 * fz3;</span></a>
-<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">       1350 :             result( 12, 2 ) = fx1 * fy1 * gz3;</span></a>
+<a name="1298"><span class="lineNum">    1298 </span><span class="lineCov">        900 :             result( 12, 0 ) = gx1 * fy1 * fz3;</span></a>
+<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">        900 :             result( 12, 1 ) = fx1 * gy1 * fz3;</span></a>
+<a name="1300"><span class="lineNum">    1300 </span><span class="lineCov">        900 :             result( 12, 2 ) = fx1 * fy1 * gz3;</span></a>
 <a name="1301"><span class="lineNum">    1301 </span>            : </a>
-<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">       1350 :             result( 13, 0 ) = gx2 * fy1 * fz3;</span></a>
-<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">       1350 :             result( 13, 1 ) = fx2 * gy1 * fz3;</span></a>
-<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">       1350 :             result( 13, 2 ) = fx2 * fy1 * gz3;</span></a>
+<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">        900 :             result( 13, 0 ) = gx2 * fy1 * fz3;</span></a>
+<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">        900 :             result( 13, 1 ) = fx2 * gy1 * fz3;</span></a>
+<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">        900 :             result( 13, 2 ) = fx2 * fy1 * gz3;</span></a>
 <a name="1305"><span class="lineNum">    1305 </span>            : </a>
-<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">       1350 :             result( 14, 0 ) = gx2 * fy2 * fz3;</span></a>
-<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">       1350 :             result( 14, 1 ) = fx2 * gy2 * fz3;</span></a>
-<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">       1350 :             result( 14, 2 ) = fx2 * fy2 * gz3;</span></a>
+<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">        900 :             result( 14, 0 ) = gx2 * fy2 * fz3;</span></a>
+<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">        900 :             result( 14, 1 ) = fx2 * gy2 * fz3;</span></a>
+<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">        900 :             result( 14, 2 ) = fx2 * fy2 * gz3;</span></a>
 <a name="1309"><span class="lineNum">    1309 </span>            : </a>
-<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">       1350 :             result( 15, 0 ) = gx1 * fy2 * fz3;</span></a>
-<a name="1311"><span class="lineNum">    1311 </span><span class="lineCov">       1350 :             result( 15, 1 ) = fx1 * gy2 * fz3;</span></a>
-<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">       1350 :             result( 15, 2 ) = fx1 * fy2 * gz3;</span></a>
+<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">        900 :             result( 15, 0 ) = gx1 * fy2 * fz3;</span></a>
+<a name="1311"><span class="lineNum">    1311 </span><span class="lineCov">        900 :             result( 15, 1 ) = fx1 * gy2 * fz3;</span></a>
+<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">        900 :             result( 15, 2 ) = fx1 * fy2 * gz3;</span></a>
 <a name="1313"><span class="lineNum">    1313 </span>            : </a>
-<a name="1314"><span class="lineNum">    1314 </span><span class="lineCov">       1350 :             result( 16, 0 ) = gx3 * fy1 * fz2;</span></a>
-<a name="1315"><span class="lineNum">    1315 </span><span class="lineCov">       1350 :             result( 16, 1 ) = fx3 * gy1 * fz2;</span></a>
-<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">       1350 :             result( 16, 2 ) = fx3 * fy1 * gz2;</span></a>
+<a name="1314"><span class="lineNum">    1314 </span><span class="lineCov">        900 :             result( 16, 0 ) = gx3 * fy1 * fz2;</span></a>
+<a name="1315"><span class="lineNum">    1315 </span><span class="lineCov">        900 :             result( 16, 1 ) = fx3 * gy1 * fz2;</span></a>
+<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">        900 :             result( 16, 2 ) = fx3 * fy1 * gz2;</span></a>
 <a name="1317"><span class="lineNum">    1317 </span>            : </a>
-<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">       1350 :             result( 17, 0 ) = gx2 * fy3 * fz2;</span></a>
-<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">       1350 :             result( 17, 1 ) = fx2 * gy3 * fz2;</span></a>
-<a name="1320"><span class="lineNum">    1320 </span><span class="lineCov">       1350 :             result( 17, 2 ) = fx2 * fy3 * gz2;</span></a>
+<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">        900 :             result( 17, 0 ) = gx2 * fy3 * fz2;</span></a>
+<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">        900 :             result( 17, 1 ) = fx2 * gy3 * fz2;</span></a>
+<a name="1320"><span class="lineNum">    1320 </span><span class="lineCov">        900 :             result( 17, 2 ) = fx2 * fy3 * gz2;</span></a>
 <a name="1321"><span class="lineNum">    1321 </span>            : </a>
-<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">       1350 :             result( 18, 0 ) = gx3 * fy2 * fz2;</span></a>
-<a name="1323"><span class="lineNum">    1323 </span><span class="lineCov">       1350 :             result( 18, 1 ) = fx3 * gy2 * fz2;</span></a>
-<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">       1350 :             result( 18, 2 ) = fx3 * fy2 * gz2;</span></a>
+<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">        900 :             result( 18, 0 ) = gx3 * fy2 * fz2;</span></a>
+<a name="1323"><span class="lineNum">    1323 </span><span class="lineCov">        900 :             result( 18, 1 ) = fx3 * gy2 * fz2;</span></a>
+<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">        900 :             result( 18, 2 ) = fx3 * fy2 * gz2;</span></a>
 <a name="1325"><span class="lineNum">    1325 </span>            : </a>
-<a name="1326"><span class="lineNum">    1326 </span><span class="lineCov">       1350 :             result( 19, 0 ) = gx1 * fy3 * fz2;</span></a>
-<a name="1327"><span class="lineNum">    1327 </span><span class="lineCov">       1350 :             result( 19, 1 ) = fx1 * gy3 * fz2;</span></a>
-<a name="1328"><span class="lineNum">    1328 </span><span class="lineCov">       1350 :             result( 19, 2 ) = fx1 * fy3 * gz2;</span></a>
+<a name="1326"><span class="lineNum">    1326 </span><span class="lineCov">        900 :             result( 19, 0 ) = gx1 * fy3 * fz2;</span></a>
+<a name="1327"><span class="lineNum">    1327 </span><span class="lineCov">        900 :             result( 19, 1 ) = fx1 * gy3 * fz2;</span></a>
+<a name="1328"><span class="lineNum">    1328 </span><span class="lineCov">        900 :             result( 19, 2 ) = fx1 * fy3 * gz2;</span></a>
 <a name="1329"><span class="lineNum">    1329 </span>            : </a>
-<a name="1330"><span class="lineNum">    1330 </span><span class="lineCov">       1350 :             result( 20, 0 ) = gx3 * fy3 * fz1;</span></a>
-<a name="1331"><span class="lineNum">    1331 </span><span class="lineCov">       1350 :             result( 20, 1 ) = fx3 * gy3 * fz1;</span></a>
-<a name="1332"><span class="lineNum">    1332 </span><span class="lineCov">       1350 :             result( 20, 2 ) = fx3 * fy3 * gz1;</span></a>
+<a name="1330"><span class="lineNum">    1330 </span><span class="lineCov">        900 :             result( 20, 0 ) = gx3 * fy3 * fz1;</span></a>
+<a name="1331"><span class="lineNum">    1331 </span><span class="lineCov">        900 :             result( 20, 1 ) = fx3 * gy3 * fz1;</span></a>
+<a name="1332"><span class="lineNum">    1332 </span><span class="lineCov">        900 :             result( 20, 2 ) = fx3 * fy3 * gz1;</span></a>
 <a name="1333"><span class="lineNum">    1333 </span>            : </a>
-<a name="1334"><span class="lineNum">    1334 </span><span class="lineCov">       1350 :             result( 21, 0 ) = gx3 * fy1 * fz3;</span></a>
-<a name="1335"><span class="lineNum">    1335 </span><span class="lineCov">       1350 :             result( 21, 1 ) = fx3 * gy1 * fz3;</span></a>
-<a name="1336"><span class="lineNum">    1336 </span><span class="lineCov">       1350 :             result( 21, 2 ) = fx3 * fy1 * gz3;</span></a>
+<a name="1334"><span class="lineNum">    1334 </span><span class="lineCov">        900 :             result( 21, 0 ) = gx3 * fy1 * fz3;</span></a>
+<a name="1335"><span class="lineNum">    1335 </span><span class="lineCov">        900 :             result( 21, 1 ) = fx3 * gy1 * fz3;</span></a>
+<a name="1336"><span class="lineNum">    1336 </span><span class="lineCov">        900 :             result( 21, 2 ) = fx3 * fy1 * gz3;</span></a>
 <a name="1337"><span class="lineNum">    1337 </span>            : </a>
-<a name="1338"><span class="lineNum">    1338 </span><span class="lineCov">       1350 :             result( 22, 0 ) = gx2 * fy3 * fz3;</span></a>
-<a name="1339"><span class="lineNum">    1339 </span><span class="lineCov">       1350 :             result( 22, 1 ) = fx2 * gy3 * fz3;</span></a>
-<a name="1340"><span class="lineNum">    1340 </span><span class="lineCov">       1350 :             result( 22, 2 ) = fx2 * fy3 * gz3;</span></a>
+<a name="1338"><span class="lineNum">    1338 </span><span class="lineCov">        900 :             result( 22, 0 ) = gx2 * fy3 * fz3;</span></a>
+<a name="1339"><span class="lineNum">    1339 </span><span class="lineCov">        900 :             result( 22, 1 ) = fx2 * gy3 * fz3;</span></a>
+<a name="1340"><span class="lineNum">    1340 </span><span class="lineCov">        900 :             result( 22, 2 ) = fx2 * fy3 * gz3;</span></a>
 <a name="1341"><span class="lineNum">    1341 </span>            : </a>
-<a name="1342"><span class="lineNum">    1342 </span><span class="lineCov">       1350 :             result( 23, 0 ) = gx3 * fy2 * fz3;</span></a>
-<a name="1343"><span class="lineNum">    1343 </span><span class="lineCov">       1350 :             result( 23, 1 ) = fx3 * gy2 * fz3;</span></a>
-<a name="1344"><span class="lineNum">    1344 </span><span class="lineCov">       1350 :             result( 23, 2 ) = fx3 * fy2 * gz3;</span></a>
+<a name="1342"><span class="lineNum">    1342 </span><span class="lineCov">        900 :             result( 23, 0 ) = gx3 * fy2 * fz3;</span></a>
+<a name="1343"><span class="lineNum">    1343 </span><span class="lineCov">        900 :             result( 23, 1 ) = fx3 * gy2 * fz3;</span></a>
+<a name="1344"><span class="lineNum">    1344 </span><span class="lineCov">        900 :             result( 23, 2 ) = fx3 * fy2 * gz3;</span></a>
 <a name="1345"><span class="lineNum">    1345 </span>            : </a>
-<a name="1346"><span class="lineNum">    1346 </span><span class="lineCov">       1350 :             result( 24, 0 ) = gx1 * fy3 * fz3;</span></a>
-<a name="1347"><span class="lineNum">    1347 </span><span class="lineCov">       1350 :             result( 24, 1 ) = fx1 * gy3 * fz3;</span></a>
-<a name="1348"><span class="lineNum">    1348 </span><span class="lineCov">       1350 :             result( 24, 2 ) = fx1 * fy3 * gz3;</span></a>
+<a name="1346"><span class="lineNum">    1346 </span><span class="lineCov">        900 :             result( 24, 0 ) = gx1 * fy3 * fz3;</span></a>
+<a name="1347"><span class="lineNum">    1347 </span><span class="lineCov">        900 :             result( 24, 1 ) = fx1 * gy3 * fz3;</span></a>
+<a name="1348"><span class="lineNum">    1348 </span><span class="lineCov">        900 :             result( 24, 2 ) = fx1 * fy3 * gz3;</span></a>
 <a name="1349"><span class="lineNum">    1349 </span>            : </a>
-<a name="1350"><span class="lineNum">    1350 </span><span class="lineCov">       1350 :             result( 25, 0 ) = gx3 * fy3 * fz2;</span></a>
-<a name="1351"><span class="lineNum">    1351 </span><span class="lineCov">       1350 :             result( 25, 1 ) = fx3 * gy3 * fz2;</span></a>
-<a name="1352"><span class="lineNum">    1352 </span><span class="lineCov">       1350 :             result( 25, 2 ) = fx3 * fy3 * gz2;</span></a>
+<a name="1350"><span class="lineNum">    1350 </span><span class="lineCov">        900 :             result( 25, 0 ) = gx3 * fy3 * fz2;</span></a>
+<a name="1351"><span class="lineNum">    1351 </span><span class="lineCov">        900 :             result( 25, 1 ) = fx3 * gy3 * fz2;</span></a>
+<a name="1352"><span class="lineNum">    1352 </span><span class="lineCov">        900 :             result( 25, 2 ) = fx3 * fy3 * gz2;</span></a>
 <a name="1353"><span class="lineNum">    1353 </span>            : </a>
-<a name="1354"><span class="lineNum">    1354 </span><span class="lineCov">       1350 :             result( 26, 0 ) = gx3 * fy3 * fz3;</span></a>
-<a name="1355"><span class="lineNum">    1355 </span><span class="lineCov">       1350 :             result( 26, 1 ) = fx3 * gy3 * fz3;</span></a>
-<a name="1356"><span class="lineNum">    1356 </span><span class="lineCov">       1350 :             result( 26, 2 ) = fx3 * fy3 * gz3;</span></a>
+<a name="1354"><span class="lineNum">    1354 </span><span class="lineCov">        900 :             result( 26, 0 ) = gx3 * fy3 * fz3;</span></a>
+<a name="1355"><span class="lineNum">    1355 </span><span class="lineCov">        900 :             result( 26, 1 ) = fx3 * gy3 * fz3;</span></a>
+<a name="1356"><span class="lineNum">    1356 </span><span class="lineCov">        900 :             result( 26, 2 ) = fx3 * fy3 * gz3;</span></a>
 <a name="1357"><span class="lineNum">    1357 </span>            : </a>
 <a name="1358"><span class="lineNum">    1358 </span>            :             d_shape_f_values[pnt] = result;</a>
 <a name="1359"><span class="lineNum">    1359 </span>            :         }</a>
 <a name="1360"><span class="lineNum">    1360 </span>            : </a>
-<a name="1361"><span class="lineNum">    1361 </span><span class="lineCov">         30 :         return d_shape_f_values;</span></a>
-<a name="1362"><span class="lineNum">    1362 </span><span class="lineCov">         30 :     }</span></a>
+<a name="1361"><span class="lineNum">    1361 </span><span class="lineCov">         20 :         return d_shape_f_values;</span></a>
+<a name="1362"><span class="lineNum">    1362 </span><span class="lineCov">         20 :     }</span></a>
 <a name="1363"><span class="lineNum">    1363 </span>            : </a>
 <a name="1364"><span class="lineNum">    1364 </span>            :     /**</a>
 <a name="1365"><span class="lineNum">    1365 </span>            :      * TODO: TO BE VERIFIED</a>
 <a name="1366"><span class="lineNum">    1366 </span>            :      */</a>
-<a name="1367"><span class="lineNum">    1367 </span><span class="lineCov">         66 :     static const IntegrationPointsContainerType AllIntegrationPoints()</span></a>
+<a name="1367"><span class="lineNum">    1367 </span><span class="lineCov">         44 :     static const IntegrationPointsContainerType AllIntegrationPoints()</span></a>
 <a name="1368"><span class="lineNum">    1368 </span>            :     {</a>
-<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">         66 :         IntegrationPointsContainerType integration_points =</span></a>
+<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">         44 :         IntegrationPointsContainerType integration_points =</span></a>
 <a name="1370"><span class="lineNum">    1370 </span>            :         {</a>
 <a name="1371"><span class="lineNum">    1371 </span>            :             {</a>
 <a name="1372"><span class="lineNum">    1372 </span>            :                 Quadrature &lt; HexahedronGaussLegendreIntegrationPoints1,</a>
@@ -1443,12 +1443,12 @@
 <a name="1381"><span class="lineNum">    1381 </span>            :                 3, IntegrationPoint&lt;3&gt; &gt;::GenerateIntegrationPoints()</a>
 <a name="1382"><span class="lineNum">    1382 </span>            :             }</a>
 <a name="1383"><span class="lineNum">    1383 </span>            :         };</a>
-<a name="1384"><span class="lineNum">    1384 </span><span class="lineCov">         66 :         return integration_points;</span></a>
+<a name="1384"><span class="lineNum">    1384 </span><span class="lineCov">         44 :         return integration_points;</span></a>
 <a name="1385"><span class="lineNum">    1385 </span>            :     }</a>
 <a name="1386"><span class="lineNum">    1386 </span>            : </a>
-<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">          6 :     static const ShapeFunctionsValuesContainerType AllShapeFunctionsValues()</span></a>
+<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">          4 :     static const ShapeFunctionsValuesContainerType AllShapeFunctionsValues()</span></a>
 <a name="1388"><span class="lineNum">    1388 </span>            :     {</a>
-<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">          6 :         ShapeFunctionsValuesContainerType shape_functions_values =</span></a>
+<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">          4 :         ShapeFunctionsValuesContainerType shape_functions_values =</span></a>
 <a name="1390"><span class="lineNum">    1390 </span>            :         {</a>
 <a name="1391"><span class="lineNum">    1391 </span>            :             {</a>
 <a name="1392"><span class="lineNum">    1392 </span>            :                 Hexahedra3D27&lt;TPointType&gt;::CalculateShapeFunctionsIntegrationPointsValues(</a>
@@ -1463,13 +1463,13 @@
 <a name="1401"><span class="lineNum">    1401 </span>            :                     GeometryData::GI_GAUSS_5 )</a>
 <a name="1402"><span class="lineNum">    1402 </span>            :             }</a>
 <a name="1403"><span class="lineNum">    1403 </span>            :         };</a>
-<a name="1404"><span class="lineNum">    1404 </span><span class="lineCov">          6 :         return shape_functions_values;</span></a>
+<a name="1404"><span class="lineNum">    1404 </span><span class="lineCov">          4 :         return shape_functions_values;</span></a>
 <a name="1405"><span class="lineNum">    1405 </span>            :     }</a>
 <a name="1406"><span class="lineNum">    1406 </span>            : </a>
 <a name="1407"><span class="lineNum">    1407 </span>            :     static const ShapeFunctionsLocalGradientsContainerType</a>
-<a name="1408"><span class="lineNum">    1408 </span><span class="lineCov">          6 :     AllShapeFunctionsLocalGradients()</span></a>
+<a name="1408"><span class="lineNum">    1408 </span><span class="lineCov">          4 :     AllShapeFunctionsLocalGradients()</span></a>
 <a name="1409"><span class="lineNum">    1409 </span>            :     {</a>
-<a name="1410"><span class="lineNum">    1410 </span><span class="lineCov">          6 :         ShapeFunctionsLocalGradientsContainerType shape_functions_local_gradients =</span></a>
+<a name="1410"><span class="lineNum">    1410 </span><span class="lineCov">          4 :         ShapeFunctionsLocalGradientsContainerType shape_functions_local_gradients =</span></a>
 <a name="1411"><span class="lineNum">    1411 </span>            :         {</a>
 <a name="1412"><span class="lineNum">    1412 </span>            :             {</a>
 <a name="1413"><span class="lineNum">    1413 </span>            :                 Hexahedra3D27&lt;TPointType&gt;::CalculateShapeFunctionsIntegrationPointsLocalGradients(</a>
@@ -1484,7 +1484,7 @@
 <a name="1422"><span class="lineNum">    1422 </span>            :                     GeometryData::GI_GAUSS_5 )</a>
 <a name="1423"><span class="lineNum">    1423 </span>            :             }</a>
 <a name="1424"><span class="lineNum">    1424 </span>            :         };</a>
-<a name="1425"><span class="lineNum">    1425 </span><span class="lineCov">          6 :         return shape_functions_local_gradients;</span></a>
+<a name="1425"><span class="lineNum">    1425 </span><span class="lineCov">          4 :         return shape_functions_local_gradients;</span></a>
 <a name="1426"><span class="lineNum">    1426 </span>            :     }</a>
 <a name="1427"><span class="lineNum">    1427 </span>            : </a>
 <a name="1428"><span class="lineNum">    1428 </span>            : </a>

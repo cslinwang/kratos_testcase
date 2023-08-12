@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -345,12 +345,12 @@
 <a name="283"><span class="lineNum">     283 </span>            :     have gaussian orden two ThisShapeFunctionsValues[GI_GAUSS_2]</a>
 <a name="284"><span class="lineNum">     284 </span>            :     must be an empty ShapeFunctionsGradientsType.</a>
 <a name="285"><span class="lineNum">     285 </span>            :     */</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">        183 :     Geometry(const PointsArrayType &amp;ThisPoints,</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">        122 :     Geometry(const PointsArrayType &amp;ThisPoints,</span></a>
 <a name="287"><span class="lineNum">     287 </span>            :              GeometryData const *pThisGeometryData = &amp;GeometryDataInstance())</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        183 :         :  mpGeometryData(pThisGeometryData),</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        183 :            mPoints(ThisPoints)</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        122 :         :  mpGeometryData(pThisGeometryData),</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">        122 :            mPoints(ThisPoints)</span></a>
 <a name="290"><span class="lineNum">     290 </span>            :     {</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          3 :     }</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          2 :     }</span></a>
 <a name="292"><span class="lineNum">     292 </span>            : </a>
 <a name="293"><span class="lineNum">     293 </span>            :     /** Copy constructor.</a>
 <a name="294"><span class="lineNum">     294 </span>            :     Construct this geometry as a copy of given geometry.</a>
@@ -385,7 +385,7 @@
 <a name="323"><span class="lineNum">     323 </span>            :     }</a>
 <a name="324"><span class="lineNum">     324 </span>            : </a>
 <a name="325"><span class="lineNum">     325 </span>            :     /// Destructor. Do nothing!!!</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">        114 :     virtual ~Geometry() {}</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         76 :     virtual ~Geometry() {}</span></a>
 <a name="327"><span class="lineNum">     327 </span>            : </a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :     virtual GeometryData::KratosGeometryFamily GetGeometryFamily() const</span></a>
 <a name="329"><span class="lineNum">     329 </span>            :     {</a>
@@ -528,9 +528,9 @@
 <a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :         return mPoints.back();</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :     }</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
-<a name="469"><span class="lineNum">     469 </span><span class="lineCov">        180 :     virtual SizeType size() const</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineCov">        120 :     virtual SizeType size() const</span></a>
 <a name="470"><span class="lineNum">     470 </span>            :     {</a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        180 :         return mPoints.size();</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        120 :         return mPoints.size();</span></a>
 <a name="472"><span class="lineNum">     472 </span>            :     }</a>
 <a name="473"><span class="lineNum">     473 </span><span class="lineNoCov">          0 :     virtual SizeType max_size() const</span></a>
 <a name="474"><span class="lineNum">     474 </span>            :     {</a>
@@ -773,7 +773,7 @@
 <a name="711"><span class="lineNum">     711 </span>            :      * @return SizeType, number of the points in this geometry.</a>
 <a name="712"><span class="lineNum">     712 </span>            :      */</a>
 <a name="713"><span class="lineNum">     713 </span><span class="lineNoCov">          0 :     SizeType PointsNumber() const {</span></a>
-<a name="714"><span class="lineNum">     714 </span><span class="lineCov">        180 :       return this-&gt;size();</span></a>
+<a name="714"><span class="lineNum">     714 </span><span class="lineCov">        120 :       return this-&gt;size();</span></a>
 <a name="715"><span class="lineNum">     715 </span>            :     }</a>
 <a name="716"><span class="lineNum">     716 </span>            : </a>
 <a name="717"><span class="lineNum">     717 </span>            :     /** This method calculate and return Length or charactereistic</a>
@@ -3002,12 +3002,12 @@
 <a name="2940"><span class="lineNum">    2940 </span>            :     ///@name Private Operations</a>
 <a name="2941"><span class="lineNum">    2941 </span>            :     ///@{</a>
 <a name="2942"><span class="lineNum">    2942 </span>            : </a>
-<a name="2943"><span class="lineNum">    2943 </span><span class="lineCov">          3 :     static const GeometryData&amp; GeometryDataInstance()</span></a>
+<a name="2943"><span class="lineNum">    2943 </span><span class="lineCov">          2 :     static const GeometryData&amp; GeometryDataInstance()</span></a>
 <a name="2944"><span class="lineNum">    2944 </span>            :     {</a>
 <a name="2945"><span class="lineNum">    2945 </span>            :         IntegrationPointsContainerType integration_points = {};</a>
 <a name="2946"><span class="lineNum">    2946 </span>            :         ShapeFunctionsValuesContainerType shape_functions_values = {};</a>
 <a name="2947"><span class="lineNum">    2947 </span>            :         ShapeFunctionsLocalGradientsContainerType shape_functions_local_gradients = {};</a>
-<a name="2948"><span class="lineNum">    2948 </span><span class="lineCov">          3 :         static GeometryData s_geometry_data(3,</span></a>
+<a name="2948"><span class="lineNum">    2948 </span><span class="lineCov">          2 :         static GeometryData s_geometry_data(3,</span></a>
 <a name="2949"><span class="lineNum">    2949 </span>            :                             3,</a>
 <a name="2950"><span class="lineNum">    2950 </span>            :                             3,</a>
 <a name="2951"><span class="lineNum">    2951 </span>            :                             GeometryData::GI_GAUSS_1,</a>
@@ -3015,7 +3015,7 @@
 <a name="2953"><span class="lineNum">    2953 </span>            :                             shape_functions_values,</a>
 <a name="2954"><span class="lineNum">    2954 </span>            :                             shape_functions_local_gradients);</a>
 <a name="2955"><span class="lineNum">    2955 </span>            : </a>
-<a name="2956"><span class="lineNum">    2956 </span><span class="lineCov">          3 :         return s_geometry_data;</span></a>
+<a name="2956"><span class="lineNum">    2956 </span><span class="lineCov">          2 :         return s_geometry_data;</span></a>
 <a name="2957"><span class="lineNum">    2957 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="2958"><span class="lineNum">    2958 </span>            : </a>
 <a name="2959"><span class="lineNum">    2959 </span>            : </a>

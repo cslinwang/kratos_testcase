@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -86,7 +86,7 @@
 <a name="24"><span class="lineNum">      24 </span>            : namespace Kratos {</a>
 <a name="25"><span class="lineNum">      25 </span>            :   namespace Testing {</a>
 <a name="26"><span class="lineNum">      26 </span>            : </a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(DistanceProcessQuadrilateral2D, KratosCoreFastSuite)</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(DistanceProcessQuadrilateral2D, KratosCoreFastSuite)</span></a>
 <a name="28"><span class="lineNum">      28 </span>            :         {</a>
 <a name="29"><span class="lineNum">      29 </span>            :                 // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
 <a name="30"><span class="lineNum">      30 </span><span class="lineNoCov">          0 :                 Node&lt;3&gt;::Pointer p_point_1 = Kratos::make_intrusive&lt;Node&lt;3&gt;&gt;(1, 0.00, 0.00, 0.00);</span></a>
@@ -145,7 +145,7 @@
 <a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :                 KRATOS_CHECK_NEAR((surface_part.pGetNode(30))-&gt;FastGetSolutionStepValue(DISTANCE),  0.542857, 1e-6);</span></a>
 <a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="85"><span class="lineNum">      85 </span>            : </a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(DistanceProcessSquareRing2D, KratosCoreFastSuite)</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(DistanceProcessSquareRing2D, KratosCoreFastSuite)</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :         {</a>
 <a name="88"><span class="lineNum">      88 </span>            : </a>
 <a name="89"><span class="lineNum">      89 </span>            :                 // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
@@ -199,7 +199,7 @@
 <a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :                 KRATOS_CHECK_NEAR((surface_part.pGetNode(138))-&gt;FastGetSolutionStepValue(DISTANCE),  0.733333, 1e-6);</span></a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(HorizontalPlaneDistanceProcess, KratosCoreFastSuite)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(HorizontalPlaneDistanceProcess, KratosCoreFastSuite)</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :         {</a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span>            :                 // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
@@ -248,7 +248,7 @@
 <a name="186"><span class="lineNum">     186 </span>            :                         }</a>
 <a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="188"><span class="lineNum">     188 </span>            : </a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(HorizontalPlaneZeroDistanceProcess, KratosCoreFastSuite)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(HorizontalPlaneZeroDistanceProcess, KratosCoreFastSuite)</span></a>
 <a name="190"><span class="lineNum">     190 </span>            :         {</a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            :                 // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
@@ -299,7 +299,7 @@
 <a name="237"><span class="lineNum">     237 </span>            :                 }</a>
 <a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(TetrahedraInCubeDistanceProcess, KratosCoreFastSuite)</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(TetrahedraInCubeDistanceProcess, KratosCoreFastSuite)</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :         {</a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
 <a name="243"><span class="lineNum">     243 </span>            :                 // Generate a volume mesh (done with the StructuredMeshGeneratorProcess)</a>
@@ -360,7 +360,7 @@
 <a name="298"><span class="lineNum">     298 </span>            : </a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="300"><span class="lineNum">     300 </span>            : </a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(Tetrahedra3IntersectionDistanceProcess, KratosCoreFastSuite)</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(Tetrahedra3IntersectionDistanceProcess, KratosCoreFastSuite)</span></a>
 <a name="302"><span class="lineNum">     302 </span>            :         {</a>
 <a name="303"><span class="lineNum">     303 </span>            : </a>
 <a name="304"><span class="lineNum">     304 </span>            :     Model current_model;</a>
@@ -392,7 +392,7 @@
 <a name="330"><span class="lineNum">     330 </span>            : </a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          6 :         KRATOS_TEST_CASE_IN_SUITE(Tetrahedra5IntersectionDistanceProcess, KratosCoreFastSuite)</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          4 :         KRATOS_TEST_CASE_IN_SUITE(Tetrahedra5IntersectionDistanceProcess, KratosCoreFastSuite)</span></a>
 <a name="334"><span class="lineNum">     334 </span>            :         {</a>
 <a name="335"><span class="lineNum">     335 </span>            : </a>
 <a name="336"><span class="lineNum">     336 </span>            :     Model current_model;</a>
@@ -427,7 +427,7 @@
 <a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :                 KRATOS_CHECK_NEAR(volume_part.GetNode(4).GetSolutionStepValue(DISTANCE), 0.52827, 1e-6);</span></a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :         }</span></a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(DistanceProcessDoubleEmbeddedVariable, KratosCoreFastSuite)</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(DistanceProcessDoubleEmbeddedVariable, KratosCoreFastSuite)</span></a>
 <a name="369"><span class="lineNum">     369 </span>            :     {</a>
 <a name="370"><span class="lineNum">     370 </span>            :         Model current_model;</a>
 <a name="371"><span class="lineNum">     371 </span>            : </a>
@@ -481,7 +481,7 @@
 <a name="419"><span class="lineNum">     419 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_NEAR(volume_part.GetElement(69).GetValue(TEMPERATURE), 0.0, 1e-6);</span></a>
 <a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="421"><span class="lineNum">     421 </span>            : </a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(DistanceProcessArrayEmbeddedVariable, KratosCoreFastSuite)</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(DistanceProcessArrayEmbeddedVariable, KratosCoreFastSuite)</span></a>
 <a name="423"><span class="lineNum">     423 </span>            :     {</a>
 <a name="424"><span class="lineNum">     424 </span>            :         Model current_model;</a>
 <a name="425"><span class="lineNum">     425 </span>            : </a>

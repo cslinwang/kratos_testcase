@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">42</td>
@@ -183,7 +183,7 @@
 <a name="121"><span class="lineNum">     121 </span>            :     str_attr_accessor doc() const;</a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
 <a name="123"><span class="lineNum">     123 </span>            :     /// Return the object's current reference count</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        876 :     int ref_count() const { return static_cast&lt;int&gt;(Py_REFCNT(derived().ptr())); }</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        584 :     int ref_count() const { return static_cast&lt;int&gt;(Py_REFCNT(derived().ptr())); }</span></a>
 <a name="125"><span class="lineNum">     125 </span>            :     /// Return a handle to the Python type object underlying the instance</a>
 <a name="126"><span class="lineNum">     126 </span>            :     handle get_type() const;</a>
 <a name="127"><span class="lineNum">     127 </span>            : };</a>
@@ -204,12 +204,12 @@
 <a name="142"><span class="lineNum">     142 </span>            : class handle : public detail::object_api&lt;handle&gt; {</a>
 <a name="143"><span class="lineNum">     143 </span>            : public:</a>
 <a name="144"><span class="lineNum">     144 </span>            :     /// The default constructor creates a handle with a ``nullptr``-valued pointer</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1764 :     handle() = default;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       1176 :     handle() = default;</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :     /// Creates a ``handle`` from the given raw Python object pointer</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       1986 :     handle(PyObject *ptr) : m_ptr(ptr) { } // Allow implicit conversion from PyObject*</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       1324 :     handle(PyObject *ptr) : m_ptr(ptr) { } // Allow implicit conversion from PyObject*</span></a>
 <a name="148"><span class="lineNum">     148 </span>            : </a>
 <a name="149"><span class="lineNum">     149 </span>            :     /// Return the underlying ``PyObject *`` pointer</a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      19260 :     PyObject *ptr() const { return m_ptr; }</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">      12840 :     PyObject *ptr() const { return m_ptr; }</span></a>
 <a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :     PyObject *&amp;ptr() { return m_ptr; }</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
 <a name="153"><span class="lineNum">     153 </span>            :     /** \rst</a>
@@ -217,14 +217,14 @@
 <a name="155"><span class="lineNum">     155 </span>            :         preferable to use the `object` class which derives from `handle` and calls</a>
 <a name="156"><span class="lineNum">     156 </span>            :         this function automatically. Returns a reference to itself.</a>
 <a name="157"><span class="lineNum">     157 </span>            :     \endrst */</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       1128 :     const handle&amp; inc_ref() const &amp; { Py_XINCREF(m_ptr); return *this; }</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">        752 :     const handle&amp; inc_ref() const &amp; { Py_XINCREF(m_ptr); return *this; }</span></a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
 <a name="160"><span class="lineNum">     160 </span>            :     /** \rst</a>
 <a name="161"><span class="lineNum">     161 </span>            :         Manually decrease the reference count of the Python object. Usually, it is</a>
 <a name="162"><span class="lineNum">     162 </span>            :         preferable to use the `object` class which derives from `handle` and calls</a>
 <a name="163"><span class="lineNum">     163 </span>            :         this function automatically. Returns a reference to itself.</a>
 <a name="164"><span class="lineNum">     164 </span>            :     \endrst */</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">     294972 :     const handle&amp; dec_ref() const &amp; { Py_XDECREF(m_ptr); return *this; }</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">     196648 :     const handle&amp; dec_ref() const &amp; { Py_XDECREF(m_ptr); return *this; }</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
 <a name="167"><span class="lineNum">     167 </span>            :     /** \rst</a>
 <a name="168"><span class="lineNum">     168 </span>            :         Attempt to cast the Python object into the given C++ type. A `cast_error`</a>
@@ -232,7 +232,7 @@
 <a name="170"><span class="lineNum">     170 </span>            :     \endrst */</a>
 <a name="171"><span class="lineNum">     171 </span>            :     template &lt;typename T&gt; T cast() const;</a>
 <a name="172"><span class="lineNum">     172 </span>            :     /// Return ``true`` when the `handle` wraps a valid Python object</a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      28545 :     explicit operator bool() const { return m_ptr != nullptr; }</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">      19030 :     explicit operator bool() const { return m_ptr != nullptr; }</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :     /** \rst</a>
 <a name="175"><span class="lineNum">     175 </span>            :         Deprecated: Check that the underlying pointers are the same.</a>
 <a name="176"><span class="lineNum">     176 </span>            :         Equivalent to ``obj1 is obj2`` in Python.</a>
@@ -263,11 +263,11 @@
 <a name="201"><span class="lineNum">     201 </span>            :     PYBIND11_DEPRECATED(&quot;Use reinterpret_borrow&lt;object&gt;() or reinterpret_steal&lt;object&gt;()&quot;)</a>
 <a name="202"><span class="lineNum">     202 </span>            :     object(handle h, bool is_borrowed) : handle(h) { if (is_borrowed) inc_ref(); }</a>
 <a name="203"><span class="lineNum">     203 </span>            :     /// Copy constructor; always increases the reference count</a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">      14211 :     object(const object &amp;o) : handle(o) { inc_ref(); }</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       9474 :     object(const object &amp;o) : handle(o) { inc_ref(); }</span></a>
 <a name="205"><span class="lineNum">     205 </span>            :     /// Move constructor; steals the object from ``other`` and preserves its reference count</a>
 <a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :     object(object &amp;&amp;other) noexcept { m_ptr = other.m_ptr; other.m_ptr = nullptr; }</span></a>
 <a name="207"><span class="lineNum">     207 </span>            :     /// Destructor; automatically calls `handle::dec_ref()`</a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">     177936 :     ~object() { dec_ref(); }</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">     118624 :     ~object() { dec_ref(); }</span></a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
 <a name="210"><span class="lineNum">     210 </span>            :     /** \rst</a>
 <a name="211"><span class="lineNum">     211 </span>            :         Resets the internal pointer to ``nullptr`` without without decreasing the</a>
@@ -275,8 +275,8 @@
 <a name="213"><span class="lineNum">     213 </span>            :         Python object.</a>
 <a name="214"><span class="lineNum">     214 </span>            :     \endrst */</a>
 <a name="215"><span class="lineNum">     215 </span>            :     handle release() {</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        855 :       PyObject *tmp = m_ptr;</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       5811 :       m_ptr = nullptr;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        570 :       PyObject *tmp = m_ptr;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       3874 :       m_ptr = nullptr;</span></a>
 <a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :       return handle(tmp);</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :     }</a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
@@ -289,10 +289,10 @@
 <a name="227"><span class="lineNum">     227 </span>            : </a>
 <a name="228"><span class="lineNum">     228 </span>            :     object&amp; operator=(object &amp;&amp;other) noexcept {</a>
 <a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :         if (this != &amp;other) {</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">      50850 :             handle temp(m_ptr);</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">      56556 :             m_ptr = other.m_ptr;</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">      56556 :             other.m_ptr = nullptr;</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       6666 :             temp.dec_ref();</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">      33900 :             handle temp(m_ptr);</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">      37704 :             m_ptr = other.m_ptr;</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">      37704 :             other.m_ptr = nullptr;</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">       4444 :             temp.dec_ref();</span></a>
 <a name="234"><span class="lineNum">     234 </span>            :         }</a>
 <a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :         return *this;</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :     }</a>
@@ -312,8 +312,8 @@
 <a name="250"><span class="lineNum">     250 </span>            : </a>
 <a name="251"><span class="lineNum">     251 </span>            : public:</a>
 <a name="252"><span class="lineNum">     252 </span>            :     // Only accessible from derived classes and the reinterpret_* functions</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">      17676 :     object(handle h, borrowed_t) : handle(h) { inc_ref(); }</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">      50445 :     object(handle h, stolen_t) : handle(h) { }</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">      11784 :     object(handle h, borrowed_t) : handle(h) { inc_ref(); }</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">      33630 :     object(handle h, stolen_t) : handle(h) { }</span></a>
 <a name="255"><span class="lineNum">     255 </span>            : };</a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
 <a name="257"><span class="lineNum">     257 </span>            : /** \rst</a>
@@ -412,7 +412,7 @@
 <a name="350"><span class="lineNum">     350 </span>            : }</a>
 <a name="351"><span class="lineNum">     351 </span>            : </a>
 <a name="352"><span class="lineNum">     352 </span>            : inline bool hasattr(handle obj, const char *name) {</a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">       7464 :     return PyObject_HasAttrString(obj.ptr(), name) == 1;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">       4976 :     return PyObject_HasAttrString(obj.ptr(), name) == 1;</span></a>
 <a name="354"><span class="lineNum">     354 </span>            : }</a>
 <a name="355"><span class="lineNum">     355 </span>            : </a>
 <a name="356"><span class="lineNum">     356 </span>            : inline object getattr(handle obj, handle name) {</a>
@@ -421,10 +421,10 @@
 <a name="359"><span class="lineNum">     359 </span>            :     return reinterpret_steal&lt;object&gt;(result);</a>
 <a name="360"><span class="lineNum">     360 </span>            : }</a>
 <a name="361"><span class="lineNum">     361 </span>            : </a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">      49890 : inline object getattr(handle obj, const char *name) {</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      49890 :     PyObject *result = PyObject_GetAttrString(obj.ptr(), name);</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">      49890 :     if (!result) { throw error_already_set(); }</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      49890 :     return reinterpret_steal&lt;object&gt;(result);</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">      33260 : inline object getattr(handle obj, const char *name) {</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">      33260 :     PyObject *result = PyObject_GetAttrString(obj.ptr(), name);</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">      33260 :     if (!result) { throw error_already_set(); }</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      33260 :     return reinterpret_steal&lt;object&gt;(result);</span></a>
 <a name="366"><span class="lineNum">     366 </span>            : }</a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
 <a name="368"><span class="lineNum">     368 </span>            : inline object getattr(handle obj, handle name, handle default_) {</a>
@@ -436,22 +436,22 @@
 <a name="374"><span class="lineNum">     374 </span>            :     }</a>
 <a name="375"><span class="lineNum">     375 </span>            : }</a>
 <a name="376"><span class="lineNum">     376 </span>            : </a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       8541 : inline object getattr(handle obj, const char *name, handle default_) {</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">       8541 :     if (PyObject *result = PyObject_GetAttrString(obj.ptr(), name)) {</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">       5694 : inline object getattr(handle obj, const char *name, handle default_) {</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">       5694 :     if (PyObject *result = PyObject_GetAttrString(obj.ptr(), name)) {</span></a>
 <a name="379"><span class="lineNum">     379 </span>            :         return reinterpret_steal&lt;object&gt;(result);</a>
 <a name="380"><span class="lineNum">     380 </span>            :     } else {</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">       3570 :         PyErr_Clear();</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">       2380 :         PyErr_Clear();</span></a>
 <a name="382"><span class="lineNum">     382 </span>            :         return reinterpret_borrow&lt;object&gt;(default_);</a>
 <a name="383"><span class="lineNum">     383 </span>            :     }</a>
 <a name="384"><span class="lineNum">     384 </span>            : }</a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">       8529 : inline void setattr(handle obj, handle name, handle value) {</span></a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">       8529 :     if (PyObject_SetAttr(obj.ptr(), name.ptr(), value.ptr()) != 0) { throw error_already_set(); }</span></a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       8529 : }</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">       5686 : inline void setattr(handle obj, handle name, handle value) {</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">       5686 :     if (PyObject_SetAttr(obj.ptr(), name.ptr(), value.ptr()) != 0) { throw error_already_set(); }</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">       5686 : }</span></a>
 <a name="389"><span class="lineNum">     389 </span>            : </a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">       5598 : inline void setattr(handle obj, const char *name, handle value) {</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">       5598 :     if (PyObject_SetAttrString(obj.ptr(), name, value.ptr()) != 0) { throw error_already_set(); }</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       5598 : }</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">       3732 : inline void setattr(handle obj, const char *name, handle value) {</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">       3732 :     if (PyObject_SetAttrString(obj.ptr(), name, value.ptr()) != 0) { throw error_already_set(); }</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       3732 : }</span></a>
 <a name="393"><span class="lineNum">     393 </span>            : </a>
 <a name="394"><span class="lineNum">     394 </span>            : inline ssize_t hash(handle obj) {</a>
 <a name="395"><span class="lineNum">     395 </span>            :     auto h = PyObject_Hash(obj.ptr());</a>
@@ -463,13 +463,13 @@
 <a name="401"><span class="lineNum">     401 </span>            : </a>
 <a name="402"><span class="lineNum">     402 </span>            : NAMESPACE_BEGIN(detail)</a>
 <a name="403"><span class="lineNum">     403 </span>            : inline handle get_function(handle value) {</a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        426 :     if (value) {</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        284 :     if (value) {</span></a>
 <a name="405"><span class="lineNum">     405 </span>            : #if PY_MAJOR_VERSION &gt;= 3</a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        279 :         if (PyInstanceMethod_Check(value.ptr()))</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        186 :         if (PyInstanceMethod_Check(value.ptr()))</span></a>
 <a name="407"><span class="lineNum">     407 </span><span class="lineNoCov">          0 :             value = PyInstanceMethod_GET_FUNCTION(value.ptr());</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :         else</a>
 <a name="409"><span class="lineNum">     409 </span>            : #endif</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        279 :         if (PyMethod_Check(value.ptr()))</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        186 :         if (PyMethod_Check(value.ptr()))</span></a>
 <a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :             value = PyMethod_GET_FUNCTION(value.ptr());</span></a>
 <a name="412"><span class="lineNum">     412 </span>            :     }</a>
 <a name="413"><span class="lineNum">     413 </span>            :     return value;</a>
@@ -488,11 +488,11 @@
 <a name="426"><span class="lineNum">     426 </span>            : </a>
 <a name="427"><span class="lineNum">     427 </span>            : </a>
 <a name="428"><span class="lineNum">     428 </span>            : template &lt;typename Policy&gt;</a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">      63402 : class accessor : public object_api&lt;accessor&lt;Policy&gt;&gt; {</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">      42268 : class accessor : public object_api&lt;accessor&lt;Policy&gt;&gt; {</span></a>
 <a name="430"><span class="lineNum">     430 </span>            :     using key_type = typename Policy::key_type;</a>
 <a name="431"><span class="lineNum">     431 </span>            : </a>
 <a name="432"><span class="lineNum">     432 </span>            : public:</a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">      26328 :     accessor(handle obj, key_type key) : obj(obj), key(std::move(key)) { }</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">      17552 :     accessor(handle obj, key_type key) : obj(obj), key(std::move(key)) { }</span></a>
 <a name="434"><span class="lineNum">     434 </span>            :     accessor(const accessor &amp;) = default;</a>
 <a name="435"><span class="lineNum">     435 </span>            :     accessor(accessor &amp;&amp;) = default;</a>
 <a name="436"><span class="lineNum">     436 </span>            : </a>
@@ -501,9 +501,9 @@
 <a name="439"><span class="lineNum">     439 </span>            :     void operator=(const accessor &amp;a) &amp;&amp; { std::move(*this).operator=(handle(a)); }</a>
 <a name="440"><span class="lineNum">     440 </span>            :     void operator=(const accessor &amp;a) &amp; { operator=(handle(a)); }</a>
 <a name="441"><span class="lineNum">     441 </span>            : </a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">       3432 :     template &lt;typename T&gt; void operator=(T &amp;&amp;value) &amp;&amp; {</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">      12399 :         Policy::set(obj, key, object_or_cast(std::forward&lt;T&gt;(value)));</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">       3630 :     }</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">       2288 :     template &lt;typename T&gt; void operator=(T &amp;&amp;value) &amp;&amp; {</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">       8266 :         Policy::set(obj, key, object_or_cast(std::forward&lt;T&gt;(value)));</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">       2420 :     }</span></a>
 <a name="445"><span class="lineNum">     445 </span>            :     template &lt;typename T&gt; void operator=(T &amp;&amp;value) &amp; {</a>
 <a name="446"><span class="lineNum">     446 </span>            :         get_cache() = reinterpret_borrow&lt;object&gt;(object_or_cast(std::forward&lt;T&gt;(value)));</a>
 <a name="447"><span class="lineNum">     447 </span>            :     }</a>
@@ -520,14 +520,14 @@
 <a name="458"><span class="lineNum">     458 </span>            :         return obj.contains(key);</a>
 <a name="459"><span class="lineNum">     459 </span>            :     }</a>
 <a name="460"><span class="lineNum">     460 </span>            : </a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">      14205 :     operator object() const { return get_cache(); }</span></a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">        975 :     PyObject *ptr() const { return get_cache().ptr(); }</span></a>
-<a name="463"><span class="lineNum">     463 </span><span class="lineCov">      53505 :     template &lt;typename T&gt; T cast() const { return get_cache().template cast&lt;T&gt;(); }</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">       9470 :     operator object() const { return get_cache(); }</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">        650 :     PyObject *ptr() const { return get_cache().ptr(); }</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">      35670 :     template &lt;typename T&gt; T cast() const { return get_cache().template cast&lt;T&gt;(); }</span></a>
 <a name="464"><span class="lineNum">     464 </span>            : </a>
 <a name="465"><span class="lineNum">     465 </span>            : private:</a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">      50850 :     object &amp;get_cache() const {</span></a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">     151590 :         if (!cache) { cache = Policy::get(obj, key); }</span></a>
-<a name="468"><span class="lineNum">     468 </span><span class="lineCov">      50850 :         return cache;</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">      33900 :     object &amp;get_cache() const {</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">     101060 :         if (!cache) { cache = Policy::get(obj, key); }</span></a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineCov">      33900 :         return cache;</span></a>
 <a name="469"><span class="lineNum">     469 </span>            :     }</a>
 <a name="470"><span class="lineNum">     470 </span>            : </a>
 <a name="471"><span class="lineNum">     471 </span>            : private:</a>
@@ -540,13 +540,13 @@
 <a name="478"><span class="lineNum">     478 </span>            : struct obj_attr {</a>
 <a name="479"><span class="lineNum">     479 </span>            :     using key_type = object;</a>
 <a name="480"><span class="lineNum">     480 </span>            :     static object get(handle obj, handle key) { return getattr(obj, key); }</a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       8529 :     static void set(handle obj, handle key, handle val) { setattr(obj, key, val); }</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">       5686 :     static void set(handle obj, handle key, handle val) { setattr(obj, key, val); }</span></a>
 <a name="482"><span class="lineNum">     482 </span>            : };</a>
 <a name="483"><span class="lineNum">     483 </span>            : </a>
 <a name="484"><span class="lineNum">     484 </span>            : struct str_attr {</a>
 <a name="485"><span class="lineNum">     485 </span>            :     using key_type = const char *;</a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">      49890 :     static object get(handle obj, const char *key) { return getattr(obj, key); }</span></a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">       3843 :     static void set(handle obj, const char *key, handle val) { setattr(obj, key, val); }</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">      33260 :     static object get(handle obj, const char *key) { return getattr(obj, key); }</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">       2562 :     static void set(handle obj, const char *key, handle val) { setattr(obj, key, val); }</span></a>
 <a name="488"><span class="lineNum">     488 </span>            : };</a>
 <a name="489"><span class="lineNum">     489 </span>            : </a>
 <a name="490"><span class="lineNum">     490 </span>            : struct generic_item {</a>
@@ -558,9 +558,9 @@
 <a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :         return reinterpret_steal&lt;object&gt;(result);</span></a>
 <a name="497"><span class="lineNum">     497 </span>            :     }</a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">        198 :     static void set(handle obj, handle key, handle val) {</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">        198 :         if (PyObject_SetItem(obj.ptr(), key.ptr(), val.ptr()) != 0) { throw error_already_set(); }</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">        198 :     }</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">        132 :     static void set(handle obj, handle key, handle val) {</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">        132 :         if (PyObject_SetItem(obj.ptr(), key.ptr(), val.ptr()) != 0) { throw error_already_set(); }</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">        132 :     }</span></a>
 <a name="502"><span class="lineNum">     502 </span>            : };</a>
 <a name="503"><span class="lineNum">     503 </span>            : </a>
 <a name="504"><span class="lineNum">     504 </span>            : struct sequence_item {</a>
@@ -583,10 +583,10 @@
 <a name="521"><span class="lineNum">     521 </span>            : struct list_item {</a>
 <a name="522"><span class="lineNum">     522 </span>            :     using key_type = size_t;</a>
 <a name="523"><span class="lineNum">     523 </span>            : </a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        471 :     static object get(handle obj, size_t index) {</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        471 :         PyObject *result = PyList_GetItem(obj.ptr(), static_cast&lt;ssize_t&gt;(index));</span></a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        471 :         if (!result) { throw error_already_set(); }</span></a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        471 :         return reinterpret_borrow&lt;object&gt;(result);</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">        314 :     static object get(handle obj, size_t index) {</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">        314 :         PyObject *result = PyList_GetItem(obj.ptr(), static_cast&lt;ssize_t&gt;(index));</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">        314 :         if (!result) { throw error_already_set(); }</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        314 :         return reinterpret_borrow&lt;object&gt;(result);</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :     }</a>
 <a name="529"><span class="lineNum">     529 </span>            : </a>
 <a name="530"><span class="lineNum">     530 </span>            :     static void set(handle obj, size_t index, handle val) {</a>
@@ -600,10 +600,10 @@
 <a name="538"><span class="lineNum">     538 </span>            : struct tuple_item {</a>
 <a name="539"><span class="lineNum">     539 </span>            :     using key_type = size_t;</a>
 <a name="540"><span class="lineNum">     540 </span>            : </a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">        489 :     static object get(handle obj, size_t index) {</span></a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">        489 :         PyObject *result = PyTuple_GetItem(obj.ptr(), static_cast&lt;ssize_t&gt;(index));</span></a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">        489 :         if (!result) { throw error_already_set(); }</span></a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        489 :         return reinterpret_borrow&lt;object&gt;(result);</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">        326 :     static object get(handle obj, size_t index) {</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">        326 :         PyObject *result = PyTuple_GetItem(obj.ptr(), static_cast&lt;ssize_t&gt;(index));</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">        326 :         if (!result) { throw error_already_set(); }</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        326 :         return reinterpret_borrow&lt;object&gt;(result);</span></a>
 <a name="545"><span class="lineNum">     545 </span>            :     }</a>
 <a name="546"><span class="lineNum">     546 </span>            : </a>
 <a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :     static void set(handle obj, size_t index, handle val) {</span></a>
@@ -634,7 +634,7 @@
 <a name="572"><span class="lineNum">     572 </span>            :     reference operator[](difference_type n) const { return *(*this + n); }</a>
 <a name="573"><span class="lineNum">     573 </span>            :     pointer operator-&gt;() const { return **this; }</a>
 <a name="574"><span class="lineNum">     574 </span>            : </a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">        123 :     It &amp;operator++() { Policy::increment(); return *this; }</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         82 :     It &amp;operator++() { Policy::increment(); return *this; }</span></a>
 <a name="576"><span class="lineNum">     576 </span>            :     It operator++(int) { auto copy = *this; Policy::increment(); return copy; }</a>
 <a name="577"><span class="lineNum">     577 </span>            :     It &amp;operator--() { Policy::decrement(); return *this; }</a>
 <a name="578"><span class="lineNum">     578 </span>            :     It operator--(int) { auto copy = *this; Policy::decrement(); return copy; }</a>
@@ -672,10 +672,10 @@
 <a name="610"><span class="lineNum">     610 </span>            :     using reference = const handle;</a>
 <a name="611"><span class="lineNum">     611 </span>            :     using pointer = arrow_proxy&lt;const handle&gt;;</a>
 <a name="612"><span class="lineNum">     612 </span>            : </a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">        147 :     sequence_fast_readonly(handle obj, ssize_t n) : ptr(PySequence_Fast_ITEMS(obj.ptr()) + n) { }</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">         98 :     sequence_fast_readonly(handle obj, ssize_t n) : ptr(PySequence_Fast_ITEMS(obj.ptr()) + n) { }</span></a>
 <a name="614"><span class="lineNum">     614 </span>            : </a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineCov">        123 :     reference dereference() const { return *ptr; }</span></a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">        123 :     void increment() { ++ptr; }</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">         82 :     reference dereference() const { return *ptr; }</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">         82 :     void increment() { ++ptr; }</span></a>
 <a name="617"><span class="lineNum">     617 </span>            :     void decrement() { --ptr; }</a>
 <a name="618"><span class="lineNum">     618 </span>            :     void advance(ssize_t n) { ptr += n; }</a>
 <a name="619"><span class="lineNum">     619 </span>            :     bool equal(const sequence_fast_readonly &amp;b) const { return ptr == b.ptr; }</a>
@@ -716,11 +716,11 @@
 <a name="654"><span class="lineNum">     654 </span>            :     using pointer = arrow_proxy&lt;const value_type&gt;;</a>
 <a name="655"><span class="lineNum">     655 </span>            : </a>
 <a name="656"><span class="lineNum">     656 </span>            :     dict_readonly() = default;</a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineCov">          9 :     dict_readonly(handle obj, ssize_t pos) : obj(obj), pos(pos) { increment(); }</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">          6 :     dict_readonly(handle obj, ssize_t pos) : obj(obj), pos(pos) { increment(); }</span></a>
 <a name="658"><span class="lineNum">     658 </span>            : </a>
 <a name="659"><span class="lineNum">     659 </span>            :     reference dereference() const { return {key, value}; }</a>
-<a name="660"><span class="lineNum">     660 </span><span class="lineCov">         51 :     void increment() { if (!PyDict_Next(obj.ptr(), &amp;pos, &amp;key, &amp;value)) { pos = -1; } }</span></a>
-<a name="661"><span class="lineNum">     661 </span><span class="lineCov">         51 :     bool equal(const dict_readonly &amp;b) const { return pos == b.pos; }</span></a>
+<a name="660"><span class="lineNum">     660 </span><span class="lineCov">         34 :     void increment() { if (!PyDict_Next(obj.ptr(), &amp;pos, &amp;key, &amp;value)) { pos = -1; } }</span></a>
+<a name="661"><span class="lineNum">     661 </span><span class="lineCov">         34 :     bool equal(const dict_readonly &amp;b) const { return pos == b.pos; }</span></a>
 <a name="662"><span class="lineNum">     662 </span>            : </a>
 <a name="663"><span class="lineNum">     663 </span>            : private:</a>
 <a name="664"><span class="lineNum">     664 </span>            :     handle obj;</a>
@@ -753,7 +753,7 @@
 <a name="691"><span class="lineNum">     691 </span>            : </a>
 <a name="692"><span class="lineNum">     692 </span>            : inline bool PyNone_Check(PyObject *o) { return o == Py_None; }</a>
 <a name="693"><span class="lineNum">     693 </span>            : </a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">        873 : inline bool PyUnicode_Check_Permissive(PyObject *o) { return PyUnicode_Check(o) || PYBIND11_BYTES_CHECK(o); }</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">        582 : inline bool PyUnicode_Check_Permissive(PyObject *o) { return PyUnicode_Check(o) || PYBIND11_BYTES_CHECK(o); }</span></a>
 <a name="695"><span class="lineNum">     695 </span>            : </a>
 <a name="696"><span class="lineNum">     696 </span>            : class kwargs_proxy : public handle {</a>
 <a name="697"><span class="lineNum">     697 </span>            : public:</a>
@@ -896,9 +896,9 @@
 <a name="834"><span class="lineNum">     834 </span>            : </a>
 <a name="835"><span class="lineNum">     835 </span>            : class bytes;</a>
 <a name="836"><span class="lineNum">     836 </span>            : </a>
-<a name="837"><span class="lineNum">     837 </span><span class="lineCov">       1290 : class str : public object {</span></a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">        860 : class str : public object {</span></a>
 <a name="838"><span class="lineNum">     838 </span>            : public:</a>
-<a name="839"><span class="lineNum">     839 </span><span class="lineCov">       1746 :     PYBIND11_OBJECT_CVT(str, object, detail::PyUnicode_Check_Permissive, raw_str)</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">       1164 :     PYBIND11_OBJECT_CVT(str, object, detail::PyUnicode_Check_Permissive, raw_str)</span></a>
 <a name="840"><span class="lineNum">     840 </span>            : </a>
 <a name="841"><span class="lineNum">     841 </span><span class="lineNoCov">          0 :     str(const char *c, size_t n)</span></a>
 <a name="842"><span class="lineNum">     842 </span><span class="lineNoCov">          0 :         : object(PyUnicode_FromStringAndSize(c, (ssize_t) n), stolen_t{}) {</span></a>
@@ -906,10 +906,10 @@
 <a name="844"><span class="lineNum">     844 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
 <a name="846"><span class="lineNum">     846 </span>            :     // 'explicit' is explicitly omitted from the following constructors to allow implicit conversion to py::str from C++ string-like objects</a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        420 :     str(const char *c = &quot;&quot;)</span></a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">        420 :         : object(PyUnicode_FromString(c), stolen_t{}) {</span></a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">        420 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate string object!&quot;);</span></a>
-<a name="850"><span class="lineNum">     850 </span><span class="lineCov">        420 :     }</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">        280 :     str(const char *c = &quot;&quot;)</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">        280 :         : object(PyUnicode_FromString(c), stolen_t{}) {</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">        280 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate string object!&quot;);</span></a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">        280 :     }</span></a>
 <a name="851"><span class="lineNum">     851 </span>            : </a>
 <a name="852"><span class="lineNum">     852 </span><span class="lineNoCov">          0 :     str(const std::string &amp;s) : str(s.data(), s.size()) { }</span></a>
 <a name="853"><span class="lineNum">     853 </span>            : </a>
@@ -1020,7 +1020,7 @@
 <a name="958"><span class="lineNum">     958 </span>            :     m_ptr = obj.release().ptr();</a>
 <a name="959"><span class="lineNum">     959 </span>            : }</a>
 <a name="960"><span class="lineNum">     960 </span>            : </a>
-<a name="961"><span class="lineNum">     961 </span><span class="lineCov">       8904 : class none : public object {</span></a>
+<a name="961"><span class="lineNum">     961 </span><span class="lineCov">       5936 : class none : public object {</span></a>
 <a name="962"><span class="lineNum">     962 </span>            : public:</a>
 <a name="963"><span class="lineNum">     963 </span>            :     PYBIND11_OBJECT(none, object, detail::PyNone_Check)</a>
 <a name="964"><span class="lineNum">     964 </span>            :     none() : object(Py_None, borrowed_t{}) { }</a>
@@ -1112,13 +1112,13 @@
 <a name="1050"><span class="lineNum">    1050 </span>            :     operator double() const { return (double) PyFloat_AsDouble(m_ptr); }</a>
 <a name="1051"><span class="lineNum">    1051 </span>            : };</a>
 <a name="1052"><span class="lineNum">    1052 </span>            : </a>
-<a name="1053"><span class="lineNum">    1053 </span><span class="lineCov">          6 : class weakref : public object {</span></a>
+<a name="1053"><span class="lineNum">    1053 </span><span class="lineCov">          4 : class weakref : public object {</span></a>
 <a name="1054"><span class="lineNum">    1054 </span>            : public:</a>
 <a name="1055"><span class="lineNum">    1055 </span>            :     PYBIND11_OBJECT_DEFAULT(weakref, object, PyWeakref_Check)</a>
-<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">          6 :     explicit weakref(handle obj, handle callback = {})</span></a>
-<a name="1057"><span class="lineNum">    1057 </span><span class="lineCov">          6 :         : object(PyWeakref_NewRef(obj.ptr(), callback.ptr()), stolen_t{}) {</span></a>
-<a name="1058"><span class="lineNum">    1058 </span><span class="lineCov">          6 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate weak reference!&quot;);</span></a>
-<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">          6 :     }</span></a>
+<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">          4 :     explicit weakref(handle obj, handle callback = {})</span></a>
+<a name="1057"><span class="lineNum">    1057 </span><span class="lineCov">          4 :         : object(PyWeakref_NewRef(obj.ptr(), callback.ptr()), stolen_t{}) {</span></a>
+<a name="1058"><span class="lineNum">    1058 </span><span class="lineCov">          4 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate weak reference!&quot;);</span></a>
+<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">          4 :     }</span></a>
 <a name="1060"><span class="lineNum">    1060 </span>            : };</a>
 <a name="1061"><span class="lineNum">    1061 </span>            : </a>
 <a name="1062"><span class="lineNum">    1062 </span><span class="lineNoCov">          0 : class slice : public object {</span></a>
@@ -1138,17 +1138,17 @@
 <a name="1076"><span class="lineNum">    1076 </span>            :     }</a>
 <a name="1077"><span class="lineNum">    1077 </span>            : };</a>
 <a name="1078"><span class="lineNum">    1078 </span>            : </a>
-<a name="1079"><span class="lineNum">    1079 </span><span class="lineCov">       9249 : class capsule : public object {</span></a>
+<a name="1079"><span class="lineNum">    1079 </span><span class="lineCov">       6166 : class capsule : public object {</span></a>
 <a name="1080"><span class="lineNum">    1080 </span>            : public:</a>
 <a name="1081"><span class="lineNum">    1081 </span><span class="lineNoCov">          0 :     PYBIND11_OBJECT_DEFAULT(capsule, object, PyCapsule_CheckExact)</span></a>
 <a name="1082"><span class="lineNum">    1082 </span>            :     PYBIND11_DEPRECATED(&quot;Use reinterpret_borrow&lt;capsule&gt;() or reinterpret_steal&lt;capsule&gt;()&quot;)</a>
 <a name="1083"><span class="lineNum">    1083 </span>            :     capsule(PyObject *ptr, bool is_borrowed) : object(is_borrowed ? object(ptr, borrowed_t{}) : object(ptr, stolen_t{})) { }</a>
 <a name="1084"><span class="lineNum">    1084 </span>            : </a>
-<a name="1085"><span class="lineNum">    1085 </span><span class="lineCov">          3 :     explicit capsule(const void *value, const char *name = nullptr, void (*destructor)(PyObject *) = nullptr)</span></a>
-<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">          3 :         : object(PyCapsule_New(const_cast&lt;void *&gt;(value), name, destructor), stolen_t{}) {</span></a>
-<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">          3 :         if (!m_ptr)</span></a>
+<a name="1085"><span class="lineNum">    1085 </span><span class="lineCov">          2 :     explicit capsule(const void *value, const char *name = nullptr, void (*destructor)(PyObject *) = nullptr)</span></a>
+<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">          2 :         : object(PyCapsule_New(const_cast&lt;void *&gt;(value), name, destructor), stolen_t{}) {</span></a>
+<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">          2 :         if (!m_ptr)</span></a>
 <a name="1088"><span class="lineNum">    1088 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;Could not allocate capsule object!&quot;);</span></a>
-<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">          3 :     }</span></a>
+<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">          2 :     }</span></a>
 <a name="1090"><span class="lineNum">    1090 </span>            : </a>
 <a name="1091"><span class="lineNum">    1091 </span>            :     PYBIND11_DEPRECATED(&quot;Please pass a destructor that takes a void pointer as input&quot;)</a>
 <a name="1092"><span class="lineNum">    1092 </span>            :     capsule(const void *value, void (*destruct)(PyObject *))</a>
@@ -1157,19 +1157,19 @@
 <a name="1095"><span class="lineNum">    1095 </span>            :             pybind11_fail(&quot;Could not allocate capsule object!&quot;);</a>
 <a name="1096"><span class="lineNum">    1096 </span>            :     }</a>
 <a name="1097"><span class="lineNum">    1097 </span>            : </a>
-<a name="1098"><span class="lineNum">    1098 </span><span class="lineCov">       5010 :     capsule(const void *value, void (*destructor)(void *)) {</span></a>
-<a name="1099"><span class="lineNum">    1099 </span><span class="lineCov">       5010 :         m_ptr = PyCapsule_New(const_cast&lt;void *&gt;(value), nullptr, [](PyObject *o) {</span></a>
-<a name="1100"><span class="lineNum">    1100 </span><span class="lineCov">       4626 :             auto destructor = reinterpret_cast&lt;void (*)(void *)&gt;(PyCapsule_GetContext(o));</span></a>
-<a name="1101"><span class="lineNum">    1101 </span><span class="lineCov">       4626 :             void *ptr = PyCapsule_GetPointer(o, nullptr);</span></a>
-<a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">       4626 :             destructor(ptr);</span></a>
-<a name="1103"><span class="lineNum">    1103 </span><span class="lineCov">       4626 :         });</span></a>
+<a name="1098"><span class="lineNum">    1098 </span><span class="lineCov">       3340 :     capsule(const void *value, void (*destructor)(void *)) {</span></a>
+<a name="1099"><span class="lineNum">    1099 </span><span class="lineCov">       3340 :         m_ptr = PyCapsule_New(const_cast&lt;void *&gt;(value), nullptr, [](PyObject *o) {</span></a>
+<a name="1100"><span class="lineNum">    1100 </span><span class="lineCov">       3084 :             auto destructor = reinterpret_cast&lt;void (*)(void *)&gt;(PyCapsule_GetContext(o));</span></a>
+<a name="1101"><span class="lineNum">    1101 </span><span class="lineCov">       3084 :             void *ptr = PyCapsule_GetPointer(o, nullptr);</span></a>
+<a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">       3084 :             destructor(ptr);</span></a>
+<a name="1103"><span class="lineNum">    1103 </span><span class="lineCov">       3084 :         });</span></a>
 <a name="1104"><span class="lineNum">    1104 </span>            : </a>
-<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">       5010 :         if (!m_ptr)</span></a>
+<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">       3340 :         if (!m_ptr)</span></a>
 <a name="1106"><span class="lineNum">    1106 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;Could not allocate capsule object!&quot;);</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>            : </a>
-<a name="1108"><span class="lineNum">    1108 </span><span class="lineCov">       5010 :         if (PyCapsule_SetContext(m_ptr, (void *) destructor) != 0)</span></a>
+<a name="1108"><span class="lineNum">    1108 </span><span class="lineCov">       3340 :         if (PyCapsule_SetContext(m_ptr, (void *) destructor) != 0)</span></a>
 <a name="1109"><span class="lineNum">    1109 </span><span class="lineNoCov">          0 :             pybind11_fail(&quot;Could not set capsule context!&quot;);</span></a>
-<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">       5010 :     }</span></a>
+<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">       3340 :     }</span></a>
 <a name="1111"><span class="lineNum">    1111 </span>            : </a>
 <a name="1112"><span class="lineNum">    1112 </span>            :     capsule(void (*destructor)()) {</a>
 <a name="1113"><span class="lineNum">    1113 </span>            :         m_ptr = PyCapsule_New(reinterpret_cast&lt;void *&gt;(destructor), nullptr, [](PyObject *o) {</a>
@@ -1181,34 +1181,34 @@
 <a name="1119"><span class="lineNum">    1119 </span>            :             pybind11_fail(&quot;Could not allocate capsule object!&quot;);</a>
 <a name="1120"><span class="lineNum">    1120 </span>            :     }</a>
 <a name="1121"><span class="lineNum">    1121 </span>            : </a>
-<a name="1122"><span class="lineNum">    1122 </span><span class="lineCov">       4236 :     template &lt;typename T&gt; operator T *() const {</span></a>
+<a name="1122"><span class="lineNum">    1122 </span><span class="lineCov">       2824 :     template &lt;typename T&gt; operator T *() const {</span></a>
 <a name="1123"><span class="lineNum">    1123 </span>            :         auto name = this-&gt;name();</a>
-<a name="1124"><span class="lineNum">    1124 </span><span class="lineCov">       4236 :         T * result = static_cast&lt;T *&gt;(PyCapsule_GetPointer(m_ptr, name));</span></a>
-<a name="1125"><span class="lineNum">    1125 </span><span class="lineCov">       4236 :         if (!result) pybind11_fail(&quot;Unable to extract capsule contents!&quot;);</span></a>
-<a name="1126"><span class="lineNum">    1126 </span><span class="lineCov">       4236 :         return result;</span></a>
+<a name="1124"><span class="lineNum">    1124 </span><span class="lineCov">       2824 :         T * result = static_cast&lt;T *&gt;(PyCapsule_GetPointer(m_ptr, name));</span></a>
+<a name="1125"><span class="lineNum">    1125 </span><span class="lineCov">       2824 :         if (!result) pybind11_fail(&quot;Unable to extract capsule contents!&quot;);</span></a>
+<a name="1126"><span class="lineNum">    1126 </span><span class="lineCov">       2824 :         return result;</span></a>
 <a name="1127"><span class="lineNum">    1127 </span>            :     }</a>
 <a name="1128"><span class="lineNum">    1128 </span>            : </a>
-<a name="1129"><span class="lineNum">    1129 </span><span class="lineCov">       4236 :     const char *name() const { return PyCapsule_GetName(m_ptr); }</span></a>
+<a name="1129"><span class="lineNum">    1129 </span><span class="lineCov">       2824 :     const char *name() const { return PyCapsule_GetName(m_ptr); }</span></a>
 <a name="1130"><span class="lineNum">    1130 </span>            : };</a>
 <a name="1131"><span class="lineNum">    1131 </span>            : </a>
-<a name="1132"><span class="lineNum">    1132 </span><span class="lineCov">       1020 : class tuple : public object {</span></a>
+<a name="1132"><span class="lineNum">    1132 </span><span class="lineCov">        680 : class tuple : public object {</span></a>
 <a name="1133"><span class="lineNum">    1133 </span>            : public:</a>
-<a name="1134"><span class="lineNum">    1134 </span><span class="lineCov">        873 :     PYBIND11_OBJECT_CVT(tuple, object, PyTuple_Check, PySequence_Tuple)</span></a>
-<a name="1135"><span class="lineNum">    1135 </span><span class="lineCov">        216 :     explicit tuple(size_t size = 0) : object(PyTuple_New((ssize_t) size), stolen_t{}) {</span></a>
-<a name="1136"><span class="lineNum">    1136 </span><span class="lineCov">        216 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate tuple object!&quot;);</span></a>
-<a name="1137"><span class="lineNum">    1137 </span><span class="lineCov">        216 :     }</span></a>
-<a name="1138"><span class="lineNum">    1138 </span><span class="lineCov">       1746 :     size_t size() const { return (size_t) PyTuple_Size(m_ptr); }</span></a>
+<a name="1134"><span class="lineNum">    1134 </span><span class="lineCov">        582 :     PYBIND11_OBJECT_CVT(tuple, object, PyTuple_Check, PySequence_Tuple)</span></a>
+<a name="1135"><span class="lineNum">    1135 </span><span class="lineCov">        144 :     explicit tuple(size_t size = 0) : object(PyTuple_New((ssize_t) size), stolen_t{}) {</span></a>
+<a name="1136"><span class="lineNum">    1136 </span><span class="lineCov">        144 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate tuple object!&quot;);</span></a>
+<a name="1137"><span class="lineNum">    1137 </span><span class="lineCov">        144 :     }</span></a>
+<a name="1138"><span class="lineNum">    1138 </span><span class="lineCov">       1164 :     size_t size() const { return (size_t) PyTuple_Size(m_ptr); }</span></a>
 <a name="1139"><span class="lineNum">    1139 </span>            :     detail::tuple_accessor operator[](size_t index) const { return {*this, index}; }</a>
 <a name="1140"><span class="lineNum">    1140 </span>            :     detail::tuple_iterator begin() const { return {*this, 0}; }</a>
-<a name="1141"><span class="lineNum">    1141 </span><span class="lineCov">        147 :     detail::tuple_iterator end() const { return {*this, PyTuple_GET_SIZE(m_ptr)}; }</span></a>
+<a name="1141"><span class="lineNum">    1141 </span><span class="lineCov">         98 :     detail::tuple_iterator end() const { return {*this, PyTuple_GET_SIZE(m_ptr)}; }</span></a>
 <a name="1142"><span class="lineNum">    1142 </span>            : };</a>
 <a name="1143"><span class="lineNum">    1143 </span>            : </a>
-<a name="1144"><span class="lineNum">    1144 </span><span class="lineCov">         45 : class dict : public object {</span></a>
+<a name="1144"><span class="lineNum">    1144 </span><span class="lineCov">         30 : class dict : public object {</span></a>
 <a name="1145"><span class="lineNum">    1145 </span>            : public:</a>
 <a name="1146"><span class="lineNum">    1146 </span>            :     PYBIND11_OBJECT_CVT(dict, object, PyDict_Check, raw_dict)</a>
-<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">         42 :     dict() : object(PyDict_New(), stolen_t{}) {</span></a>
-<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">         42 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate dict object!&quot;);</span></a>
-<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">         42 :     }</span></a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">         28 :     dict() : object(PyDict_New(), stolen_t{}) {</span></a>
+<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">         28 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate dict object!&quot;);</span></a>
+<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">         28 :     }</span></a>
 <a name="1150"><span class="lineNum">    1150 </span>            :     template &lt;typename... Args,</a>
 <a name="1151"><span class="lineNum">    1151 </span>            :               typename = detail::enable_if_t&lt;detail::all_of&lt;detail::is_keyword_or_ds&lt;Args&gt;...&gt;::value&gt;,</a>
 <a name="1152"><span class="lineNum">    1152 </span>            :               // MSVC workaround: it can't compile an out-of-line definition, so defer the collector</a>
@@ -1217,7 +1217,7 @@
 <a name="1155"><span class="lineNum">    1155 </span>            : </a>
 <a name="1156"><span class="lineNum">    1156 </span><span class="lineNoCov">          0 :     size_t size() const { return (size_t) PyDict_Size(m_ptr); }</span></a>
 <a name="1157"><span class="lineNum">    1157 </span>            :     detail::dict_iterator begin() const { return {*this, 0}; }</a>
-<a name="1158"><span class="lineNum">    1158 </span><span class="lineCov">          9 :     detail::dict_iterator end() const { return {}; }</span></a>
+<a name="1158"><span class="lineNum">    1158 </span><span class="lineCov">          6 :     detail::dict_iterator end() const { return {}; }</span></a>
 <a name="1159"><span class="lineNum">    1159 </span>            :     void clear() const { PyDict_Clear(ptr()); }</a>
 <a name="1160"><span class="lineNum">    1160 </span>            :     bool contains(handle key) const { return PyDict_Contains(ptr(), key.ptr()) == 1; }</a>
 <a name="1161"><span class="lineNum">    1161 </span><span class="lineNoCov">          0 :     bool contains(const char *key) const { return PyDict_Contains(ptr(), pybind11::str(key).ptr()) == 1; }</span></a>
@@ -1243,15 +1243,15 @@
 <a name="1181"><span class="lineNum">    1181 </span><span class="lineNoCov">          0 : class list : public object {</span></a>
 <a name="1182"><span class="lineNum">    1182 </span>            : public:</a>
 <a name="1183"><span class="lineNum">    1183 </span><span class="lineNoCov">          0 :     PYBIND11_OBJECT_CVT(list, object, PyList_Check, PySequence_List)</span></a>
-<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">        873 :     explicit list(size_t size = 0) : object(PyList_New((ssize_t) size), stolen_t{}) {</span></a>
-<a name="1185"><span class="lineNum">    1185 </span><span class="lineCov">        873 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate list object!&quot;);</span></a>
-<a name="1186"><span class="lineNum">    1186 </span><span class="lineCov">        873 :     }</span></a>
-<a name="1187"><span class="lineNum">    1187 </span><span class="lineCov">       1728 :     size_t size() const { return (size_t) PyList_Size(m_ptr); }</span></a>
+<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">        582 :     explicit list(size_t size = 0) : object(PyList_New((ssize_t) size), stolen_t{}) {</span></a>
+<a name="1185"><span class="lineNum">    1185 </span><span class="lineCov">        582 :         if (!m_ptr) pybind11_fail(&quot;Could not allocate list object!&quot;);</span></a>
+<a name="1186"><span class="lineNum">    1186 </span><span class="lineCov">        582 :     }</span></a>
+<a name="1187"><span class="lineNum">    1187 </span><span class="lineCov">       1152 :     size_t size() const { return (size_t) PyList_Size(m_ptr); }</span></a>
 <a name="1188"><span class="lineNum">    1188 </span>            :     detail::list_accessor operator[](size_t index) const { return {*this, index}; }</a>
 <a name="1189"><span class="lineNum">    1189 </span>            :     detail::list_iterator begin() const { return {*this, 0}; }</a>
 <a name="1190"><span class="lineNum">    1190 </span>            :     detail::list_iterator end() const { return {*this, PyList_GET_SIZE(m_ptr)}; }</a>
 <a name="1191"><span class="lineNum">    1191 </span><span class="lineNoCov">          0 :     template &lt;typename T&gt; void append(T &amp;&amp;val) const {</span></a>
-<a name="1192"><span class="lineNum">    1192 </span><span class="lineCov">        510 :         PyList_Append(m_ptr, detail::object_or_cast(std::forward&lt;T&gt;(val)).ptr());</span></a>
+<a name="1192"><span class="lineNum">    1192 </span><span class="lineCov">        340 :         PyList_Append(m_ptr, detail::object_or_cast(std::forward&lt;T&gt;(val)).ptr());</span></a>
 <a name="1193"><span class="lineNum">    1193 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="1194"><span class="lineNum">    1194 </span>            : };</a>
 <a name="1195"><span class="lineNum">    1195 </span>            : </a>
@@ -1273,7 +1273,7 @@
 <a name="1211"><span class="lineNum">    1211 </span>            : </a>
 <a name="1212"><span class="lineNum">    1212 </span><span class="lineNoCov">          0 : class function : public object {</span></a>
 <a name="1213"><span class="lineNum">    1213 </span>            : public:</a>
-<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">       8973 :     PYBIND11_OBJECT_DEFAULT(function, object, PyCallable_Check)</span></a>
+<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">       5982 :     PYBIND11_OBJECT_DEFAULT(function, object, PyCallable_Check)</span></a>
 <a name="1215"><span class="lineNum">    1215 </span><span class="lineNoCov">          0 :     handle cpp_function() const {</span></a>
 <a name="1216"><span class="lineNum">    1216 </span><span class="lineNoCov">          0 :         handle fun = detail::get_function(m_ptr);</span></a>
 <a name="1217"><span class="lineNum">    1217 </span><span class="lineNoCov">          0 :         if (fun &amp;&amp; PyCFunction_Check(fun.ptr()))</span></a>
@@ -1363,13 +1363,13 @@
 <a name="1301"><span class="lineNum">    1301 </span>            : template &lt;typename D&gt; iterator object_api&lt;D&gt;::begin() const { return iter(derived()); }</a>
 <a name="1302"><span class="lineNum">    1302 </span>            : template &lt;typename D&gt; iterator object_api&lt;D&gt;::end() const { return iterator::sentinel(); }</a>
 <a name="1303"><span class="lineNum">    1303 </span>            : template &lt;typename D&gt; item_accessor object_api&lt;D&gt;::operator[](handle key) const {</a>
-<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">        390 :     return {derived(), reinterpret_borrow&lt;object&gt;(key)};</span></a>
+<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">        260 :     return {derived(), reinterpret_borrow&lt;object&gt;(key)};</span></a>
 <a name="1305"><span class="lineNum">    1305 </span>            : }</a>
-<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">          3 : template &lt;typename D&gt; item_accessor object_api&lt;D&gt;::operator[](const char *key) const {</span></a>
-<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">          6 :     return {derived(), pybind11::str(key)};</span></a>
+<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">          2 : template &lt;typename D&gt; item_accessor object_api&lt;D&gt;::operator[](const char *key) const {</span></a>
+<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">          4 :     return {derived(), pybind11::str(key)};</span></a>
 <a name="1308"><span class="lineNum">    1308 </span>            : }</a>
 <a name="1309"><span class="lineNum">    1309 </span>            : template &lt;typename D&gt; obj_attr_accessor object_api&lt;D&gt;::attr(handle key) const {</a>
-<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">      17058 :     return {derived(), reinterpret_borrow&lt;object&gt;(key)};</span></a>
+<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">      11372 :     return {derived(), reinterpret_borrow&lt;object&gt;(key)};</span></a>
 <a name="1311"><span class="lineNum">    1311 </span>            : }</a>
 <a name="1312"><span class="lineNum">    1312 </span>            : template &lt;typename D&gt; str_attr_accessor object_api&lt;D&gt;::attr(const char *key) const {</a>
 <a name="1313"><span class="lineNum">    1313 </span>            :     return {derived(), key};</a>
@@ -1377,8 +1377,8 @@
 <a name="1315"><span class="lineNum">    1315 </span>            : template &lt;typename D&gt; args_proxy object_api&lt;D&gt;::operator*() const {</a>
 <a name="1316"><span class="lineNum">    1316 </span>            :     return args_proxy(derived().ptr());</a>
 <a name="1317"><span class="lineNum">    1317 </span>            : }</a>
-<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">          3 : template &lt;typename D&gt; template &lt;typename T&gt; bool object_api&lt;D&gt;::contains(T &amp;&amp;item) const {</span></a>
-<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">          6 :     return attr(&quot;__contains__&quot;)(std::forward&lt;T&gt;(item)).template cast&lt;bool&gt;();</span></a>
+<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">          2 : template &lt;typename D&gt; template &lt;typename T&gt; bool object_api&lt;D&gt;::contains(T &amp;&amp;item) const {</span></a>
+<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">          4 :     return attr(&quot;__contains__&quot;)(std::forward&lt;T&gt;(item)).template cast&lt;bool&gt;();</span></a>
 <a name="1320"><span class="lineNum">    1320 </span>            : }</a>
 <a name="1321"><span class="lineNum">    1321 </span>            : </a>
 <a name="1322"><span class="lineNum">    1322 </span>            : template &lt;typename D&gt;</a>

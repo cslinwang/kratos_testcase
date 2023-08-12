@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">14</td>
@@ -167,116 +167,116 @@
 <a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :     return ThisPoint.Z0();</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : }</a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         39 : template&lt; class TBinderType, typename TContainerType, typename TVariableType &gt; void IndexingUtility(TBinderType&amp; binder)</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">         26 : template&lt; class TBinderType, typename TContainerType, typename TVariableType &gt; void IndexingUtility(TBinderType&amp; binder)</span></a>
 <a name="109"><span class="lineNum">     109 </span>            :     {</a>
 <a name="110"><span class="lineNum">     110 </span>            :         //data value container</a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         39 :         binder.def(&quot;__contains__&quot;, [](const TContainerType&amp; node, const TVariableType&amp; rV){return node.Has(rV);} );</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         39 :         binder.def(&quot;__setitem__&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV, const typename TVariableType::Type rValue){node.SetValue(rV, rValue);} );</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         39 :         binder.def(&quot;__getitem__&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV){return node.GetValue(rV);} );</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         39 :         binder.def(&quot;Has&quot;, [](const TContainerType&amp; node, const TVariableType&amp; rV){return node.Has(rV);} );</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         39 :         binder.def(&quot;SetValue&quot;,  [](TContainerType&amp; node, const TVariableType&amp; rV, const typename TVariableType::Type&amp; rValue){node.SetValue(rV, rValue);} );</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         39 :         binder.def(&quot;GetValue&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV){return node.GetValue(rV);} );</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">         26 :         binder.def(&quot;__contains__&quot;, [](const TContainerType&amp; node, const TVariableType&amp; rV){return node.Has(rV);} );</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         26 :         binder.def(&quot;__setitem__&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV, const typename TVariableType::Type rValue){node.SetValue(rV, rValue);} );</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         26 :         binder.def(&quot;__getitem__&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV){return node.GetValue(rV);} );</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">         26 :         binder.def(&quot;Has&quot;, [](const TContainerType&amp; node, const TVariableType&amp; rV){return node.Has(rV);} );</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">         26 :         binder.def(&quot;SetValue&quot;,  [](TContainerType&amp; node, const TVariableType&amp; rV, const typename TVariableType::Type&amp; rValue){node.SetValue(rV, rValue);} );</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">         26 :         binder.def(&quot;GetValue&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV){return node.GetValue(rV);} );</span></a>
 <a name="117"><span class="lineNum">     117 </span>            : </a>
 <a name="118"><span class="lineNum">     118 </span>            :         //solution steps data value container</a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         39 :         binder.def(&quot;HasSolutionStepValue&quot;, [](const TContainerType&amp; node, const TVariableType&amp; rV){return node.Has(rV);} ); //WARNING Previously it was Has identical to the previous!!</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">         39 :         binder.def(&quot;SetSolutionStepValue&quot;,  [](TContainerType&amp; node, const TVariableType&amp; rV,const typename TVariableType::Type rValue){node.GetSolutionStepValue(rV) = rValue;} );</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         39 :         binder.def(&quot;SetSolutionStepValue&quot;,  [](TContainerType&amp; node,</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">         26 :         binder.def(&quot;HasSolutionStepValue&quot;, [](const TContainerType&amp; node, const TVariableType&amp; rV){return node.Has(rV);} ); //WARNING Previously it was Has identical to the previous!!</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">         26 :         binder.def(&quot;SetSolutionStepValue&quot;,  [](TContainerType&amp; node, const TVariableType&amp; rV,const typename TVariableType::Type rValue){node.GetSolutionStepValue(rV) = rValue;} );</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         26 :         binder.def(&quot;SetSolutionStepValue&quot;,  [](TContainerType&amp; node,</span></a>
 <a name="122"><span class="lineNum">     122 </span>            :                                                const TVariableType&amp; rV,</a>
 <a name="123"><span class="lineNum">     123 </span>            :                                                typename TContainerType::IndexType SolutionStepIndex,</a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :                                                const typename TVariableType::Type rValue){node.GetSolutionStepValue(rV, SolutionStepIndex) = rValue;} );</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">         39 :         binder.def(&quot;GetSolutionStepValue&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV){return node.GetSolutionStepValue(rV);} );</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">         39 :         binder.def(&quot;GetSolutionStepValue&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV, typename TContainerType::IndexType SolutionStepIndex ){return node.GetSolutionStepValue(rV, SolutionStepIndex);} );</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         39 :     }</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">         26 :         binder.def(&quot;GetSolutionStepValue&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV){return node.GetSolutionStepValue(rV);} );</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">         26 :         binder.def(&quot;GetSolutionStepValue&quot;, [](TContainerType&amp; node, const TVariableType&amp; rV, typename TContainerType::IndexType SolutionStepIndex ){return node.GetSolutionStepValue(rV, SolutionStepIndex);} );</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">         26 :     }</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          3 : void  AddNodeToPython(pybind11::module&amp; m)</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          2 : void  AddNodeToPython(pybind11::module&amp; m)</span></a>
 <a name="132"><span class="lineNum">     132 </span>            : {</a>
 <a name="133"><span class="lineNum">     133 </span>            :     typedef Mesh&lt;NodeType, Properties, Element, Condition&gt; MeshType;</a>
 <a name="134"><span class="lineNum">     134 </span>            : </a>
 <a name="135"><span class="lineNum">     135 </span>            :     typedef MeshType::NodeType NodeType;</a>
 <a name="136"><span class="lineNum">     136 </span>            : </a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          3 :     py::class_&lt;IndexedObject, IndexedObject::Pointer&gt;(m,&quot;IndexedObject&quot;)</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          6 :     .def_property(&quot;Id&quot;, &amp;IndexedObject::GetId, &amp;IndexedObject::SetId)</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          3 :     .def(&quot;__str__&quot;, PrintObject&lt;IndexedObject&gt;)</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          2 :     py::class_&lt;IndexedObject, IndexedObject::Pointer&gt;(m,&quot;IndexedObject&quot;)</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          4 :     .def_property(&quot;Id&quot;, &amp;IndexedObject::GetId, &amp;IndexedObject::SetId)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          2 :     .def(&quot;__str__&quot;, PrintObject&lt;IndexedObject&gt;)</span></a>
 <a name="141"><span class="lineNum">     141 </span>            :     ;</a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          3 :     py::class_&lt;Dof&lt;double&gt;, Dof&lt;double&gt;::Pointer, IndexedObject &gt;(m,&quot;Dof&quot;)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          2 :     py::class_&lt;Dof&lt;double&gt;, Dof&lt;double&gt;::Pointer, IndexedObject &gt;(m,&quot;Dof&quot;)</span></a>
 <a name="144"><span class="lineNum">     144 </span>            :     ;</a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            :     typedef  py::class_&lt;NodeType, NodeType::Pointer, NodeType::BaseType, IndexedObject, Flags &gt; NodeBinderType;</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          3 :     NodeBinderType node_binder(m,&quot;Node&quot;);</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          2 :     NodeBinderType node_binder(m,&quot;Node&quot;);</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :     node_binder.def(py::init&lt;NodeType::IndexType, double, double, double&gt;());</a>
 <a name="149"><span class="lineNum">     149 </span>            :     node_binder.def(py::init&lt;NodeType::IndexType, const Point&amp; &gt;());</a>
 <a name="150"><span class="lineNum">     150 </span>            : </a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;bool&gt; &gt;(node_binder);</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;int&gt; &gt;(node_binder);</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;double&gt; &gt;(node_binder);</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 3&gt; &gt; &gt;(node_binder);</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 4&gt; &gt; &gt;(node_binder);</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 6&gt; &gt; &gt;(node_binder);</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 9&gt; &gt; &gt;(node_binder);</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;(node_binder);</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;(node_binder);</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;(node_binder);</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;(node_binder);</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;Vector &gt; &gt;(node_binder);</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          3 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;Matrix &gt; &gt;(node_binder);</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;bool&gt; &gt;(node_binder);</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;int&gt; &gt;(node_binder);</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;double&gt; &gt;(node_binder);</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 3&gt; &gt; &gt;(node_binder);</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 4&gt; &gt; &gt;(node_binder);</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 6&gt; &gt; &gt;(node_binder);</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;array_1d&lt;double, 9&gt; &gt; &gt;(node_binder);</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;(node_binder);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;(node_binder);</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;(node_binder);</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;(node_binder);</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;Vector &gt; &gt;(node_binder);</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          2 :     IndexingUtility&lt;NodeBinderType,NodeType,Variable&lt;Matrix &gt; &gt;(node_binder);</span></a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          3 :     node_binder.def(&quot;GetBufferSize&quot;, &amp;NodeType::GetBufferSize);</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          3 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          3 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          3 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          3 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          3 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          3 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          3 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;bool&gt; &gt;);</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;int&gt; &gt;);</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;double&gt; &gt;);</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 3&gt; &gt; &gt;);</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 4&gt; &gt; &gt;);</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 6&gt; &gt; &gt;);</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 9&gt; &gt; &gt;);</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;Vector&gt; &gt;);</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;DenseMatrix&lt;double&gt; &gt; &gt;);</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          3 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          3 :     node_binder.def(&quot;__str__&quot;, PrintObject&lt;NodeType&gt;);</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          3 :     node_binder.def(&quot;OverwriteSolutionStepData&quot;, &amp;NodeType::OverwriteSolutionStepData);</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          3 :     node_binder.def_property(&quot;X0&quot;, PointGetX0, PointSetX0);</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          3 :     node_binder.def_property(&quot;Y0&quot;, PointGetY0, PointSetY0);</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          3 :     node_binder.def_property(&quot;Z0&quot;, PointGetZ0, PointSetZ0);</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          2 :     node_binder.def(&quot;GetBufferSize&quot;, &amp;NodeType::GetBufferSize);</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          2 :     node_binder.def(&quot;AddDof&quot;, NodeAddDofwithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          2 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          2 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          2 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          2 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          2 :     node_binder.def(&quot;Fix&quot;, NodeFix&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          2 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          2 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          2 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :     node_binder.def(&quot;Free&quot;, NodeFree&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          2 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          2 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :     node_binder.def(&quot;IsFixed&quot;, NodeIsFixed&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          2 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          2 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          2 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          2 :     node_binder.def(&quot;HasDofFor&quot;, NodeHasDofFor&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;bool&gt; &gt;);</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;int&gt; &gt;);</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;double&gt; &gt;);</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 3&gt; &gt; &gt;);</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 4&gt; &gt; &gt;);</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 6&gt; &gt; &gt;);</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;array_1d&lt;double, 9&gt; &gt; &gt;);</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;Vector&gt; &gt;);</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;Variable&lt;DenseMatrix&lt;double&gt; &gt; &gt;);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 4&gt; &gt; &gt; &gt;);</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 6&gt; &gt; &gt; &gt;);</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          2 :     node_binder.def(&quot;SolutionStepsDataHas&quot;, &amp;NodeSolutionStepsDataHas&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 9&gt; &gt; &gt; &gt;);</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          2 :     node_binder.def(&quot;__str__&quot;, PrintObject&lt;NodeType&gt;);</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          2 :     node_binder.def(&quot;OverwriteSolutionStepData&quot;, &amp;NodeType::OverwriteSolutionStepData);</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          2 :     node_binder.def_property(&quot;X0&quot;, PointGetX0, PointSetX0);</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          2 :     node_binder.def_property(&quot;Y0&quot;, PointGetY0, PointSetY0);</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          2 :     node_binder.def_property(&quot;Z0&quot;, PointGetZ0, PointSetZ0);</span></a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          6 :     PointerVectorSetPythonInterface&lt;MeshType::NodesContainerType&gt;().CreateInterface(m,&quot;NodesArray&quot;);</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          4 :     PointerVectorSetPythonInterface&lt;MeshType::NodesContainerType&gt;().CreateInterface(m,&quot;NodesArray&quot;);</span></a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          3 : }</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          2 : }</span></a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
 <a name="219"><span class="lineNum">     219 </span>            : }  // namespace Python.</a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>

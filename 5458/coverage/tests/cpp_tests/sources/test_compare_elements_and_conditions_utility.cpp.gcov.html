@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -130,7 +130,7 @@
 <a name="68"><span class="lineNum">      68 </span><span class="lineNoCov">          0 :     return Condition::Pointer(new CustomCondition(Id, p_geom));</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : }</a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(IsSame_Element_Element, KratosCoreFastSuite)</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(IsSame_Element_Element, KratosCoreFastSuite)</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : {</a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :     auto p_custom_element_2d_3n_1 = CreateCustomElement2D3N(1);</span></a>
 <a name="74"><span class="lineNum">      74 </span>            :     const Element&amp; r_custom_element_2d_3n_1 = *p_custom_element_2d_3n_1;</a>
@@ -155,7 +155,7 @@
 <a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_IS_FALSE(GeometricalObject::IsSame(&amp;r_custom_element_2d_4n_3, &amp;r_custom_element_2d_3n_1));</span></a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(IsSame_Condition_Condition, KratosCoreFastSuite)</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(IsSame_Condition_Condition, KratosCoreFastSuite)</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : {</a>
 <a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :     auto p_custom_condition_2d_3n_1 = CreateCustomCondition2D3N(1);</span></a>
 <a name="99"><span class="lineNum">      99 </span>            :     const Condition&amp; r_custom_condition_2d_3n_1 = *p_custom_condition_2d_3n_1;</a>
@@ -180,7 +180,7 @@
 <a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_IS_FALSE(GeometricalObject::IsSame(&amp;r_custom_condition_2d_4n_3, &amp;r_custom_condition_2d_3n_1));</span></a>
 <a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GetRegisteredNameElement, KratosCoreFastSuite)</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GetRegisteredNameElement, KratosCoreFastSuite)</span></a>
 <a name="122"><span class="lineNum">     122 </span>            : {</a>
 <a name="123"><span class="lineNum">     123 </span>            :     // Element name</a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     const Element&amp; r_element_2d_3n = KratosComponents&lt;Element&gt;::Get(&quot;Element2D3N&quot;);</span></a>
@@ -195,7 +195,7 @@
 <a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :     KRATOS_CHECK_NOT_EQUAL(component_name, &quot;Element&quot;);</span></a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 : }</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          6 : KRATOS_TEST_CASE_IN_SUITE(GetRegisteredNameCondition, KratosCoreFastSuite)</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          4 : KRATOS_TEST_CASE_IN_SUITE(GetRegisteredNameCondition, KratosCoreFastSuite)</span></a>
 <a name="137"><span class="lineNum">     137 </span>            : {</a>
 <a name="138"><span class="lineNum">     138 </span>            :     // Condition name</a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :     const Condition&amp; r_condition_2d_3n = KratosComponents&lt;Condition&gt;::Get(&quot;Condition2D3N&quot;);</span></a>

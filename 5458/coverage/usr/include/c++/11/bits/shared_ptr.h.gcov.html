@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -181,7 +181,7 @@
 <a name="119"><span class="lineNum">     119 </span>            :    * pointer see `std::shared_ptr::owner_before` and `std::owner_less`.</a>
 <a name="120"><span class="lineNum">     120 </span>            :   */</a>
 <a name="121"><span class="lineNum">     121 </span>            :   template&lt;typename _Tp&gt;</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        279 :     class shared_ptr : public __shared_ptr&lt;_Tp&gt;</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        186 :     class shared_ptr : public __shared_ptr&lt;_Tp&gt;</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :     {</a>
 <a name="124"><span class="lineNum">     124 </span>            :       template&lt;typename... _Args&gt;</a>
 <a name="125"><span class="lineNum">     125 </span>            :         using _Constructible = typename enable_if&lt;</a>
@@ -219,7 +219,7 @@
 <a name="157"><span class="lineNum">     157 </span>            :        */</a>
 <a name="158"><span class="lineNum">     158 </span>            :       template&lt;typename _Yp, typename = _Constructible&lt;_Yp*&gt;&gt;</a>
 <a name="159"><span class="lineNum">     159 </span>            :         explicit</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">        111 :         shared_ptr(_Yp* __p) : __shared_ptr&lt;_Tp&gt;(__p) { }</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         74 :         shared_ptr(_Yp* __p) : __shared_ptr&lt;_Tp&gt;(__p) { }</span></a>
 <a name="161"><span class="lineNum">     161 </span>            : </a>
 <a name="162"><span class="lineNum">     162 </span>            :       /**</a>
 <a name="163"><span class="lineNum">     163 </span>            :        *  @brief  Construct a %shared_ptr that owns the pointer @a __p</a>
@@ -468,7 +468,7 @@
 <a name="406"><span class="lineNum">     406 </span>            :       // This constructor is non-standard, it is used by allocate_shared.</a>
 <a name="407"><span class="lineNum">     407 </span>            :       template&lt;typename _Alloc, typename... _Args&gt;</a>
 <a name="408"><span class="lineNum">     408 </span>            :         shared_ptr(_Sp_alloc_shared_tag&lt;_Alloc&gt; __tag, _Args&amp;&amp;... __args)</a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          3 :         : __shared_ptr&lt;_Tp&gt;(__tag, std::forward&lt;_Args&gt;(__args)...)</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          2 :         : __shared_ptr&lt;_Tp&gt;(__tag, std::forward&lt;_Args&gt;(__args)...)</span></a>
 <a name="410"><span class="lineNum">     410 </span>            :         { }</a>
 <a name="411"><span class="lineNum">     411 </span>            : </a>
 <a name="412"><span class="lineNum">     412 </span>            :       template&lt;typename _Yp, typename _Alloc, typename... _Args&gt;</a>
@@ -937,7 +937,7 @@
 <a name="875"><span class="lineNum">     875 </span><span class="lineNoCov">          0 :     make_shared(_Args&amp;&amp;... __args)</span></a>
 <a name="876"><span class="lineNum">     876 </span>            :     {</a>
 <a name="877"><span class="lineNum">     877 </span>            :       typedef typename std::remove_cv&lt;_Tp&gt;::type _Tp_nc;</a>
-<a name="878"><span class="lineNum">     878 </span><span class="lineCov">          3 :       return std::allocate_shared&lt;_Tp&gt;(std::allocator&lt;_Tp_nc&gt;(),</span></a>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">          2 :       return std::allocate_shared&lt;_Tp&gt;(std::allocator&lt;_Tp_nc&gt;(),</span></a>
 <a name="879"><span class="lineNum">     879 </span><span class="lineNoCov">          0 :                                        std::forward&lt;_Args&gt;(__args)...);</span></a>
 <a name="880"><span class="lineNum">     880 </span>            :     }</a>
 <a name="881"><span class="lineNum">     881 </span>            : </a>

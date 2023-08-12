@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -209,133 +209,133 @@
 <a name="147"><span class="lineNum">     147 </span>            :     KRATOS_CREATE_VARIABLE( double, ENTHAPLY_ACTIVATION )</a>
 <a name="148"><span class="lineNum">     148 </span>            :     //</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          3 :   void KratosApplication::RegisterDEMVariables()</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          2 :   void KratosApplication::RegisterDEMVariables()</span></a>
 <a name="151"><span class="lineNum">     151 </span>            :   {</a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
 <a name="153"><span class="lineNum">     153 </span>            :     //--------------- DEM Application -------------------//</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FRAME_OF_REFERENCE_TYPE )</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTICLE_MASS )</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( RADIUS )</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( SEARCH_RADIUS_INCREMENT )</span></a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( SEARCH_RADIUS_INCREMENT_FOR_WALLS )</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTICLE_MATERIAL )</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( AMPLIFIED_CONTINUUM_SEARCH_RADIUS_EXTENSION )</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DEM_DELTA_TIME )</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FIXED_MESH_OPTION )</span></a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTITION_MASK )</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( TOTAL_FORCES )</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DAMP_FORCES )</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( AUX_VEL )</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( NEIGHBOURS_IDS_DOUBLE )</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTICLE_ROTATE_SPRING_FAILURE_TYPE )</span></a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( OLD_NEIGHBOURS_IDS )</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( INI_NEIGHBOURS_IDS )</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( CONTINUUM_INI_NEIGHBOURS_IDS )</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( NEIGHBOURS_IDS )</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTICLE_INITIAL_FAILURE_ID )</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( CONTINUUM_PARTICLE_INITIAL_FAILURE_ID )</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( ELEMENT_TYPE )</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTICLE_ROTATE_SPRING_MOMENT )</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FRAME_OF_REFERENCE_TYPE )</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTICLE_MASS )</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( RADIUS )</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( SEARCH_RADIUS_INCREMENT )</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( SEARCH_RADIUS_INCREMENT_FOR_WALLS )</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTICLE_MATERIAL )</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( AMPLIFIED_CONTINUUM_SEARCH_RADIUS_EXTENSION )</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DEM_DELTA_TIME )</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FIXED_MESH_OPTION )</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTITION_MASK )</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( TOTAL_FORCES )</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DAMP_FORCES )</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( AUX_VEL )</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( NEIGHBOURS_IDS_DOUBLE )</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTICLE_ROTATE_SPRING_FAILURE_TYPE )</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( OLD_NEIGHBOURS_IDS )</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( INI_NEIGHBOURS_IDS )</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( CONTINUUM_INI_NEIGHBOURS_IDS )</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( NEIGHBOURS_IDS )</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTICLE_INITIAL_FAILURE_ID )</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( CONTINUUM_PARTICLE_INITIAL_FAILURE_ID )</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( ELEMENT_TYPE )</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTICLE_ROTATE_SPRING_MOMENT )</span></a>
 <a name="177"><span class="lineNum">     177 </span>            : </a>
 <a name="178"><span class="lineNum">     178 </span>            :     // Swimming DEM Application BEGINNING</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( NUMBER_OF_INIT_BASSET_STEPS )</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( COUPLING_TYPE)</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( NON_NEWTONIAN_OPTION )</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( MANUALLY_IMPOSED_DRAG_LAW_OPTION )</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DRAG_MODIFIER_TYPE )</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( BUOYANCY_FORCE_TYPE )</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DRAG_FORCE_TYPE )</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( VIRTUAL_MASS_FORCE_TYPE )</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( BASSET_FORCE_TYPE )</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( LIFT_FORCE_TYPE )</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( MAGNUS_FORCE_TYPE )</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( HYDRO_TORQUE_TYPE )</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_MODEL_TYPE )</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DRAG_POROSITY_CORRECTION_TYPE )</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( TIME_STEPS_PER_QUADRATURE_STEP )</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( QUADRATURE_ORDER )</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( CURRENT_COMPONENT )</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( POWER_LAW_TOLERANCE )</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PARTICLE_SPHERICITY )</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( INIT_DRAG_FORCE )</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DRAG_LAW_SLOPE )</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DISPERSE_FRACTION )</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DISPERSE_FRACTION_RATE )</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION )</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_OLD )</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_RATE )</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_FILTERED )</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PHASE_FRACTION )</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PHASE_FRACTION_RATE )</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DISPERSE_FRACTION_PROJECTED )</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_PROJECTED )</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_DENSITY_PROJECTED )</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( FLUID_VISCOSITY_PROJECTED )</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( REYNOLDS_NUMBER )</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DRAG_COEFFICIENT )</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( SHEAR_RATE_PROJECTED )</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DELTA_TIME_QUADRATURE )</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( LAST_TIME_APPENDING )</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( TIME_AVERAGED_DOUBLE )</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( VELOCITY_OLD )</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( VELOCITY_OLD_OLD )</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ACCELERATION_MOVING_FRAME_ORIGIN )</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ANGULAR_VELOCITY_MOVING_FRAME )</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ANGULAR_VELOCITY_MOVING_FRAME_OLD )</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ANGULAR_ACCELERATION_MOVING_FRAME )</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( SLIP_VELOCITY )</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ADDITIONAL_FORCE )</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ADDITIONAL_FORCE_OLD )</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ADDITIONAL_FORCE_OLD_OLD )</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( HYDRODYNAMIC_FORCE )</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( HYDRODYNAMIC_MOMENT )</span></a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_PROJECTED )</span></a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_PROJECTED_RATE )</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_LAPL_PROJECTED )</span></a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_LAPL_RATE_PROJECTED )</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_ACCEL_PROJECTED )</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_ACCEL_FOLLOWING_PARTICLE_PROJECTED )</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( MATERIAL_FLUID_ACCEL_PROJECTED )</span></a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VORTICITY_PROJECTED )</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PARTICLE_VEL_FILTERED )</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( HYDRODYNAMIC_REACTION )</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( MEAN_HYDRODYNAMIC_REACTION )</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DRAG_REACTION )</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( LIFT_FORCE )</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( VIRTUAL_MASS_FORCE )</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( BASSET_FORCE )</span></a>
-<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( BUOYANCY )</span></a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( EXTERNAL_APPLIED_FORCE )</span></a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( EXTERNAL_APPLIED_MOMENT )</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PRESSURE_GRADIENT )</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PRESSURE_GRAD_PROJECTED )</span></a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DISPERSE_FRACTION_GRADIENT )</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DISPERSE_FRACTION_GRADIENT_PROJECTED )</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_FRACTION_GRADIENT )</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_FRACTION_GRADIENT_PROJECTED )</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PHASE_FRACTION_GRADIENT )</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          3 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( TIME_AVERAGED_ARRAY_3 )</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( NUMBER_OF_INIT_BASSET_STEPS )</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( COUPLING_TYPE)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( NON_NEWTONIAN_OPTION )</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( MANUALLY_IMPOSED_DRAG_LAW_OPTION )</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DRAG_MODIFIER_TYPE )</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( BUOYANCY_FORCE_TYPE )</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DRAG_FORCE_TYPE )</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( VIRTUAL_MASS_FORCE_TYPE )</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( BASSET_FORCE_TYPE )</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( LIFT_FORCE_TYPE )</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( MAGNUS_FORCE_TYPE )</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( HYDRO_TORQUE_TYPE )</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_MODEL_TYPE )</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DRAG_POROSITY_CORRECTION_TYPE )</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( TIME_STEPS_PER_QUADRATURE_STEP )</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( QUADRATURE_ORDER )</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( CURRENT_COMPONENT )</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( POWER_LAW_TOLERANCE )</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PARTICLE_SPHERICITY )</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( INIT_DRAG_FORCE )</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DRAG_LAW_SLOPE )</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DISPERSE_FRACTION )</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DISPERSE_FRACTION_RATE )</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION )</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_OLD )</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_RATE )</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_FILTERED )</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PHASE_FRACTION )</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PHASE_FRACTION_RATE )</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DISPERSE_FRACTION_PROJECTED )</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_FRACTION_PROJECTED )</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_DENSITY_PROJECTED )</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( FLUID_VISCOSITY_PROJECTED )</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( REYNOLDS_NUMBER )</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DRAG_COEFFICIENT )</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( SHEAR_RATE_PROJECTED )</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DELTA_TIME_QUADRATURE )</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( LAST_TIME_APPENDING )</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( TIME_AVERAGED_DOUBLE )</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( VELOCITY_OLD )</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( VELOCITY_OLD_OLD )</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ACCELERATION_MOVING_FRAME_ORIGIN )</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ANGULAR_VELOCITY_MOVING_FRAME )</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ANGULAR_VELOCITY_MOVING_FRAME_OLD )</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ANGULAR_ACCELERATION_MOVING_FRAME )</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( SLIP_VELOCITY )</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ADDITIONAL_FORCE )</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ADDITIONAL_FORCE_OLD )</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( ADDITIONAL_FORCE_OLD_OLD )</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( HYDRODYNAMIC_FORCE )</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( HYDRODYNAMIC_MOMENT )</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_PROJECTED )</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_PROJECTED_RATE )</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_LAPL_PROJECTED )</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VEL_LAPL_RATE_PROJECTED )</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_ACCEL_PROJECTED )</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_ACCEL_FOLLOWING_PARTICLE_PROJECTED )</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( MATERIAL_FLUID_ACCEL_PROJECTED )</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_VORTICITY_PROJECTED )</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PARTICLE_VEL_FILTERED )</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( HYDRODYNAMIC_REACTION )</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( MEAN_HYDRODYNAMIC_REACTION )</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DRAG_REACTION )</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( LIFT_FORCE )</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( VIRTUAL_MASS_FORCE )</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( BASSET_FORCE )</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( BUOYANCY )</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( EXTERNAL_APPLIED_FORCE )</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( EXTERNAL_APPLIED_MOMENT )</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PRESSURE_GRADIENT )</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PRESSURE_GRAD_PROJECTED )</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DISPERSE_FRACTION_GRADIENT )</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( DISPERSE_FRACTION_GRADIENT_PROJECTED )</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_FRACTION_GRADIENT )</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( FLUID_FRACTION_GRADIENT_PROJECTED )</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( PHASE_FRACTION_GRADIENT )</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          2 :     KRATOS_REGISTER_3D_VARIABLE_WITH_COMPONENTS( TIME_AVERAGED_ARRAY_3 )</span></a>
 <a name="256"><span class="lineNum">     256 </span>            : </a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( BASSET_HISTORIC_INTEGRANDS )</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( HINSBERG_TAIL_CONTRIBUTIONS )</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( BASSET_HISTORIC_INTEGRANDS )</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( HINSBERG_TAIL_CONTRIBUTIONS )</span></a>
 <a name="259"><span class="lineNum">     259 </span>            :     // Swimming DEM Application END</a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
 <a name="261"><span class="lineNum">     261 </span>            :     // Nano-particle only BEGIN</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( CATION_CONCENTRATION )</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( CATION_CONCENTRATION )</span></a>
 <a name="263"><span class="lineNum">     263 </span>            :     // Nano-particle only END</a>
 <a name="264"><span class="lineNum">     264 </span>            : </a>
 <a name="265"><span class="lineNum">     265 </span>            :     // DEM Sintering</a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( ATOMIC_VOLUME )</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( SURFACE_ENERGY )</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( DIHEDRAL_ANGLE )</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( SINTERING_START_TEMPERATURE )</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( RELAXATION_TIME )</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( LARGE_VISCOSITY_COEFFICIENT )</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( PRE_EXP_DIFFUSION_COEFFICIENT )</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( GB_WIDTH )</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          3 :     KRATOS_REGISTER_VARIABLE( ENTHAPLY_ACTIVATION )</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( ATOMIC_VOLUME )</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( SURFACE_ENERGY )</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( DIHEDRAL_ANGLE )</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( SINTERING_START_TEMPERATURE )</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( RELAXATION_TIME )</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( LARGE_VISCOSITY_COEFFICIENT )</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( PRE_EXP_DIFFUSION_COEFFICIENT )</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( GB_WIDTH )</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          2 :     KRATOS_REGISTER_VARIABLE( ENTHAPLY_ACTIVATION )</span></a>
 <a name="275"><span class="lineNum">     275 </span>            : </a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          3 :   }</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          2 :   }</span></a>
 <a name="277"><span class="lineNum">     277 </span>            : </a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
 <a name="279"><span class="lineNum">     279 </span>            : }  // namespace Kratos.</a>

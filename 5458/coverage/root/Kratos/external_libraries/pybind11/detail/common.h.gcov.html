@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -422,7 +422,7 @@
 <a name="360"><span class="lineNum">     360 </span>            : inline static constexpr int log2(size_t n, int k = 0) { return (n &lt;= 1) ? k : log2(n &gt;&gt; 1, k + 1); }</a>
 <a name="361"><span class="lineNum">     361 </span>            : </a>
 <a name="362"><span class="lineNum">     362 </span>            : // Returns the size as a multiple of sizeof(void *), rounded up.</a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        873 : inline static constexpr size_t size_in_ptrs(size_t s) { return 1 + ((s - 1) &gt;&gt; log2(sizeof(void *))); }</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">        582 : inline static constexpr size_t size_in_ptrs(size_t s) { return 1 + ((s - 1) &gt;&gt; log2(sizeof(void *))); }</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span>            : /**</a>
 <a name="366"><span class="lineNum">     366 </span>            :  * The space to allocate for simple layout instance holders (see below) in multiple of the size of</a>

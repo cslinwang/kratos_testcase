@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-08-12 14:04:51</td>
+            <td class="headerValue">2023-08-12 14:40:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">29</td>
@@ -130,7 +130,7 @@
 <a name="68"><span class="lineNum">      68 </span>            :     /** Checks if the number of edges is correct.</a>
 <a name="69"><span class="lineNum">      69 </span>            :     * Checks if the number of edges is correct.</a>
 <a name="70"><span class="lineNum">      70 </span>            :     */</a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2EdgesNumber, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2EdgesNumber, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_EQUAL(geom-&gt;EdgesNumber(), 1);</span></a>
 <a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 :     }</span></a>
@@ -138,7 +138,7 @@
 <a name="76"><span class="lineNum">      76 </span>            :     /** Checks if the edges are correct.</a>
 <a name="77"><span class="lineNum">      77 </span>            :     * Checks if the edges are correct.</a>
 <a name="78"><span class="lineNum">      78 </span>            :     */</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2Edges, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2Edges, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :         auto p_geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :         const auto&amp; r_edges = p_geom-&gt;GenerateEdges();</span></a>
@@ -151,7 +151,7 @@
 <a name="89"><span class="lineNum">      89 </span>            :     /** Checks if the number of faces is correct.</a>
 <a name="90"><span class="lineNum">      90 </span>            :     * Checks if the number of faces is correct.</a>
 <a name="91"><span class="lineNum">      91 </span>            :     */</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2FacesNumber, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2FacesNumber, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_EQUAL(geom-&gt;FacesNumber(), 0);</span></a>
 <a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :     }</span></a>
@@ -159,7 +159,7 @@
 <a name="97"><span class="lineNum">      97 </span>            :     /** Checks if the length of the line is calculated correctly.</a>
 <a name="98"><span class="lineNum">      98 </span>            :     * Checks if the length of the line is calculated correctly.</a>
 <a name="99"><span class="lineNum">      99 </span>            :     */</a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(LengthLine2D2, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(LengthLine2D2, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_NEAR(geom-&gt;Length(), std::sqrt(2.0), TOLERANCE);</span></a>
@@ -168,7 +168,7 @@
 <a name="106"><span class="lineNum">     106 </span>            :     /** Checks if the bounding box of the line is calculated correctly.</a>
 <a name="107"><span class="lineNum">     107 </span>            :     * Checks if the bounding box of the line is calculated correctly.</a>
 <a name="108"><span class="lineNum">     108 </span>            :     */</a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(BoundingBoxLine2D2, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(BoundingBoxLine2D2, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :         auto p_geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
 <a name="112"><span class="lineNum">     112 </span>            :         Point low_point, high_point;</a>
@@ -188,7 +188,7 @@
 <a name="126"><span class="lineNum">     126 </span>            :     * A Point over a vertex 1 of the line: Expected result TRUE</a>
 <a name="127"><span class="lineNum">     127 </span>            :     * A Point over an vertex 2 of the line: Expected result TRUE</a>
 <a name="128"><span class="lineNum">     128 </span>            :     */</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IsInside, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IsInside, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
 <a name="132"><span class="lineNum">     132 </span>            :         Point PointInside(0.5, 0.5, 0.0);</a>
@@ -208,7 +208,7 @@
 <a name="146"><span class="lineNum">     146 </span>            :     * line. The baricentre of the triangle is selected due to its known</a>
 <a name="147"><span class="lineNum">     147 </span>            :     * solution.</a>
 <a name="148"><span class="lineNum">     148 </span>            :     */</a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2PointLocalCoordinates, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2PointLocalCoordinates, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
 <a name="152"><span class="lineNum">     152 </span>            :         // Compute the global coordinates of the baricentre</a>
@@ -228,7 +228,7 @@
 <a name="166"><span class="lineNum">     166 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_1' integration method.</a>
 <a name="167"><span class="lineNum">     167 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_1' integration method.</a>
 <a name="168"><span class="lineNum">     168 </span>            :     */</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray1, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray1, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
@@ -243,7 +243,7 @@
 <a name="181"><span class="lineNum">     181 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_2' integration method.</a>
 <a name="182"><span class="lineNum">     182 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_2' integration method.</a>
 <a name="183"><span class="lineNum">     183 </span>            :     */</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray2, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray2, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
@@ -258,7 +258,7 @@
 <a name="196"><span class="lineNum">     196 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_3' integration method.</a>
 <a name="197"><span class="lineNum">     197 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_3' integration method.</a>
 <a name="198"><span class="lineNum">     198 </span>            :     */</a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray3, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray3, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
 <a name="202"><span class="lineNum">     202 </span>            : </a>
@@ -273,7 +273,7 @@
 <a name="211"><span class="lineNum">     211 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_4' integration method.</a>
 <a name="212"><span class="lineNum">     212 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_4' integration method.</a>
 <a name="213"><span class="lineNum">     213 </span>            :     */</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray4, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray4, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
@@ -288,7 +288,7 @@
 <a name="226"><span class="lineNum">     226 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_5' integration method.</a>
 <a name="227"><span class="lineNum">     227 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_5' integration method.</a>
 <a name="228"><span class="lineNum">     228 </span>            :     */</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray5, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianArray5, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
@@ -303,7 +303,7 @@
 <a name="241"><span class="lineNum">     241 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_1' integration method.</a>
 <a name="242"><span class="lineNum">     242 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_1' integration method.</a>
 <a name="243"><span class="lineNum">     243 </span>            :     */</a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex1, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex1, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="246"><span class="lineNum">     246 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
@@ -314,7 +314,7 @@
 <a name="252"><span class="lineNum">     252 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_2' integration method.</a>
 <a name="253"><span class="lineNum">     253 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_2' integration method.</a>
 <a name="254"><span class="lineNum">     254 </span>            :     */</a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex2, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex2, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="256"><span class="lineNum">     256 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :         double JacobianDeterminant = 0.0;</span></a>
 <a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
@@ -329,7 +329,7 @@
 <a name="267"><span class="lineNum">     267 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_3' integration method.</a>
 <a name="268"><span class="lineNum">     268 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_3' integration method.</a>
 <a name="269"><span class="lineNum">     269 </span>            :     */</a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex3, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex3, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :         double JacobianDeterminant = 0.0;</span></a>
 <a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
@@ -347,7 +347,7 @@
 <a name="285"><span class="lineNum">     285 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_4' integration method.</a>
 <a name="286"><span class="lineNum">     286 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_4' integration method.</a>
 <a name="287"><span class="lineNum">     287 </span>            :     */</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex4, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex4, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :         double JacobianDeterminant = 0.0;</span></a>
 <a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
@@ -368,7 +368,7 @@
 <a name="306"><span class="lineNum">     306 </span>            :     /** Tests the Jacobian determinants using 'GI_GAUSS_4' integration method.</a>
 <a name="307"><span class="lineNum">     307 </span>            :     * Tests the Jacobian determinants using 'GI_GAUSS_4' integration method.</a>
 <a name="308"><span class="lineNum">     308 </span>            :     */</a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex5, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2DeterminantOfJacobianIndex5, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :         double JacobianDeterminant = 0.0;</span></a>
 <a name="312"><span class="lineNum">     312 </span><span class="lineNoCov">          0 :         const double ExpectedJacobian = 0.5;</span></a>
@@ -389,7 +389,7 @@
 <a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_NEAR(JacobianDeterminant, ExpectedJacobian, TOLERANCE);</span></a>
 <a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="329"><span class="lineNum">     329 </span>            : </a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2ShapeFunctionsValues, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2ShapeFunctionsValues, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :         array_1d&lt;double, 3&gt; coord(3);</a>
 <a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :         coord[0] = 2.0/3.0;</span></a>
@@ -405,7 +405,7 @@
 <a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         CrossCheckShapeFunctionsValues(*p_geom_nodes);</span></a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="345"><span class="lineNum">     345 </span>            : </a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2ShapeFunctionsValuesMatrix, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2ShapeFunctionsValuesMatrix, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="347"><span class="lineNum">     347 </span>            : </a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :         Geometry&lt;Point&gt;::Pointer p_geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :         Line2D2&lt;Point&gt;::Pointer p_line = GeneratePointsDiagonalLine2D2();</span></a>
@@ -424,7 +424,7 @@
 <a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_NEAR(N_values_line(1, 1), 0.788675, TOLERANCE);</span></a>
 <a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2ShapeFunctionsLocalGradients, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2ShapeFunctionsLocalGradients, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsDiagonalLine2D2();</span></a>
 <a name="367"><span class="lineNum">     367 </span>            :         auto&amp; r_geom = *geom;</a>
 <a name="368"><span class="lineNum">     368 </span>            :         auto p_geom_nodes = Kratos::make_shared&lt;Line2D2&lt;Node&lt;3&gt;&gt;&gt;(</a>
@@ -437,13 +437,13 @@
 <a name="375"><span class="lineNum">     375 </span>            :     /**</a>
 <a name="376"><span class="lineNum">     376 </span>            :      * Test an overlaping box and line (line has only one node in the box) HasIntersection</a>
 <a name="377"><span class="lineNum">     377 </span>            :      */</a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2XIntersectionBoxSingleNodeInside, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2XIntersectionBoxSingleNodeInside, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="379"><span class="lineNum">     379 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :         Point point_1(0.5, -0.1, 0.0);</a>
 <a name="381"><span class="lineNum">     381 </span>            :         Point point_2(1.5, 0.1, 0.0);</a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineNoCov">          0 :         KRATOS_CHECK(geom-&gt;HasIntersection(point_1, point_2));</span></a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :     }</span></a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2YIntersectionBoxSingleNodeInside, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2YIntersectionBoxSingleNodeInside, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitYDirectionLine2D2();</span></a>
 <a name="386"><span class="lineNum">     386 </span>            :         Point point_1(-0.1, 0.5, 0.0);</a>
 <a name="387"><span class="lineNum">     387 </span>            :         Point point_2(0.1, 1.5, 0.0);</a>
@@ -453,13 +453,13 @@
 <a name="391"><span class="lineNum">     391 </span>            :     /**</a>
 <a name="392"><span class="lineNum">     392 </span>            :      * Test an overlaping box and line (line has both nodes in the box) HasIntersection</a>
 <a name="393"><span class="lineNum">     393 </span>            :      */</a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2XIntersectionBoxTwoNodesInside, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2XIntersectionBoxTwoNodesInside, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="395"><span class="lineNum">     395 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="396"><span class="lineNum">     396 </span>            :         Point point_1(-0.5, -0.1, 0.0);</a>
 <a name="397"><span class="lineNum">     397 </span>            :         Point point_2(1.5, 0.1, 0.0);</a>
 <a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :         KRATOS_CHECK(geom-&gt;HasIntersection(point_1, point_2));</span></a>
 <a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 :     }</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2YIntersectionBoxTwoNodesInside, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2YIntersectionBoxTwoNodesInside, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitYDirectionLine2D2();</span></a>
 <a name="402"><span class="lineNum">     402 </span>            :         Point point_1(-0.1, -0.5, 0.0);</a>
 <a name="403"><span class="lineNum">     403 </span>            :         Point point_2(0.1, 1.5, 0.0);</a>
@@ -469,7 +469,7 @@
 <a name="407"><span class="lineNum">     407 </span>            :     /**</a>
 <a name="408"><span class="lineNum">     408 </span>            :      * Test an intersection with another line</a>
 <a name="409"><span class="lineNum">     409 </span>            :      */</a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionWithAnotherLine, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionWithAnotherLine, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :         auto geom_1 = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 :         Point::Pointer point_1 = Kratos::make_shared&lt;Point&gt;(0.5, 0.5, 0.0);</span></a>
 <a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :         Point::Pointer point_2 = Kratos::make_shared&lt;Point&gt;(0.5, -0.5, 0.0);</span></a>
@@ -480,7 +480,7 @@
 <a name="418"><span class="lineNum">     418 </span>            :     /**</a>
 <a name="419"><span class="lineNum">     419 </span>            :      * Test an intersection with another parallel line</a>
 <a name="420"><span class="lineNum">     420 </span>            :      */</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionWithAnotherParallelLine, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionWithAnotherParallelLine, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="422"><span class="lineNum">     422 </span><span class="lineNoCov">          0 :         auto geom_1 = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="423"><span class="lineNum">     423 </span><span class="lineNoCov">          0 :         Point::Pointer point_1 = Kratos::make_shared&lt;Point&gt;(0.0, 0.5, 0.0);</span></a>
 <a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :         Point::Pointer point_2 = Kratos::make_shared&lt;Point&gt;(0.5, 0.5, 0.0);</span></a>
@@ -491,7 +491,7 @@
 <a name="429"><span class="lineNum">     429 </span>            :     /**</a>
 <a name="430"><span class="lineNum">     430 </span>            :      * Test a box inside a line HasIntersection</a>
 <a name="431"><span class="lineNum">     431 </span>            :      */</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionBoxInsideX, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionBoxInsideX, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="434"><span class="lineNum">     434 </span>            :         Point point_1(0.25, -0.1, 0.0);</a>
 <a name="435"><span class="lineNum">     435 </span>            :         Point point_2(0.75, 0.1, 0.0);</a>
@@ -501,7 +501,7 @@
 <a name="439"><span class="lineNum">     439 </span>            :     /**</a>
 <a name="440"><span class="lineNum">     440 </span>            :      * Test a box inside a line HasIntersection</a>
 <a name="441"><span class="lineNum">     441 </span>            :      */</a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionBoxInsideY, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2IntersectionBoxInsideY, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitYDirectionLine2D2();</span></a>
 <a name="444"><span class="lineNum">     444 </span>            :         Point point_1(-0.1,0.25, 0.0);</a>
 <a name="445"><span class="lineNum">     445 </span>            :         Point point_2(0.1, 0.75, 0.0);</a>
@@ -510,7 +510,7 @@
 <a name="448"><span class="lineNum">     448 </span>            :     /**</a>
 <a name="449"><span class="lineNum">     449 </span>            :      * Test a non overlaping box HasIntersection</a>
 <a name="450"><span class="lineNum">     450 </span>            :      */</a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">          6 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2NoIntersectionBox, KratosCoreGeometriesFastSuite) {</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">          4 :     KRATOS_TEST_CASE_IN_SUITE(Line2D2NoIntersectionBox, KratosCoreGeometriesFastSuite) {</span></a>
 <a name="452"><span class="lineNum">     452 </span><span class="lineNoCov">          0 :         auto geom = GeneratePointsUnitXDirectionLine2D2();</span></a>
 <a name="453"><span class="lineNum">     453 </span>            :         Point point_1(1, 1, 0.0);</a>
 <a name="454"><span class="lineNum">     454 </span>            :         Point point_2(2, 2, 0.0);</a>
