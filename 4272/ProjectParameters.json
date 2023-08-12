@@ -1,0 +1,86 @@
+{
+    "problem_data"     : {
+        "problem_name"  : "embedded_fsi_mok_test_Structural",
+        "parallel_type" : "OpenMP",
+        "echo_level"    : 1,
+        "start_time"    : 0.0,
+        "end_time"      : 1.0
+    },
+    "solver_settings"  : {
+        "solver_type"                        : "Dynamic",
+        "model_part_name"                    : "Structure",
+        "domain_size"                        : 2,
+        "echo_level"                         : 1,
+        "analysis_type"                      : "non_linear",
+        "time_integration_method"            : "implicit",
+        "scheme_type"                        : "bdf2",
+        "model_import_settings"              : {
+            "input_type"     : "mdpa",
+            "input_filename" : "embedded_fsi_mok_test_Structural"
+        },
+        "material_import_settings"           : {
+            "materials_filename" : "StructuralMaterials.json"
+        },
+        "time_stepping"                      : {
+            "time_step" : 0.1
+        },
+        "line_search"                        : false,
+        "convergence_criterion"              : "residual_criterion",
+        "displacement_relative_tolerance"    : 1e-7,
+        "displacement_absolute_tolerance"    : 1e-9,
+        "residual_relative_tolerance"        : 1e-7,
+        "residual_absolute_tolerance"        : 1e-9,
+        "max_iteration"                      : 30,
+        "problem_domain_sub_model_part_list" : ["Parts_Structure"],
+        "processes_sub_model_part_list"      : ["DISPLACEMENT_FixedDisplacement","StructureInterface2D_StructureInterface"],
+        "rotation_dofs"                      : false
+
+    },
+    "processes"        : {
+        "constraints_process_list" : [{
+            "python_module" : "assign_vector_variable_process",
+            "kratos_module" : "KratosMultiphysics",
+            "Parameters"    : {
+                "model_part_name" : "Structure.DISPLACEMENT_FixedDisplacement",
+                "variable_name"   : "DISPLACEMENT",
+                "constrained"     : [true,true,true],
+                "value"           : [0.0,0.0,0.0],
+                "interval"        : [0.0,"End"]
+            }
+        }],
+        "loads_process_list"       : [],
+        "list_other_processes"     : []
+    },
+    "output_processes" : {
+        "gid_output" : [{
+            "python_module" : "gid_output_process",
+            "kratos_module" : "KratosMultiphysics",
+            "process_name"  : "GiDOutputProcess",
+            "help"          : "This process writes postprocessing files for GiD",
+            "Parameters"    : {
+                "model_part_name"        : "Structure.computing_domain",
+                "output_name"            : "test_structure_positive_face_pressure",
+                "postprocess_parameters" : {
+                    "result_file_configuration" : {
+                        "gidpost_flags"       : {
+                            "GiDPostMode"           : "GiD_PostBinary",
+                            "WriteDeformedMeshFlag" : "WriteDeformed",
+                            "WriteConditionsFlag"   : "WriteConditions",
+                            "MultiFileFlag"         : "SingleFile"
+                        },
+                        "file_label"          : "step",
+                        "output_control_type" : "step",
+                        "output_frequency"    : 1,
+                        "body_output"         : true,
+                        "node_output"         : false,
+                        "skin_output"         : false,
+                        "plane_output"        : [],
+                        "nodal_results"       : ["DISPLACEMENT","REACTION","VELOCITY","ACCELERATION","POSITIVE_FACE_PRESSURE"],
+                        "gauss_point_results" : ["VON_MISES_STRESS"]
+                    },
+                    "point_data_configuration"  : []
+                }
+            }
+        }]
+    }
+}

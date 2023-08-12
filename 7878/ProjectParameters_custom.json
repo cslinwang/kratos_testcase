@@ -1,0 +1,210 @@
+{
+    "problem_data"     : {
+        "problem_name"  : "collie2002_embedded",
+        "parallel_type" : "MPI",
+        "echo_level"    : 1,
+        "start_time"    : 0.0,
+        "end_time"      : 1.0
+    },
+    "output_processes" : {
+        "gid_output" : [{
+            "python_module" : "gid_output_process",
+            "kratos_module" : "KratosMultiphysics",
+            "process_name"  : "GiDOutputProcess",
+            "help"          : "This process writes postprocessing files for GiD",
+            "Parameters"    : {
+                "model_part_name"        : "SkinVisualization",
+                "output_name"            : "skin",
+                "postprocess_parameters" : {
+                    "result_file_configuration" : {
+                        "gidpost_flags"       : {
+                            "GiDPostMode"           : "GiD_PostBinary",
+                            "WriteDeformedMeshFlag" : "WriteDeformed",
+                            "WriteConditionsFlag"   : "WriteConditions",
+                            "MultiFileFlag"         : "MultipleFiles"
+                        },
+                        "file_label"          : "time",
+                        "output_control_type" : "step",
+                        "output_interval"     : 40,
+                        "body_output"         : true,
+                        "node_output"         : false,
+                        "skin_output"         : false,
+                        "plane_output"        : [],
+                        "nodal_results"       : ["VELOCITY","PRESSURE"],
+                        "gauss_point_results" : []
+                    },
+                    "point_data_configuration"  : []
+                }
+            }
+        }]
+    },
+    "solver_settings"  : {
+        "model_part_name"             : "FluidModelPart",
+        "domain_size"                 : 2,
+        "solver_type"                 : "Embedded",
+        "model_import_settings"       : {
+            "input_type"     : "mdpa",
+            "input_filename" : "collie2002_embedded_200T"
+        },
+        "material_import_settings"    : {
+            "materials_filename" : "FluidMaterials_custom.json"
+        },
+        "distance_modification_settings": {
+            "distance_threshold": 1e-4,
+            "check_at_each_time_step": false
+        },
+        "maximum_iterations"          : 15,
+        "echo_level"                  : 1,
+        "time_order"                  : 2,
+        "time_scheme"                 : "bdf2",
+        "compute_reactions"           : true,
+        "reform_dofs_at_each_step"    : false,
+        "consider_periodic_conditions": false,
+        "relative_velocity_tolerance" : 1e-5,
+        "absolute_velocity_tolerance" : 1e-7,
+        "relative_pressure_tolerance" : 1e-5,
+        "absolute_pressure_tolerance" : 1e-7,
+        "volume_model_part_name"      : "FluidParts_air_embedded",
+        "skin_parts"                  : ["AutomaticInlet2D_inletLeft","AutomaticInlet2D_inletBottom","Outlet2D_outletRight","Outlet2D_outletTop"],
+        "no_skin_parts"               : [""],
+        "assign_neighbour_elements_to_conditions" : true,
+        "time_stepping"               : {
+            "automatic_time_step" : false,
+            "time_step"           : 0.0025
+        },
+        "formulation" : {
+            "element_type"        : "embedded_symbolic_navier_stokes_discontinuous",
+            "is_slip"             : true,
+            "slip_length"         : 1e-3,
+            "penalty_coefficient" : 10.0,
+            "dynamic_tau"         : 1.0
+        },
+         "fm_ale_settings": {
+            "fm_ale_step_frequency"   : 0
+        }
+    },
+    "processes"        : {
+        "initial_conditions_process_list"  : [{
+            "python_module" : "assign_vector_variable_process",
+            "kratos_module" : "KratosMultiphysics",
+            "Parameters"    : {
+                "model_part_name" : "FluidModelPart.FluidParts_air_embedded",
+                "variable_name": "VELOCITY",
+                "value": [4.755282581, 1.545084972, 0.0],
+                "constrained": [false, false, false],
+                "interval": [0.0, 0.0]
+            }
+        }],
+        "boundary_conditions_process_list" : [{
+            "python_module" : "apply_inlet_process",
+            "kratos_module" : "KratosMultiphysics.FluidDynamicsApplication",
+            "process_name"  : "ApplyInletProcess",
+            "Parameters"    : {
+                "model_part_name" : "FluidModelPart.AutomaticInlet2D_inletLeft",
+                "variable_name"   : "VELOCITY",
+                "interval"        : [0.0,"End"],
+                "modulus"         : 5.0,
+                "direction"       : [1.0,0.3249196962,0.0]
+            }
+        },{
+            "python_module" : "apply_inlet_process",
+            "kratos_module" : "KratosMultiphysics.FluidDynamicsApplication",
+            "process_name"  : "ApplyInletProcess",
+            "Parameters"    : {
+                "model_part_name" : "FluidModelPart.AutomaticInlet2D_inletBottom",
+                "variable_name"   : "VELOCITY",
+                "interval"        : [0.0,"End"],
+                "modulus"         : 5.0,
+                "direction"       : [1.0,0.3249196962,0.0]
+            }
+        },{
+            "python_module" : "apply_outlet_process",
+            "kratos_module" : "KratosMultiphysics.FluidDynamicsApplication",
+            "process_name"  : "ApplyOutletProcess",
+            "Parameters"    : {
+                "model_part_name"    : "FluidModelPart.Outlet2D_outletRight",
+                "variable_name"      : "PRESSURE",
+                "constrained"        : true,
+                "value"              : 0.0,
+                "hydrostatic_outlet" : false,
+                "h_top"              : 0.0
+            }
+        },{
+            "python_module" : "apply_outlet_process",
+            "kratos_module" : "KratosMultiphysics.FluidDynamicsApplication",
+            "process_name"  : "ApplyOutletProcess",
+            "Parameters"    : {
+                "model_part_name"    : "FluidModelPart.Outlet2D_outletTop",
+                "variable_name"      : "PRESSURE",
+                "constrained"        : true,
+                "value"              : 0.0,
+                "hydrostatic_outlet" : false,
+                "h_top"              : 0.0
+            }
+        }],
+        "gravity"                          : [{
+            "python_module" : "assign_vector_by_direction_process",
+            "kratos_module" : "KratosMultiphysics",
+            "process_name"  : "AssignVectorByDirectionProcess",
+            "Parameters"    : {
+                "model_part_name" : "FluidModelPart.FluidParts_air_embedded",
+                "variable_name"   : "BODY_FORCE",
+                "modulus"         : 0.0,
+                "constrained"     : false,
+                "direction"       : [0.0,-1.0,0.0]
+            }
+        }],
+        "auxiliar_process_list"            : [{
+            "python_module": "apply_embedded_postprocess_process",
+            "kratos_module": "KratosMultiphysics.FluidDynamicsApplication",
+            "process_name": "ApplyEmbeddedPostprocessProcess",
+            "Parameters": {
+                "model_part_name": "FluidModelPart.FluidParts_air_embedded"
+            }
+        },{
+            "python_module": "apply_embedded_skin_visualization_process",
+            "kratos_module": "KratosMultiphysics.FluidDynamicsApplication",
+            "process_name": "ApplyEmbeddedSkinVisualizationProcess",
+            "Parameters": {
+                "model_part_name": "FluidModelPart.FluidParts_air_embedded",
+                "visualization_model_part_name": "SkinVisualization",
+                "shape_functions": "ausas",
+                "level_set_type" : "discontinuous",
+                "visualization_variables": ["VELOCITY","PRESSURE"],
+                "reform_model_part_at_each_time_step": false
+            }
+        },{
+            "python_module": "point_output_process",
+            "kratos_module": "KratosMultiphysics",
+            "process_name": "PointOutputProcess",
+            "Parameters": {
+                "position": [ -36.0, 0.0, 0.0 ],
+                "model_part_name": "FluidModelPart.fluid_computational_model_part",
+                "interval": [ 0.005, "End" ],
+                "output_file_settings": {
+                    "file_name": "p_fluid"
+                },
+                "output_variables": [
+                    "PRESSURE"
+                ],
+                "entity_type": "element"
+            }
+        },{
+            "python_module": "point_output_process",
+            "kratos_module": "KratosMultiphysics",
+            "process_name": "PointOutputProcess",
+            "Parameters": {
+                "position": [ 0.0, 20.0, 0.0 ],
+                "model_part_name": "SkinVisualization",	
+                "interval": [ 0.005, "End" ],
+                "output_file_settings": {
+                    "file_name": "p_vis"
+                },
+                "output_variables": [
+                    "PRESSURE"
+                ],
+                "entity_type": "element"
+            }
+        }]
+    }
+}

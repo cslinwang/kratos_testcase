@@ -1,0 +1,1777 @@
+[H[2J[3J-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Deprecation Warning at CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+Undefined CMAKE_BUILD_TYPE, building in 'Release' mode.
+-- Found Git: /usr/bin/git (found version "2.34.1") 
+-- additional default options were set for gcc
+-- CMAKE_CXX_FLAGS =  -funroll-loops -Wall -std=c++11 -Wsuggest-override
+-- CMAKE_C_FLAGS =  -funroll-loops -Wall
+KRATOS_BUILD_TESTING not defined. Setting to ON
+-- Found PythonInterp: /usr/bin/python3.10 (found version "3.10.12") 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Performing Test HAS_CPP14_FLAG
+-- Performing Test HAS_CPP14_FLAG - Success
+-- OpenMP included
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0")  
+-- Boost Include: /usr/include
+-- Boost Linkdir: 
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") 
+-- AMatrix not found. Please define the AMATRIX_DIR pointing to the AMatrix root directory.
+ 
+CMAKE_BUILD_TYPE ........ Release
+ 
+WARNING: YOUR GIDPOST IS BEING COMPILED  WITHOUT DEBUG (ALL ASSERTS WILL BE AVOIDED)
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+ 
+ 
+***** LIST OF KRATOS APPLICATIONS THAT ARE GOING TO BE COMPILED: *****
+ 
+ 
+**********************************************************************
+ 
+****** LIST OF KRATOS APPLICATIONS THAT ARE SET TO OFF: **************
+ 
+ 
+**********************************************************************
+ 
+ 
+-- triangle : /root/Kratos/external_libraries/triangle
+-- Standard install dir /root/Kratos
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    USE_EIGEN_MKL
+    USE_MPI
+
+
+-- Build files have been written to: /root/Kratos/build/Release
+[  0%] Building C object external_libraries/gidpost/CMakeFiles/gidpost.dir/source/gidpostHash.c.o
+[  1%] Building C object external_libraries/gidpost/CMakeFiles/gidpost.dir/source/gidpostInt.c.o
+[  1%] Building C object external_libraries/gidpost/CMakeFiles/gidpost.dir/source/gidpost.c.o
+[  1%] Building CXX object kratos/CMakeFiles/KratosVersion.dir/sources/kratos_version.cpp.o
+[  2%] Building C object external_libraries/gidpost/CMakeFiles/gidpost.dir/source/hashtab.c.o
+[  2%] Building C object external_libraries/gidpost/CMakeFiles/gidpost.dir/source/lookupa.c.o
+[  2%] Building C object external_libraries/gidpost/CMakeFiles/gidpost.dir/source/recycle.c.o
+[  2%] Building C object external_libraries/triangle/CMakeFiles/triangle.dir/triangle.c.o
+[  2%] Built target KratosVersion
+[  3%] Linking C static library libgidpost.a
+[  4%] Linking C static library libtriangle.a
+[  4%] Built target gidpost
+[  4%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/global_variables.cpp.o
+[  5%] Building CXX object kratos/CMakeFiles/KratosCore.dir/containers/flags.cpp.o
+[  6%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/c2c_variables.cpp.o
+[  6%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/deprecated_variables.cpp.o
+[  6%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/cfd_variables.cpp.o
+[  6%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/mesh_moving_variables.cpp.o
+[  6%] Built target triangle
+[  7%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/mapping_variables.cpp.o
+[  7%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/dem_variables.cpp.o
+[  7%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/mat_variables.cpp.o
+[  8%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/fsi_variables.cpp.o
+[  8%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/legacy_structural_app_vars.cpp.o
+[  8%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/variables.cpp.o
+[  9%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/global_pointer_variables.cpp.o
+[ 10%] Building C object kratos/CMakeFiles/KratosCore.dir/sources/mmio.c.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/integration_rules.cpp.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/kratos_application.cpp.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/communicator.cpp.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/serializer.cpp.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/kernel.cpp.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/constitutive_law.cpp.o
+[ 11%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/reorder_consecutive_model_part_io.cpp.o
+[ 12%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/periodic_condition.cpp.o
+[ 13%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/process_info.cpp.o
+[ 13%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/kratos_components.cpp.o
+[ 14%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/model_part_io.cpp.o
+[ 14%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/oriented_bounding_box.cpp.o
+[ 14%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/simple_mortar_mapper_process.cpp.o
+[ 15%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/io.cpp.o
+[ 16%] Building CXX object kratos/CMakeFiles/KratosCore.dir/factories/standard_preconditioner_factory.cpp.o
+[ 16%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/model_part.cpp.o
+[ 16%] Building CXX object kratos/CMakeFiles/KratosCore.dir/factories/standard_linear_solver_factory.cpp.o
+[ 17%] Building CXX object kratos/CMakeFiles/KratosCore.dir/containers/model.cpp.o
+[ 17%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/kratos_parameters.cpp.o
+[ 17%] Building CXX object kratos/CMakeFiles/KratosCore.dir/containers/variable_data.cpp.o
+[ 17%] Building CXX object kratos/CMakeFiles/KratosCore.dir/containers/data_value_container.cpp.o
+[ 18%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/mesh_local_smoothing_process.cpp.o
+[ 19%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/fast_transfer_between_model_parts_process.cpp.o
+[ 19%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/tetrahedra_mesh_quality_weighted_smoothing_process.cpp.o
+[ 19%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/mesh_coarsening_process.cpp.o
+[ 19%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/tetrahedra_mesh_worst_element_smoothing_process.cpp.o
+[ 19%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/mesh_node_collapsing_process.cpp.o
+[ 19%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/find_intersected_geometrical_objects_process.cpp.o
+[ 20%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/find_intersected_geometrical_objects_with_obb_process.cpp.o
+[ 20%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/structured_mesh_generator_process.cpp.o
+[ 20%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/measure_mesh_quality_process.cpp.o
+[ 21%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/tetrahedra_mesh_edge_swapping_process.cpp.o
+[ 21%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/calculate_distance_to_skin_process.cpp.o
+[ 22%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/calculate_discontinuous_distance_to_skin_process.cpp.o
+[ 23%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/reorder_and_optimize_modelpart_process.cpp.o
+[ 23%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/compute_nodal_gradient_process.cpp.o
+[ 23%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/find_nodal_h_process.cpp.o
+[ 24%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/calculate_nodal_area_process.cpp.o
+[ 24%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/skin_detection_process.cpp.o
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp: In instantiation of ‘bool Kratos::OrientedBoundingBox<TDim>::DirectHasIntersection(const Kratos::OrientedBoundingBox<TDim>&) const [with long unsigned int TDim = 2]’:
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:606:16:   required from here
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:284:37: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  284 |         auto r_edges_1 = geom1.Edges();
+      |                          ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:285:37: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  285 |         auto r_edges_2 = geom2.Edges();
+      |                          ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:301:35: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  301 |         auto faces_1 = geom1.Faces();
+      |                        ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:302:35: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  302 |         auto faces_2 = geom2.Faces();
+      |                        ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp: In instantiation of ‘bool Kratos::OrientedBoundingBox<TDim>::DirectHasIntersection(const Kratos::OrientedBoundingBox<TDim>&) const [with long unsigned int TDim = 3]’:
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:607:16:   required from here
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:284:37: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  284 |         auto r_edges_1 = geom1.Edges();
+      |                          ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:285:37: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  285 |         auto r_edges_2 = geom2.Edges();
+      |                          ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:301:35: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  301 |         auto faces_1 = geom1.Faces();
+      |                        ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/sources/oriented_bounding_box.cpp:302:35: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  302 |         auto faces_2 = geom2.Faces();
+      |                        ~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/sources/oriented_bounding_box.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.cpp: In member function ‘virtual bool Kratos::FindIntersectedGeometricalObjectsProcess::HasIntersection2D(Kratos::FindIntersectedGeometricalObjectsProcess::GeometryType&, Kratos::FindIntersectedGeometricalObjectsProcess::GeometryType&)’:
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.cpp:391:40: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  391 |     auto r_edges = rFirstGeometry.Edges();
+      |                    ~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/geometries/line_2d_2.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.cpp:20:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.cpp: In member function ‘virtual bool Kratos::FindIntersectedGeometricalObjectsProcess::HasIntersection3D(Kratos::FindIntersectedGeometricalObjectsProcess::GeometryType&, Kratos::FindIntersectedGeometricalObjectsProcess::GeometryType&)’:
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.cpp:456:38: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  456 |     auto faces = rFirstGeometry.Faces();
+      |                  ~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/geometries/line_2d_2.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.cpp:20:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp: In instantiation of ‘unsigned int Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::ComputeEdgesIntersections(Kratos::Element&, const Kratos::PointerVector<Kratos::GeometricalObject>&, std::vector<unsigned int>&, std::vector<Kratos::array_1d<double, 3> >&) [with long unsigned int TDim = 2]’:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:432:25:   required from here
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:198:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  198 |                 const auto r_edges_container = r_geometry.Edges();
+      |                                                ~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:198:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  198 |                 const auto r_edges_container = r_geometry.Edges();
+      |                                                ~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp: In instantiation of ‘unsigned int Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::ComputeEdgesIntersections(Kratos::Element&, const Kratos::PointerVector<Kratos::GeometricalObject>&, std::vector<unsigned int>&, std::vector<Kratos::array_1d<double, 3> >&) [with long unsigned int TDim = 3]’:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:433:25:   required from here
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:198:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  198 |                 const auto r_edges_container = r_geometry.Edges();
+      |                                                ~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:198:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  198 |                 const auto r_edges_container = r_geometry.Edges();
+      |                                                ~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp: In member function ‘virtual bool Kratos::FindIntersectedGeometricalObjectsWithOBBProcess::HasIntersection2D(Kratos::FindIntersectedGeometricalObjectsWithOBBProcess::GeometryType&, Kratos::FindIntersectedGeometricalObjectsWithOBBProcess::GeometryType&)’:
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:221:65: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  221 |     PointerVector<GeometryType> r_edges_1 = rFirstGeometry.Edges();
+      |                                             ~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.h:21,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:223:66: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  223 |     PointerVector<GeometryType> r_edges_2 = rSecondGeometry.Edges();
+      |                                             ~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.h:21,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp: In member function ‘virtual bool Kratos::FindIntersectedGeometricalObjectsWithOBBProcess::HasIntersection3D(Kratos::FindIntersectedGeometricalObjectsWithOBBProcess::GeometryType&, Kratos::FindIntersectedGeometricalObjectsWithOBBProcess::GeometryType&)’:
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:311:65: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  311 |     PointerVector<GeometryType> r_faces_1 = rFirstGeometry.Faces();
+      |                                             ~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.h:21,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:314:66: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  314 |     PointerVector<GeometryType> r_faces_2 = rSecondGeometry.Faces();
+      |                                             ~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.h:21,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_with_obb_process.cpp:18:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h: In instantiation of ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkinSpecialization(const Kratos::Variable<TDataType>&, const Kratos::Variable<TDataType>&) [with TVarType = double; long unsigned int TDim = 2]’:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:355:64:   required from ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkin(const Kratos::Variable<double>&, const Kratos::Variable<double>&) [with long unsigned int TDim = 2]’
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:432:25:   required from here
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h: In instantiation of ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkinSpecialization(const Kratos::Variable<TDataType>&, const Kratos::Variable<TDataType>&) [with TVarType = Kratos::array_1d<double, 3>; long unsigned int TDim = 2]’:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:363:76:   required from ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkin(const Kratos::Variable<Kratos::array_1d<double, 3> >&, const Kratos::Variable<Kratos::array_1d<double, 3> >&) [with long unsigned int TDim = 2]’
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:432:25:   required from here
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h: In instantiation of ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkinSpecialization(const Kratos::Variable<TDataType>&, const Kratos::Variable<TDataType>&) [with TVarType = double; long unsigned int TDim = 3]’:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:355:64:   required from ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkin(const Kratos::Variable<double>&, const Kratos::Variable<double>&) [with long unsigned int TDim = 3]’
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:433:25:   required from here
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h: In instantiation of ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkinSpecialization(const Kratos::Variable<TDataType>&, const Kratos::Variable<TDataType>&) [with TVarType = Kratos::array_1d<double, 3>; long unsigned int TDim = 3]’:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:363:76:   required from ‘void Kratos::CalculateDiscontinuousDistanceToSkinProcess<TDim>::CalculateEmbeddedVariableFromSkin(const Kratos::Variable<Kratos::array_1d<double, 3> >&, const Kratos::Variable<Kratos::array_1d<double, 3> >&) [with long unsigned int TDim = 3]’
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:433:25:   required from here
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:333:64: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  333 |                                 const auto edges = r_geom.Edges();
+      |                                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/find_intersected_geometrical_objects_process.h:26,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.h:27,
+                 from /root/Kratos/kratos/processes/calculate_discontinuous_distance_to_skin_process.cpp:19:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /usr/include/boost/bind.hpp:30,
+                 from /usr/include/boost/property_tree/json_parser/detail/parser.hpp:7,
+                 from /usr/include/boost/property_tree/json_parser/detail/read.hpp:13,
+                 from /usr/include/boost/property_tree/json_parser.hpp:16,
+                 from /root/Kratos/kratos/linear_solvers/amgcl_solver.h:31,
+                 from /root/Kratos/kratos/factories/standard_linear_solver_factory.cpp:27:
+/usr/include/boost/bind.hpp:36:1: note: ‘#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.’
+   36 | BOOST_PRAGMA_MESSAGE(
+      | ^~~~~~~~~~~~~~~~~~~~
+[ 24%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/replace_elements_and_condition_process.cpp.o
+[ 25%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/entity_erase_process.cpp.o
+[ 25%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/assign_scalar_variable_to_entities_process.cpp.o
+[ 26%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/tetrahedral_mesh_orientation_check.cpp.o
+[ 26%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/integration_values_extrapolation_to_nodes_process.cpp.o
+[ 26%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/apply_ray_casting_process.cpp.o
+[ 27%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/find_global_nodal_elemental_neighbours_process.cpp.o
+[ 27%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/bounding_volume_tree.cpp.o
+[ 27%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/exception.cpp.o
+[ 28%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/code_location.cpp.o
+[ 28%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/prime_numbers.cpp.o
+[ 29%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/connectivity_preserve_modeler.cpp.o
+[ 29%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/parallel_environment.cpp.o
+[ 29%] Building CXX object kratos/CMakeFiles/KratosCore.dir/sources/data_communicator.cpp.o
+[ 30%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/divide_geometry.cpp.o
+[ 30%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/divide_triangle_2d_3.cpp.o
+[ 30%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/divide_tetrahedra_3d_4.cpp.o
+[ 31%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/embedded_skin_utility.cpp.o
+[ 31%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/geometrical_sensitivity_utility.cpp.o
+[ 32%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/line_sensitivity_utility.cpp.o
+[ 32%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/brute_force_point_locator.cpp.o
+[ 32%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/variable_utils.cpp.o
+[ 33%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/assign_unique_model_part_collection_tag_utility.cpp.o
+[ 33%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/read_materials_utility.cpp.o
+[ 33%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/variable_redistribution_utility.cpp.o
+[ 34%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/auxiliar_model_part_utilities.cpp.o
+[ 34%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/time_discretization.cpp.o
+[ 35%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/constraint_utilities.cpp.o
+[ 35%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/sensitivity_builder.cpp.o
+[ 35%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/mortar_utilities.cpp.o
+[ 36%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/os_utilities.cpp.o
+[ 36%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/exact_mortar_segmentation_utility.cpp.o
+/root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp: In member function ‘virtual void Kratos::DivideTetrahedra3D4::GenerateIntersectionsSkin()’:
+/root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp:198:89: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::IndexedPoint; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::IndexedPoint>, std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  198 |                 IndexedGeometriesArrayType subdivision_faces = p_subdivision_geom->Faces();
+      |                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/geometries/line_3d_2.h:25,
+                 from /root/Kratos/kratos/geometries/triangle_3d_3.h:28,
+                 from /root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.h:22,
+                 from /root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp:20:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp:226:89: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::IndexedPoint; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::IndexedPoint>, std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  226 |                 IndexedGeometriesArrayType subdivision_faces = p_subdivision_geom->Faces();
+      |                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/geometries/line_3d_2.h:25,
+                 from /root/Kratos/kratos/geometries/triangle_3d_3.h:28,
+                 from /root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.h:22,
+                 from /root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp:20:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp: In member function ‘virtual void Kratos::DivideTetrahedra3D4::GenerateExteriorFaces(std::vector<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> > > >&, std::vector<unsigned int>&, const std::vector<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> > > >&, unsigned int)’:
+/root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp:308:89: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::IndexedPoint; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::IndexedPoint>, std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::IndexedPoint> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  308 |                 IndexedGeometriesArrayType subdivision_faces = p_subdivision_geom->Faces();
+      |                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/geometries/line_3d_2.h:25,
+                 from /root/Kratos/kratos/geometries/triangle_3d_3.h:28,
+                 from /root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.h:22,
+                 from /root/Kratos/kratos/utilities/divide_tetrahedra_3d_4.cpp:20:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/utilities/os_utilities.cpp: In function ‘std::string Kratos::OSUtilities::GetCurrentWorkingDir()’:
+/root/Kratos/kratos/utilities/os_utilities.cpp:37:18: warning: ignoring return value of ‘char* getcwd(char*, size_t)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   37 |     GetCurrentDir( buff, FILENAME_MAX );
+      |                  ^
+[ 37%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/timer.cpp.o
+[ 37%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/geometrical_transformation_utilities.cpp.o
+[ 37%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modeler/tetrahedra_ball.cpp.o
+[ 38%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modeler/tetrahedra_edge_shell.cpp.o
+[ 38%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modified_shape_functions/modified_shape_functions.cpp.o
+[ 38%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modified_shape_functions/ausas_modified_shape_functions.cpp.o
+[ 39%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modified_shape_functions/triangle_2d_3_modified_shape_functions.cpp.o
+[ 39%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modified_shape_functions/triangle_2d_3_ausas_modified_shape_functions.cpp.o
+[ 40%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modified_shape_functions/tetrahedra_3d_4_modified_shape_functions.cpp.o
+[ 40%] Building CXX object kratos/CMakeFiles/KratosCore.dir/modified_shape_functions/tetrahedra_3d_4_ausas_modified_shape_functions.cpp.o
+[ 40%] Building CXX object kratos/CMakeFiles/KratosCore.dir/elements/embedded_nodal_variable_calculation_element_simplex.cpp.o
+[ 41%] Building CXX object kratos/CMakeFiles/KratosCore.dir/elements/mesh_element.cpp.o
+[ 41%] Building CXX object kratos/CMakeFiles/KratosCore.dir/conditions/mesh_condition.cpp.o
+[ 41%] Building CXX object kratos/CMakeFiles/KratosCore.dir/processes/apply_periodic_boundary_condition_process.cpp.o
+[ 42%] Building CXX object kratos/CMakeFiles/KratosCore.dir/linear_solvers/amgcl_solver_impl.cpp.o
+[ 42%] Building CXX object kratos/CMakeFiles/KratosCore.dir/utilities/communication_coloring_utilities.cpp.o
+[ 43%] Building CXX object kratos/CMakeFiles/KratosCore.dir/testing/distributed_test_case.cpp.o
+[ 43%] Building CXX object kratos/CMakeFiles/KratosCore.dir/testing/test_case.cpp.o
+[ 43%] Building CXX object kratos/CMakeFiles/KratosCore.dir/testing/test_case_result.cpp.o
+[ 44%] Building CXX object kratos/CMakeFiles/KratosCore.dir/testing/test_suite.cpp.o
+[ 44%] Building CXX object kratos/CMakeFiles/KratosCore.dir/testing/tester.cpp.o
+[ 44%] Building CXX object kratos/CMakeFiles/KratosCore.dir/input_output/logger.cpp.o
+[ 45%] Building CXX object kratos/CMakeFiles/KratosCore.dir/input_output/logger_message.cpp.o
+[ 45%] Building CXX object kratos/CMakeFiles/KratosCore.dir/input_output/logger_output.cpp.o
+[ 46%] Building CXX object kratos/CMakeFiles/KratosCore.dir/input_output/logger_table_output.cpp.o
+[ 46%] Building CXX object kratos/CMakeFiles/KratosCore.dir/input_output/unv_output.cpp.o
+[ 46%] Building CXX object kratos/CMakeFiles/KratosCore.dir/input_output/vtk_output.cpp.o
+[ 47%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/auxiliar_files_for_cpp_unnitest/test_bar_element.cpp.o
+[ 47%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/auxiliar_files_for_cpp_unnitest/test_element.cpp.o
+[ 47%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/constitutive_laws/test_constitutive_law.cpp.o
+[ 48%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/containers/test_data_value_container.cpp.o
+[ 48%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/containers/test_flags.cpp.o
+[ 49%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/containers/test_model.cpp.o
+[ 49%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/containers/test_variables.cpp.o
+In file included from /usr/include/boost/bind.hpp:30,
+                 from /usr/include/boost/property_tree/json_parser/detail/parser.hpp:7,
+                 from /usr/include/boost/property_tree/json_parser/detail/read.hpp:13,
+                 from /usr/include/boost/property_tree/json_parser.hpp:16,
+                 from /root/Kratos/kratos/linear_solvers/amgcl_solver.h:31,
+                 from /root/Kratos/kratos/linear_solvers/amgcl_solver_impl.cpp:21:
+/usr/include/boost/bind.hpp:36:1: note: ‘#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.’
+   36 | BOOST_PRAGMA_MESSAGE(
+      | ^~~~~~~~~~~~~~~~~~~~
+[ 49%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_geometry.cpp.o
+[ 50%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_hexahedra_3d_8.cpp.o
+[ 50%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_line_2d_2.cpp.o
+[ 50%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_line_2d_3.cpp.o
+[ 51%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_line_3d_2.cpp.o
+[ 51%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_non_rectangular_jacobian.cpp.o
+[ 52%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_prism_3d_6.cpp.o
+[ 52%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_quadrilateral_2d_4.cpp.o
+[ 52%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_quadrilateral_3d_4.cpp.o
+[ 53%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_tetrahedra_3d_10.cpp.o
+[ 53%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_tetrahedra_3d_4.cpp.o
+[ 53%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_triangle_2d_3.cpp.o
+[ 54%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_triangle_2d_6.cpp.o
+[ 54%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/geometries/test_triangle_3d_3.cpp.o
+[ 55%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/global_pointers/test_global_pointer.cpp.o
+[ 55%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/global_pointers/test_global_pointers_container.cpp.o
+[ 55%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/global_pointers/test_global_pointers_vector.cpp.o
+[ 56%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/input_output/test_logger.cpp.o
+[ 57%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/modified_shape_functions/test_triangle_2d_3_ausas_modified_shape_functions.cpp.o
+[ 57%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/modified_shape_functions/test_tetrahedra_3d_4_ausas_modified_shape_functions.cpp.o
+[ 57%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/modified_shape_functions/test_tetrahedra_3d_4_modified_shape_functions.cpp.o
+[ 57%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/modified_shape_functions/test_triangle_2d_3_modified_shape_functions.cpp.o
+[ 58%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_apply_ray_casting_process.cpp.o
+[ 58%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_calculate_distance_to_skin_process.cpp.o
+[ 58%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_calculate_discontinuous_distance_to_skin_process.cpp.o
+[ 59%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp.o
+[ 59%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_coarsening_process.cpp.o
+[ 59%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_calculate_nodal_area_process.cpp.o
+[ 60%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_compute_nodal_gradient_process.cpp.o
+[ 60%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_fast_transfer_between_model_parts_process.cpp.o
+[ 61%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_find_intersected_geometrical_objects_process.cpp.o
+[ 61%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_find_nodal_h_process.cpp.o
+[ 61%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_integration_values_extrapolation_to_nodes_process.cpp.o
+[ 62%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_mortar_mapper_process.cpp.o
+[ 62%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_replace_elements_and_condition_process.cpp.o
+[ 62%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_skin_detection_process.cpp.o
+[ 63%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_structured_mesh_generator_process.cpp.o
+[ 63%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/processes/test_tetrahedra_edge_swapping_process.cpp.o
+In file included from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:22:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h: In instantiation of ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::AddIntersectedElementsModelPartElements(Kratos::ModelPart&) const [with TVarType = double; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:454:15:   required from ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::GenerateIntersectedEdgesElementsModelPart() [with TVarType = double; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:333:15:   required from ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::Execute() [with TVarType = double; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’
+/root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:87:43:   required from here
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:15:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:22:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:15:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+[ 64%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/cross_check_shape_functions_values.cpp.o
+In file included from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:22:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h: In instantiation of ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::AddIntersectedElementsModelPartElements(Kratos::ModelPart&) const [with TVarType = Kratos::array_1d<double, 3>; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:454:15:   required from ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::GenerateIntersectedEdgesElementsModelPart() [with TVarType = Kratos::array_1d<double, 3>; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:333:15:   required from ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::Execute() [with TVarType = Kratos::array_1d<double, 3>; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’
+/root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:151:43:   required from here
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:15:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:22:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/tests/cpp_tests/processes/test_calculate_embedded_nodal_variable_from_skin_process.cpp:15:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+[ 64%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_amatrix.cpp.o
+[ 64%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_amatrix_alias.cpp.o
+[ 65%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_checks.cpp.o
+[ 65%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_chunk.cpp.o
+[ 65%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_code_location.cpp.o
+[ 66%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_compare_elements_and_conditions_utility.cpp.o
+[ 66%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_condition.cpp.o
+[ 67%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_constraint.cpp.o
+[ 67%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_dof.cpp.o
+[ 67%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_element.cpp.o
+[ 68%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_exceptions.cpp.o
+[ 68%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_kratos_components.cpp.o
+[ 68%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_linear_master_slave_constraint.cpp.o
+[ 69%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_memory_pool.cpp.o
+[ 69%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_model_part.cpp.o
+[ 70%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_model_part_io.cpp.o
+[ 70%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_nodal_data.cpp.o
+[ 70%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_node.cpp.o
+[ 71%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_oriented_bounding_box.cpp.o
+[ 71%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_parameters.cpp.o
+[ 71%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_properties.cpp.o
+[ 72%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_serializer.cpp.o
+[ 72%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/sources/test_shape_function_derivatives.cpp.o
+[ 73%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/spatial_containers/test_bins_dynamic.cpp.o
+[ 73%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/spatial_containers/test_bins_static.cpp.o
+/root/Kratos/kratos/tests/cpp_tests/sources/test_oriented_bounding_box.cpp: In member function ‘virtual void Kratos::Testing::TestOBBHasIntersection2DCrossed::TestFunction()’:
+/root/Kratos/kratos/tests/cpp_tests/sources/test_oriented_bounding_box.cpp:237:42: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  237 |         auto r_edges_1 = first_quad.Edges();
+      |                          ~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/tests/cpp_tests/sources/test_oriented_bounding_box.cpp:16:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+/root/Kratos/kratos/tests/cpp_tests/sources/test_oriented_bounding_box.cpp:238:43: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Point; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Point>, std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Point> >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Point> > > > >]’ is deprecated [-Wdeprecated-declarations]
+  238 |         auto r_edges_2 = second_quad.Edges();
+      |                          ~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/oriented_bounding_box.h:24,
+                 from /root/Kratos/kratos/tests/cpp_tests/sources/test_oriented_bounding_box.cpp:16:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+[ 73%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/strategies/builder_and_solvers/test_builder_and_solver.cpp.o
+[ 74%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/strategies/schemes/test_residual_based_adjoint_bossak_scheme.cpp.o
+[ 74%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/strategies/schemes/test_schemes.cpp.o
+[ 74%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/strategies/strategies/test_strategies.cpp.o
+[ 75%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/testing/test_testing.cpp.o
+[ 75%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_assign_unique_model_part_collection_tag_utility.cpp.o
+[ 76%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_binbased_fast_point_locator.cpp.o
+[ 76%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_brent_iteration.cpp.o
+[ 76%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_brute_force_point_locator.cpp.o
+[ 77%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_discont_utils.cpp.o
+[ 77%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_divide_tetrahedra_3d_4.cpp.o
+[ 77%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_divide_triangle_2d_3.cpp.o
+[ 78%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_embedded_skin_utility.cpp.o
+[ 78%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_geometrical_projection_utilities.cpp.o
+[ 79%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_geometrical_sensitivity_utility.cpp.o
+[ 79%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_geometry_utils.cpp.o
+[ 79%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_intersection_utilities.cpp.o
+[ 80%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_line_geometrical_sensitivity.cpp.o
+[ 80%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_math_utils.cpp.o
+[ 80%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_os_utilities.cpp.o
+[ 81%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_plane_approximation_utility.cpp.o
+[ 81%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_sensitivity_builder.cpp.o
+[ 82%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_split_tetrahedra.cpp.o
+[ 82%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_stl_io.cpp.o
+[ 82%] Building CXX object kratos/CMakeFiles/KratosCore.dir/tests/cpp_tests/utilities/test_svd_utils.cpp.o
+/root/Kratos/kratos/tests/cpp_tests/utilities/test_split_tetrahedra.cpp: In member function ‘virtual void Kratos::Testing::TestTetrahedraSplitEdgesPatterns::TestFunction()’:
+/root/Kratos/kratos/tests/cpp_tests/utilities/test_split_tetrahedra.cpp:192:99: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Faces() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated [-Wdeprecated-declarations]
+  192 |                                        sub_tetras_faces[i_elem * 4 + i_face] = (p_sub_tetra->Faces())[i_face];
+      |                                                                                 ~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/geometries/line_3d_2.h:25,
+                 from /root/Kratos/kratos/geometries/triangle_3d_3.h:28,
+                 from /root/Kratos/kratos/geometries/tetrahedra_3d_4.h:25,
+                 from /root/Kratos/kratos/tests/cpp_tests/utilities/test_split_tetrahedra.cpp:17:
+/root/Kratos/kratos/geometries/geometry.h:1496:112: note: declared here
+ 1496 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Faces( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/testing/testing.h:18,
+                 from /root/Kratos/kratos/tests/cpp_tests/utilities/test_math_utils.cpp:20:
+/root/Kratos/kratos/tests/cpp_tests/utilities/test_math_utils.cpp: In member function ‘virtual void Kratos::Testing::TestMathUtilsInvMat::TestFunction()’:
+/root/Kratos/kratos/tests/cpp_tests/utilities/test_math_utils.cpp:289:46: warning: ‘*(const boost::numeric::ublas::bounded_array<double, 16, std::allocator<double> >*)((char*)&I44 + offsetof(const boost::numeric::ublas::BoundedMatrix<double, 4, 4>,boost::numeric::ublas::bounded_matrix<double, 4, 4, boost::numeric::ublas::basic_row_major<long unsigned int, long int> >::<unnamed>.boost::numeric::ublas::matrix<double, boost::numeric::ublas::basic_row_major<long unsigned int, long int>, boost::numeric::ublas::bounded_array<double, 16, std::allocator<double> > >::data_)).boost::numeric::ublas::bounded_array<double, 16, std::allocator<double> >::data_[0]’ may be used uninitialized [-Wmaybe-uninitialized]
+  289 |                         KRATOS_CHECK_NEAR(I44(i,j), 1.0, tolerance);
+      |                                           ~~~^~~~~
+/root/Kratos/kratos/includes/checks.h:45:55: note: in definition of macro ‘KRATOS_CHECK_NEAR’
+   45 | #define KRATOS_CHECK_NEAR(a,b, tolerance) if(std::abs(a - b) > tolerance) KRATOS_ERROR << "Check failed because " << #a << " = " << a << \
+      |                                                       ^
+/root/Kratos/kratos/tests/cpp_tests/utilities/test_math_utils.cpp:284:47: note: ‘I44’ declared here
+  284 |             const BoundedMatrix<double, 4, 4> I44 = prod(inv44, mat44);
+      |                                               ^~~
+[ 83%] Linking CXX shared library libKratosCore.so
+[ 83%] Built target KratosCore
+[ 83%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_deprecated_variables_to_python.cpp.o
+[ 83%] Building CXX object kratos/CMakeFiles/Kratos.dir/processes/assign_scalar_field_to_entities_process.cpp.o
+[ 83%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_model_part_to_python.cpp.o
+[ 83%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_c2c_variables_to_python.cpp.o
+[ 84%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_points_to_python.cpp.o
+[ 85%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_cfd_variables_to_python.cpp.o
+[ 85%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_mesh_moving_variables_to_python.cpp.o
+[ 86%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_mapping_variables_to_python.cpp.o
+[ 86%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_dem_variables_to_python.cpp.o
+[ 87%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_fsi_variables_to_python.cpp.o
+[ 87%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_mat_variables_to_python.cpp.o
+[ 87%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_legacy_structural_app_vars_to_python.cpp.o
+[ 87%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_containers_to_python.cpp.o
+[ 88%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_constitutive_law_to_python.cpp.o
+[ 88%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_processes_to_python.cpp.o
+[ 89%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_geometries_to_python.cpp.o
+[ 89%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_io_to_python.cpp.o
+[ 89%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_kernel_to_python.cpp.o
+[ 90%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_vector_to_python.cpp.o
+[ 91%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_properties_to_python.cpp.o
+[ 91%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_kratos_application_to_python.cpp.o
+[ 91%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_modeler_to_python.cpp.o
+[ 92%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_linear_solvers_to_python.cpp.o
+[ 92%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_node_to_python.cpp.o
+[ 93%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_mesh_to_python.cpp.o
+[ 93%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_matrix_to_python.cpp.o
+[ 93%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_amgcl_solver_to_python.cpp.o
+[ 93%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_factories_to_python.cpp.o
+[ 93%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_strategies_to_python.cpp.o
+[ 94%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_utilities_to_python.cpp.o
+[ 94%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_process_info_to_python.cpp.o
+[ 95%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_matrix_market_interface_to_python.cpp.o
+[ 95%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_table_to_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_serializer_to_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_search_strategies_to_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_kratos_parameters_to_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_testing_to_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_model_to_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/kratos_python.cpp.o
+[ 96%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_parallel_environment_to_python.cpp.o
+[ 97%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_logger_to_python.cpp.o
+[ 99%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_memory_info_to_python.cpp.o
+[ 99%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_constraint_to_python.cpp.o
+[ 99%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_response_functions_to_python.cpp.o
+[100%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_global_pointers_to_python.cpp.o
+[100%] Building CXX object kratos/CMakeFiles/Kratos.dir/python/add_data_communicator_to_python.cpp.o
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/kratos_python.cpp:17:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/kratos_python.cpp:17:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_memory_info_to_python.cpp:15:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_memory_info_to_python.cpp:15:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_testing_to_python.cpp:17:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_testing_to_python.cpp:17:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_points_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_points_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_parallel_environment_to_python.h:17,
+                 from /root/Kratos/kratos/python/add_parallel_environment_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_parallel_environment_to_python.h:17,
+                 from /root/Kratos/kratos/python/add_parallel_environment_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_deprecated_variables_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_deprecated_variables_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_vector_to_python.cpp:21:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_vector_to_python.cpp:21:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_matrix_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_matrix_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_kratos_parameters_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_kratos_parameters_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_matrix_market_interface_to_python.cpp:21:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_matrix_market_interface_to_python.cpp:21:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_process_info_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_process_info_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_table_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_table_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/external_libraries/pybind11/stl.h:12,
+                 from /root/Kratos/kratos/python/add_data_communicator_to_python.cpp:16:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/external_libraries/pybind11/stl.h:12,
+                 from /root/Kratos/kratos/python/add_data_communicator_to_python.cpp:16:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/utilities/python_function_callback_utility.h:21,
+                 from /root/Kratos/kratos/processes/assign_scalar_field_to_entities_process.h:24,
+                 from /root/Kratos/kratos/processes/assign_scalar_field_to_entities_process.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/utilities/python_function_callback_utility.h:21,
+                 from /root/Kratos/kratos/processes/assign_scalar_field_to_entities_process.h:24,
+                 from /root/Kratos/kratos/processes/assign_scalar_field_to_entities_process.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/external_libraries/pybind11/stl.h:12,
+                 from /root/Kratos/kratos/python/add_model_part_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/external_libraries/pybind11/stl.h:12,
+                 from /root/Kratos/kratos/python/add_model_part_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_cfd_variables_to_python.cpp:22:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_cfd_variables_to_python.cpp:22:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_logger_to_python.cpp:17:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_logger_to_python.cpp:17:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_c2c_variables_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_c2c_variables_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_mesh_moving_variables_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_mesh_moving_variables_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_mat_variables_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_mat_variables_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_dem_variables_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_dem_variables_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_legacy_structural_app_vars_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_mapping_variables_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_mapping_variables_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_legacy_structural_app_vars_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_constitutive_law_to_python.h:22,
+                 from /root/Kratos/kratos/python/add_constitutive_law_to_python.cpp:21:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_constitutive_law_to_python.h:22,
+                 from /root/Kratos/kratos/python/add_constitutive_law_to_python.cpp:21:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_mesh_to_python.cpp:16:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_mesh_to_python.cpp:16:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_fsi_variables_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_fsi_variables_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_kernel_to_python.cpp:17:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_kernel_to_python.cpp:17:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_properties_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_properties_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_node_to_python.cpp:14:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/python/add_node_to_python.cpp:14:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_containers_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_containers_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_kratos_application_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_kratos_application_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_geometries_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_geometries_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_factories_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_factories_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_io_to_python.cpp:21:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_io_to_python.cpp:21:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_constraint_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_constraint_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_serializer_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_serializer_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_global_pointers_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_global_pointers_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_model_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_model_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_response_functions_to_python.cpp:18:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_response_functions_to_python.cpp:18:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_modeler_to_python.cpp:22:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_modeler_to_python.cpp:22:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:19:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:19:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_strategies_to_python.cpp:23:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_strategies_to_python.cpp:23:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_search_strategies_to_python.cpp:21:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_search_strategies_to_python.cpp:21:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_utilities_to_python.cpp:20:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_utilities_to_python.cpp:20:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_linear_solvers_to_python.cpp:21:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_linear_solvers_to_python.cpp:21:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/external_libraries/pybind11/cast.h:16,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_amgcl_solver_to_python.cpp:26:
+/root/Kratos/external_libraries/pybind11/detail/internals.h: In function ‘pybind11::detail::internals& pybind11::detail::get_internals()’:
+/root/Kratos/external_libraries/pybind11/detail/internals.h:194:27: warning: ‘void PyEval_InitThreads()’ is deprecated [-Wdeprecated-declarations]
+  194 |         PyEval_InitThreads();
+      |         ~~~~~~~~~~~~~~~~~~^~
+In file included from /usr/include/python3.10/Python.h:130,
+                 from /root/Kratos/external_libraries/pybind11/detail/common.h:112,
+                 from /root/Kratos/external_libraries/pybind11/pytypes.h:12,
+                 from /root/Kratos/external_libraries/pybind11/cast.h:13,
+                 from /root/Kratos/external_libraries/pybind11/attr.h:13,
+                 from /root/Kratos/external_libraries/pybind11/pybind11.h:43,
+                 from /root/Kratos/kratos/includes/define_python.h:18,
+                 from /root/Kratos/kratos/python/add_amgcl_solver_to_python.cpp:26:
+/usr/include/python3.10/ceval.h:122:37: note: declared here
+  122 | Py_DEPRECATED(3.9) PyAPI_FUNC(void) PyEval_InitThreads(void);
+      |                                     ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/boost/bind.hpp:30,
+                 from /usr/include/boost/property_tree/json_parser/detail/parser.hpp:7,
+                 from /usr/include/boost/property_tree/json_parser/detail/read.hpp:13,
+                 from /usr/include/boost/property_tree/json_parser.hpp:16,
+                 from /root/Kratos/kratos/linear_solvers/amgcl_solver.h:31,
+                 from /root/Kratos/kratos/python/add_amgcl_solver_to_python.cpp:31:
+/usr/include/boost/bind.hpp: At global scope:
+/usr/include/boost/bind.hpp:36:1: note: ‘#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.’
+   36 | BOOST_PRAGMA_MESSAGE(
+      | ^~~~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/kratos/python/add_processes_to_python.cpp:47:
+/root/Kratos/kratos/processes/check_skin_process.h: In member function ‘virtual void Kratos::CheckSkinProcess::Execute()’:
+/root/Kratos/kratos/processes/check_skin_process.h:115:91: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated: This is legacy version (use GenerateEdgesInstead) [-Wdeprecated-declarations]
+  115 |             Element::GeometryType::GeometriesArrayType edges = itCond->GetGeometry().Edges();
+      |                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:24,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /usr/include/boost/config/header_deprecated.hpp:18,
+                 from /usr/include/boost/timer.hpp:20,
+                 from /root/Kratos/kratos/utilities/cutting_utility.h:22,
+                 from /root/Kratos/kratos/python/add_utilities_to_python.cpp:49:
+/usr/include/boost/timer.hpp: At global scope:
+/usr/include/boost/timer.hpp:21:1: note: ‘#pragma message: This header is deprecated. Use the facilities in <boost/timer/timer.hpp> instead.’
+   21 | BOOST_HEADER_DEPRECATED( "the facilities in <boost/timer/timer.hpp>" )
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h: In instantiation of ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::AddIntersectedElementsModelPartElements(Kratos::ModelPart&) const [with TVarType = Kratos::array_1d<double, 3>; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:454:15:   required from ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::GenerateIntersectedEdgesElementsModelPart() [with TVarType = Kratos::array_1d<double, 3>; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:425:18:   required from here
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated: This is legacy version (use GenerateEdgesInstead) [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:24,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated: This is legacy version (use GenerateEdgesInstead) [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:24,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h: In instantiation of ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::AddIntersectedElementsModelPartElements(Kratos::ModelPart&) const [with TVarType = double; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:454:15:   required from ‘void Kratos::CalculateEmbeddedNodalVariableFromSkinProcess<TVarType, TSparseSpace, TDenseSpace, TLinearSolver>::GenerateIntersectedEdgesElementsModelPart() [with TVarType = double; TSparseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >; TDenseSpace = Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> >; TLinearSolver = Kratos::LinearSolver<Kratos::UblasSpace<double, boost::numeric::ublas::compressed_matrix<double>, boost::numeric::ublas::vector<double> >, Kratos::UblasSpace<double, boost::numeric::ublas::matrix<double>, boost::numeric::ublas::vector<double> > >]’
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:425:18:   required from here
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated: This is legacy version (use GenerateEdgesInstead) [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:24,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~
+In file included from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:511:48: warning: ‘Kratos::Geometry<TPointType>::GeometriesArrayType Kratos::Geometry<TPointType>::Edges() [with TPointType = Kratos::Node<3>; Kratos::Geometry<TPointType>::GeometriesArrayType = Kratos::PointerVector<Kratos::Geometry<Kratos::Node<3> >, std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::vector<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > >, std::allocator<std::shared_ptr<Kratos::Geometry<Kratos::Node<3> > > > > >]’ is deprecated: This is legacy version (use GenerateEdgesInstead) [-Wdeprecated-declarations]
+  511 |                 const auto edges = r_geom.Edges();
+      |                                    ~~~~~~~~~~~~^~
+In file included from /root/Kratos/kratos/includes/mesh.h:35,
+                 from /root/Kratos/kratos/includes/model_part.h:30,
+                 from /root/Kratos/kratos/containers/model.h:26,
+                 from /root/Kratos/kratos/processes/calculate_embedded_nodal_variable_from_skin_process.h:24,
+                 from /root/Kratos/kratos/python/add_processes_to_python.cpp:24:
+/root/Kratos/kratos/geometries/geometry.h:1436:112: note: declared here
+ 1436 |     KRATOS_DEPRECATED_MESSAGE("This is legacy version (use GenerateEdgesInstead)") virtual GeometriesArrayType Edges( void )
+      |                                                                                                                ^~~~~

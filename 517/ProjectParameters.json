@@ -1,0 +1,63 @@
+{
+    "problem_data"             : {
+        "problem_name"    : "kratos",
+        "model_part_name" : "Structure",
+        "domain_size"     : 2,
+        "parallel_type"   : "OpenMP",
+        "time_step"       : 1.1,
+        "start_time"      : 0.0,
+        "end_time"        : 1.0,
+        "echo_level"      : 0
+    },
+    "solver_settings"          : {
+        "solver_type"                        : "structural_mechanics_static_solver",
+        "echo_level"                         : 3,
+        "solution_type"                      : "Static",
+        "analysis_type"                        : "Linear",
+        "model_import_settings"              : {
+            "input_type"       : "mdpa",
+            "input_filename"   : "kratos",
+            "input_file_label" : 0
+        },
+        "problem_domain_sub_model_part_list" : ["Parts_Beam"],
+        "processes_sub_model_part_list"      : ["Parts_Beam", "Boundary"],
+        "rotation_dofs"                      : true,
+        "linear_solver_settings"             : {
+            "solver_type" : "SuperLUSolver",
+            "scaling"     : false
+        }
+    },
+    "constraints_process_list" : [],
+    "loads_process_list"    : [],
+    "list_other_processes"  : [],
+    "output_configuration"     : {
+        "result_file_configuration" : {
+            "gidpost_flags"       : {
+                "GiDPostMode"           : "GiD_PostBinary",
+                "WriteDeformedMeshFlag" : "WriteDeformed",
+                "WriteConditionsFlag"   : "WriteConditions",
+                "MultiFileFlag"         : "SingleFile"
+            },
+            "file_label"          : "step",
+            "output_control_type" : "step",
+            "output_frequency"    : 1,
+            "body_output"         : true,
+            "node_output"         : false,
+            "skin_output"         : false,
+            "plane_output"        : [],
+            "nodal_results"       : ["DISPLACEMENT","REACTION","VELOCITY","ROTATION"],
+            "gauss_point_results" : ["GREEN_LAGRANGE_STRAIN_TENSOR","CAUCHY_STRESS_TENSOR","VON_MISES_STRESS"]
+        },
+        "point_data_configuration"  : []
+    },
+    "restart_options"          : {
+        "SaveRestart"      : false,
+        "RestartFrequency" : 0,
+        "LoadRestart"      : false,
+        "Restart_Step"     : 0
+    },
+    "constraints_data"         : {
+        "incremental_load"         : false,
+        "incremental_displacement" : false
+    }
+}
