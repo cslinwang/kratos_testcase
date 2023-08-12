@@ -33,6 +33,7 @@ echo "Kratos编译完成。"
 
 # 运行
 echo "开始运行 BUG $bug_id 测试用例..."
+cd /root/kratos_testcase/4623
 python3 /root/kratos_testcase/4623/MainKratos.py
 echo "BUG $bug_id 测试用例运行完成。"
 
