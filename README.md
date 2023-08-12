@@ -223,6 +223,14 @@ cmake ..                                                                        
 -DINSTALL_EMBEDDED_PYTHON=ON
 ```
 
+## 覆盖率生成
+
+运行如下脚本，（5458 为存放文件夹）
+
+```bash
+/root/kratos_testcase/script/coverage.sh 5458
+```
+
 ## 使用说明
 
 ### 情况1
