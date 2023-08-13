@@ -43,7 +43,7 @@ cmake ..                                                                        
 -DMIXED_ELEMENT_APPLICATION=ON                                                     \
 -DSHAPE_OPTIMIZATION_APPLICATION=OFF                                                \
 -DTOPOLOGY_OPTIMIZATION_APPLICATION=OFF                                             \
--DMETIS_APPLICATION=OFF                                                             \
+-DMETIS_APPLICATION=ON                                                             \
 -DPARMETIS_ROOT_DIR="/home/youruser/compiled_libraries/ParMetis-3.1.1"              \
 -DTRILINOS_APPLICATION=OFF                                                          \
 -DTRILINOS_ROOT="/home/youruser/compiled_libraries/trilinos-10.2.0"                 \
