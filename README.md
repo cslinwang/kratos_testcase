@@ -265,3 +265,17 @@ export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 ```bash
 /root/kratos_testcase/script/7_kratos.sh
 ```
+
+## 大版本 hash
+
+v9.3
+b0b8655633dbaf674f99ddd2c0fc6e2d717f2819
+
+v9.2
+cc57d0b8344f6cd3fdf4b2d9b53327c1867c58cc
+
+v9.1
+9459a425b332c6ac4134933cf5ea7cfecf35185c
+
+v9.0
+0bc6047de5ca282309df5e8bb80172f19b7f270f
