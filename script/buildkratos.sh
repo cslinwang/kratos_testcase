@@ -22,12 +22,13 @@ export PYTHON_EXECUTABLE="/usr/bin/python3"
 # Set applications to compile
 export KRATOS_APPLICATIONS=
 # add_app ${KRATOS_APP_DIR}/LinearSolversApplication
-# add_app ${KRATOS_APP_DIR}/StructuralMechanicsApplication
+add_app ${KRATOS_APP_DIR}/StructuralMechanicsApplication
 add_app ${KRATOS_APP_DIR}/FluidDynamicsApplication
 # add_app ${KRATOS_APP_DIR}/KratosMultiphysics.mpi
 add_app ${KRATOS_APP_DIR}/FluidDynamicsBiomedicalApplication
 # add_app ${KRATOS_APP_DIR}/DEMApplication
 add_app ${KRATOS_APP_DIR}/MeshingApplication
+add_app ${KRATOS_APP_DIR}/RomApplication
 
 
 
