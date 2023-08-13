@@ -13,22 +13,22 @@
 
 # 环境变量
 
-# export PYTHONPATH=$PYTHONPATH:/root/Kratos/bin/Release
-# export LD_LIBRARY_PATH=/root/Kratos/build/Release/kratos:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
+export PYTHONPATH=$PYTHONPATH:/root/Kratos/bin/Release
+export LD_LIBRARY_PATH=/root/Kratos/build/Release/kratos:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 
 # 旧版
 
 # 环境变量
 
-export PYTHONPATH=$PYTHONPATH:/root/Kratos
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/Kratos/libs
+# export PYTHONPATH=$PYTHONPATH:/root/Kratos
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/Kratos/libs
 
 # 运行命令
 
 # 编译
 echo "开始编译Kratos..."
-/root/kratos_testcase/script/7_kratos.sh d193db3987aaf2ba1b05a8a01e64d664a75e059c
+/root/kratos_testcase/script/runkratos.sh d193db3987aaf2ba1b05a8a01e64d664a75e059c
 echo "Kratos编译完成。"
 
 # 运行
