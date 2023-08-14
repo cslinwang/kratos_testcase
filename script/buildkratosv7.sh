@@ -38,12 +38,12 @@ cmake ..                                                                        
 -DFLUID_DYNAMICS_APPLICATION=ON                                                     \
 -DMESH_MOVING_APPLICATION=ON                                                        \
 -DFSI_APPLICATION=ON                                                                \
--DDEM_APPLICATION=ON                                                               \
--DSWIMMING_DEM_APPLICATION=ON                                                      \
--DMIXED_ELEMENT_APPLICATION=ON                                                     \
+-DDEM_APPLICATION=OFF                                                               \
+-DSWIMMING_DEM_APPLICATION=OFF                                                      \
+-DMIXED_ELEMENT_APPLICATION=OFF                                                     \
 -DSHAPE_OPTIMIZATION_APPLICATION=OFF                                                \
 -DTOPOLOGY_OPTIMIZATION_APPLICATION=OFF                                             \
--DMETIS_APPLICATION=ON                                                             \
+-DMETIS_APPLICATION=OFF                                                             \
 -DPARMETIS_ROOT_DIR="/home/youruser/compiled_libraries/ParMetis-3.1.1"              \
 -DTRILINOS_APPLICATION=OFF                                                          \
 -DTRILINOS_ROOT="/home/youruser/compiled_libraries/trilinos-10.2.0"                 \

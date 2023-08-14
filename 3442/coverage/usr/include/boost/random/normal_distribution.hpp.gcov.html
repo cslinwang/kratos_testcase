@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /usr/include/boost/random/normal_distribution.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">usr/include/boost/random</a> - normal_distribution.hpp<span style="font-size: 80%;"> (source / <a href="normal_distribution.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-14 14:06:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /* boost random/normal_distribution.hpp header file</a>
+<a name="2"><span class="lineNum">       2 </span>            :  *</a>
+<a name="3"><span class="lineNum">       3 </span>            :  * Copyright Jens Maurer 2000-2001</a>
+<a name="4"><span class="lineNum">       4 </span>            :  * Copyright Steven Watanabe 2010-2011</a>
+<a name="5"><span class="lineNum">       5 </span>            :  * Distributed under the Boost Software License, Version 1.0. (See</a>
+<a name="6"><span class="lineNum">       6 </span>            :  * accompanying file LICENSE_1_0.txt or copy at</a>
+<a name="7"><span class="lineNum">       7 </span>            :  * http://www.boost.org/LICENSE_1_0.txt)</a>
+<a name="8"><span class="lineNum">       8 </span>            :  *</a>
+<a name="9"><span class="lineNum">       9 </span>            :  * See http://www.boost.org for most recent version including documentation.</a>
+<a name="10"><span class="lineNum">      10 </span>            :  *</a>
+<a name="11"><span class="lineNum">      11 </span>            :  * $Id$</a>
+<a name="12"><span class="lineNum">      12 </span>            :  *</a>
+<a name="13"><span class="lineNum">      13 </span>            :  * Revision history</a>
+<a name="14"><span class="lineNum">      14 </span>            :  *  2001-02-18  moved to individual header files</a>
+<a name="15"><span class="lineNum">      15 </span>            :  */</a>
+<a name="16"><span class="lineNum">      16 </span>            : </a>
+<a name="17"><span class="lineNum">      17 </span>            : #ifndef BOOST_RANDOM_NORMAL_DISTRIBUTION_HPP</a>
+<a name="18"><span class="lineNum">      18 </span>            : #define BOOST_RANDOM_NORMAL_DISTRIBUTION_HPP</a>
+<a name="19"><span class="lineNum">      19 </span>            : </a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &lt;boost/config/no_tr1/cmath.hpp&gt;</a>
+<a name="21"><span class="lineNum">      21 </span>            : #include &lt;istream&gt;</a>
+<a name="22"><span class="lineNum">      22 </span>            : #include &lt;iosfwd&gt;</a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &lt;boost/assert.hpp&gt;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &lt;boost/limits.hpp&gt;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &lt;boost/static_assert.hpp&gt;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &lt;boost/random/detail/config.hpp&gt;</a>
+<a name="27"><span class="lineNum">      27 </span>            : #include &lt;boost/random/detail/operators.hpp&gt;</a>
+<a name="28"><span class="lineNum">      28 </span>            : #include &lt;boost/random/detail/int_float_pair.hpp&gt;</a>
+<a name="29"><span class="lineNum">      29 </span>            : #include &lt;boost/random/uniform_01.hpp&gt;</a>
+<a name="30"><span class="lineNum">      30 </span>            : #include &lt;boost/random/exponential_distribution.hpp&gt;</a>
+<a name="31"><span class="lineNum">      31 </span>            : </a>
+<a name="32"><span class="lineNum">      32 </span>            : namespace boost {</a>
+<a name="33"><span class="lineNum">      33 </span>            : namespace random {</a>
+<a name="34"><span class="lineNum">      34 </span>            : </a>
+<a name="35"><span class="lineNum">      35 </span>            : namespace detail {</a>
+<a name="36"><span class="lineNum">      36 </span>            : </a>
+<a name="37"><span class="lineNum">      37 </span>            : // tables for the ziggurat algorithm</a>
+<a name="38"><span class="lineNum">      38 </span>            : template&lt;class RealType&gt;</a>
+<a name="39"><span class="lineNum">      39 </span>            : struct normal_table {</a>
+<a name="40"><span class="lineNum">      40 </span>            :     static const RealType table_x[129];</a>
+<a name="41"><span class="lineNum">      41 </span>            :     static const RealType table_y[129];</a>
+<a name="42"><span class="lineNum">      42 </span>            : };</a>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<a name="44"><span class="lineNum">      44 </span>            : template&lt;class RealType&gt;</a>
+<a name="45"><span class="lineNum">      45 </span>            : const RealType normal_table&lt;RealType&gt;::table_x[129] = {</a>
+<a name="46"><span class="lineNum">      46 </span>            :     3.7130862467403632609, 3.4426198558966521214, 3.2230849845786185446, 3.0832288582142137009,</a>
+<a name="47"><span class="lineNum">      47 </span>            :     2.9786962526450169606, 2.8943440070186706210, 2.8231253505459664379, 2.7611693723841538514,</a>
+<a name="48"><span class="lineNum">      48 </span>            :     2.7061135731187223371, 2.6564064112581924999, 2.6109722484286132035, 2.5690336259216391328,</a>
+<a name="49"><span class="lineNum">      49 </span>            :     2.5300096723854666170, 2.4934545220919507609, 2.4590181774083500943, 2.4264206455302115930,</a>
+<a name="50"><span class="lineNum">      50 </span>            :     2.3954342780074673425, 2.3658713701139875435, 2.3375752413355307354, 2.3104136836950021558,</a>
+<a name="51"><span class="lineNum">      51 </span>            :     2.2842740596736568056, 2.2590595738653295251, 2.2346863955870569803, 2.2110814088747278106,</a>
+<a name="52"><span class="lineNum">      52 </span>            :     2.1881804320720206093, 2.1659267937448407377, 2.1442701823562613518, 2.1231657086697899595,</a>
+<a name="53"><span class="lineNum">      53 </span>            :     2.1025731351849988838, 2.0824562379877246441, 2.0627822745039633575, 2.0435215366506694976,</a>
+<a name="54"><span class="lineNum">      54 </span>            :     2.0246469733729338782, 2.0061338699589668403, 1.9879595741230607243, 1.9701032608497132242,</a>
+<a name="55"><span class="lineNum">      55 </span>            :     1.9525457295488889058, 1.9352692282919002011, 1.9182573008597320303, 1.9014946531003176140,</a>
+<a name="56"><span class="lineNum">      56 </span>            :     1.8849670357028692380, 1.8686611409895420085, 1.8525645117230870617, 1.8366654602533840447,</a>
+<a name="57"><span class="lineNum">      57 </span>            :     1.8209529965910050740, 1.8054167642140487420, 1.7900469825946189862, 1.7748343955807692457,</a>
+<a name="58"><span class="lineNum">      58 </span>            :     1.7597702248942318749, 1.7448461281083765085, 1.7300541605582435350, 1.7153867407081165482,</a>
+<a name="59"><span class="lineNum">      59 </span>            :     1.7008366185643009437, 1.6863968467734863258, 1.6720607540918522072, 1.6578219209482075462,</a>
+<a name="60"><span class="lineNum">      60 </span>            :     1.6436741568569826489, 1.6296114794646783962, 1.6156280950371329644, 1.6017183802152770587,</a>
+<a name="61"><span class="lineNum">      61 </span>            :     1.5878768648844007019, 1.5740982160167497219, 1.5603772223598406870, 1.5467087798535034608,</a>
+<a name="62"><span class="lineNum">      62 </span>            :     1.5330878776675560787, 1.5195095847593707806, 1.5059690368565502602, 1.4924614237746154081,</a>
+<a name="63"><span class="lineNum">      63 </span>            :     1.4789819769830978546, 1.4655259573357946276, 1.4520886428822164926, 1.4386653166774613138,</a>
+<a name="64"><span class="lineNum">      64 </span>            :     1.4252512545068615734, 1.4118417124397602509, 1.3984319141236063517, 1.3850170377251486449,</a>
+<a name="65"><span class="lineNum">      65 </span>            :     1.3715922024197322698, 1.3581524543224228739, 1.3446927517457130432, 1.3312079496576765017,</a>
+<a name="66"><span class="lineNum">      66 </span>            :     1.3176927832013429910, 1.3041418501204215390, 1.2905495919178731508, 1.2769102735516997175,</a>
+<a name="67"><span class="lineNum">      67 </span>            :     1.2632179614460282310, 1.2494664995643337480, 1.2356494832544811749, 1.2217602305309625678,</a>
+<a name="68"><span class="lineNum">      68 </span>            :     1.2077917504067576028, 1.1937367078237721994, 1.1795873846544607035, 1.1653356361550469083,</a>
+<a name="69"><span class="lineNum">      69 </span>            :     1.1509728421389760651, 1.1364898520030755352, 1.1218769225722540661, 1.1071236475235353980,</a>
+<a name="70"><span class="lineNum">      70 </span>            :     1.0922188768965537614, 1.0771506248819376573, 1.0619059636836193998, 1.0464709007525802629,</a>
+<a name="71"><span class="lineNum">      71 </span>            :     1.0308302360564555907, 1.0149673952392994716, 0.99886423348064351303, 0.98250080350276038481,</a>
+<a name="72"><span class="lineNum">      72 </span>            :     0.96585507938813059489, 0.94890262549791195381, 0.93161619660135381056, 0.91396525100880177644,</a>
+<a name="73"><span class="lineNum">      73 </span>            :     0.89591535256623852894, 0.87742742909771569142, 0.85845684317805086354, 0.83895221428120745572,</a>
+<a name="74"><span class="lineNum">      74 </span>            :     0.81885390668331772331, 0.79809206062627480454, 0.77658398787614838598, 0.75423066443451007146,</a>
+<a name="75"><span class="lineNum">      75 </span>            :     0.73091191062188128150, 0.70647961131360803456, 0.68074791864590421664, 0.65347863871504238702,</a>
+<a name="76"><span class="lineNum">      76 </span>            :     0.62435859730908822111, 0.59296294244197797913, 0.55869217837551797140, 0.52065603872514491759,</a>
+<a name="77"><span class="lineNum">      77 </span>            :     0.47743783725378787681, 0.42654798630330512490, 0.36287143102841830424, 0.27232086470466385065,</a>
+<a name="78"><span class="lineNum">      78 </span>            :     0</a>
+<a name="79"><span class="lineNum">      79 </span>            : };</a>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<a name="81"><span class="lineNum">      81 </span>            : template&lt;class RealType&gt;</a>
+<a name="82"><span class="lineNum">      82 </span>            : const RealType normal_table&lt;RealType&gt;::table_y[129] = {</a>
+<a name="83"><span class="lineNum">      83 </span>            :     0, 0.0026696290839025035092, 0.0055489952208164705392, 0.0086244844129304709682,</a>
+<a name="84"><span class="lineNum">      84 </span>            :     0.011839478657982313715, 0.015167298010672042468, 0.018592102737165812650, 0.022103304616111592615,</a>
+<a name="85"><span class="lineNum">      85 </span>            :     0.025693291936149616572, 0.029356317440253829618, 0.033087886146505155566, 0.036884388786968774128,</a>
+<a name="86"><span class="lineNum">      86 </span>            :     0.040742868074790604632, 0.044660862200872429800, 0.048636295860284051878, 0.052667401903503169793,</a>
+<a name="87"><span class="lineNum">      87 </span>            :     0.056752663481538584188, 0.060890770348566375972, 0.065080585213631873753, 0.069321117394180252601,</a>
+<a name="88"><span class="lineNum">      88 </span>            :     0.073611501884754893389, 0.077950982514654714188, 0.082338898242957408243, 0.086774671895542968998,</a>
+<a name="89"><span class="lineNum">      89 </span>            :     0.091257800827634710201, 0.09578784912257815216, 0.10036444102954554013, 0.10498725541035453978,</a>
+<a name="90"><span class="lineNum">      90 </span>            :     0.10965602101581776100, 0.11437051244988827452, 0.11913054670871858767, 0.12393598020398174246,</a>
+<a name="91"><span class="lineNum">      91 </span>            :     0.12878670619710396109, 0.13368265258464764118, 0.13862377998585103702, 0.14361008009193299469,</a>
+<a name="92"><span class="lineNum">      92 </span>            :     0.14864157424369696566, 0.15371831220958657066, 0.15884037114093507813, 0.16400785468492774791,</a>
+<a name="93"><span class="lineNum">      93 </span>            :     0.16922089223892475176, 0.17447963833240232295, 0.17978427212496211424, 0.18513499701071343216,</a>
+<a name="94"><span class="lineNum">      94 </span>            :     0.19053204032091372112, 0.19597565311811041399, 0.20146611007620324118, 0.20700370944187380064,</a>
+<a name="95"><span class="lineNum">      95 </span>            :     0.21258877307373610060, 0.21822164655637059599, 0.22390269938713388747, 0.22963232523430270355,</a>
+<a name="96"><span class="lineNum">      96 </span>            :     0.23541094226572765600, 0.24123899354775131610, 0.24711694751469673582, 0.25304529850976585934,</a>
+<a name="97"><span class="lineNum">      97 </span>            :     0.25902456739871074263, 0.26505530225816194029, 0.27113807914102527343, 0.27727350292189771153,</a>
+<a name="98"><span class="lineNum">      98 </span>            :     0.28346220822601251779, 0.28970486044581049771, 0.29600215684985583659, 0.30235482778947976274,</a>
+<a name="99"><span class="lineNum">      99 </span>            :     0.30876363800925192282, 0.31522938806815752222, 0.32175291587920862031, 0.32833509837615239609,</a>
+<a name="100"><span class="lineNum">     100 </span>            :     0.33497685331697116147, 0.34167914123501368412, 0.34844296754987246935, 0.35526938485154714435,</a>
+<a name="101"><span class="lineNum">     101 </span>            :     0.36215949537303321162, 0.36911445366827513952, 0.37613546951445442947, 0.38322381105988364587,</a>
+<a name="102"><span class="lineNum">     102 </span>            :     0.39038080824138948916, 0.39760785649804255208, 0.40490642081148835099, 0.41227804010702462062,</a>
+<a name="103"><span class="lineNum">     103 </span>            :     0.41972433205403823467, 0.42724699830956239880, 0.43484783025466189638, 0.44252871528024661483,</a>
+<a name="104"><span class="lineNum">     104 </span>            :     0.45029164368692696086, 0.45813871627287196483, 0.46607215269457097924, 0.47409430069824960453,</a>
+<a name="105"><span class="lineNum">     105 </span>            :     0.48220764633483869062, 0.49041482528932163741, 0.49871863547658432422, 0.50712205108130458951,</a>
+<a name="106"><span class="lineNum">     106 </span>            :     0.51562823824987205196, 0.52424057267899279809, 0.53296265938998758838, 0.54179835503172412311,</a>
+<a name="107"><span class="lineNum">     107 </span>            :     0.55075179312105527738, 0.55982741271069481791, 0.56902999107472161225, 0.57836468112670231279,</a>
+<a name="108"><span class="lineNum">     108 </span>            :     0.58783705444182052571, 0.59745315095181228217, 0.60721953663260488551, 0.61714337082656248870,</a>
+<a name="109"><span class="lineNum">     109 </span>            :     0.62723248525781456578, 0.63749547734314487428, 0.64794182111855080873, 0.65858200005865368016,</a>
+<a name="110"><span class="lineNum">     110 </span>            :     0.66942766735770616891, 0.68049184100641433355, 0.69178914344603585279, 0.70333609902581741633,</a>
+<a name="111"><span class="lineNum">     111 </span>            :     0.71515150742047704368, 0.72725691835450587793, 0.73967724368333814856, 0.75244155918570380145,</a>
+<a name="112"><span class="lineNum">     112 </span>            :     0.76558417390923599480, 0.77914608594170316563, 0.79317701178385921053, 0.80773829469612111340,</a>
+<a name="113"><span class="lineNum">     113 </span>            :     0.82290721139526200050, 0.83878360531064722379, 0.85550060788506428418, 0.87324304892685358879,</a>
+<a name="114"><span class="lineNum">     114 </span>            :     0.89228165080230272301, 0.91304364799203805999, 0.93628268170837107547, 0.96359969315576759960,</a>
+<a name="115"><span class="lineNum">     115 </span>            :     1</a>
+<a name="116"><span class="lineNum">     116 </span>            : };</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span>            : </a>
+<a name="119"><span class="lineNum">     119 </span>            : template&lt;class RealType = double&gt;</a>
+<a name="120"><span class="lineNum">     120 </span>            : struct unit_normal_distribution</a>
+<a name="121"><span class="lineNum">     121 </span>            : {</a>
+<a name="122"><span class="lineNum">     122 </span>            :     template&lt;class Engine&gt;</a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :     RealType operator()(Engine&amp; eng) {</span></a>
+<a name="124"><span class="lineNum">     124 </span>            :         const double * const table_x = normal_table&lt;double&gt;::table_x;</a>
+<a name="125"><span class="lineNum">     125 </span>            :         const double * const table_y = normal_table&lt;double&gt;::table_y;</a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :         for(;;) {</span></a>
+<a name="127"><span class="lineNum">     127 </span>            :             std::pair&lt;RealType, int&gt; vals = generate_int_float_pair&lt;RealType, 8&gt;(eng);</a>
+<a name="128"><span class="lineNum">     128 </span>            :             int i = vals.second;</a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineNoCov">          0 :             int sign = (i &amp; 1) * 2 - 1;</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :             i = i &gt;&gt; 1;</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :             RealType x = vals.first * RealType(table_x[i]);</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :             if(x &lt; table_x[i + 1]) return x * sign;</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :             if(i == 0) return generate_tail(eng) * sign;</span></a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span>            :             RealType y01 = uniform_01&lt;RealType&gt;()(eng);</a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :             RealType y = RealType(table_y[i]) + y01 * RealType(table_y[i + 1] - table_y[i]);</span></a>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<a name="138"><span class="lineNum">     138 </span>            :             // These store the value y - bound, or something proportional to that difference:</a>
+<a name="139"><span class="lineNum">     139 </span>            :             RealType y_above_ubound, y_above_lbound;</a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            :             // There are three cases to consider:</a>
+<a name="142"><span class="lineNum">     142 </span>            :             // - convex regions (where x[i] &gt; x[j] &gt;= 1)</a>
+<a name="143"><span class="lineNum">     143 </span>            :             // - concave regions (where 1 &lt;= x[i] &lt; x[j])</a>
+<a name="144"><span class="lineNum">     144 </span>            :             // - region containing the inflection point (where x[i] &gt; 1 &gt; x[j])</a>
+<a name="145"><span class="lineNum">     145 </span>            :             // For convex (concave), exp^(-x^2/2) is bounded below (above) by the tangent at</a>
+<a name="146"><span class="lineNum">     146 </span>            :             // (x[i],y[i]) and is bounded above (below) by the diagonal line from (x[i+1],y[i+1]) to</a>
+<a name="147"><span class="lineNum">     147 </span>            :             // (x[i],y[i]).</a>
+<a name="148"><span class="lineNum">     148 </span>            :             //</a>
+<a name="149"><span class="lineNum">     149 </span>            :             // *If* the inflection point region satisfies slope(x[i+1]) &lt; slope(diagonal), then we</a>
+<a name="150"><span class="lineNum">     150 </span>            :             // can treat the inflection region as a convex region: this condition is necessary and</a>
+<a name="151"><span class="lineNum">     151 </span>            :             // sufficient to ensure that the curve lies entirely below the diagonal (that, in turn,</a>
+<a name="152"><span class="lineNum">     152 </span>            :             // also implies that it will be above the tangent at x[i]).</a>
+<a name="153"><span class="lineNum">     153 </span>            :             //</a>
+<a name="154"><span class="lineNum">     154 </span>            :             // For the current table size (128), this is satisfied: slope(x[i+1]) = -0.60653 &lt;</a>
+<a name="155"><span class="lineNum">     155 </span>            :             // slope(diag) = -0.60649, and so we have only two cases below instead of three.</a>
+<a name="156"><span class="lineNum">     156 </span>            : </a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :             if (table_x[i] &gt;= 1) { // convex (incl. inflection)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :                 y_above_ubound = RealType(table_x[i] - table_x[i+1]) * y01 - (RealType(table_x[i]) - x);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :                 y_above_lbound = y - (RealType(table_y[i]) + (RealType(table_x[i]) - x) * RealType(table_y[i]) * RealType(table_x[i]));</span></a>
+<a name="160"><span class="lineNum">     160 </span>            :             }</a>
+<a name="161"><span class="lineNum">     161 </span>            :             else { // concave</a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :                 y_above_lbound = RealType(table_x[i] - table_x[i+1]) * y01 - (RealType(table_x[i]) - x);</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :                 y_above_ubound = y - (RealType(table_y[i]) + (RealType(table_x[i]) - x) * RealType(table_y[i]) * RealType(table_x[i]));</span></a>
+<a name="164"><span class="lineNum">     164 </span>            :             }</a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span>            :             if (y_above_ubound &lt; 0 // if above the upper bound reject immediately</a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :                     &amp;&amp;</span></a>
+<a name="168"><span class="lineNum">     168 </span>            :                     (</a>
+<a name="169"><span class="lineNum">     169 </span>            :                      y_above_lbound &lt; 0 // If below the lower bound accept immediately</a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :                      ||</span></a>
+<a name="171"><span class="lineNum">     171 </span>            :                      y &lt; f(x) // Otherwise it's between the bounds and we need a full check</a>
+<a name="172"><span class="lineNum">     172 </span>            :                     )</a>
+<a name="173"><span class="lineNum">     173 </span>            :                ) {</a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 :                 return x * sign;</span></a>
+<a name="175"><span class="lineNum">     175 </span>            :             }</a>
+<a name="176"><span class="lineNum">     176 </span>            :         }</a>
+<a name="177"><span class="lineNum">     177 </span>            :     }</a>
+<a name="178"><span class="lineNum">     178 </span>            :     static RealType f(RealType x) {</a>
+<a name="179"><span class="lineNum">     179 </span>            :         using std::exp;</a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :         return exp(-(x*x/2));</span></a>
+<a name="181"><span class="lineNum">     181 </span>            :     }</a>
+<a name="182"><span class="lineNum">     182 </span>            :     // Generate from the tail using rejection sampling from the exponential(x_1) distribution,</a>
+<a name="183"><span class="lineNum">     183 </span>            :     // shifted by x_1.  This looks a little different from the usual rejection sampling because it</a>
+<a name="184"><span class="lineNum">     184 </span>            :     // transforms the condition by taking the log of both sides, thus avoiding the costly exp() call</a>
+<a name="185"><span class="lineNum">     185 </span>            :     // on the RHS, then takes advantage of the fact that -log(unif01) is simply generating an</a>
+<a name="186"><span class="lineNum">     186 </span>            :     // exponential (by inverse cdf sampling) by replacing the log(unif01) on the LHS with a</a>
+<a name="187"><span class="lineNum">     187 </span>            :     // exponential(1) draw, y.</a>
+<a name="188"><span class="lineNum">     188 </span>            :     template&lt;class Engine&gt;</a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :     RealType generate_tail(Engine&amp; eng) {</span></a>
+<a name="190"><span class="lineNum">     190 </span>            :         const RealType tail_start = RealType(normal_table&lt;double&gt;::table_x[1]);</a>
+<a name="191"><span class="lineNum">     191 </span>            :         boost::random::exponential_distribution&lt;RealType&gt; exp_x(tail_start);</a>
+<a name="192"><span class="lineNum">     192 </span>            :         boost::random::exponential_distribution&lt;RealType&gt; exp_y;</a>
+<a name="193"><span class="lineNum">     193 </span>            :         for(;;) {</a>
+<a name="194"><span class="lineNum">     194 </span>            :             RealType x = exp_x(eng);</a>
+<a name="195"><span class="lineNum">     195 </span>            :             RealType y = exp_y(eng);</a>
+<a name="196"><span class="lineNum">     196 </span>            :             // If we were doing non-transformed rejection sampling, this condition would be:</a>
+<a name="197"><span class="lineNum">     197 </span>            :             // if (unif01 &lt; exp(-.5*x*x)) return x + tail_start;</a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :             if(2*y &gt; x*x) return x + tail_start;</span></a>
+<a name="199"><span class="lineNum">     199 </span>            :         }</a>
+<a name="200"><span class="lineNum">     200 </span>            :     }</a>
+<a name="201"><span class="lineNum">     201 </span>            : };</a>
+<a name="202"><span class="lineNum">     202 </span>            : </a>
+<a name="203"><span class="lineNum">     203 </span>            : } // namespace detail</a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span>            : </a>
+<a name="206"><span class="lineNum">     206 </span>            : /**</a>
+<a name="207"><span class="lineNum">     207 </span>            :  * Instantiations of class template normal_distribution model a</a>
+<a name="208"><span class="lineNum">     208 </span>            :  * \random_distribution. Such a distribution produces random numbers</a>
+<a name="209"><span class="lineNum">     209 </span>            :  * @c x distributed with probability density function</a>
+<a name="210"><span class="lineNum">     210 </span>            :  * \f$\displaystyle p(x) =</a>
+<a name="211"><span class="lineNum">     211 </span>            :  *   \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}</a>
+<a name="212"><span class="lineNum">     212 </span>            :  * \f$,</a>
+<a name="213"><span class="lineNum">     213 </span>            :  * where mean and sigma are the parameters of the distribution.</a>
+<a name="214"><span class="lineNum">     214 </span>            :  *</a>
+<a name="215"><span class="lineNum">     215 </span>            :  * The implementation uses the &quot;ziggurat&quot; algorithm, as described in</a>
+<a name="216"><span class="lineNum">     216 </span>            :  *</a>
+<a name="217"><span class="lineNum">     217 </span>            :  *  @blockquote</a>
+<a name="218"><span class="lineNum">     218 </span>            :  *  &quot;The Ziggurat Method for Generating Random Variables&quot;,</a>
+<a name="219"><span class="lineNum">     219 </span>            :  *  George Marsaglia and Wai Wan Tsang, Journal of Statistical Software,</a>
+<a name="220"><span class="lineNum">     220 </span>            :  *  Volume 5, Number 8 (2000), 1-7.</a>
+<a name="221"><span class="lineNum">     221 </span>            :  *  @endblockquote</a>
+<a name="222"><span class="lineNum">     222 </span>            :  */</a>
+<a name="223"><span class="lineNum">     223 </span>            : template&lt;class RealType = double&gt;</a>
+<a name="224"><span class="lineNum">     224 </span>            : class normal_distribution</a>
+<a name="225"><span class="lineNum">     225 </span>            : {</a>
+<a name="226"><span class="lineNum">     226 </span>            : public:</a>
+<a name="227"><span class="lineNum">     227 </span>            :     typedef RealType input_type;</a>
+<a name="228"><span class="lineNum">     228 </span>            :     typedef RealType result_type;</a>
+<a name="229"><span class="lineNum">     229 </span>            : </a>
+<a name="230"><span class="lineNum">     230 </span>            :     class param_type {</a>
+<a name="231"><span class="lineNum">     231 </span>            :     public:</a>
+<a name="232"><span class="lineNum">     232 </span>            :         typedef normal_distribution distribution_type;</a>
+<a name="233"><span class="lineNum">     233 </span>            : </a>
+<a name="234"><span class="lineNum">     234 </span>            :         /**</a>
+<a name="235"><span class="lineNum">     235 </span>            :          * Constructs a @c param_type with a given mean and</a>
+<a name="236"><span class="lineNum">     236 </span>            :          * standard deviation.</a>
+<a name="237"><span class="lineNum">     237 </span>            :          *</a>
+<a name="238"><span class="lineNum">     238 </span>            :          * Requires: sigma &gt;= 0</a>
+<a name="239"><span class="lineNum">     239 </span>            :          */</a>
+<a name="240"><span class="lineNum">     240 </span>            :         explicit param_type(RealType mean_arg = RealType(0.0),</a>
+<a name="241"><span class="lineNum">     241 </span>            :                             RealType sigma_arg = RealType(1.0))</a>
+<a name="242"><span class="lineNum">     242 </span>            :           : _mean(mean_arg),</a>
+<a name="243"><span class="lineNum">     243 </span>            :             _sigma(sigma_arg)</a>
+<a name="244"><span class="lineNum">     244 </span>            :         {}</a>
+<a name="245"><span class="lineNum">     245 </span>            : </a>
+<a name="246"><span class="lineNum">     246 </span>            :         /** Returns the mean of the distribution. */</a>
+<a name="247"><span class="lineNum">     247 </span>            :         RealType mean() const { return _mean; }</a>
+<a name="248"><span class="lineNum">     248 </span>            : </a>
+<a name="249"><span class="lineNum">     249 </span>            :         /** Returns the standand deviation of the distribution. */</a>
+<a name="250"><span class="lineNum">     250 </span>            :         RealType sigma() const { return _sigma; }</a>
+<a name="251"><span class="lineNum">     251 </span>            : </a>
+<a name="252"><span class="lineNum">     252 </span>            :         /** Writes a @c param_type to a @c std::ostream. */</a>
+<a name="253"><span class="lineNum">     253 </span>            :         BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, param_type, parm)</a>
+<a name="254"><span class="lineNum">     254 </span>            :         { os &lt;&lt; parm._mean &lt;&lt; &quot; &quot; &lt;&lt; parm._sigma ; return os; }</a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span>            :         /** Reads a @c param_type from a @c std::istream. */</a>
+<a name="257"><span class="lineNum">     257 </span>            :         BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, param_type, parm)</a>
+<a name="258"><span class="lineNum">     258 </span>            :         { is &gt;&gt; parm._mean &gt;&gt; std::ws &gt;&gt; parm._sigma; return is; }</a>
+<a name="259"><span class="lineNum">     259 </span>            : </a>
+<a name="260"><span class="lineNum">     260 </span>            :         /** Returns true if the two sets of parameters are the same. */</a>
+<a name="261"><span class="lineNum">     261 </span>            :         BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(param_type, lhs, rhs)</a>
+<a name="262"><span class="lineNum">     262 </span>            :         { return lhs._mean == rhs._mean &amp;&amp; lhs._sigma == rhs._sigma; }</a>
+<a name="263"><span class="lineNum">     263 </span>            :         </a>
+<a name="264"><span class="lineNum">     264 </span>            :         /** Returns true if the two sets of parameters are the different. */</a>
+<a name="265"><span class="lineNum">     265 </span>            :         BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(param_type)</a>
+<a name="266"><span class="lineNum">     266 </span>            : </a>
+<a name="267"><span class="lineNum">     267 </span>            :     private:</a>
+<a name="268"><span class="lineNum">     268 </span>            :         RealType _mean;</a>
+<a name="269"><span class="lineNum">     269 </span>            :         RealType _sigma;</a>
+<a name="270"><span class="lineNum">     270 </span>            :     };</a>
+<a name="271"><span class="lineNum">     271 </span>            : </a>
+<a name="272"><span class="lineNum">     272 </span>            :     /**</a>
+<a name="273"><span class="lineNum">     273 </span>            :      * Constructs a @c normal_distribution object. @c mean and @c sigma are</a>
+<a name="274"><span class="lineNum">     274 </span>            :      * the parameters for the distribution.</a>
+<a name="275"><span class="lineNum">     275 </span>            :      *</a>
+<a name="276"><span class="lineNum">     276 </span>            :      * Requires: sigma &gt;= 0</a>
+<a name="277"><span class="lineNum">     277 </span>            :      */</a>
+<a name="278"><span class="lineNum">     278 </span>            :     explicit normal_distribution(const RealType&amp; mean_arg = RealType(0.0),</a>
+<a name="279"><span class="lineNum">     279 </span>            :                                  const RealType&amp; sigma_arg = RealType(1.0))</a>
+<a name="280"><span class="lineNum">     280 </span>            :       : _mean(mean_arg), _sigma(sigma_arg)</a>
+<a name="281"><span class="lineNum">     281 </span>            :     {</a>
+<a name="282"><span class="lineNum">     282 </span>            :         BOOST_ASSERT(_sigma &gt;= RealType(0));</a>
+<a name="283"><span class="lineNum">     283 </span>            :     }</a>
+<a name="284"><span class="lineNum">     284 </span>            : </a>
+<a name="285"><span class="lineNum">     285 </span>            :     /**</a>
+<a name="286"><span class="lineNum">     286 </span>            :      * Constructs a @c normal_distribution object from its parameters.</a>
+<a name="287"><span class="lineNum">     287 </span>            :      */</a>
+<a name="288"><span class="lineNum">     288 </span>            :     explicit normal_distribution(const param_type&amp; parm)</a>
+<a name="289"><span class="lineNum">     289 </span>            :       : _mean(parm.mean()), _sigma(parm.sigma())</a>
+<a name="290"><span class="lineNum">     290 </span>            :     {}</a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            :     /**  Returns the mean of the distribution. */</a>
+<a name="293"><span class="lineNum">     293 </span>            :     RealType mean() const { return _mean; }</a>
+<a name="294"><span class="lineNum">     294 </span>            :     /** Returns the standard deviation of the distribution. */</a>
+<a name="295"><span class="lineNum">     295 </span>            :     RealType sigma() const { return _sigma; }</a>
+<a name="296"><span class="lineNum">     296 </span>            : </a>
+<a name="297"><span class="lineNum">     297 </span>            :     /** Returns the smallest value that the distribution can produce. */</a>
+<a name="298"><span class="lineNum">     298 </span>            :     RealType min BOOST_PREVENT_MACRO_SUBSTITUTION () const</a>
+<a name="299"><span class="lineNum">     299 </span>            :     { return -std::numeric_limits&lt;RealType&gt;::infinity(); }</a>
+<a name="300"><span class="lineNum">     300 </span>            :     /** Returns the largest value that the distribution can produce. */</a>
+<a name="301"><span class="lineNum">     301 </span>            :     RealType max BOOST_PREVENT_MACRO_SUBSTITUTION () const</a>
+<a name="302"><span class="lineNum">     302 </span>            :     { return std::numeric_limits&lt;RealType&gt;::infinity(); }</a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span>            :     /** Returns the parameters of the distribution. */</a>
+<a name="305"><span class="lineNum">     305 </span>            :     param_type param() const { return param_type(_mean, _sigma); }</a>
+<a name="306"><span class="lineNum">     306 </span>            :     /** Sets the parameters of the distribution. */</a>
+<a name="307"><span class="lineNum">     307 </span>            :     void param(const param_type&amp; parm)</a>
+<a name="308"><span class="lineNum">     308 </span>            :     {</a>
+<a name="309"><span class="lineNum">     309 </span>            :         _mean = parm.mean();</a>
+<a name="310"><span class="lineNum">     310 </span>            :         _sigma = parm.sigma();</a>
+<a name="311"><span class="lineNum">     311 </span>            :     }</a>
+<a name="312"><span class="lineNum">     312 </span>            : </a>
+<a name="313"><span class="lineNum">     313 </span>            :     /**</a>
+<a name="314"><span class="lineNum">     314 </span>            :      * Effects: Subsequent uses of the distribution do not depend</a>
+<a name="315"><span class="lineNum">     315 </span>            :      * on values produced by any engine prior to invoking reset.</a>
+<a name="316"><span class="lineNum">     316 </span>            :      */</a>
+<a name="317"><span class="lineNum">     317 </span>            :     void reset() { }</a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span>            :     /**  Returns a normal variate. */</a>
+<a name="320"><span class="lineNum">     320 </span>            :     template&lt;class Engine&gt;</a>
+<a name="321"><span class="lineNum">     321 </span>            :     result_type operator()(Engine&amp; eng)</a>
+<a name="322"><span class="lineNum">     322 </span>            :     {</a>
+<a name="323"><span class="lineNum">     323 </span>            :         detail::unit_normal_distribution&lt;RealType&gt; impl;</a>
+<a name="324"><span class="lineNum">     324 </span>            :         return impl(eng) * _sigma + _mean;</a>
+<a name="325"><span class="lineNum">     325 </span>            :     }</a>
+<a name="326"><span class="lineNum">     326 </span>            : </a>
+<a name="327"><span class="lineNum">     327 </span>            :     /** Returns a normal variate with parameters specified by @c param. */</a>
+<a name="328"><span class="lineNum">     328 </span>            :     template&lt;class URNG&gt;</a>
+<a name="329"><span class="lineNum">     329 </span>            :     result_type operator()(URNG&amp; urng, const param_type&amp; parm)</a>
+<a name="330"><span class="lineNum">     330 </span>            :     {</a>
+<a name="331"><span class="lineNum">     331 </span>            :         return normal_distribution(parm)(urng);</a>
+<a name="332"><span class="lineNum">     332 </span>            :     }</a>
+<a name="333"><span class="lineNum">     333 </span>            : </a>
+<a name="334"><span class="lineNum">     334 </span>            :     /** Writes a @c normal_distribution to a @c std::ostream. */</a>
+<a name="335"><span class="lineNum">     335 </span>            :     BOOST_RANDOM_DETAIL_OSTREAM_OPERATOR(os, normal_distribution, nd)</a>
+<a name="336"><span class="lineNum">     336 </span>            :     {</a>
+<a name="337"><span class="lineNum">     337 </span>            :         os &lt;&lt; nd._mean &lt;&lt; &quot; &quot; &lt;&lt; nd._sigma;</a>
+<a name="338"><span class="lineNum">     338 </span>            :         return os;</a>
+<a name="339"><span class="lineNum">     339 </span>            :     }</a>
+<a name="340"><span class="lineNum">     340 </span>            : </a>
+<a name="341"><span class="lineNum">     341 </span>            :     /** Reads a @c normal_distribution from a @c std::istream. */</a>
+<a name="342"><span class="lineNum">     342 </span>            :     BOOST_RANDOM_DETAIL_ISTREAM_OPERATOR(is, normal_distribution, nd)</a>
+<a name="343"><span class="lineNum">     343 </span>            :     {</a>
+<a name="344"><span class="lineNum">     344 </span>            :         is &gt;&gt; std::ws &gt;&gt; nd._mean &gt;&gt; std::ws &gt;&gt; nd._sigma;</a>
+<a name="345"><span class="lineNum">     345 </span>            :         return is;</a>
+<a name="346"><span class="lineNum">     346 </span>            :     }</a>
+<a name="347"><span class="lineNum">     347 </span>            : </a>
+<a name="348"><span class="lineNum">     348 </span>            :     /**</a>
+<a name="349"><span class="lineNum">     349 </span>            :      * Returns true if the two instances of @c normal_distribution will</a>
+<a name="350"><span class="lineNum">     350 </span>            :      * return identical sequences of values given equal generators.</a>
+<a name="351"><span class="lineNum">     351 </span>            :      */</a>
+<a name="352"><span class="lineNum">     352 </span>            :     BOOST_RANDOM_DETAIL_EQUALITY_OPERATOR(normal_distribution, lhs, rhs)</a>
+<a name="353"><span class="lineNum">     353 </span>            :     {</a>
+<a name="354"><span class="lineNum">     354 </span>            :         return lhs._mean == rhs._mean &amp;&amp; lhs._sigma == rhs._sigma;</a>
+<a name="355"><span class="lineNum">     355 </span>            :     }</a>
+<a name="356"><span class="lineNum">     356 </span>            : </a>
+<a name="357"><span class="lineNum">     357 </span>            :     /**</a>
+<a name="358"><span class="lineNum">     358 </span>            :      * Returns true if the two instances of @c normal_distribution will</a>
+<a name="359"><span class="lineNum">     359 </span>            :      * return different sequences of values given equal generators.</a>
+<a name="360"><span class="lineNum">     360 </span>            :      */</a>
+<a name="361"><span class="lineNum">     361 </span>            :     BOOST_RANDOM_DETAIL_INEQUALITY_OPERATOR(normal_distribution)</a>
+<a name="362"><span class="lineNum">     362 </span>            : </a>
+<a name="363"><span class="lineNum">     363 </span>            : private:</a>
+<a name="364"><span class="lineNum">     364 </span>            :     RealType _mean, _sigma;</a>
+<a name="365"><span class="lineNum">     365 </span>            : </a>
+<a name="366"><span class="lineNum">     366 </span>            : };</a>
+<a name="367"><span class="lineNum">     367 </span>            : </a>
+<a name="368"><span class="lineNum">     368 </span>            : } // namespace random</a>
+<a name="369"><span class="lineNum">     369 </span>            : </a>
+<a name="370"><span class="lineNum">     370 </span>            : using random::normal_distribution;</a>
+<a name="371"><span class="lineNum">     371 </span>            : </a>
+<a name="372"><span class="lineNum">     372 </span>            : } // namespace boost</a>
+<a name="373"><span class="lineNum">     373 </span>            : </a>
+<a name="374"><span class="lineNum">     374 </span>            : #endif // BOOST_RANDOM_NORMAL_DISTRIBUTION_HPP</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

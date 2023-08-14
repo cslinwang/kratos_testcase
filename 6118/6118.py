@@ -9,6 +9,7 @@ from KratosMultiphysics.FluidDynamicsApplication.compute_drag_process import Com
 
 
 def Factory(settings, model):
+    print("ComputeBodyFittedDragProcess: Factory")
     if (type(settings) != KratosMultiphysics.Parameters):
         raise Exception("expected input shall be a Parameters object, encapsulating a json string")
 
@@ -22,16 +23,19 @@ class ComputeBodyFittedDragProcess(ComputeDragProcess):
     """
 
     def _GetFileHeader(self):
+        print("ComputeBodyFittedDragProcess: _GetFileHeader")
         header = '# Body fitted drag for model part ' + \
             self.params["model_part_name"].GetString() + '\n'
         header += '# Time Fx Fy Fz\n'
         return header
 
     def _PrintToScreen(self, result_msg):
+        print("ComputeBodyFittedDragProcess: _PrintToScreen")
         KratosMultiphysics.Logger.PrintInfo(
             "ComputeBodyFittedDragProcess", "BODY FITTED DRAG RESULTS:")
         KratosMultiphysics.Logger.PrintInfo(
             "ComputeBodyFittedDragProcess", "Current time: " + result_msg)
 
     def _GetCorrespondingDragForce(self):
+        print("ComputeBodyFittedDragProcess: _GetCorrespondingDragForce")
         return KratosCFD.DragUtilities().CalculateBodyFittedDrag(self.model_part)

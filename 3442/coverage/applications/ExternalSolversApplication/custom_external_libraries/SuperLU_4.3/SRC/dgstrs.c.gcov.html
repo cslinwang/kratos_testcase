@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - applications/ExternalSolversApplication/custom_external_libraries/SuperLU_4.3/SRC/dgstrs.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">applications/ExternalSolversApplication/custom_external_libraries/SuperLU_4.3/SRC</a> - dgstrs.c<span style="font-size: 80%;"> (source / <a href="dgstrs.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">39</td>
+            <td class="headerCovTableEntry">108</td>
+            <td class="headerCovTableEntryLo">36.1 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-14 14:06:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : </a>
+<a name="2"><span class="lineNum">       2 </span>            : /*! @file dgstrs.c</a>
+<a name="3"><span class="lineNum">       3 </span>            :  * \brief Solves a system using LU factorization</a>
+<a name="4"><span class="lineNum">       4 </span>            :  *</a>
+<a name="5"><span class="lineNum">       5 </span>            :  * &lt;pre&gt;</a>
+<a name="6"><span class="lineNum">       6 </span>            :  * -- SuperLU routine (version 3.0) --</a>
+<a name="7"><span class="lineNum">       7 </span>            :  * Univ. of California Berkeley, Xerox Palo Alto Research Center,</a>
+<a name="8"><span class="lineNum">       8 </span>            :  * and Lawrence Berkeley National Lab.</a>
+<a name="9"><span class="lineNum">       9 </span>            :  * October 15, 2003</a>
+<a name="10"><span class="lineNum">      10 </span>            :  *</a>
+<a name="11"><span class="lineNum">      11 </span>            :  * Copyright (c) 1994 by Xerox Corporation.  All rights reserved.</a>
+<a name="12"><span class="lineNum">      12 </span>            :  *</a>
+<a name="13"><span class="lineNum">      13 </span>            :  * THIS MATERIAL IS PROVIDED AS IS, WITH ABSOLUTELY NO WARRANTY</a>
+<a name="14"><span class="lineNum">      14 </span>            :  * EXPRESSED OR IMPLIED.  ANY USE IS AT YOUR OWN RISK.</a>
+<a name="15"><span class="lineNum">      15 </span>            :  *</a>
+<a name="16"><span class="lineNum">      16 </span>            :  * Permission is hereby granted to use or copy this program for any</a>
+<a name="17"><span class="lineNum">      17 </span>            :  * purpose, provided the above notices are retained on all copies.</a>
+<a name="18"><span class="lineNum">      18 </span>            :  * Permission to modify the code and to distribute modified code is</a>
+<a name="19"><span class="lineNum">      19 </span>            :  * granted, provided the above notices are retained, and a notice that</a>
+<a name="20"><span class="lineNum">      20 </span>            :  * the code was modified is included with the above copyright notice.</a>
+<a name="21"><span class="lineNum">      21 </span>            :  * &lt;/pre&gt;</a>
+<a name="22"><span class="lineNum">      22 </span>            :  */</a>
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;slu_ddefs.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : </a>
+<a name="26"><span class="lineNum">      26 </span>            : </a>
+<a name="27"><span class="lineNum">      27 </span>            : /* </a>
+<a name="28"><span class="lineNum">      28 </span>            :  * Function prototypes </a>
+<a name="29"><span class="lineNum">      29 </span>            :  */</a>
+<a name="30"><span class="lineNum">      30 </span>            : void dusolve(int, int, double*, double*);</a>
+<a name="31"><span class="lineNum">      31 </span>            : void dlsolve(int, int, double*, double*);</a>
+<a name="32"><span class="lineNum">      32 </span>            : void dmatvec(int, int, int, double*, double*, double*);</a>
+<a name="33"><span class="lineNum">      33 </span>            : </a>
+<a name="34"><span class="lineNum">      34 </span>            : /*! \brief</a>
+<a name="35"><span class="lineNum">      35 </span>            :  *</a>
+<a name="36"><span class="lineNum">      36 </span>            :  * &lt;pre&gt;</a>
+<a name="37"><span class="lineNum">      37 </span>            :  * Purpose</a>
+<a name="38"><span class="lineNum">      38 </span>            :  * =======</a>
+<a name="39"><span class="lineNum">      39 </span>            :  *</a>
+<a name="40"><span class="lineNum">      40 </span>            :  * DGSTRS solves a system of linear equations A*X=B or A'*X=B</a>
+<a name="41"><span class="lineNum">      41 </span>            :  * with A sparse and B dense, using the LU factorization computed by</a>
+<a name="42"><span class="lineNum">      42 </span>            :  * DGSTRF.</a>
+<a name="43"><span class="lineNum">      43 </span>            :  *</a>
+<a name="44"><span class="lineNum">      44 </span>            :  * See supermatrix.h for the definition of 'SuperMatrix' structure.</a>
+<a name="45"><span class="lineNum">      45 </span>            :  *</a>
+<a name="46"><span class="lineNum">      46 </span>            :  * Arguments</a>
+<a name="47"><span class="lineNum">      47 </span>            :  * =========</a>
+<a name="48"><span class="lineNum">      48 </span>            :  *</a>
+<a name="49"><span class="lineNum">      49 </span>            :  * trans   (input) trans_t</a>
+<a name="50"><span class="lineNum">      50 </span>            :  *          Specifies the form of the system of equations:</a>
+<a name="51"><span class="lineNum">      51 </span>            :  *          = NOTRANS: A * X = B  (No transpose)</a>
+<a name="52"><span class="lineNum">      52 </span>            :  *          = TRANS:   A'* X = B  (Transpose)</a>
+<a name="53"><span class="lineNum">      53 </span>            :  *          = CONJ:    A**H * X = B  (Conjugate transpose)</a>
+<a name="54"><span class="lineNum">      54 </span>            :  *</a>
+<a name="55"><span class="lineNum">      55 </span>            :  * L       (input) SuperMatrix*</a>
+<a name="56"><span class="lineNum">      56 </span>            :  *         The factor L from the factorization Pr*A*Pc=L*U as computed by</a>
+<a name="57"><span class="lineNum">      57 </span>            :  *         dgstrf(). Use compressed row subscripts storage for supernodes,</a>
+<a name="58"><span class="lineNum">      58 </span>            :  *         i.e., L has types: Stype = SLU_SC, Dtype = SLU_D, Mtype = SLU_TRLU.</a>
+<a name="59"><span class="lineNum">      59 </span>            :  *</a>
+<a name="60"><span class="lineNum">      60 </span>            :  * U       (input) SuperMatrix*</a>
+<a name="61"><span class="lineNum">      61 </span>            :  *         The factor U from the factorization Pr*A*Pc=L*U as computed by</a>
+<a name="62"><span class="lineNum">      62 </span>            :  *         dgstrf(). Use column-wise storage scheme, i.e., U has types:</a>
+<a name="63"><span class="lineNum">      63 </span>            :  *         Stype = SLU_NC, Dtype = SLU_D, Mtype = SLU_TRU.</a>
+<a name="64"><span class="lineNum">      64 </span>            :  *</a>
+<a name="65"><span class="lineNum">      65 </span>            :  * perm_c  (input) int*, dimension (L-&gt;ncol)</a>
+<a name="66"><span class="lineNum">      66 </span>            :  *         Column permutation vector, which defines the </a>
+<a name="67"><span class="lineNum">      67 </span>            :  *         permutation matrix Pc; perm_c[i] = j means column i of A is </a>
+<a name="68"><span class="lineNum">      68 </span>            :  *         in position j in A*Pc.</a>
+<a name="69"><span class="lineNum">      69 </span>            :  *</a>
+<a name="70"><span class="lineNum">      70 </span>            :  * perm_r  (input) int*, dimension (L-&gt;nrow)</a>
+<a name="71"><span class="lineNum">      71 </span>            :  *         Row permutation vector, which defines the permutation matrix Pr; </a>
+<a name="72"><span class="lineNum">      72 </span>            :  *         perm_r[i] = j means row i of A is in position j in Pr*A.</a>
+<a name="73"><span class="lineNum">      73 </span>            :  *</a>
+<a name="74"><span class="lineNum">      74 </span>            :  * B       (input/output) SuperMatrix*</a>
+<a name="75"><span class="lineNum">      75 </span>            :  *         B has types: Stype = SLU_DN, Dtype = SLU_D, Mtype = SLU_GE.</a>
+<a name="76"><span class="lineNum">      76 </span>            :  *         On entry, the right hand side matrix.</a>
+<a name="77"><span class="lineNum">      77 </span>            :  *         On exit, the solution matrix if info = 0;</a>
+<a name="78"><span class="lineNum">      78 </span>            :  *</a>
+<a name="79"><span class="lineNum">      79 </span>            :  * stat     (output) SuperLUStat_t*</a>
+<a name="80"><span class="lineNum">      80 </span>            :  *          Record the statistics on runtime and floating-point operation count.</a>
+<a name="81"><span class="lineNum">      81 </span>            :  *          See util.h for the definition of 'SuperLUStat_t'.</a>
+<a name="82"><span class="lineNum">      82 </span>            :  *</a>
+<a name="83"><span class="lineNum">      83 </span>            :  * info    (output) int*</a>
+<a name="84"><span class="lineNum">      84 </span>            :  *         = 0: successful exit</a>
+<a name="85"><span class="lineNum">      85 </span>            :  *         &lt; 0: if info = -i, the i-th argument had an illegal value</a>
+<a name="86"><span class="lineNum">      86 </span>            :  * &lt;/pre&gt;</a>
+<a name="87"><span class="lineNum">      87 </span>            :  */</a>
+<a name="88"><span class="lineNum">      88 </span>            : </a>
+<a name="89"><span class="lineNum">      89 </span>            : void</a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          2 : dgstrs (trans_t trans, SuperMatrix *L, SuperMatrix *U,</span></a>
+<a name="91"><span class="lineNum">      91 </span>            :         int *perm_c, int *perm_r, SuperMatrix *B,</a>
+<a name="92"><span class="lineNum">      92 </span>            :         SuperLUStat_t *stat, int *info)</a>
+<a name="93"><span class="lineNum">      93 </span>            : {</a>
+<a name="94"><span class="lineNum">      94 </span>            : </a>
+<a name="95"><span class="lineNum">      95 </span>            : #ifdef _CRAY</a>
+<a name="96"><span class="lineNum">      96 </span>            :     _fcd ftcs1, ftcs2, ftcs3, ftcs4;</a>
+<a name="97"><span class="lineNum">      97 </span>            : #endif</a>
+<a name="98"><span class="lineNum">      98 </span>            :     int      incx = 1, incy = 1;</a>
+<a name="99"><span class="lineNum">      99 </span>            : #ifdef USE_VENDOR_BLAS</a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          2 :     double   alpha = 1.0, beta = 1.0;</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :     double   *work_col;</a>
+<a name="102"><span class="lineNum">     102 </span>            : #endif</a>
+<a name="103"><span class="lineNum">     103 </span>            :     DNformat *Bstore;</a>
+<a name="104"><span class="lineNum">     104 </span>            :     double   *Bmat;</a>
+<a name="105"><span class="lineNum">     105 </span>            :     SCformat *Lstore;</a>
+<a name="106"><span class="lineNum">     106 </span>            :     NCformat *Ustore;</a>
+<a name="107"><span class="lineNum">     107 </span>            :     double   *Lval, *Uval;</a>
+<a name="108"><span class="lineNum">     108 </span>            :     int      fsupc, nrow, nsupr, nsupc, luptr, istart, irow;</a>
+<a name="109"><span class="lineNum">     109 </span>            :     int      i, j, k, iptr, jcol, n, ldb, nrhs;</a>
+<a name="110"><span class="lineNum">     110 </span>            :     double   *work, *rhs_work, *soln;</a>
+<a name="111"><span class="lineNum">     111 </span>            :     flops_t  solve_ops;</a>
+<a name="112"><span class="lineNum">     112 </span>            :     void dprint_soln();</a>
+<a name="113"><span class="lineNum">     113 </span>            : </a>
+<a name="114"><span class="lineNum">     114 </span>            :     /* Test input parameters ... */</a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          2 :     *info = 0;</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          2 :     Bstore = B-&gt;Store;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          2 :     ldb = Bstore-&gt;lda;</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">          2 :     nrhs = B-&gt;ncol;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">          2 :     if ( trans != NOTRANS &amp;&amp; trans != TRANS &amp;&amp; trans != CONJ ) *info = -1;</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          2 :     else if ( L-&gt;nrow != L-&gt;ncol || L-&gt;nrow &lt; 0 ||</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          2 :               L-&gt;Stype != SLU_SC || L-&gt;Dtype != SLU_D || L-&gt;Mtype != SLU_TRLU )</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineNoCov">          0 :         *info = -2;</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          2 :     else if ( U-&gt;nrow != U-&gt;ncol || U-&gt;nrow &lt; 0 ||</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          2 :               U-&gt;Stype != SLU_NC || U-&gt;Dtype != SLU_D || U-&gt;Mtype != SLU_TRU )</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :         *info = -3;</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          2 :     else if ( ldb &lt; SUPERLU_MAX(0, L-&gt;nrow) ||</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          2 :               B-&gt;Stype != SLU_DN || B-&gt;Dtype != SLU_D || B-&gt;Mtype != SLU_GE )</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :         *info = -6;</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          2 :     if ( *info ) {</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineNoCov">          0 :         i = -(*info);</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineNoCov">          0 :         xerbla_(&quot;dgstrs&quot;, &amp;i);</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :         return;</span></a>
+<a name="133"><span class="lineNum">     133 </span>            :     }</a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          2 :     n = L-&gt;nrow;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          2 :     work = doubleCalloc(n * nrhs);</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          2 :     if ( !work ) ABORT(&quot;Malloc fails for local work[].&quot;);</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          2 :     soln = doubleMalloc(n);</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          2 :     if ( !soln ) ABORT(&quot;Malloc fails for local soln[].&quot;);</span></a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          2 :     Bmat = Bstore-&gt;nzval;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          2 :     Lstore = L-&gt;Store;</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          2 :     Lval = Lstore-&gt;nzval;</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          2 :     Ustore = U-&gt;Store;</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          2 :     Uval = Ustore-&gt;nzval;</span></a>
+<a name="146"><span class="lineNum">     146 </span>            :     solve_ops = 0;</a>
+<a name="147"><span class="lineNum">     147 </span>            :     </a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          2 :     if ( trans == NOTRANS ) {</span></a>
+<a name="149"><span class="lineNum">     149 </span>            :         /* Permute right hand sides to form Pr*B */</a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :         for (i = 0; i &lt; nrhs; i++) {</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :             rhs_work = &amp;Bmat[i*ldb];</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineNoCov">          0 :             for (k = 0; k &lt; n; k++) soln[perm_r[k]] = rhs_work[k];</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :             for (k = 0; k &lt; n; k++) rhs_work[k] = soln[k];</span></a>
+<a name="154"><span class="lineNum">     154 </span>            :         }</a>
+<a name="155"><span class="lineNum">     155 </span>            :         </a>
+<a name="156"><span class="lineNum">     156 </span>            :         /* Forward solve PLy=Pb. */</a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :         for (k = 0; k &lt;= Lstore-&gt;nsuper; k++) {</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :             fsupc = L_FST_SUPC(k);</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :             istart = L_SUB_START(fsupc);</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :             nsupr = L_SUB_START(fsupc+1) - istart;</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :             nsupc = L_FST_SUPC(k+1) - fsupc;</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :             nrow = nsupr - nsupc;</span></a>
+<a name="163"><span class="lineNum">     163 </span>            : </a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :             solve_ops += nsupc * (nsupc - 1) * nrhs;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :             solve_ops += 2 * nrow * nsupc * nrhs;</span></a>
+<a name="166"><span class="lineNum">     166 </span>            :             </a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :             if ( nsupc == 1 ) {</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :                 for (j = 0; j &lt; nrhs; j++) {</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :                     rhs_work = &amp;Bmat[j*ldb];</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :                     luptr = L_NZ_START(fsupc);</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :                     for (iptr=istart+1; iptr &lt; L_SUB_START(fsupc+1); iptr++){</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :                         irow = L_SUB(iptr);</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :                         ++luptr;</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 :                         rhs_work[irow] -= rhs_work[fsupc] * Lval[luptr];</span></a>
+<a name="175"><span class="lineNum">     175 </span>            :                     }</a>
+<a name="176"><span class="lineNum">     176 </span>            :                 }</a>
+<a name="177"><span class="lineNum">     177 </span>            :             } else {</a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :                 luptr = L_NZ_START(fsupc);</span></a>
+<a name="179"><span class="lineNum">     179 </span>            : #ifdef USE_VENDOR_BLAS</a>
+<a name="180"><span class="lineNum">     180 </span>            : #ifdef _CRAY</a>
+<a name="181"><span class="lineNum">     181 </span>            :                 ftcs1 = _cptofcd(&quot;L&quot;, strlen(&quot;L&quot;));</a>
+<a name="182"><span class="lineNum">     182 </span>            :                 ftcs2 = _cptofcd(&quot;N&quot;, strlen(&quot;N&quot;));</a>
+<a name="183"><span class="lineNum">     183 </span>            :                 ftcs3 = _cptofcd(&quot;U&quot;, strlen(&quot;U&quot;));</a>
+<a name="184"><span class="lineNum">     184 </span>            :                 STRSM( ftcs1, ftcs1, ftcs2, ftcs3, &amp;nsupc, &amp;nrhs, &amp;alpha,</a>
+<a name="185"><span class="lineNum">     185 </span>            :                        &amp;Lval[luptr], &amp;nsupr, &amp;Bmat[fsupc], &amp;ldb);</a>
+<a name="186"><span class="lineNum">     186 </span>            :                 </a>
+<a name="187"><span class="lineNum">     187 </span>            :                 SGEMM( ftcs2, ftcs2, &amp;nrow, &amp;nrhs, &amp;nsupc, &amp;alpha, </a>
+<a name="188"><span class="lineNum">     188 </span>            :                         &amp;Lval[luptr+nsupc], &amp;nsupr, &amp;Bmat[fsupc], &amp;ldb, </a>
+<a name="189"><span class="lineNum">     189 </span>            :                         &amp;beta, &amp;work[0], &amp;n );</a>
+<a name="190"><span class="lineNum">     190 </span>            : #else</a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :                 dtrsm_(&quot;L&quot;, &quot;L&quot;, &quot;N&quot;, &quot;U&quot;, &amp;nsupc, &amp;nrhs, &amp;alpha,</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :                        &amp;Lval[luptr], &amp;nsupr, &amp;Bmat[fsupc], &amp;ldb);</span></a>
+<a name="193"><span class="lineNum">     193 </span>            :                 </a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :                 dgemm_( &quot;N&quot;, &quot;N&quot;, &amp;nrow, &amp;nrhs, &amp;nsupc, &amp;alpha, </span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :                         &amp;Lval[luptr+nsupc], &amp;nsupr, &amp;Bmat[fsupc], &amp;ldb, </span></a>
+<a name="196"><span class="lineNum">     196 </span>            :                         &amp;beta, &amp;work[0], &amp;n );</a>
+<a name="197"><span class="lineNum">     197 </span>            : #endif</a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :                 for (j = 0; j &lt; nrhs; j++) {</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :                     rhs_work = &amp;Bmat[j*ldb];</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :                     work_col = &amp;work[j*n];</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :                     iptr = istart + nsupc;</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :                     for (i = 0; i &lt; nrow; i++) {</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :                         irow = L_SUB(iptr);</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :                         rhs_work[irow] -= work_col[i]; /* Scatter */</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :                         work_col[i] = 0.0;</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :                         iptr++;</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :                     }</a>
+<a name="208"><span class="lineNum">     208 </span>            :                 }</a>
+<a name="209"><span class="lineNum">     209 </span>            : #else           </a>
+<a name="210"><span class="lineNum">     210 </span>            :                 for (j = 0; j &lt; nrhs; j++) {</a>
+<a name="211"><span class="lineNum">     211 </span>            :                     rhs_work = &amp;Bmat[j*ldb];</a>
+<a name="212"><span class="lineNum">     212 </span>            :                     dlsolve (nsupr, nsupc, &amp;Lval[luptr], &amp;rhs_work[fsupc]);</a>
+<a name="213"><span class="lineNum">     213 </span>            :                     dmatvec (nsupr, nrow, nsupc, &amp;Lval[luptr+nsupc],</a>
+<a name="214"><span class="lineNum">     214 </span>            :                             &amp;rhs_work[fsupc], &amp;work[0] );</a>
+<a name="215"><span class="lineNum">     215 </span>            : </a>
+<a name="216"><span class="lineNum">     216 </span>            :                     iptr = istart + nsupc;</a>
+<a name="217"><span class="lineNum">     217 </span>            :                     for (i = 0; i &lt; nrow; i++) {</a>
+<a name="218"><span class="lineNum">     218 </span>            :                         irow = L_SUB(iptr);</a>
+<a name="219"><span class="lineNum">     219 </span>            :                         rhs_work[irow] -= work[i];</a>
+<a name="220"><span class="lineNum">     220 </span>            :                         work[i] = 0.0;</a>
+<a name="221"><span class="lineNum">     221 </span>            :                         iptr++;</a>
+<a name="222"><span class="lineNum">     222 </span>            :                     }</a>
+<a name="223"><span class="lineNum">     223 </span>            :                 }</a>
+<a name="224"><span class="lineNum">     224 </span>            : #endif              </a>
+<a name="225"><span class="lineNum">     225 </span>            :             } /* else ... */</a>
+<a name="226"><span class="lineNum">     226 </span>            :         } /* for L-solve */</a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span>            : #ifdef DEBUG</a>
+<a name="229"><span class="lineNum">     229 </span>            :         printf(&quot;After L-solve: y=\n&quot;);</a>
+<a name="230"><span class="lineNum">     230 </span>            :         dprint_soln(n, nrhs, Bmat);</a>
+<a name="231"><span class="lineNum">     231 </span>            : #endif</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span>            :         /*</a>
+<a name="234"><span class="lineNum">     234 </span>            :          * Back solve Ux=y.</a>
+<a name="235"><span class="lineNum">     235 </span>            :          */</a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :         for (k = Lstore-&gt;nsuper; k &gt;= 0; k--) {</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :             fsupc = L_FST_SUPC(k);</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :             istart = L_SUB_START(fsupc);</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :             nsupr = L_SUB_START(fsupc+1) - istart;</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :             nsupc = L_FST_SUPC(k+1) - fsupc;</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :             luptr = L_NZ_START(fsupc);</span></a>
+<a name="242"><span class="lineNum">     242 </span>            : </a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :             solve_ops += nsupc * (nsupc + 1) * nrhs;</span></a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :             if ( nsupc == 1 ) {</span></a>
+<a name="246"><span class="lineNum">     246 </span>            :                 rhs_work = &amp;Bmat[0];</a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :                 for (j = 0; j &lt; nrhs; j++) {</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :                     rhs_work[fsupc] /= Lval[luptr];</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :                     rhs_work += ldb;</span></a>
+<a name="250"><span class="lineNum">     250 </span>            :                 }</a>
+<a name="251"><span class="lineNum">     251 </span>            :             } else {</a>
+<a name="252"><span class="lineNum">     252 </span>            : #ifdef USE_VENDOR_BLAS</a>
+<a name="253"><span class="lineNum">     253 </span>            : #ifdef _CRAY</a>
+<a name="254"><span class="lineNum">     254 </span>            :                 ftcs1 = _cptofcd(&quot;L&quot;, strlen(&quot;L&quot;));</a>
+<a name="255"><span class="lineNum">     255 </span>            :                 ftcs2 = _cptofcd(&quot;U&quot;, strlen(&quot;U&quot;));</a>
+<a name="256"><span class="lineNum">     256 </span>            :                 ftcs3 = _cptofcd(&quot;N&quot;, strlen(&quot;N&quot;));</a>
+<a name="257"><span class="lineNum">     257 </span>            :                 STRSM( ftcs1, ftcs2, ftcs3, ftcs3, &amp;nsupc, &amp;nrhs, &amp;alpha,</a>
+<a name="258"><span class="lineNum">     258 </span>            :                        &amp;Lval[luptr], &amp;nsupr, &amp;Bmat[fsupc], &amp;ldb);</a>
+<a name="259"><span class="lineNum">     259 </span>            : #else</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :                 dtrsm_(&quot;L&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &amp;nsupc, &amp;nrhs, &amp;alpha,</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :                        &amp;Lval[luptr], &amp;nsupr, &amp;Bmat[fsupc], &amp;ldb);</span></a>
+<a name="262"><span class="lineNum">     262 </span>            : #endif</a>
+<a name="263"><span class="lineNum">     263 </span>            : #else           </a>
+<a name="264"><span class="lineNum">     264 </span>            :                 for (j = 0; j &lt; nrhs; j++)</a>
+<a name="265"><span class="lineNum">     265 </span>            :                     dusolve ( nsupr, nsupc, &amp;Lval[luptr], &amp;Bmat[fsupc+j*ldb] );</a>
+<a name="266"><span class="lineNum">     266 </span>            : #endif          </a>
+<a name="267"><span class="lineNum">     267 </span>            :             }</a>
+<a name="268"><span class="lineNum">     268 </span>            : </a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :             for (j = 0; j &lt; nrhs; ++j) {</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :                 rhs_work = &amp;Bmat[j*ldb];</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :                 for (jcol = fsupc; jcol &lt; fsupc + nsupc; jcol++) {</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :                     solve_ops += 2*(U_NZ_START(jcol+1) - U_NZ_START(jcol));</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :                     for (i = U_NZ_START(jcol); i &lt; U_NZ_START(jcol+1); i++ ){</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :                         irow = U_SUB(i);</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :                         rhs_work[irow] -= rhs_work[jcol] * Uval[i];</span></a>
+<a name="276"><span class="lineNum">     276 </span>            :                     }</a>
+<a name="277"><span class="lineNum">     277 </span>            :                 }</a>
+<a name="278"><span class="lineNum">     278 </span>            :             }</a>
+<a name="279"><span class="lineNum">     279 </span>            :             </a>
+<a name="280"><span class="lineNum">     280 </span>            :         } /* for U-solve */</a>
+<a name="281"><span class="lineNum">     281 </span>            : </a>
+<a name="282"><span class="lineNum">     282 </span>            : #ifdef DEBUG</a>
+<a name="283"><span class="lineNum">     283 </span>            :         printf(&quot;After U-solve: x=\n&quot;);</a>
+<a name="284"><span class="lineNum">     284 </span>            :         dprint_soln(n, nrhs, Bmat);</a>
+<a name="285"><span class="lineNum">     285 </span>            : #endif</a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span>            :         /* Compute the final solution X := Pc*X. */</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :         for (i = 0; i &lt; nrhs; i++) {</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :             rhs_work = &amp;Bmat[i*ldb];</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :             for (k = 0; k &lt; n; k++) soln[k] = rhs_work[perm_c[k]];</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :             for (k = 0; k &lt; n; k++) rhs_work[k] = soln[k];</span></a>
+<a name="292"><span class="lineNum">     292 </span>            :         }</a>
+<a name="293"><span class="lineNum">     293 </span>            :         </a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :         stat-&gt;ops[SOLVE] = solve_ops;</span></a>
+<a name="295"><span class="lineNum">     295 </span>            : </a>
+<a name="296"><span class="lineNum">     296 </span>            :     } else { /* Solve A'*X=B or CONJ(A)*X=B */</a>
+<a name="297"><span class="lineNum">     297 </span>            :         /* Permute right hand sides to form Pc'*B. */</a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">          4 :         for (i = 0; i &lt; nrhs; i++) {</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          2 :             rhs_work = &amp;Bmat[i*ldb];</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">       6128 :             for (k = 0; k &lt; n; k++) soln[perm_c[k]] = rhs_work[k];</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">       6128 :             for (k = 0; k &lt; n; k++) rhs_work[k] = soln[k];</span></a>
+<a name="302"><span class="lineNum">     302 </span>            :         }</a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">          2 :         stat-&gt;ops[SOLVE] = 0;</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          4 :         for (k = 0; k &lt; nrhs; ++k) {</span></a>
+<a name="306"><span class="lineNum">     306 </span>            :             </a>
+<a name="307"><span class="lineNum">     307 </span>            :             /* Multiply by inv(U'). */</a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          2 :             sp_dtrsv(&quot;U&quot;, &quot;T&quot;, &quot;N&quot;, L, U, &amp;Bmat[k*ldb], stat, info);</span></a>
+<a name="309"><span class="lineNum">     309 </span>            :             </a>
+<a name="310"><span class="lineNum">     310 </span>            :             /* Multiply by inv(L'). */</a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          2 :             sp_dtrsv(&quot;L&quot;, &quot;T&quot;, &quot;U&quot;, L, U, &amp;Bmat[k*ldb], stat, info);</span></a>
+<a name="312"><span class="lineNum">     312 </span>            :             </a>
+<a name="313"><span class="lineNum">     313 </span>            :         }</a>
+<a name="314"><span class="lineNum">     314 </span>            :         /* Compute the final solution X := Pr'*X (=inv(Pr)*X) */</a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          4 :         for (i = 0; i &lt; nrhs; i++) {</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          2 :             rhs_work = &amp;Bmat[i*ldb];</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       6128 :             for (k = 0; k &lt; n; k++) soln[k] = rhs_work[perm_r[k]];</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">       6128 :             for (k = 0; k &lt; n; k++) rhs_work[k] = soln[k];</span></a>
+<a name="319"><span class="lineNum">     319 </span>            :         }</a>
+<a name="320"><span class="lineNum">     320 </span>            : </a>
+<a name="321"><span class="lineNum">     321 </span>            :     }</a>
+<a name="322"><span class="lineNum">     322 </span>            : </a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          2 :     SUPERLU_FREE(work);</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          2 :     SUPERLU_FREE(soln);</span></a>
+<a name="325"><span class="lineNum">     325 </span>            : }</a>
+<a name="326"><span class="lineNum">     326 </span>            : </a>
+<a name="327"><span class="lineNum">     327 </span>            : /*</a>
+<a name="328"><span class="lineNum">     328 </span>            :  * Diagnostic print of the solution vector </a>
+<a name="329"><span class="lineNum">     329 </span>            :  */</a>
+<a name="330"><span class="lineNum">     330 </span>            : void</a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 : dprint_soln(int n, int nrhs, double *soln)</span></a>
+<a name="332"><span class="lineNum">     332 </span>            : {</a>
+<a name="333"><span class="lineNum">     333 </span>            :     int i;</a>
+<a name="334"><span class="lineNum">     334 </span>            : </a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :     for (i = 0; i &lt; n; i++) </span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :         printf(&quot;\t%d: %.4f\n&quot;, i, soln[i]);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 : }</span></a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

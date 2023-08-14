@@ -1,0 +1,106 @@
+开始运行测试用例...
+ |  /           |
+ ' /   __| _` | __|  _ \   __|
+ . \  |   (   | |   (   |\__ \
+_|\_\_|  \__,_|\__|\___/ ____/
+           Multi-Physics 6.0.0-d386b0f7d8
+Importing    KratosStructuralMechanicsApplication
+     KRATOS   ___|  |                   |                   |
+            \___ \  __|  __| |   |  __| __| |   |  __| _` | |
+                  | |   |    |   | (    |   |   | |   (   | |
+            _____/ \__|_|   \__,_|\___|\__|\__,_|_|  \__,_|_| MECHANICS
+Importing    KratosExternalSolversApplication
+Initializing KratosExternalSolversApplication...
+ExternalSolversApplication: succesfully imported
+EigenSolversApplication: not imported
+::[MechanicalSolver]::  Construction finished:
+::[StaticMechanicalSolver]::  Construction finished:
+::[MechanicalSolver]::  Variables ADDED:
+::[MechanicalSolver]::: Reading model part.
+::[MechanicalSolver]::: Reading model part from file: /root/kratos_testcase/3442/34_test_elem_b_and_s.mdpa
+ModelPartIO:   [Reading Nodes    : 1060 nodes read]
+ModelPartIO:   [Reading Elements : 4680 elements read] [Type: SmallDisplacementElement3D4N]
+ModelPartIO:   [Total Lines Read : 12617]
+::[MechanicalSolver]::: Finished reading model part from mdpa file.
+ModelPart: -Structure- model part
+    Buffer Size : 1
+    Number of tables : 0
+    Number of sub model parts : 3
+    Current solution step index : 0
+    DOMAIN_SIZE : 3
+    IS_RESTARTED : 0
+
+    Mesh 0 :
+        Number of Nodes      : 1060
+        Number of Properties : 1
+        Number of Elements   : 4680
+        Number of Conditions : 0
+
+    -SelfWeight3D_volume- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Mesh 0 :
+            Number of Nodes      : 1060
+            Number of Properties : 0
+            Number of Elements   : 0
+            Number of Conditions : 0
+    -DISPLACEMENT_disp_fixed- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Mesh 0 :
+            Number of Nodes      : 39
+            Number of Properties : 0
+            Number of Elements   : 0
+            Number of Conditions : 0
+    -Parts_volume- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Mesh 0 :
+            Number of Nodes      : 1060
+            Number of Properties : 0
+            Number of Elements   : 4680
+            Number of Conditions : 0
+
+::[MechanicalSolver]:: : Finished reading model part.
+Computing model part:: -computing_domain- model part
+    Number of tables : 0
+    Number of sub model parts : 0
+
+    Mesh 0 :
+        Number of Nodes      : 1060
+        Number of Properties : 1
+        Number of Elements   : 4680
+        Number of Conditions : 0
+
+
+::[Reading materials process]:: : Started
+Warning in reading materials: Ignoring "KratosMultiphysics.StructuralMechanicsApplication" for Constitutive Law "LinearElastic3DLaw"
+::[Reading materials process]:: : Finished
+::[MechanicalSolver]::  Constitutive law was successfully imported.:
+::[MechanicalSolver]::: ModelPart prepared for Solver.
+::[MechanicalSolver]::  DOF's ADDED:
+::[StaticMechanicalSolver]::  Initializing ...:
+::[MechanicalSolver]::  Initializing ...:
+::[Mechanical Solver]:: : CONVERGENCE CRITERION : residual_criterion
+::[MechanicalSolver]::  Finished initialization.:
+::[StaticMechanicalSolver]::  Finished initialization.:
+::[KSM Simulation]:: : Analysis -START-
+Setup Dofs Time: 0.0487679
+Setup System Time: 0.000148678
+System Matrix Resize Time: 0.0762097
+System Construction Time: 0.125289
+::[KSM Simulation]:: : STEP:  1
+::[KSM Simulation]:: : TIME:  1.1
+ MESH MOVED
+ResidualBasedBlockBuilderAndSolver: System solve time: 0.296723
+ MESH MOVED
+RESIDUAL CRITERION :: Ratio = 1;  Norm = 7.67069
+ResidualBasedBlockBuilderAndSolver: System solve time: 0.300662
+ MESH MOVED
+RESIDUAL CRITERION :: Ratio = 1.19623e-11;  Norm = 9.17589e-11
+Convergence is achieved
+::[KSM Simulation]:: : Analysis -END-
+测试用例运行完成。

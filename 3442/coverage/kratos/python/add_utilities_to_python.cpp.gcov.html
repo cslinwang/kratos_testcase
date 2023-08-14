@@ -1,0 +1,528 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - kratos/python/add_utilities_to_python.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">kratos/python</a> - add_utilities_to_python.cpp<span style="font-size: 80%;"> (source / <a href="add_utilities_to_python.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">210</td>
+            <td class="headerCovTableEntry">213</td>
+            <td class="headerCovTableEntryHi">98.6 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-14 14:06:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //</a>
+<a name="2"><span class="lineNum">       2 </span>            : //    |  /           |</a>
+<a name="3"><span class="lineNum">       3 </span>            : //    ' /   __| _` | __|  _ \   __|</a>
+<a name="4"><span class="lineNum">       4 </span>            : //    . \  |   (   | |   (   |\__ `</a>
+<a name="5"><span class="lineNum">       5 </span>            : //   _|\_\_|  \__,_|\__|\___/ ____/</a>
+<a name="6"><span class="lineNum">       6 </span>            : //                   Multi-Physics</a>
+<a name="7"><span class="lineNum">       7 </span>            : //</a>
+<a name="8"><span class="lineNum">       8 </span>            : //  License:             BSD License</a>
+<a name="9"><span class="lineNum">       9 </span>            : //                                       Kratos default license: kratos/license.txt</a>
+<a name="10"><span class="lineNum">      10 </span>            : //</a>
+<a name="11"><span class="lineNum">      11 </span>            : //  Main authors:    Riccardo Rossi</a>
+<a name="12"><span class="lineNum">      12 </span>            : //</a>
+<a name="13"><span class="lineNum">      13 </span>            : </a>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<a name="15"><span class="lineNum">      15 </span>            : // System includes</a>
+<a name="16"><span class="lineNum">      16 </span>            : </a>
+<a name="17"><span class="lineNum">      17 </span>            : // External includes</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span>            : // Project includes</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &quot;includes/define_python.h&quot;</a>
+<a name="21"><span class="lineNum">      21 </span>            : #include &quot;processes/process.h&quot;</a>
+<a name="22"><span class="lineNum">      22 </span>            : #include &quot;python/add_utilities_to_python.h&quot;</a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;utilities/variable_utils.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;utilities/normal_calculation_utils.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &quot;utilities/body_normal_calculation_utils.h&quot;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &quot;utilities/body_distance_calculation_utils.h&quot;</a>
+<a name="27"><span class="lineNum">      27 </span>            : #include &quot;utilities/signed_distance_calculation_utils.h&quot;</a>
+<a name="28"><span class="lineNum">      28 </span>            : #include &quot;utilities/parallel_levelset_distance_calculator.h&quot;</a>
+<a name="29"><span class="lineNum">      29 </span>            : #include &quot;utilities/openmp_utils.h&quot;</a>
+<a name="30"><span class="lineNum">      30 </span>            : #include &quot;utilities/pointlocation.h&quot;</a>
+<a name="31"><span class="lineNum">      31 </span>            : #include &quot;utilities/deflation_utils.h&quot;</a>
+<a name="32"><span class="lineNum">      32 </span>            : #include &quot;utilities/iso_printer.h&quot;</a>
+<a name="33"><span class="lineNum">      33 </span>            : #include &quot;utilities/activation_utilities.h&quot;</a>
+<a name="34"><span class="lineNum">      34 </span>            : #include &quot;utilities/convect_particles_utilities.h&quot;</a>
+<a name="35"><span class="lineNum">      35 </span>            : #include &quot;utilities/condition_number_utility.h&quot;</a>
+<a name="36"><span class="lineNum">      36 </span>            : </a>
+<a name="37"><span class="lineNum">      37 </span>            : </a>
+<a name="38"><span class="lineNum">      38 </span>            : // #include &quot;utilities/signed_distance_calculator_bin_based.h&quot;</a>
+<a name="39"><span class="lineNum">      39 </span>            : #include &quot;utilities/divide_elem_utils.h&quot;</a>
+<a name="40"><span class="lineNum">      40 </span>            : #include &quot;utilities/timer.h&quot;</a>
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<a name="42"><span class="lineNum">      42 </span>            : //#include &quot;spatial_containers/bounding_box.h&quot;</a>
+<a name="43"><span class="lineNum">      43 </span>            : #include &quot;utilities/bounding_box_utilities.h&quot;</a>
+<a name="44"><span class="lineNum">      44 </span>            : #include &quot;utilities/binbased_fast_point_locator.h&quot;</a>
+<a name="45"><span class="lineNum">      45 </span>            : #include &quot;utilities/binbased_nodes_in_element_locator.h&quot;</a>
+<a name="46"><span class="lineNum">      46 </span>            : #include &quot;utilities/geometry_tester.h&quot;</a>
+<a name="47"><span class="lineNum">      47 </span>            : #include &quot;utilities/cutting_utility.h&quot;</a>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<a name="49"><span class="lineNum">      49 </span>            : #include &quot;utilities/python_function_callback_utility.h&quot;</a>
+<a name="50"><span class="lineNum">      50 </span>            : #include &quot;utilities/interval_utility.h&quot;</a>
+<a name="51"><span class="lineNum">      51 </span>            : #include &quot;utilities/table_stream_utility.h&quot;</a>
+<a name="52"><span class="lineNum">      52 </span>            : #include &quot;utilities/exact_mortar_segmentation_utility.h&quot;</a>
+<a name="53"><span class="lineNum">      53 </span>            : #include &quot;utilities/sparse_matrix_multiplication_utility.h&quot;</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span>            : namespace Kratos</a>
+<a name="56"><span class="lineNum">      56 </span>            : {</a>
+<a name="57"><span class="lineNum">      57 </span>            : </a>
+<a name="58"><span class="lineNum">      58 </span>            : namespace Python</a>
+<a name="59"><span class="lineNum">      59 </span>            : {</a>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<a name="61"><span class="lineNum">      61 </span>            : /**</a>
+<a name="62"><span class="lineNum">      62 </span>            :  * @brief Sets the current table utility on the process info</a>
+<a name="63"><span class="lineNum">      63 </span>            :  * @param rCurrentProcessInfo The process info</a>
+<a name="64"><span class="lineNum">      64 </span>            :  */</a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineNoCov">          0 : void SetOnProcessInfo(</span></a>
+<a name="66"><span class="lineNum">      66 </span>            :     typename TableStreamUtility::Pointer pTable,</a>
+<a name="67"><span class="lineNum">      67 </span>            :     ProcessInfo&amp; rCurrentProcessInfo</a>
+<a name="68"><span class="lineNum">      68 </span>            :     )</a>
+<a name="69"><span class="lineNum">      69 </span>            : {</a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :     rCurrentProcessInfo[TABLE_UTILITY] = pTable;</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 : void AddUtilitiesToPython(pybind11::module&amp; m)</span></a>
+<a name="75"><span class="lineNum">      75 </span>            : {</a>
+<a name="76"><span class="lineNum">      76 </span>            :     using namespace pybind11;</a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span>            :     typedef UblasSpace&lt;double, CompressedMatrix, Vector&gt; SparseSpaceType;</a>
+<a name="79"><span class="lineNum">      79 </span>            :     typedef UblasSpace&lt;double, Matrix, Vector&gt; LocalSpaceType;</a>
+<a name="80"><span class="lineNum">      80 </span>            :     typedef LinearSolver&lt;SparseSpaceType, LocalSpaceType&gt; LinearSolverType;</a>
+<a name="81"><span class="lineNum">      81 </span>            : </a>
+<a name="82"><span class="lineNum">      82 </span>            :     // NOTE: this function is special in that it accepts a &quot;pyObject&quot; - this is the reason for which it is defined in this same file</a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          1 :     class_&lt;PythonGenericFunctionUtility,  PythonGenericFunctionUtility::Pointer &gt;(m,&quot;PythonGenericFunctionUtility&quot;)</span></a>
+<a name="84"><span class="lineNum">      84 </span>            :     .def(init&lt;const std::string&amp;&gt;() )</a>
+<a name="85"><span class="lineNum">      85 </span>            :     .def(init&lt;const std::string&amp;, Parameters&gt;())</a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 :     .def(&quot;UseLocalSystem&quot;, &amp;PythonGenericFunctionUtility::UseLocalSystem)</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          1 :     .def(&quot;DependsOnSpace&quot;, &amp;PythonGenericFunctionUtility::DependsOnSpace)</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineCov">          1 :     .def(&quot;RotateAndCallFunction&quot;, &amp;PythonGenericFunctionUtility::RotateAndCallFunction)</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">          1 :     .def(&quot;CallFunction&quot;, &amp;PythonGenericFunctionUtility::CallFunction)</span></a>
+<a name="90"><span class="lineNum">      90 </span>            :     ;</a>
+<a name="91"><span class="lineNum">      91 </span>            : </a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          1 :     class_&lt;ApplyFunctionToNodesUtility &gt;(m,&quot;ApplyFunctionToNodesUtility&quot;)</span></a>
+<a name="93"><span class="lineNum">      93 </span>            :     .def(init&lt;ModelPart::NodesContainerType&amp;, PythonGenericFunctionUtility::Pointer &gt;() )</a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 :     .def(&quot;ApplyFunction&quot;, &amp;ApplyFunctionToNodesUtility::ApplyFunction&lt; Variable&lt;double&gt; &gt;)</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          1 :     .def(&quot;ApplyFunction&quot;, &amp;ApplyFunctionToNodesUtility::ApplyFunction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt;)</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          1 :     .def(&quot;ReturnFunction&quot;, &amp;ApplyFunctionToNodesUtility::ReturnFunction)</span></a>
+<a name="97"><span class="lineNum">      97 </span>            :     ;</a>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
+<a name="99"><span class="lineNum">      99 </span>            : </a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          1 :     class_&lt;DeflationUtils&gt;(m,&quot;DeflationUtils&quot;)</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :     .def(init&lt;&gt;())</a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 :     .def(&quot;VisualizeAggregates&quot;,&amp;DeflationUtils::VisualizeAggregates)</span></a>
+<a name="103"><span class="lineNum">     103 </span>            :     ;</a>
+<a name="104"><span class="lineNum">     104 </span>            : </a>
+<a name="105"><span class="lineNum">     105 </span>            :     // This is required to recognize the different overloads of ConditionNumberUtility::GetConditionNumber</a>
+<a name="106"><span class="lineNum">     106 </span>            :     typedef UblasSpace&lt;double, CompressedMatrix, Vector&gt; SparseSpaceType;</a>
+<a name="107"><span class="lineNum">     107 </span>            :     typedef double (ConditionNumberUtility::*InputGetConditionNumber)(SparseSpaceType::MatrixType&amp;, LinearSolverType::Pointer, LinearSolverType::Pointer);</a>
+<a name="108"><span class="lineNum">     108 </span>            :     typedef double (ConditionNumberUtility::*DirectGetConditionNumber)(SparseSpaceType::MatrixType&amp;);</a>
+<a name="109"><span class="lineNum">     109 </span>            : </a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          1 :     InputGetConditionNumber ThisGetConditionNumber = &amp;ConditionNumberUtility::GetConditionNumber;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          1 :     DirectGetConditionNumber ThisDirectGetConditionNumber = &amp;ConditionNumberUtility::GetConditionNumber;</span></a>
+<a name="112"><span class="lineNum">     112 </span>            : </a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 :     class_&lt;ConditionNumberUtility&gt;(m,&quot;ConditionNumberUtility&quot;)</span></a>
+<a name="114"><span class="lineNum">     114 </span>            :     .def(init&lt;&gt;())</a>
+<a name="115"><span class="lineNum">     115 </span>            :     .def(init&lt;LinearSolverType::Pointer, LinearSolverType::Pointer&gt;())</a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">          1 :     .def(&quot;GetConditionNumber&quot;, ThisGetConditionNumber)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          1 :     .def(&quot;GetConditionNumber&quot;, ThisDirectGetConditionNumber)</span></a>
+<a name="118"><span class="lineNum">     118 </span>            :     ;</a>
+<a name="119"><span class="lineNum">     119 </span>            : </a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">          1 :     class_&lt;VariableUtils&gt;(m, &quot;VariableUtils&quot;)</span></a>
+<a name="121"><span class="lineNum">     121 </span>            :         .def(init&lt;&gt;())</a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartNodalVar&quot;, &amp;VariableUtils::CopyModelPartNodalVar&lt;Variable&lt;bool&gt;&gt;)</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartNodalVar&quot;, &amp;VariableUtils::CopyModelPartNodalVar&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartNodalVar&quot;, &amp;VariableUtils::CopyModelPartNodalVar&lt;Variable&lt;array_1d&lt;double,3&gt;&gt;&gt;)</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartNodalVar&quot;, &amp;VariableUtils::CopyModelPartNodalVar&lt;Variable&lt;Vector&gt;&gt;)</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartNodalVar&quot;, &amp;VariableUtils::CopyModelPartNodalVar&lt;Variable&lt;Matrix&gt;&gt;)</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartElementalVar&quot;, &amp;VariableUtils::CopyModelPartElementalVar&lt;Variable&lt;bool&gt;&gt;)</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartElementalVar&quot;, &amp;VariableUtils::CopyModelPartElementalVar&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartElementalVar&quot;, &amp;VariableUtils::CopyModelPartElementalVar&lt;Variable&lt;array_1d&lt;double,3&gt;&gt;&gt;)</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartElementalVar&quot;, &amp;VariableUtils::CopyModelPartElementalVar&lt;Variable&lt;Vector&gt;&gt;)</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :         .def(&quot;CopyModelPartElementalVar&quot;, &amp;VariableUtils::CopyModelPartElementalVar&lt;Variable&lt;Matrix&gt;&gt;)</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          1 :         .def(&quot;SetVectorVar&quot;, &amp;VariableUtils::SetVectorVar)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 :         .def(&quot;SetScalarVar&quot;, &amp;VariableUtils::SetScalarVar&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          1 :         .def(&quot;SetScalarVar&quot;, &amp;VariableUtils::SetScalarVar&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVectorVar&quot;, &amp;VariableUtils::SetNonHistoricalVectorVar)</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalScalarVar&quot;, &amp;VariableUtils::SetNonHistoricalScalarVar&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalScalarVar&quot;, &amp;VariableUtils::SetNonHistoricalScalarVar&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 :         .def(&quot;SetVariable&quot;, &amp;VariableUtils::SetVariable&lt;bool&gt;)</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 :         .def(&quot;SetVariable&quot;, &amp;VariableUtils::SetVariable&lt;double&gt;)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 :         .def(&quot;SetVariable&quot;, &amp;VariableUtils::SetVariable&lt;array_1d&lt;double, 3&gt;&gt;)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 :         .def(&quot;SetVariable&quot;, &amp;VariableUtils::SetVariable&lt;Vector&gt;)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 :         .def(&quot;SetVariable&quot;, &amp;VariableUtils::SetVariable&lt;Matrix&gt;)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;bool, ModelPart::NodesContainerType&gt;)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;double, ModelPart::NodesContainerType&gt;)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;array_1d&lt;double, 3&gt;, ModelPart::NodesContainerType&gt;)</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;Vector, ModelPart::NodesContainerType&gt;)</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;Matrix, ModelPart::NodesContainerType&gt;)</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;bool, ModelPart::ConditionsContainerType&gt;)</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;double, ModelPart::ConditionsContainerType&gt;)</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;array_1d&lt;double, 3&gt;, ModelPart::ConditionsContainerType&gt;)</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;Vector, ModelPart::ConditionsContainerType&gt;)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;Matrix, ModelPart::ConditionsContainerType&gt;)</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;bool, ModelPart::ElementsContainerType&gt;)</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;double, ModelPart::ElementsContainerType&gt;)</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;array_1d&lt;double, 3&gt;, ModelPart::ElementsContainerType&gt;)</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;Vector, ModelPart::ElementsContainerType&gt;)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          1 :         .def(&quot;SetNonHistoricalVariable&quot;, &amp;VariableUtils::SetNonHistoricalVariable&lt;Matrix, ModelPart::ElementsContainerType&gt;)</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          1 :         .def(&quot;SetFlag&quot;, &amp;VariableUtils::SetFlag&lt;ModelPart::NodesContainerType&gt;)</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          1 :         .def(&quot;SetFlag&quot;, &amp;VariableUtils::SetFlag&lt;ModelPart::ConditionsContainerType&gt;)</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          1 :         .def(&quot;SetFlag&quot;, &amp;VariableUtils::SetFlag&lt;ModelPart::ElementsContainerType&gt;)</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 :         .def(&quot;SaveVectorVar&quot;, &amp;VariableUtils::SaveVectorVar)</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          1 :         .def(&quot;SaveScalarVar&quot;, &amp;VariableUtils::SaveScalarVar)</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          1 :         .def(&quot;SaveVectorNonHistoricalVar&quot;, &amp;VariableUtils::SaveVectorNonHistoricalVar)</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 :         .def(&quot;SaveScalarNonHistoricalVar&quot;, &amp;VariableUtils::SaveScalarNonHistoricalVar)</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :         .def(&quot;SelectNodeList&quot;, &amp;VariableUtils::SelectNodeList)</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :         .def(&quot;CopyVectorVar&quot;, &amp;VariableUtils::CopyVectorVar)</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 :         .def(&quot;CopyScalarVar&quot;, &amp;VariableUtils::CopyScalarVar)</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          1 :         .def(&quot;SetToZero_VectorVar&quot;, &amp;VariableUtils::SetToZero_VectorVar)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :         .def(&quot;SetToZero_ScalarVar&quot;, &amp;VariableUtils::SetToZero_ScalarVar)</span></a>
+<a name="170"><span class="lineNum">     170 </span>            :         // .def(&quot;SetToZero_VelocityVectorVar&quot;, &amp;VariableUtils::SetToZero_VelocityVectorVar)</a>
+<a name="171"><span class="lineNum">     171 </span>            :         // .def(&quot;CheckVariableExists&quot;, &amp;VariableUtils::CheckVariableExists&lt; Variable&lt;double&gt; &gt;)</a>
+<a name="172"><span class="lineNum">     172 </span>            :         // .def(&quot;CheckVariableExists&quot;, &amp;VariableUtils::CheckVariableExists&lt; VariableComponent&lt; VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt; &gt; &gt; &gt; )</a>
+<a name="173"><span class="lineNum">     173 </span>            :         // .def(&quot;CheckVariableExists&quot;, &amp;VariableUtils::CheckVariableExists&lt; Variable&lt;array_1d&lt;double, 3&gt; &gt; &gt; )</a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 :         .def(&quot;ApplyFixity&quot;, &amp;VariableUtils::ApplyFixity&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          1 :         .def(&quot;ApplyFixity&quot;, &amp;VariableUtils::ApplyFixity&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          1 :         .def(&quot;ApplyVector&quot;, &amp;VariableUtils::ApplyVector&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          1 :         .def(&quot;ApplyVector&quot;, &amp;VariableUtils::ApplyVector&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          1 :         .def(&quot;SumHistoricalNodeScalarVariable&quot;, &amp;VariableUtils::SumHistoricalNodeScalarVariable&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          1 :         .def(&quot;SumHistoricalNodeScalarVariable&quot;, &amp;VariableUtils::SumHistoricalNodeScalarVariable&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 :         .def(&quot;SumHistoricalNodeVectorVariable&quot;, &amp;VariableUtils::SumHistoricalNodeVectorVariable)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">          1 :         .def(&quot;SumNonHistoricalNodeScalarVariable&quot;, &amp;VariableUtils::SumNonHistoricalNodeScalarVariable&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">          1 :         .def(&quot;SumNonHistoricalNodeScalarVariable&quot;, &amp;VariableUtils::SumNonHistoricalNodeScalarVariable&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          1 :         .def(&quot;SumNonHistoricalNodeVectorVariable&quot;, &amp;VariableUtils::SumNonHistoricalNodeVectorVariable)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          1 :         .def(&quot;SumConditionScalarVariable&quot;, &amp;VariableUtils::SumConditionScalarVariable&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          1 :         .def(&quot;SumConditionScalarVariable&quot;, &amp;VariableUtils::SumConditionScalarVariable&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          1 :         .def(&quot;SumConditionVectorVariable&quot;, &amp;VariableUtils::SumConditionVectorVariable)</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">          1 :         .def(&quot;SumElementScalarVariable&quot;, &amp;VariableUtils::SumElementScalarVariable&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          1 :         .def(&quot;SumElementScalarVariable&quot;, &amp;VariableUtils::SumElementScalarVariable&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          1 :         .def(&quot;SumElementVectorVariable&quot;, &amp;VariableUtils::SumElementVectorVariable)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 :         .def(&quot;AddDof&quot;, &amp;VariableUtils::AddDof&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          1 :         .def(&quot;AddDof&quot;, &amp;VariableUtils::AddDof&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          1 :         .def(&quot;AddDof&quot;, &amp;VariableUtils::AddDofWithReaction&lt;Variable&lt;double&gt;&gt;)</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          1 :         .def(&quot;AddDof&quot;, &amp;VariableUtils::AddDofWithReaction&lt;VariableComponent&lt;VectorComponentAdaptor&lt;array_1d&lt;double, 3&gt;&gt;&gt;&gt;)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          1 :         .def(&quot;CheckVariableKeys&quot;, &amp;VariableUtils::CheckVariableKeys)</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          1 :         .def(&quot;CheckDofs&quot;, &amp;VariableUtils::CheckDofs);</span></a>
+<a name="196"><span class="lineNum">     196 </span>            : </a>
+<a name="197"><span class="lineNum">     197 </span>            :     // This is required to recognize the different overloads of NormalCalculationUtils::CalculateOnSimplex</a>
+<a name="198"><span class="lineNum">     198 </span>            :     typedef  void (NormalCalculationUtils::*CalcOnSimplexCondType)(NormalCalculationUtils::ConditionsArrayType&amp;,int);</a>
+<a name="199"><span class="lineNum">     199 </span>            :     typedef  void (NormalCalculationUtils::*CalcOnSimplexMPType)(ModelPart&amp;,int);</a>
+<a name="200"><span class="lineNum">     200 </span>            :     typedef  void (NormalCalculationUtils::*CalcOnSimplexWithDoubleVarType)(ModelPart&amp;,int,Variable&lt;double&gt;&amp;);</a>
+<a name="201"><span class="lineNum">     201 </span>            :     typedef  void (NormalCalculationUtils::*CalcOnSimplexWithIntVarType)(ModelPart&amp;,int,Variable&lt;int&gt;&amp;);</a>
+<a name="202"><span class="lineNum">     202 </span>            : //            typedef  void (NormalCalculationUtils::*CalcOnSimplexWithArrayVarType)(ModelPart&amp;,int,Variable&lt; array_1d&lt;double,3&gt; &gt;&amp;,const array_1d&lt;double,3&gt;&amp;);</a>
+<a name="203"><span class="lineNum">     203 </span>            :     typedef  void (NormalCalculationUtils::*CalcOnSimplexWithDoubleVarAlphaType)(ModelPart&amp;,int,Variable&lt;double&gt;&amp;,const double,const double);</a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">          1 :     CalcOnSimplexCondType CalcOnSimplex_Cond = &amp;NormalCalculationUtils::CalculateOnSimplex;</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 :     CalcOnSimplexMPType CalcOnSimplex_ModelPart = &amp;NormalCalculationUtils::CalculateOnSimplex;</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          1 :     CalcOnSimplexWithDoubleVarType CalcOnSimplexWithDoubleVar = &amp;NormalCalculationUtils::CalculateOnSimplex;</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          1 :     CalcOnSimplexWithIntVarType CalcOnSimplexWithIntVar = &amp;NormalCalculationUtils::CalculateOnSimplex;</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          1 :     CalcOnSimplexWithDoubleVarAlphaType CalcOnSimplexWithDoubleVarAlpha = &amp;NormalCalculationUtils::CalculateOnSimplex;</span></a>
+<a name="210"><span class="lineNum">     210 </span>            : </a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :     class_&lt;NormalCalculationUtils &gt; (m,&quot;NormalCalculationUtils&quot;)</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :     .def(init&lt;&gt;())</a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          1 :     .def(&quot;CalculateOnSimplex&quot;, CalcOnSimplex_Cond)</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          1 :     .def(&quot;CalculateOnSimplex&quot;, CalcOnSimplex_ModelPart)</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          1 :     .def(&quot;CalculateOnSimplex&quot;, CalcOnSimplexWithDoubleVar)</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          1 :     .def(&quot;CalculateOnSimplex&quot;, CalcOnSimplexWithIntVar)</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          1 :     .def(&quot;CalculateOnSimplex&quot;, CalcOnSimplexWithDoubleVarAlpha)</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          1 :     .def(&quot;SwapNormals&quot;, &amp;NormalCalculationUtils::SwapNormals)</span></a>
+<a name="219"><span class="lineNum">     219 </span>            : //                    .def(&quot;CalculateOnSimplex&quot;, CalcOnSimplexWithArrayVar)</a>
+<a name="220"><span class="lineNum">     220 </span>            :     ;</a>
+<a name="221"><span class="lineNum">     221 </span>            : </a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          1 :     class_&lt;BodyNormalCalculationUtils &gt; (m,&quot;BodyNormalCalculationUtils&quot;)</span></a>
+<a name="223"><span class="lineNum">     223 </span>            :     .def(init&lt;&gt;())</a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          1 :     .def(&quot;CalculateBodyNormals&quot;, &amp;BodyNormalCalculationUtils::CalculateBodyNormals)</span></a>
+<a name="225"><span class="lineNum">     225 </span>            :     ;</a>
+<a name="226"><span class="lineNum">     226 </span>            : </a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          1 :     class_&lt;BodyDistanceCalculationUtils &gt; (m,&quot;BodyDistanceCalculationUtils&quot;)</span></a>
+<a name="228"><span class="lineNum">     228 </span>            :     .def(init&lt;&gt;())</a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistances2D&quot;, &amp;BodyDistanceCalculationUtils::CalculateDistances &lt; 2 &gt;)</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistances3D&quot;, &amp;BodyDistanceCalculationUtils::CalculateDistances &lt; 3 &gt;)</span></a>
+<a name="231"><span class="lineNum">     231 </span>            :     ;</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          1 :     class_&lt;SignedDistanceCalculationUtils &lt; 2 &gt; &gt;(m,&quot;SignedDistanceCalculationUtils2D&quot;)</span></a>
+<a name="234"><span class="lineNum">     234 </span>            :     .def(init&lt;&gt;())</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistances&quot;, &amp;SignedDistanceCalculationUtils &lt; 2 &gt; ::CalculateDistances)</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">          1 :     .def(&quot;FindMaximumEdgeSize&quot;, &amp;SignedDistanceCalculationUtils &lt; 2 &gt; ::FindMaximumEdgeSize)</span></a>
+<a name="237"><span class="lineNum">     237 </span>            :     ;</a>
+<a name="238"><span class="lineNum">     238 </span>            : </a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 :     class_&lt;SignedDistanceCalculationUtils &lt; 3 &gt; &gt;(m,&quot;SignedDistanceCalculationUtils3D&quot;)</span></a>
+<a name="240"><span class="lineNum">     240 </span>            :     .def(init&lt;&gt;())</a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistances&quot;, &amp;SignedDistanceCalculationUtils &lt; 3 &gt; ::CalculateDistances)</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          1 :     .def(&quot;FindMaximumEdgeSize&quot;, &amp;SignedDistanceCalculationUtils &lt; 3 &gt; ::FindMaximumEdgeSize)</span></a>
+<a name="243"><span class="lineNum">     243 </span>            :     ;</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineCov">          1 :     class_&lt;ParallelDistanceCalculator &lt; 2 &gt; &gt;(m,&quot;ParallelDistanceCalculator2D&quot;)</span></a>
+<a name="246"><span class="lineNum">     246 </span>            :     .def(init&lt;&gt;())</a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistances&quot;, &amp;ParallelDistanceCalculator &lt; 2 &gt; ::CalculateDistances)</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          1 :     .def(&quot;CalculateInterfacePreservingDistances&quot;, &amp;ParallelDistanceCalculator &lt; 2 &gt; ::CalculateInterfacePreservingDistances)</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistancesLagrangianSurface&quot;, &amp;ParallelDistanceCalculator &lt; 2 &gt; ::CalculateDistancesLagrangianSurface)</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          1 :     .def(&quot;FindMaximumEdgeSize&quot;, &amp;ParallelDistanceCalculator &lt; 2 &gt; ::FindMaximumEdgeSize)</span></a>
+<a name="251"><span class="lineNum">     251 </span>            :     ;</a>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :     class_&lt;ParallelDistanceCalculator &lt; 3 &gt; &gt;(m,&quot;ParallelDistanceCalculator3D&quot;)</span></a>
+<a name="254"><span class="lineNum">     254 </span>            :     .def(init&lt;&gt;())</a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistances&quot;, &amp;ParallelDistanceCalculator &lt; 3 &gt; ::CalculateDistances)</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">          1 :     .def(&quot;CalculateInterfacePreservingDistances&quot;, &amp;ParallelDistanceCalculator &lt; 3 &gt; ::CalculateInterfacePreservingDistances)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          1 :     .def(&quot;CalculateDistancesLagrangianSurface&quot;, &amp;ParallelDistanceCalculator &lt; 3 &gt; ::CalculateDistancesLagrangianSurface)</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          1 :     .def(&quot;FindMaximumEdgeSize&quot;, &amp;ParallelDistanceCalculator &lt; 3 &gt; ::FindMaximumEdgeSize)</span></a>
+<a name="259"><span class="lineNum">     259 </span>            :     ;</a>
+<a name="260"><span class="lineNum">     260 </span>            : </a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">          1 :     class_&lt;PointLocation &gt;(m,&quot;PointLocation&quot;)</span></a>
+<a name="262"><span class="lineNum">     262 </span>            :     .def(init&lt;ModelPart&amp; &gt;())</a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          1 :     .def(&quot;Find&quot;, &amp;PointLocation::Find)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          1 :     .def(&quot;Find2D&quot;, &amp;PointLocation::Find2D)</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          1 :     .def(&quot;Find3D&quot;, &amp;PointLocation::Find3D)</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          1 :     .def(&quot;found&quot;, &amp;PointLocation::found)</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          1 :     .def(&quot;ReturnDefaultPointData_scalar&quot;, &amp;PointLocation::ReturnDefaultPointData_scalar)</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          1 :     .def(&quot;ReturnDefaultPointData_vector&quot;, &amp;PointLocation::ReturnDefaultPointData_vector)</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">          1 :     .def(&quot;ReturnCustomPointData_scalar&quot;, &amp;PointLocation::ReturnCustomPointData_scalar)</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">          1 :     .def(&quot;ReturnCustomPointData_vector&quot;, &amp;PointLocation::ReturnCustomPointData_vector)</span></a>
+<a name="271"><span class="lineNum">     271 </span>            :     ;</a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          1 :     class_&lt;ParticleConvectUtily&lt;2&gt; &gt;(m,&quot;ParticleConvectUtily2D&quot;)</span></a>
+<a name="274"><span class="lineNum">     274 </span>            :     .def(init&lt; BinBasedFastPointLocator &lt; 2 &gt;::Pointer &gt;())</a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          1 :     .def(&quot;MoveParticles_Substepping&quot;, &amp;ParticleConvectUtily&lt;2&gt;::MoveParticles_Substepping)</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          1 :     .def(&quot;MoveParticles_RK4&quot;, &amp;ParticleConvectUtily&lt;2&gt;::MoveParticles_RK4)</span></a>
+<a name="277"><span class="lineNum">     277 </span>            :     ;</a>
+<a name="278"><span class="lineNum">     278 </span>            : </a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          1 :     class_&lt;ParticleConvectUtily&lt;3&gt; &gt;(m,&quot;ParticleConvectUtily3D&quot;)</span></a>
+<a name="280"><span class="lineNum">     280 </span>            :     .def(init&lt; BinBasedFastPointLocator &lt; 3 &gt;::Pointer &gt;())</a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          1 :     .def(&quot;MoveParticles_Substepping&quot;, &amp;ParticleConvectUtily&lt;3&gt;::MoveParticles_Substepping)</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          1 :     .def(&quot;MoveParticles_RK4&quot;, &amp;ParticleConvectUtily&lt;3&gt;::MoveParticles_RK4)</span></a>
+<a name="283"><span class="lineNum">     283 </span>            :     ;</a>
+<a name="284"><span class="lineNum">     284 </span>            : </a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          1 :     class_&lt;IsosurfacePrinterApplication &gt;(m,&quot;IsosurfacePrinterApplication&quot;)</span></a>
+<a name="288"><span class="lineNum">     288 </span>            :     .def(init&lt;ModelPart&amp; &gt;() )</a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">          1 :     .def(&quot;AddScalarVarIsosurface&quot;, &amp;IsosurfacePrinterApplication::AddScalarVarIsosurface)</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          1 :     .def(&quot;AddScalarVarIsosurfaceAndLower&quot;, &amp;IsosurfacePrinterApplication::AddScalarVarIsosurfaceAndLower)</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">          1 :     .def(&quot;AddScalarVarIsosurfaceAndHigher&quot;, &amp;IsosurfacePrinterApplication::AddScalarVarIsosurfaceAndHigher)</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">          1 :     .def(&quot;ClearData&quot;, &amp;IsosurfacePrinterApplication::ClearData)</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">          1 :     .def(&quot;AddSkinConditions&quot;, &amp;IsosurfacePrinterApplication::AddSkinConditions)</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">          1 :     .def(&quot;CreateNodesArray&quot;, &amp;IsosurfacePrinterApplication::CreateNodesArray)</span></a>
+<a name="295"><span class="lineNum">     295 </span>            :     ;</a>
+<a name="296"><span class="lineNum">     296 </span>            : </a>
+<a name="297"><span class="lineNum">     297 </span>            : </a>
+<a name="298"><span class="lineNum">     298 </span>            :     //    class_&lt;SignedDistanceCalculationBinBased&lt;2&gt; &gt;(m,&quot;SignedDistanceCalculationBinBased2D&quot;, init&lt;&gt;())</a>
+<a name="299"><span class="lineNum">     299 </span>            :     //                    .def(&quot;CalculateDistances&quot;,&amp;SignedDistanceCalculationBinBased&lt;2&gt;::CalculateDistances )</a>
+<a name="300"><span class="lineNum">     300 </span>            :     //                           .def(&quot;FindMaximumEdgeSize&quot;,&amp;SignedDistanceCalculationBinBased&lt;2&gt;::FindMaximumEdgeSize )</a>
+<a name="301"><span class="lineNum">     301 </span>            :     //                    ;</a>
+<a name="302"><span class="lineNum">     302 </span>            :     //</a>
+<a name="303"><span class="lineNum">     303 </span>            :     //    class_&lt;SignedDistanceCalculationBinBased&lt;3&gt; &gt;(m,&quot;SignedDistanceCalculationBinBased3D&quot;, init&lt;&gt;())</a>
+<a name="304"><span class="lineNum">     304 </span>            :     //                    .def(&quot;CalculateDistances&quot;,&amp;SignedDistanceCalculationBinBased&lt;3&gt;::CalculateDistances )</a>
+<a name="305"><span class="lineNum">     305 </span>            :     //                           .def(&quot;FindMaximumEdgeSize&quot;,&amp;SignedDistanceCalculationBinBased&lt;3&gt;::FindMaximumEdgeSize )</a>
+<a name="306"><span class="lineNum">     306 </span>            :     //                    ;</a>
+<a name="307"><span class="lineNum">     307 </span>            : </a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          1 :     class_&lt;DivideElemUtils &gt;(m,&quot;DivideElemUtils&quot;)</span></a>
+<a name="309"><span class="lineNum">     309 </span>            :     .def(init&lt;&gt;())</a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          1 :     .def(&quot;DivideElement_2D&quot;, &amp;DivideElemUtils::DivideElement_2D)</span></a>
+<a name="311"><span class="lineNum">     311 </span>            :     ;</a>
+<a name="312"><span class="lineNum">     312 </span>            : </a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          1 :     class_&lt;Timer &gt;(m,&quot;Timer&quot;)</span></a>
+<a name="314"><span class="lineNum">     314 </span>            :     .def(init&lt;&gt;())</a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          1 :     .def_property(&quot;PrintOnScreen&quot;, &amp;Timer::GetPrintOnScreen, &amp;Timer::SetPrintOnScreen)</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          1 :     .def_static(&quot;Start&quot;, &amp;Timer::Start)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          1 :     .def_static(&quot;Stop&quot;, &amp;Timer::Stop)</span></a>
+<a name="318"><span class="lineNum">     318 </span>            : //     .staticmethod(&quot;Start&quot;)</a>
+<a name="319"><span class="lineNum">     319 </span>            : //     .staticmethod(&quot;Stop&quot;)</a>
+<a name="320"><span class="lineNum">     320 </span>            :     //      .def(&quot;PrintTimingInformation&quot;,Timer::PrintTimingInformation)</a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          1 :     .def(&quot;__repr__&quot;,&amp;Timer::Info)</span></a>
+<a name="322"><span class="lineNum">     322 </span>            :     ;</a>
+<a name="323"><span class="lineNum">     323 </span>            : </a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span>            : </a>
+<a name="326"><span class="lineNum">     326 </span>            : </a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          1 :     class_&lt;BoundingBoxUtilities &gt;(m,&quot;BoundingBoxUtilities&quot;)</span></a>
+<a name="328"><span class="lineNum">     328 </span>            :     .def(init&lt;ModelPart&amp;, const unsigned int&amp; &gt;())</a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          1 :     .def(&quot;Test&quot;, &amp;BoundingBoxUtilities::Test)</span></a>
+<a name="330"><span class="lineNum">     330 </span>            :     ;</a>
+<a name="331"><span class="lineNum">     331 </span>            : </a>
+<a name="332"><span class="lineNum">     332 </span>            : </a>
+<a name="333"><span class="lineNum">     333 </span>            :     //           class_&lt;SplitElements, boost::noncopyable &gt;</a>
+<a name="334"><span class="lineNum">     334 </span>            :     //                     (&quot;SplitElements&quot;, init&lt;ModelPart&amp;, int &gt;() )</a>
+<a name="335"><span class="lineNum">     335 </span>            :     //                     .def(&quot;Split&quot;, &amp;SplitElements::Split)</a>
+<a name="336"><span class="lineNum">     336 </span>            :     //                     ;</a>
+<a name="337"><span class="lineNum">     337 </span>            : </a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span>            :     //    def(&quot;PrintTimingInformation&quot;,Timer::PrintTimingInformation);</a>
+<a name="340"><span class="lineNum">     340 </span>            : </a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          1 :     class_&lt;OpenMPUtils &gt;(m,&quot;OpenMPUtils&quot;)</span></a>
+<a name="342"><span class="lineNum">     342 </span>            :     .def(init&lt;&gt;())</a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          1 :     .def_static(&quot;SetNumThreads&quot;, &amp;OpenMPUtils::SetNumThreads)</span></a>
+<a name="344"><span class="lineNum">     344 </span>            : //     .staticmethod(&quot;SetNumThreads&quot;)</a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          1 :     .def_static(&quot;GetNumThreads&quot;, &amp;OpenMPUtils::GetNumThreads)</span></a>
+<a name="346"><span class="lineNum">     346 </span>            : //     .staticmethod(&quot;GetNumThreads&quot;)</a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          1 :     .def_static(&quot;PrintOMPInfo&quot;, &amp;OpenMPUtils::PrintOMPInfo)</span></a>
+<a name="348"><span class="lineNum">     348 </span>            : //     .staticmethod(&quot;PrintOMPInfo&quot;)</a>
+<a name="349"><span class="lineNum">     349 </span>            :     ;</a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          1 :     class_&lt; BinBasedFastPointLocator &lt; 2 &gt; &gt;(m,&quot;BinBasedFastPointLocator2D&quot;)</span></a>
+<a name="352"><span class="lineNum">     352 </span>            :     .def(init&lt;ModelPart&amp; &gt;())</a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabase&quot;, &amp;BinBasedFastPointLocator &lt; 2 &gt; ::UpdateSearchDatabase)</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabaseAssignedSize&quot;, &amp;BinBasedFastPointLocator &lt; 2 &gt; ::UpdateSearchDatabaseAssignedSize)</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          1 :     .def(&quot;FindPointOnMesh&quot;, &amp;BinBasedFastPointLocator &lt; 2 &gt; ::FindPointOnMeshSimplified)</span></a>
+<a name="356"><span class="lineNum">     356 </span>            :     ;</a>
+<a name="357"><span class="lineNum">     357 </span>            : </a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          1 :     class_&lt; BinBasedFastPointLocator &lt; 3 &gt; &gt;(m,&quot;BinBasedFastPointLocator3D&quot;)</span></a>
+<a name="359"><span class="lineNum">     359 </span>            :     .def(init&lt;ModelPart&amp;  &gt;())</a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabase&quot;, &amp;BinBasedFastPointLocator &lt; 3 &gt; ::UpdateSearchDatabase)</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">          1 :     .def(&quot;FindPointOnMesh&quot;, &amp;BinBasedFastPointLocator &lt; 3 &gt; ::FindPointOnMeshSimplified)</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabaseAssignedSize&quot;, &amp;BinBasedFastPointLocator &lt; 3 &gt; ::UpdateSearchDatabaseAssignedSize)</span></a>
+<a name="363"><span class="lineNum">     363 </span>            :     ;</a>
+<a name="364"><span class="lineNum">     364 </span>            : </a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          1 :     class_&lt; BinBasedNodesInElementLocator &lt; 2 &gt; &gt;(m,&quot;BinBasedNodesInElementLocator2D&quot;)</span></a>
+<a name="366"><span class="lineNum">     366 </span>            :     .def(init&lt;ModelPart&amp; &gt;())</a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabase&quot;, &amp;BinBasedNodesInElementLocator &lt; 2 &gt; ::UpdateSearchDatabase)</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          1 :     .def(&quot;FindNodesInElement&quot;, &amp;BinBasedNodesInElementLocator &lt; 2 &gt; ::FindNodesInElement)</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabaseAssignedSize&quot;, &amp;BinBasedNodesInElementLocator &lt; 2 &gt; ::UpdateSearchDatabaseAssignedSize)</span></a>
+<a name="370"><span class="lineNum">     370 </span>            :     ;</a>
+<a name="371"><span class="lineNum">     371 </span>            : </a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          1 :     class_&lt; BinBasedNodesInElementLocator &lt; 3 &gt; &gt;(m,&quot;BinBasedNodesInElementLocator3D&quot;)</span></a>
+<a name="373"><span class="lineNum">     373 </span>            :     .def(init&lt;ModelPart&amp;  &gt;())</a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabase&quot;, &amp;BinBasedNodesInElementLocator &lt; 3 &gt; ::UpdateSearchDatabase)</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">          1 :     .def(&quot;FindNodesInElement&quot;, &amp;BinBasedNodesInElementLocator &lt; 3 &gt; ::FindNodesInElement)</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          1 :     .def(&quot;UpdateSearchDatabaseAssignedSize&quot;, &amp;BinBasedNodesInElementLocator &lt; 3 &gt; ::UpdateSearchDatabaseAssignedSize)</span></a>
+<a name="377"><span class="lineNum">     377 </span>            :     ;</a>
+<a name="378"><span class="lineNum">     378 </span>            : </a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          1 :     class_&lt; ActivationUtilities &gt;(m,&quot;ActivationUtilities&quot;)</span></a>
+<a name="380"><span class="lineNum">     380 </span>            :     .def(init&lt; &gt;())</a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          1 :     .def(&quot;ActivateElementsAndConditions&quot;, &amp;ActivationUtilities::ActivateElementsAndConditions)</span></a>
+<a name="382"><span class="lineNum">     382 </span>            :     ;</a>
+<a name="383"><span class="lineNum">     383 </span>            : </a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">          1 :     class_&lt; GeometryTesterUtility&gt;(m,&quot;GeometryTesterUtility&quot;)</span></a>
+<a name="385"><span class="lineNum">     385 </span>            :     .def(init&lt; &gt;())</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          1 :     .def(&quot;RunTest&quot;, &amp;GeometryTesterUtility::RunTest)</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">          1 :     .def(&quot;TestTriangle2D3N&quot;, &amp;GeometryTesterUtility::TestTriangle2D3N)</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          1 :     .def(&quot;TestTriangle2D6N&quot;, &amp;GeometryTesterUtility::TestTriangle2D6N)</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          1 :     .def(&quot;TestTetrahedra3D4N&quot;, &amp;GeometryTesterUtility::TestTetrahedra3D4N)</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">          1 :     .def(&quot;TestTetrahedra3D10N&quot;, &amp;GeometryTesterUtility::TestTetrahedra3D10N)</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">          1 :     .def(&quot;TestHexahedra3D8N&quot;, &amp;GeometryTesterUtility::TestHexahedra3D8N)</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          1 :     .def(&quot;TestHexahedra3D27N&quot;, &amp;GeometryTesterUtility::TestHexahedra3D27N)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          1 :     .def(&quot;TestHexahedra3D20N&quot;, &amp;GeometryTesterUtility::TestHexahedra3D20N)</span></a>
+<a name="394"><span class="lineNum">     394 </span>            :     ;</a>
+<a name="395"><span class="lineNum">     395 </span>            : </a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">          1 :     class_&lt;CuttingUtility &gt;(m,&quot;CuttingUtility&quot;)</span></a>
+<a name="397"><span class="lineNum">     397 </span>            :     .def(init&lt; &gt;())</a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          1 :     .def(&quot;GenerateCut&quot;, &amp;CuttingUtility::GenerateCut)</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">          1 :     .def(&quot;UpdateCutData&quot;, &amp;CuttingUtility ::UpdateCutData)</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">          1 :     .def(&quot;AddSkinConditions&quot;, &amp;CuttingUtility ::AddSkinConditions)</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">          1 :     .def(&quot;AddVariablesToCutModelPart&quot;, &amp;CuttingUtility::AddVariablesToCutModelPart )</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">          1 :     .def(&quot;FindSmallestEdge&quot;, &amp;CuttingUtility ::FindSmallestEdge)</span></a>
+<a name="403"><span class="lineNum">     403 </span>            :     ;</a>
+<a name="404"><span class="lineNum">     404 </span>            : </a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">          1 :     class_&lt;IntervalUtility &gt;(m,&quot;IntervalUtility&quot;)</span></a>
+<a name="406"><span class="lineNum">     406 </span>            :     .def(init&lt;Parameters &gt;())</a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          1 :     .def(&quot;GetIntervalBegin&quot;, &amp;IntervalUtility::GetIntervalBegin)</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          1 :     .def(&quot;GetIntervalEnd&quot;, &amp;IntervalUtility::GetIntervalEnd)</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          1 :     .def(&quot;IsInInterval&quot;, &amp;IntervalUtility ::IsInInterval)</span></a>
+<a name="410"><span class="lineNum">     410 </span>            :     ;</a>
+<a name="411"><span class="lineNum">     411 </span>            : </a>
+<a name="412"><span class="lineNum">     412 </span>            :     // Adding table from table stream to python</a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          1 :     class_&lt;TableStreamUtility, typename TableStreamUtility::Pointer&gt;(m,&quot;TableStreamUtility&quot;)</span></a>
+<a name="414"><span class="lineNum">     414 </span>            :     .def(init&lt;&gt;())</a>
+<a name="415"><span class="lineNum">     415 </span>            :     .def(init&lt; bool &gt;())</a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">          1 :     .def(&quot;SetOnProcessInfo&quot;,SetOnProcessInfo)</span></a>
+<a name="417"><span class="lineNum">     417 </span>            :     ;</a>
+<a name="418"><span class="lineNum">     418 </span>            : </a>
+<a name="419"><span class="lineNum">     419 </span>            :     // Exact integration (for testing)</a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineCov">          1 :     class_&lt;ExactMortarIntegrationUtility&lt;2,2&gt;&gt;(m,&quot;ExactMortarIntegrationUtility2D2N&quot;)</span></a>
+<a name="421"><span class="lineNum">     421 </span>            :     .def(init&lt;&gt;())</a>
+<a name="422"><span class="lineNum">     422 </span>            :     .def(init&lt;const unsigned int&gt;())</a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">          1 :     .def(&quot;TestGetExactIntegration&quot;,&amp;ExactMortarIntegrationUtility&lt;2,2&gt;::TestGetExactIntegration)</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">          1 :     .def(&quot;TestGetExactAreaIntegration&quot;,&amp;ExactMortarIntegrationUtility&lt;2,2&gt;::TestGetExactAreaIntegration)</span></a>
+<a name="425"><span class="lineNum">     425 </span>            :     ;</a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">          1 :     class_&lt;ExactMortarIntegrationUtility&lt;3,3&gt;&gt;(m,&quot;ExactMortarIntegrationUtility3D3N&quot;)</span></a>
+<a name="427"><span class="lineNum">     427 </span>            :     .def(init&lt;&gt;())</a>
+<a name="428"><span class="lineNum">     428 </span>            :     .def(init&lt;const unsigned int&gt;())</a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">          1 :     .def(&quot;TestGetExactIntegration&quot;,&amp;ExactMortarIntegrationUtility&lt;3,3&gt;::TestGetExactIntegration)</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">          1 :     .def(&quot;TestGetExactAreaIntegration&quot;,&amp;ExactMortarIntegrationUtility&lt;3,3&gt;::TestGetExactAreaIntegration)</span></a>
+<a name="431"><span class="lineNum">     431 </span>            :     ;</a>
+<a name="432"><span class="lineNum">     432 </span>            : </a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">          1 :     class_&lt;ExactMortarIntegrationUtility&lt;3,4&gt;&gt;(m,&quot;ExactMortarIntegrationUtility3D4N&quot;)</span></a>
+<a name="434"><span class="lineNum">     434 </span>            :     .def(init&lt;&gt;())</a>
+<a name="435"><span class="lineNum">     435 </span>            :     .def(init&lt;const unsigned int&gt;())</a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">          1 :     .def(&quot;TestGetExactIntegration&quot;,&amp;ExactMortarIntegrationUtility&lt;3,4&gt;::TestGetExactIntegration)</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">          1 :     .def(&quot;TestGetExactAreaIntegration&quot;,&amp;ExactMortarIntegrationUtility&lt;3,4&gt;::TestGetExactAreaIntegration)</span></a>
+<a name="438"><span class="lineNum">     438 </span>            :     ;</a>
+<a name="439"><span class="lineNum">     439 </span>            : </a>
+<a name="440"><span class="lineNum">     440 </span>            :     // Sparse matrix multiplication utility</a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">          1 :     class_&lt;SparseMatrixMultiplicationUtility, typename SparseMatrixMultiplicationUtility::Pointer&gt;(m, &quot;SparseMatrixMultiplicationUtility&quot;)</span></a>
+<a name="442"><span class="lineNum">     442 </span>            :     .def(init&lt;&gt;())</a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">          1 :     .def(&quot;MatrixMultiplication&quot;,&amp;SparseMatrixMultiplicationUtility::MatrixMultiplication&lt;CompressedMatrix, CompressedMatrix, CompressedMatrix&gt;)</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">          1 :     .def(&quot;MatrixMultiplicationSaad&quot;,&amp;SparseMatrixMultiplicationUtility::MatrixMultiplicationSaad&lt;CompressedMatrix, CompressedMatrix, CompressedMatrix&gt;)</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">          1 :     .def(&quot;MatrixMultiplicationRMerge&quot;,&amp;SparseMatrixMultiplicationUtility::MatrixMultiplicationRMerge&lt;CompressedMatrix, CompressedMatrix, CompressedMatrix&gt;)</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">          1 :     .def(&quot;MatrixAdd&quot;,&amp;SparseMatrixMultiplicationUtility::MatrixAdd&lt;CompressedMatrix, CompressedMatrix&gt;)</span></a>
+<a name="447"><span class="lineNum">     447 </span>            :     ;</a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">          1 : }</span></a>
+<a name="449"><span class="lineNum">     449 </span>            : </a>
+<a name="450"><span class="lineNum">     450 </span>            : } // namespace Python.</a>
+<a name="451"><span class="lineNum">     451 </span>            : </a>
+<a name="452"><span class="lineNum">     452 </span>            : } // Namespace Kratos</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
