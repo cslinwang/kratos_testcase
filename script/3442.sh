@@ -29,7 +29,8 @@ export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 
 # 编译
 echo "开始编译Kratos..."
-/root/kratos_testcase/script/7_kratos.sh d15c9816fad1536b6e17a26993bb7dc980f072b4
+/root/kratos_testcase/script/7_kratos.sh d386b0f7d873c3db99c71f03cd0e125d72313ddf
+# a741949882c360ae3f738839a793b6c1a449f5a7
 echo "Kratos编译完成。"
 
 # 运行
