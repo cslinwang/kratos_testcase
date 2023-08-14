@@ -4,10 +4,10 @@
 # https://github.com/KratosMultiphysics/Kratos/issues/2378
 
 # 预期报错：
-# 断言错误
+# ValueError: invalid literal for int() with base 10: 'cuts'
 
 # 运行文件
-# /root/kratos_testcase/2671/run_optimization.py
+# /root/Kratos/kratos/python_scripts/gid_output_process.py
 
 # 新版
 
@@ -29,14 +29,14 @@ export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 
 # 编译
 echo "开始编译Kratos..."
-/root/kratos_testcase/script/7_kratos.sh 84df6f82eb1098c611d52193c010bc577bd2bf63
+/root/kratos_testcase/script/7_kratos.sh 82e48cc35c34d90012005667071ba4c1933ee577
 echo "Kratos编译完成。"
 
 # 运行
 echo "开始运行测试用例..."
-cd /root/kratos_testcase/2671
-python3 /root/kratos_testcase/2671/run_optimization.py
+cd /root/Kratos/kratos/python_scripts
+python3 /root/Kratos/kratos/python_scripts/gid_output_process.py
 echo "测试用例运行完成。"
 
 # 生成覆盖率报告
-# /root/kratos_testcase/script/coverage.sh 2671
+# /root/kratos_testcase/script/coverage.sh 2378
