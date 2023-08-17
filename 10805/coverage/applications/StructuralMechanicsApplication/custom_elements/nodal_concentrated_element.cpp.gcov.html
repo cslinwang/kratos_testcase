@@ -1,0 +1,564 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - applications/StructuralMechanicsApplication/custom_elements/nodal_concentrated_element.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">applications/StructuralMechanicsApplication/custom_elements</a> - nodal_concentrated_element.cpp<span style="font-size: 80%;"> (source / <a href="nodal_concentrated_element.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">155</td>
+            <td class="headerCovTableEntryLo">3.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 14:49:52</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntryLo">8.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : // KRATOS  ___|  |                   |                   |</a>
+<a name="2"><span class="lineNum">       2 </span>            : //       \___ \  __|  __| |   |  __| __| |   |  __| _` | |</a>
+<a name="3"><span class="lineNum">       3 </span>            : //             | |   |    |   | (    |   |   | |   (   | |</a>
+<a name="4"><span class="lineNum">       4 </span>            : //       _____/ \__|_|   \__,_|\___|\__|\__,_|_|  \__,_|_| MECHANICS</a>
+<a name="5"><span class="lineNum">       5 </span>            : //</a>
+<a name="6"><span class="lineNum">       6 </span>            : //  License:             BSD License</a>
+<a name="7"><span class="lineNum">       7 </span>            : //                                       license: structural_mechanics_application/license.txt</a>
+<a name="8"><span class="lineNum">       8 </span>            : //</a>
+<a name="9"><span class="lineNum">       9 </span>            : //  Main authors:    Vicente Mataix Ferrandiz</a>
+<a name="10"><span class="lineNum">      10 </span>            : //</a>
+<a name="11"><span class="lineNum">      11 </span>            : </a>
+<a name="12"><span class="lineNum">      12 </span>            : // System includes</a>
+<a name="13"><span class="lineNum">      13 </span>            : </a>
+<a name="14"><span class="lineNum">      14 </span>            : // External includes</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            : // Project includes</a>
+<a name="17"><span class="lineNum">      17 </span>            : #include &quot;includes/define.h&quot;</a>
+<a name="18"><span class="lineNum">      18 </span>            : #include &quot;includes/checks.h&quot;</a>
+<a name="19"><span class="lineNum">      19 </span>            : #include &quot;custom_elements/nodal_concentrated_element.hpp&quot;</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &quot;custom_utilities/structural_mechanics_element_utilities.h&quot;</a>
+<a name="21"><span class="lineNum">      21 </span>            : </a>
+<a name="22"><span class="lineNum">      22 </span>            : #include &quot;structural_mechanics_application_variables.h&quot;</a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;utilities/atomic_utilities.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : </a>
+<a name="25"><span class="lineNum">      25 </span>            : namespace Kratos</a>
+<a name="26"><span class="lineNum">      26 </span>            : {</a>
+<a name="27"><span class="lineNum">      27 </span>            : //***********************DEFAULT CONSTRUCTOR******************************************</a>
+<a name="28"><span class="lineNum">      28 </span>            : //************************************************************************************</a>
+<a name="29"><span class="lineNum">      29 </span>            : </a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">          4 : NodalConcentratedElement::NodalConcentratedElement(</span></a>
+<a name="31"><span class="lineNum">      31 </span>            :     IndexType NewId,</a>
+<a name="32"><span class="lineNum">      32 </span>            :     GeometryType::Pointer pGeometry,</a>
+<a name="33"><span class="lineNum">      33 </span>            :     const bool UseRayleighDamping</a>
+<a name="34"><span class="lineNum">      34 </span><span class="lineCov">          4 :     )</span></a>
+<a name="35"><span class="lineNum">      35 </span>            :     : Element( NewId, pGeometry )</a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineCov">          4 :     , mUseRayleighDamping( UseRayleighDamping )</span></a>
+<a name="37"><span class="lineNum">      37 </span>            : {</a>
+<a name="38"><span class="lineNum">      38 </span>            :     //DO NOT ADD DOFS HERE!!!</a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          4 : }</span></a>
+<a name="40"><span class="lineNum">      40 </span>            : </a>
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<a name="42"><span class="lineNum">      42 </span>            : //******************************CONSTRUCTOR*******************************************</a>
+<a name="43"><span class="lineNum">      43 </span>            : //************************************************************************************</a>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<a name="45"><span class="lineNum">      45 </span><span class="lineNoCov">          0 : NodalConcentratedElement::NodalConcentratedElement(</span></a>
+<a name="46"><span class="lineNum">      46 </span>            :     IndexType NewId, GeometryType::Pointer pGeometry,</a>
+<a name="47"><span class="lineNum">      47 </span>            :     PropertiesType::Pointer pProperties,</a>
+<a name="48"><span class="lineNum">      48 </span>            :     const bool UseRayleighDamping</a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :     )</span></a>
+<a name="50"><span class="lineNum">      50 </span>            :     : Element( NewId, pGeometry, pProperties )</a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :     , mUseRayleighDamping( UseRayleighDamping )</span></a>
+<a name="52"><span class="lineNum">      52 </span>            : {</a>
+<a name="53"><span class="lineNum">      53 </span>            : </a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="55"><span class="lineNum">      55 </span>            : </a>
+<a name="56"><span class="lineNum">      56 </span>            : //******************************COPY CONSTRUCTOR**************************************</a>
+<a name="57"><span class="lineNum">      57 </span>            : //************************************************************************************</a>
+<a name="58"><span class="lineNum">      58 </span>            : </a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 : NodalConcentratedElement::NodalConcentratedElement( NodalConcentratedElement const&amp; rOther)</span></a>
+<a name="60"><span class="lineNum">      60 </span>            :     :Element(rOther)</a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :     ,mUseRayleighDamping(rOther.mUseRayleighDamping)</span></a>
+<a name="62"><span class="lineNum">      62 </span>            : {</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            : //*******************************ASSIGMENT OPERATOR***********************************</a>
+<a name="67"><span class="lineNum">      67 </span>            : //************************************************************************************</a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 : NodalConcentratedElement&amp;  NodalConcentratedElement::operator=(NodalConcentratedElement const&amp; rOther)</span></a>
+<a name="70"><span class="lineNum">      70 </span>            : {</a>
+<a name="71"><span class="lineNum">      71 </span>            :     //ALL MEMBER VARIABLES THAT MUST BE KEPT IN AN &quot;=&quot; OPERATION NEEDS TO BE COPIED HERE</a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span>            :     Element::operator=(rOther);</a>
+<a name="74"><span class="lineNum">      74 </span>            : </a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 :     return *this;</span></a>
+<a name="76"><span class="lineNum">      76 </span>            : }</a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span>            : //*********************************OPERATIONS*****************************************</a>
+<a name="79"><span class="lineNum">      79 </span>            : //************************************************************************************</a>
+<a name="80"><span class="lineNum">      80 </span>            : </a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 : Element::Pointer NodalConcentratedElement::Create(</span></a>
+<a name="82"><span class="lineNum">      82 </span>            :     IndexType NewId,</a>
+<a name="83"><span class="lineNum">      83 </span>            :     NodesArrayType const&amp; rThisNodes,</a>
+<a name="84"><span class="lineNum">      84 </span>            :     PropertiesType::Pointer pProperties</a>
+<a name="85"><span class="lineNum">      85 </span>            :     ) const</a>
+<a name="86"><span class="lineNum">      86 </span>            : {</a>
+<a name="87"><span class="lineNum">      87 </span>            :     //NEEDED TO CREATE AN ELEMENT</a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :     return Kratos::make_intrusive&lt;NodalConcentratedElement&gt;( NewId, GetGeometry().Create( rThisNodes ), pProperties, mUseRayleighDamping );</span></a>
+<a name="89"><span class="lineNum">      89 </span>            : }</a>
+<a name="90"><span class="lineNum">      90 </span>            : </a>
+<a name="91"><span class="lineNum">      91 </span>            : //************************************************************************************</a>
+<a name="92"><span class="lineNum">      92 </span>            : //************************************************************************************</a>
+<a name="93"><span class="lineNum">      93 </span>            : </a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 : Element::Pointer NodalConcentratedElement::Create(</span></a>
+<a name="95"><span class="lineNum">      95 </span>            :     IndexType NewId,</a>
+<a name="96"><span class="lineNum">      96 </span>            :     GeometryType::Pointer pGeom,</a>
+<a name="97"><span class="lineNum">      97 </span>            :     PropertiesType::Pointer pProperties</a>
+<a name="98"><span class="lineNum">      98 </span>            :     ) const</a>
+<a name="99"><span class="lineNum">      99 </span>            : {</a>
+<a name="100"><span class="lineNum">     100 </span>            :     //NEEDED TO CREATE AN ELEMENT</a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineNoCov">          0 :     return Kratos::make_intrusive&lt;NodalConcentratedElement&gt;( NewId, pGeom, pProperties, mUseRayleighDamping );</span></a>
+<a name="102"><span class="lineNum">     102 </span>            : }</a>
+<a name="103"><span class="lineNum">     103 </span>            : </a>
+<a name="104"><span class="lineNum">     104 </span>            : //************************************CLONE*******************************************</a>
+<a name="105"><span class="lineNum">     105 </span>            : //************************************************************************************</a>
+<a name="106"><span class="lineNum">     106 </span>            : </a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 : Element::Pointer NodalConcentratedElement::Clone(</span></a>
+<a name="108"><span class="lineNum">     108 </span>            :     IndexType NewId,</a>
+<a name="109"><span class="lineNum">     109 </span>            :     NodesArrayType const&amp; rThisNodes</a>
+<a name="110"><span class="lineNum">     110 </span>            :     ) const</a>
+<a name="111"><span class="lineNum">     111 </span>            : {</a>
+<a name="112"><span class="lineNum">     112 </span>            :     //YOU CREATE A NEW ELEMENT CLONING THEIR VARIABLES</a>
+<a name="113"><span class="lineNum">     113 </span>            :     //ALL MEMBER VARIABLES THAT MUST BE CLONED HAVE TO BE DEFINED HERE</a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :     NodalConcentratedElement new_element(NewId, GetGeometry().Create( rThisNodes ), pGetProperties(), mUseRayleighDamping );</span></a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :     return Kratos::make_intrusive&lt;NodalConcentratedElement&gt;(new_element);</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="119"><span class="lineNum">     119 </span>            : </a>
+<a name="120"><span class="lineNum">     120 </span>            : </a>
+<a name="121"><span class="lineNum">     121 </span>            : //*******************************DESTRUCTOR*******************************************</a>
+<a name="122"><span class="lineNum">     122 </span>            : //************************************************************************************</a>
+<a name="123"><span class="lineNum">     123 </span>            : </a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          4 : NodalConcentratedElement::~NodalConcentratedElement()</span></a>
+<a name="125"><span class="lineNum">     125 </span>            : {</a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          4 : }</span></a>
+<a name="127"><span class="lineNum">     127 </span>            : </a>
+<a name="128"><span class="lineNum">     128 </span>            : //************* GETTING METHODS</a>
+<a name="129"><span class="lineNum">     129 </span>            : //************************************************************************************</a>
+<a name="130"><span class="lineNum">     130 </span>            : //************************************************************************************</a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::GetDofList(</span></a>
+<a name="133"><span class="lineNum">     133 </span>            :     DofsVectorType&amp; rElementalDofList,</a>
+<a name="134"><span class="lineNum">     134 </span>            :     const ProcessInfo&amp; rCurrentProcessInfo</a>
+<a name="135"><span class="lineNum">     135 </span>            :     ) const</a>
+<a name="136"><span class="lineNum">     136 </span>            : {</a>
+<a name="137"><span class="lineNum">     137 </span>            :     //NEEDED TO DEFINE THE DOFS OF THE ELEMENT</a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="139"><span class="lineNum">     139 </span>            : </a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :     rElementalDofList.resize( 0 );</span></a>
+<a name="141"><span class="lineNum">     141 </span>            : </a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :     rElementalDofList.push_back( GetGeometry()[0].pGetDof( DISPLACEMENT_X ) );</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :     rElementalDofList.push_back( GetGeometry()[0].pGetDof( DISPLACEMENT_Y ) );</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :     if( dimension == 3 )</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :         rElementalDofList.push_back( GetGeometry()[0].pGetDof( DISPLACEMENT_Z ) );</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="147"><span class="lineNum">     147 </span>            : </a>
+<a name="148"><span class="lineNum">     148 </span>            : //************************************************************************************</a>
+<a name="149"><span class="lineNum">     149 </span>            : //************************************************************************************</a>
+<a name="150"><span class="lineNum">     150 </span>            : </a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::EquationIdVector(</span></a>
+<a name="152"><span class="lineNum">     152 </span>            :     EquationIdVectorType&amp; rResult,</a>
+<a name="153"><span class="lineNum">     153 </span>            :     const ProcessInfo&amp; rCurrentProcessInfo</a>
+<a name="154"><span class="lineNum">     154 </span>            :     ) const</a>
+<a name="155"><span class="lineNum">     155 </span>            : {</a>
+<a name="156"><span class="lineNum">     156 </span>            :     //NEEDED TO DEFINE GLOBAL IDS FOR THE CORRECT ASSEMBLY</a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="158"><span class="lineNum">     158 </span>            : </a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :     if ( rResult.size() != dimension )</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :         rResult.resize( dimension, false );</span></a>
+<a name="161"><span class="lineNum">     161 </span>            : </a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :     rResult[0] = GetGeometry()[0].GetDof( DISPLACEMENT_X ).EquationId();</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :     rResult[1] = GetGeometry()[0].GetDof( DISPLACEMENT_Y ).EquationId();</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :     if( dimension == 3)</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         rResult[2] = GetGeometry()[0].GetDof( DISPLACEMENT_Z ).EquationId();</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span>            : //*********************************DISPLACEMENT***************************************</a>
+<a name="169"><span class="lineNum">     169 </span>            : //************************************************************************************</a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::GetValuesVector( Vector&amp; rValues, int Step ) const</span></a>
+<a name="172"><span class="lineNum">     172 </span>            : {</a>
+<a name="173"><span class="lineNum">     173 </span>            :     //GIVES THE VECTOR WITH THE DOFS VARIABLES OF THE ELEMENT (i.e. ELEMENT DISPLACEMENTS)</a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="175"><span class="lineNum">     175 </span>            : </a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :     if ( rValues.size() != dimension )</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :         rValues.resize( dimension, false );</span></a>
+<a name="178"><span class="lineNum">     178 </span>            : </a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineNoCov">          0 :     rValues[0] = GetGeometry()[0].GetSolutionStepValue( DISPLACEMENT_X, Step );</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :     rValues[1] = GetGeometry()[0].GetSolutionStepValue( DISPLACEMENT_Y, Step );</span></a>
+<a name="181"><span class="lineNum">     181 </span>            : </a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :     if ( dimension == 3 )</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :         rValues[2] = GetGeometry()[0].GetSolutionStepValue( DISPLACEMENT_Z, Step );</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="185"><span class="lineNum">     185 </span>            : </a>
+<a name="186"><span class="lineNum">     186 </span>            : </a>
+<a name="187"><span class="lineNum">     187 </span>            : //************************************VELOCITY****************************************</a>
+<a name="188"><span class="lineNum">     188 </span>            : //************************************************************************************</a>
+<a name="189"><span class="lineNum">     189 </span>            : </a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::GetFirstDerivativesVector( Vector&amp; rValues, int Step ) const</span></a>
+<a name="191"><span class="lineNum">     191 </span>            : {</a>
+<a name="192"><span class="lineNum">     192 </span>            :     //GIVES THE VECTOR WITH THE TIME DERIVATIVE OF THE DOFS VARIABLES OF THE ELEMENT (i.e. ELEMENT VELOCITIES)</a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="194"><span class="lineNum">     194 </span>            : </a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :     if ( rValues.size() != dimension )</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :         rValues.resize( dimension, false );</span></a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :     rValues[0] = GetGeometry()[0].GetSolutionStepValue( VELOCITY_X, Step );</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :     rValues[1] = GetGeometry()[0].GetSolutionStepValue( VELOCITY_Y, Step );</span></a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :     if ( dimension == 3 )</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :         rValues[2] = GetGeometry()[0].GetSolutionStepValue( VELOCITY_Z, Step );</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span>            : //*********************************ACCELERATION***************************************</a>
+<a name="206"><span class="lineNum">     206 </span>            : //************************************************************************************</a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::GetSecondDerivativesVector( Vector&amp; rValues, int Step ) const</span></a>
+<a name="209"><span class="lineNum">     209 </span>            : {</a>
+<a name="210"><span class="lineNum">     210 </span>            :     //GIVES THE VECTOR WITH THE TIME SECOND DERIVATIVE OF THE DOFS VARIABLES OF THE ELEMENT (i.e. ELEMENT ACCELERATIONS)</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="212"><span class="lineNum">     212 </span>            : </a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :     if ( rValues.size() != dimension )</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :         rValues.resize( dimension, false );</span></a>
+<a name="215"><span class="lineNum">     215 </span>            : </a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :     rValues[0] = GetGeometry()[0].GetSolutionStepValue( ACCELERATION_X, Step );</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :     rValues[1] = GetGeometry()[0].GetSolutionStepValue( ACCELERATION_Y, Step );</span></a>
+<a name="218"><span class="lineNum">     218 </span>            : </a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :     if ( dimension == 3 )</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :         rValues[2] = GetGeometry()[0].GetSolutionStepValue( ACCELERATION_Z, Step );</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="222"><span class="lineNum">     222 </span>            : </a>
+<a name="223"><span class="lineNum">     223 </span>            : </a>
+<a name="224"><span class="lineNum">     224 </span>            : //************* COMPUTING  METHODS</a>
+<a name="225"><span class="lineNum">     225 </span>            : //************************************************************************************</a>
+<a name="226"><span class="lineNum">     226 </span>            : //************************************************************************************</a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::CalculateLocalSystem( MatrixType&amp; rLeftHandSideMatrix, VectorType&amp; rRightHandSideVector, const ProcessInfo&amp; rCurrentProcessInfo )</span></a>
+<a name="229"><span class="lineNum">     229 </span>            : {</a>
+<a name="230"><span class="lineNum">     230 </span>            : </a>
+<a name="231"><span class="lineNum">     231 </span>            :     KRATOS_TRY;</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span>            :     /* Calculate elemental system */</a>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<a name="235"><span class="lineNum">     235 </span>            :     // Compute RHS (RHS = rRightHandSideVector = Fext - Fint)</a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :     this-&gt;CalculateRightHandSide(rRightHandSideVector, rCurrentProcessInfo);</span></a>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<a name="238"><span class="lineNum">     238 </span>            :     // Compute LHS</a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :     this-&gt;CalculateLeftHandSide(rLeftHandSideMatrix, rCurrentProcessInfo);</span></a>
+<a name="240"><span class="lineNum">     240 </span>            : </a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :     KRATOS_CATCH( &quot;&quot; );</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="243"><span class="lineNum">     243 </span>            : </a>
+<a name="244"><span class="lineNum">     244 </span>            : //***********************************************************************************</a>
+<a name="245"><span class="lineNum">     245 </span>            : //***********************************************************************************</a>
+<a name="246"><span class="lineNum">     246 </span>            : </a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::CalculateRightHandSide(VectorType&amp; rRightHandSideVector, const ProcessInfo&amp; rCurrentProcessInfo )</span></a>
+<a name="248"><span class="lineNum">     248 </span>            : {</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="250"><span class="lineNum">     250 </span>            : </a>
+<a name="251"><span class="lineNum">     251 </span>            :     // Resizing as needed the RHS</a>
+<a name="252"><span class="lineNum">     252 </span>            :     const unsigned int system_size = dimension;</a>
+<a name="253"><span class="lineNum">     253 </span>            : </a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :     if ( rRightHandSideVector.size() != system_size )</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :         rRightHandSideVector.resize( system_size, false );</span></a>
+<a name="256"><span class="lineNum">     256 </span>            : </a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :     rRightHandSideVector = ZeroVector( system_size ); //resetting RHS</span></a>
+<a name="258"><span class="lineNum">     258 </span>            : </a>
+<a name="259"><span class="lineNum">     259 </span>            :     const array_1d&lt;double, 3 &gt;&amp; current_displacement = GetGeometry()[0].FastGetSolutionStepValue(DISPLACEMENT);</a>
+<a name="260"><span class="lineNum">     260 </span>            :     array_1d&lt;double, 3 &gt; volume_acceleration = ZeroVector(3);</a>
+<a name="261"><span class="lineNum">     261 </span>            : </a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :     if( GetGeometry()[0].SolutionStepsDataHas(VOLUME_ACCELERATION) )</span></a>
+<a name="263"><span class="lineNum">     263 </span>            :         volume_acceleration = GetGeometry()[0].FastGetSolutionStepValue(VOLUME_ACCELERATION);</a>
+<a name="264"><span class="lineNum">     264 </span>            : </a>
+<a name="265"><span class="lineNum">     265 </span>            :     // We get the reference</a>
+<a name="266"><span class="lineNum">     266 </span>            :     const auto&amp; rconst_this = *this;</a>
+<a name="267"><span class="lineNum">     267 </span>            : </a>
+<a name="268"><span class="lineNum">     268 </span>            :     // Compute and add external forces</a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineNoCov">          0 :     const double nodal_mass = rconst_this.GetValue(NODAL_MASS);</span></a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :     for ( unsigned int j = 0; j &lt; dimension; ++j )</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineNoCov">          0 :         rRightHandSideVector[j]  += volume_acceleration[j] * nodal_mass;</span></a>
+<a name="273"><span class="lineNum">     273 </span>            : </a>
+<a name="274"><span class="lineNum">     274 </span>            :     // Compute and add internal forces</a>
+<a name="275"><span class="lineNum">     275 </span>            :     const array_1d&lt;double, 3 &gt;&amp; nodal_stiffness = rconst_this.GetValue(NODAL_DISPLACEMENT_STIFFNESS);</a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :     for ( unsigned int j = 0; j &lt; dimension; ++j )</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :         rRightHandSideVector[j]  -= nodal_stiffness[j] * current_displacement[j];</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="279"><span class="lineNum">     279 </span>            : </a>
+<a name="280"><span class="lineNum">     280 </span>            : //***********************************************************************************</a>
+<a name="281"><span class="lineNum">     281 </span>            : //***********************************************************************************</a>
+<a name="282"><span class="lineNum">     282 </span>            : </a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::CalculateLeftHandSide( MatrixType&amp; rLeftHandSideMatrix, const ProcessInfo&amp; rCurrentProcessInfo )</span></a>
+<a name="284"><span class="lineNum">     284 </span>            : {</a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span>            :     // Resizing as needed the LHS</a>
+<a name="288"><span class="lineNum">     288 </span>            :     const unsigned int system_size = dimension;</a>
+<a name="289"><span class="lineNum">     289 </span>            : </a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :     if ( rLeftHandSideMatrix.size1() != system_size )</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :         rLeftHandSideMatrix.resize( system_size, system_size, false );</span></a>
+<a name="292"><span class="lineNum">     292 </span>            : </a>
+<a name="293"><span class="lineNum">     293 </span>            :     noalias( rLeftHandSideMatrix ) = ZeroMatrix( system_size, system_size ); //resetting LHS</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span>            :     // We get the reference</a>
+<a name="296"><span class="lineNum">     296 </span>            :     const auto&amp; rconst_this = *this;</a>
+<a name="297"><span class="lineNum">     297 </span>            : </a>
+<a name="298"><span class="lineNum">     298 </span>            :     // We add the nodal stiffness</a>
+<a name="299"><span class="lineNum">     299 </span>            :     const array_1d&lt;double, 3 &gt;&amp; nodal_stiffness = rconst_this.GetValue(NODAL_DISPLACEMENT_STIFFNESS);</a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :     for ( unsigned int j = 0; j &lt; dimension; ++j )</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineNoCov">          0 :         rLeftHandSideMatrix(j, j) += nodal_stiffness[j];</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span>            : //*************************COMPUTE DELTA POSITION*************************************</a>
+<a name="305"><span class="lineNum">     305 </span>            : //************************************************************************************</a>
+<a name="306"><span class="lineNum">     306 </span>            : </a>
+<a name="307"><span class="lineNum">     307 </span>            : </a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 : Matrix&amp; NodalConcentratedElement::CalculateDeltaPosition(Matrix &amp; rDeltaPosition)</span></a>
+<a name="309"><span class="lineNum">     309 </span>            : {</a>
+<a name="310"><span class="lineNum">     310 </span>            :     KRATOS_TRY;</a>
+<a name="311"><span class="lineNum">     311 </span>            : </a>
+<a name="312"><span class="lineNum">     312 </span>            :     //KRATOS NODAL CURRENT POSITION (X = X0 + DISPLACEMENT_X) IS ALWAYS COMPUTED</a>
+<a name="313"><span class="lineNum">     313 </span>            :     GeometryType&amp; geom = GetGeometry();</a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineNoCov">          0 :     const unsigned int dimension = geom.WorkingSpaceDimension();</span></a>
+<a name="315"><span class="lineNum">     315 </span>            : </a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :     rDeltaPosition = ZeroMatrix( 1 , dimension);</span></a>
+<a name="317"><span class="lineNum">     317 </span>            : </a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :     rDeltaPosition(0, 0) = GetGeometry()[0].X() - GetGeometry()[0].X0();</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :     rDeltaPosition(0, 1) = GetGeometry()[0].Y() - GetGeometry()[0].Y0();</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :     if(dimension == 3)</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :         rDeltaPosition(0, 2) = GetGeometry()[0].Z() - GetGeometry()[0].Z0();</span></a>
+<a name="322"><span class="lineNum">     322 </span>            : </a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :     return rDeltaPosition;</span></a>
+<a name="324"><span class="lineNum">     324 </span>            : </a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :     KRATOS_CATCH( &quot;&quot; );</span></a>
+<a name="326"><span class="lineNum">     326 </span>            : }</a>
+<a name="327"><span class="lineNum">     327 </span>            : </a>
+<a name="328"><span class="lineNum">     328 </span>            : //************************************************************************************</a>
+<a name="329"><span class="lineNum">     329 </span>            : //************************************************************************************</a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::CalculateMassMatrix( MatrixType&amp; rMassMatrix, const ProcessInfo&amp; rCurrentProcessInfo )</span></a>
+<a name="332"><span class="lineNum">     332 </span>            : {</a>
+<a name="333"><span class="lineNum">     333 </span>            :     KRATOS_TRY</a>
+<a name="334"><span class="lineNum">     334 </span>            : </a>
+<a name="335"><span class="lineNum">     335 </span>            :     //lumped</a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="337"><span class="lineNum">     337 </span>            :     unsigned int system_size = dimension;</a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :     if ( rMassMatrix.size1() != system_size )</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :         rMassMatrix.resize( system_size, system_size, false );</span></a>
+<a name="341"><span class="lineNum">     341 </span>            : </a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :     rMassMatrix = ZeroMatrix( system_size, system_size );</span></a>
+<a name="343"><span class="lineNum">     343 </span>            : </a>
+<a name="344"><span class="lineNum">     344 </span>            :     // We get the reference</a>
+<a name="345"><span class="lineNum">     345 </span>            :     const auto&amp; rconst_this = *this;</a>
+<a name="346"><span class="lineNum">     346 </span>            : </a>
+<a name="347"><span class="lineNum">     347 </span>            :     // Get the nodal mass</a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineNoCov">          0 :     const double nodal_mass = rconst_this.GetValue(NODAL_MASS);</span></a>
+<a name="349"><span class="lineNum">     349 </span>            : </a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :     for ( unsigned int j = 0; j &lt; dimension; ++j )</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :         rMassMatrix( j, j ) = nodal_mass;</span></a>
+<a name="352"><span class="lineNum">     352 </span>            : </a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :     KRATOS_CATCH( &quot;&quot; );</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="355"><span class="lineNum">     355 </span>            : </a>
+<a name="356"><span class="lineNum">     356 </span>            : //************************************************************************************</a>
+<a name="357"><span class="lineNum">     357 </span>            : //************************************************************************************</a>
+<a name="358"><span class="lineNum">     358 </span>            : </a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::CalculateDampingMatrix(</span></a>
+<a name="360"><span class="lineNum">     360 </span>            :     MatrixType&amp; rDampingMatrix,</a>
+<a name="361"><span class="lineNum">     361 </span>            :     const ProcessInfo&amp; rCurrentProcessInfo</a>
+<a name="362"><span class="lineNum">     362 </span>            :     )</a>
+<a name="363"><span class="lineNum">     363 </span>            : {</a>
+<a name="364"><span class="lineNum">     364 </span>            :     KRATOS_TRY;</a>
+<a name="365"><span class="lineNum">     365 </span>            : </a>
+<a name="366"><span class="lineNum">     366 </span>            :     //0.-Initialize the DampingMatrix:</a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineNoCov">          0 :     const unsigned int dimension = GetGeometry().WorkingSpaceDimension();</span></a>
+<a name="368"><span class="lineNum">     368 </span>            : </a>
+<a name="369"><span class="lineNum">     369 </span>            :     // Resizing as needed the LHS</a>
+<a name="370"><span class="lineNum">     370 </span>            :     const unsigned int system_size = dimension;</a>
+<a name="371"><span class="lineNum">     371 </span>            : </a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :     rDampingMatrix = ZeroMatrix( system_size, system_size );</span></a>
+<a name="373"><span class="lineNum">     373 </span>            : </a>
+<a name="374"><span class="lineNum">     374 </span>            :     //Check, if Rayleigh damping is available; use nodal damping, if not</a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineNoCov">          0 :     if( mUseRayleighDamping ) {</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineNoCov">          0 :         StructuralMechanicsElementUtilities::CalculateRayleighDampingMatrix(</span></a>
+<a name="377"><span class="lineNum">     377 </span>            :             *this,</a>
+<a name="378"><span class="lineNum">     378 </span>            :             rDampingMatrix,</a>
+<a name="379"><span class="lineNum">     379 </span>            :             rCurrentProcessInfo,</a>
+<a name="380"><span class="lineNum">     380 </span>            :             system_size);</a>
+<a name="381"><span class="lineNum">     381 </span>            :     } else {</a>
+<a name="382"><span class="lineNum">     382 </span>            :         const auto&amp; rconst_this = *this;</a>
+<a name="383"><span class="lineNum">     383 </span>            :         const array_1d&lt;double, 3 &gt;&amp; nodal_damping_ratio = rconst_this.GetValue(NODAL_DAMPING_RATIO);</a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 :         for ( unsigned int j = 0; j &lt; dimension; ++j ) {</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :             rDampingMatrix(j, j) += nodal_damping_ratio[j];</span></a>
+<a name="386"><span class="lineNum">     386 </span>            :         }</a>
+<a name="387"><span class="lineNum">     387 </span>            :     }</a>
+<a name="388"><span class="lineNum">     388 </span>            : </a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineNoCov">          0 :     KRATOS_CATCH( &quot;&quot; );</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="391"><span class="lineNum">     391 </span>            : </a>
+<a name="392"><span class="lineNum">     392 </span>            : </a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::AddExplicitContribution(</span></a>
+<a name="394"><span class="lineNum">     394 </span>            :     const VectorType&amp; rRHSVector,</a>
+<a name="395"><span class="lineNum">     395 </span>            :     const Variable&lt;VectorType&gt;&amp; rRHSVariable,</a>
+<a name="396"><span class="lineNum">     396 </span>            :     const Variable&lt;double &gt;&amp; rDestinationVariable,</a>
+<a name="397"><span class="lineNum">     397 </span>            :     const ProcessInfo&amp; rCurrentProcessInfo)</a>
+<a name="398"><span class="lineNum">     398 </span>            : {</a>
+<a name="399"><span class="lineNum">     399 </span>            :     KRATOS_TRY;</a>
+<a name="400"><span class="lineNum">     400 </span>            : </a>
+<a name="401"><span class="lineNum">     401 </span>            :     const auto&amp; rconst_this = *this;</a>
+<a name="402"><span class="lineNum">     402 </span>            : </a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 :     if (rDestinationVariable == NODAL_MASS) {</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :         double&amp; r_nodal_mass = GetGeometry()[0].GetValue(NODAL_MASS);</a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineNoCov">          0 :         AtomicAdd(r_nodal_mass, rconst_this.GetValue(NODAL_MASS));</span></a>
+<a name="406"><span class="lineNum">     406 </span>            :     }</a>
+<a name="407"><span class="lineNum">     407 </span>            : </a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :     KRATOS_CATCH(&quot;&quot;)</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="410"><span class="lineNum">     410 </span>            : </a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::AddExplicitContribution(</span></a>
+<a name="412"><span class="lineNum">     412 </span>            :     const VectorType&amp; rRHSVector, const Variable&lt;VectorType&gt;&amp; rRHSVariable,</a>
+<a name="413"><span class="lineNum">     413 </span>            :     const Variable&lt;array_1d&lt;double, 3&gt;&gt;&amp; rDestinationVariable,</a>
+<a name="414"><span class="lineNum">     414 </span>            :     const ProcessInfo&amp; rCurrentProcessInfo)</a>
+<a name="415"><span class="lineNum">     415 </span>            : {</a>
+<a name="416"><span class="lineNum">     416 </span>            :     KRATOS_TRY;</a>
+<a name="417"><span class="lineNum">     417 </span>            : </a>
+<a name="418"><span class="lineNum">     418 </span>            :     auto&amp; r_geom = GetGeometry();</a>
+<a name="419"><span class="lineNum">     419 </span>            :     const SizeType dimension = r_geom.WorkingSpaceDimension();</a>
+<a name="420"><span class="lineNum">     420 </span>            :     const SizeType number_of_nodes = r_geom.size();</a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :     const SizeType local_size = dimension*number_of_nodes;</span></a>
+<a name="422"><span class="lineNum">     422 </span>            :     const auto&amp; rconst_this = *this;</a>
+<a name="423"><span class="lineNum">     423 </span>            : </a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :     if (rRHSVariable == RESIDUAL_VECTOR &amp;&amp; rDestinationVariable == FORCE_RESIDUAL) {</span></a>
+<a name="425"><span class="lineNum">     425 </span>            : </a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineNoCov">          0 :         Vector damping_residual_contribution = ZeroVector(local_size);</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineNoCov">          0 :         Vector current_nodal_velocities = ZeroVector(local_size);</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineNoCov">          0 :         GetFirstDerivativesVector(current_nodal_velocities);</span></a>
+<a name="429"><span class="lineNum">     429 </span>            :         Matrix damping_matrix;</a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineNoCov">          0 :         CalculateDampingMatrix(damping_matrix, rCurrentProcessInfo);</span></a>
+<a name="431"><span class="lineNum">     431 </span>            :         // current residual contribution due to damping</a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineNoCov">          0 :         noalias(damping_residual_contribution) = prod(damping_matrix, current_nodal_velocities);</span></a>
+<a name="433"><span class="lineNum">     433 </span>            : </a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineNoCov">          0 :         for (SizeType i = 0; i &lt; number_of_nodes; ++i) {</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineNoCov">          0 :             SizeType index = dimension * i;</span></a>
+<a name="436"><span class="lineNum">     436 </span>            :             array_1d&lt;double, 3&gt;&amp; r_force_residual = GetGeometry()[i].FastGetSolutionStepValue(FORCE_RESIDUAL);</a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :             for (size_t j = 0; j &lt; dimension; ++j) {</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineNoCov">          0 :                 AtomicAdd(r_force_residual[j], (rRHSVector[index + j] - damping_residual_contribution[index + j]));</span></a>
+<a name="439"><span class="lineNum">     439 </span>            :             }</a>
+<a name="440"><span class="lineNum">     440 </span>            :         }</a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 :     } else if (rDestinationVariable == NODAL_INERTIA) {</span></a>
+<a name="442"><span class="lineNum">     442 </span>            :         double&amp; r_nodal_mass = GetGeometry()[0].GetValue(NODAL_MASS);</a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :         AtomicAdd(r_nodal_mass, rconst_this.GetValue(NODAL_MASS));</span></a>
+<a name="444"><span class="lineNum">     444 </span>            :         // no contribution for GetGeometry()[0].GetValue(NODAL_INERTIA);</a>
+<a name="445"><span class="lineNum">     445 </span>            :     }</a>
+<a name="446"><span class="lineNum">     446 </span>            : </a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 :     KRATOS_CATCH(&quot;&quot;)</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="449"><span class="lineNum">     449 </span>            : </a>
+<a name="450"><span class="lineNum">     450 </span>            : //************************************************************************************</a>
+<a name="451"><span class="lineNum">     451 </span>            : //************************************************************************************</a>
+<a name="452"><span class="lineNum">     452 </span>            : </a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineNoCov">          0 : int NodalConcentratedElement::Check( const ProcessInfo&amp; rCurrentProcessInfo ) const</span></a>
+<a name="454"><span class="lineNum">     454 </span>            : {</a>
+<a name="455"><span class="lineNum">     455 </span>            :     KRATOS_TRY</a>
+<a name="456"><span class="lineNum">     456 </span>            : </a>
+<a name="457"><span class="lineNum">     457 </span>            :     // Check that the element's nodes contain all required SolutionStepData and Degrees of freedom</a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 :     for ( std::size_t i = 0; i &lt; this-&gt;GetGeometry().size(); ++i ) {</span></a>
+<a name="459"><span class="lineNum">     459 </span>            :         const Node&lt;3&gt;&amp; rnode = this-&gt;GetGeometry()[i];</a>
+<a name="460"><span class="lineNum">     460 </span>            : </a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_VARIABLE_IN_NODAL_DATA(DISPLACEMENT,rnode)</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_VARIABLE_IN_NODAL_DATA(VOLUME_ACCELERATION,rnode)</span></a>
+<a name="463"><span class="lineNum">     463 </span>            : </a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_DOF_IN_NODE(DISPLACEMENT_X,rnode)</span></a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_DOF_IN_NODE(DISPLACEMENT_Y,rnode)</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :         KRATOS_CHECK_DOF_IN_NODE(DISPLACEMENT_Z,rnode)</span></a>
+<a name="467"><span class="lineNum">     467 </span>            :     }</a>
+<a name="468"><span class="lineNum">     468 </span>            : </a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :     return 0;</span></a>
+<a name="470"><span class="lineNum">     470 </span>            : </a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :     KRATOS_CATCH( &quot;Problem in the Check in the NodalConcentratedElement&quot; )</span></a>
+<a name="472"><span class="lineNum">     472 </span>            : }</a>
+<a name="473"><span class="lineNum">     473 </span>            : </a>
+<a name="474"><span class="lineNum">     474 </span>            : </a>
+<a name="475"><span class="lineNum">     475 </span>            : //************************************************************************************</a>
+<a name="476"><span class="lineNum">     476 </span>            : //************************************************************************************</a>
+<a name="477"><span class="lineNum">     477 </span>            : </a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::save( Serializer&amp; rSerializer ) const</span></a>
+<a name="479"><span class="lineNum">     479 </span>            : {</a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :     KRATOS_SERIALIZE_SAVE_BASE_CLASS( rSerializer, Element )</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="482"><span class="lineNum">     482 </span>            : </a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineNoCov">          0 : void NodalConcentratedElement::load( Serializer&amp; rSerializer )</span></a>
+<a name="484"><span class="lineNum">     484 </span>            : {</a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineNoCov">          0 :     KRATOS_SERIALIZE_LOAD_BASE_CLASS( rSerializer, Element )</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="487"><span class="lineNum">     487 </span>            : </a>
+<a name="488"><span class="lineNum">     488 </span>            : } // Namespace Kratos</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
