@@ -1,0 +1,21 @@
+{
+   "properties": [{
+      "model_part_name":         "PorousDomain.Beam1",
+      "properties_id":           1,
+      "Material": {
+          "constitutive_law": {
+              "name"             :  "KratosMultiphysics.StructuralMechanicsApplication.BeamConstitutiveLaw" 
+          },
+          "Variables": {
+              "YOUNG_MODULUS"     :  1e9,
+              "POISSON_RATIO"     :  0,
+              "DENSITY"           :  7.850,
+              "CROSS_AREA"        :  0.01,
+              "I22"               :  1.0,
+              "I33"               :  1e-6,
+              "TORSIONAL_INERTIA" :  1.0
+         },
+         "Tables": {}
+      }
+   }]
+}
