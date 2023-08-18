@@ -1,0 +1,677 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /root/Kratos/external_libraries/amgcl/detail/qr.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">root/Kratos/external_libraries/amgcl/detail</a> - qr.hpp<span style="font-size: 80%;"> (source / <a href="qr.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">86</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 14:35:15</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef AMGCL_DETAIL_QR_HPP</a>
+<a name="2"><span class="lineNum">       2 </span>            : #define AMGCL_DETAIL_QR_HPP</a>
+<a name="3"><span class="lineNum">       3 </span>            : </a>
+<a name="4"><span class="lineNum">       4 </span>            : /*</a>
+<a name="5"><span class="lineNum">       5 </span>            : The MIT License</a>
+<a name="6"><span class="lineNum">       6 </span>            : </a>
+<a name="7"><span class="lineNum">       7 </span>            : Copyright (c) 2012-2020 Denis Demidov &lt;dennis.demidov@gmail.com&gt;</a>
+<a name="8"><span class="lineNum">       8 </span>            : </a>
+<a name="9"><span class="lineNum">       9 </span>            : Permission is hereby granted, free of charge, to any person obtaining a copy</a>
+<a name="10"><span class="lineNum">      10 </span>            : of this software and associated documentation files (the &quot;Software&quot;), to deal</a>
+<a name="11"><span class="lineNum">      11 </span>            : in the Software without restriction, including without limitation the rights</a>
+<a name="12"><span class="lineNum">      12 </span>            : to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</a>
+<a name="13"><span class="lineNum">      13 </span>            : copies of the Software, and to permit persons to whom the Software is</a>
+<a name="14"><span class="lineNum">      14 </span>            : furnished to do so, subject to the following conditions:</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            : The above copyright notice and this permission notice shall be included in</a>
+<a name="17"><span class="lineNum">      17 </span>            : all copies or substantial portions of the Software.</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span>            : THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</a>
+<a name="20"><span class="lineNum">      20 </span>            : IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</a>
+<a name="21"><span class="lineNum">      21 </span>            : FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE</a>
+<a name="22"><span class="lineNum">      22 </span>            : AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</a>
+<a name="23"><span class="lineNum">      23 </span>            : LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</a>
+<a name="24"><span class="lineNum">      24 </span>            : OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</a>
+<a name="25"><span class="lineNum">      25 </span>            : THE SOFTWARE.</a>
+<a name="26"><span class="lineNum">      26 </span>            : */</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : /**</a>
+<a name="29"><span class="lineNum">      29 </span>            :  * \file   amgcl/detail/qr.hpp</a>
+<a name="30"><span class="lineNum">      30 </span>            :  * \author Denis Demidov &lt;dennis.demidov@gmail.com&gt;</a>
+<a name="31"><span class="lineNum">      31 </span>            :  * \brief  QR decomposition.</a>
+<a name="32"><span class="lineNum">      32 </span>            :  *</a>
+<a name="33"><span class="lineNum">      33 </span>            :  * This is a port of ZGEQR2 procedure from LAPACK and its dependencies.</a>
+<a name="34"><span class="lineNum">      34 </span>            :  * The original code included the following copyright notice:</a>
+<a name="35"><span class="lineNum">      35 </span>            :  * \verbatim</a>
+<a name="36"><span class="lineNum">      36 </span>            :    Copyright (c) 1992-2013 The University of Tennessee and The University</a>
+<a name="37"><span class="lineNum">      37 </span>            :                            of Tennessee Research Foundation.  All rights</a>
+<a name="38"><span class="lineNum">      38 </span>            :                            reserved.</a>
+<a name="39"><span class="lineNum">      39 </span>            :    Copyright (c) 2000-2013 The University of California Berkeley. All</a>
+<a name="40"><span class="lineNum">      40 </span>            :                            rights reserved.</a>
+<a name="41"><span class="lineNum">      41 </span>            :    Copyright (c) 2006-2013 The University of Colorado Denver.  All rights</a>
+<a name="42"><span class="lineNum">      42 </span>            :                            reserved.</a>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<a name="44"><span class="lineNum">      44 </span>            :    $COPYRIGHT$</a>
+<a name="45"><span class="lineNum">      45 </span>            : </a>
+<a name="46"><span class="lineNum">      46 </span>            :    Additional copyrights may follow</a>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<a name="48"><span class="lineNum">      48 </span>            :    $HEADER$</a>
+<a name="49"><span class="lineNum">      49 </span>            : </a>
+<a name="50"><span class="lineNum">      50 </span>            :    Redistribution and use in source and binary forms, with or without</a>
+<a name="51"><span class="lineNum">      51 </span>            :    modification, are permitted provided that the following conditions are</a>
+<a name="52"><span class="lineNum">      52 </span>            :    met:</a>
+<a name="53"><span class="lineNum">      53 </span>            : </a>
+<a name="54"><span class="lineNum">      54 </span>            :    - Redistributions of source code must retain the above copyright</a>
+<a name="55"><span class="lineNum">      55 </span>            :      notice, this list of conditions and the following disclaimer.</a>
+<a name="56"><span class="lineNum">      56 </span>            : </a>
+<a name="57"><span class="lineNum">      57 </span>            :    - Redistributions in binary form must reproduce the above copyright</a>
+<a name="58"><span class="lineNum">      58 </span>            :      notice, this list of conditions and the following disclaimer listed</a>
+<a name="59"><span class="lineNum">      59 </span>            :      in this license in the documentation and/or other materials</a>
+<a name="60"><span class="lineNum">      60 </span>            :      provided with the distribution.</a>
+<a name="61"><span class="lineNum">      61 </span>            : </a>
+<a name="62"><span class="lineNum">      62 </span>            :    - Neither the name of the copyright holders nor the names of its</a>
+<a name="63"><span class="lineNum">      63 </span>            :      contributors may be used to endorse or promote products derived from</a>
+<a name="64"><span class="lineNum">      64 </span>            :      this software without specific prior written permission.</a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            :    The copyright holders provide no reassurances that the source code</a>
+<a name="67"><span class="lineNum">      67 </span>            :    provided does not infringe any patent, copyright, or any other</a>
+<a name="68"><span class="lineNum">      68 </span>            :    intellectual property rights of third parties.  The copyright holders</a>
+<a name="69"><span class="lineNum">      69 </span>            :    disclaim any liability to any recipient for claims brought against</a>
+<a name="70"><span class="lineNum">      70 </span>            :    recipient by any third party for infringement of that parties</a>
+<a name="71"><span class="lineNum">      71 </span>            :    intellectual property rights.</a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span>            :    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</a>
+<a name="74"><span class="lineNum">      74 </span>            :    &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</a>
+<a name="75"><span class="lineNum">      75 </span>            :    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</a>
+<a name="76"><span class="lineNum">      76 </span>            :    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</a>
+<a name="77"><span class="lineNum">      77 </span>            :    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</a>
+<a name="78"><span class="lineNum">      78 </span>            :    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</a>
+<a name="79"><span class="lineNum">      79 </span>            :    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</a>
+<a name="80"><span class="lineNum">      80 </span>            :    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</a>
+<a name="81"><span class="lineNum">      81 </span>            :    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</a>
+<a name="82"><span class="lineNum">      82 </span>            :    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</a>
+<a name="83"><span class="lineNum">      83 </span>            :    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</a>
+<a name="84"><span class="lineNum">      84 </span>            :  * \endverbatim</a>
+<a name="85"><span class="lineNum">      85 </span>            :  */</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span>            : #include &lt;vector&gt;</a>
+<a name="88"><span class="lineNum">      88 </span>            : #include &lt;complex&gt;</a>
+<a name="89"><span class="lineNum">      89 </span>            : #include &lt;cmath&gt;</a>
+<a name="90"><span class="lineNum">      90 </span>            : </a>
+<a name="91"><span class="lineNum">      91 </span>            : #include &lt;amgcl/util.hpp&gt;</a>
+<a name="92"><span class="lineNum">      92 </span>            : #include &lt;amgcl/value_type/interface.hpp&gt;</a>
+<a name="93"><span class="lineNum">      93 </span>            : </a>
+<a name="94"><span class="lineNum">      94 </span>            : namespace amgcl {</a>
+<a name="95"><span class="lineNum">      95 </span>            : namespace detail {</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span>            : enum storage_order {</a>
+<a name="98"><span class="lineNum">      98 </span>            :     row_major,</a>
+<a name="99"><span class="lineNum">      99 </span>            :     col_major</a>
+<a name="100"><span class="lineNum">     100 </span>            : };</a>
+<a name="101"><span class="lineNum">     101 </span>            : </a>
+<a name="102"><span class="lineNum">     102 </span>            : template &lt;class T&gt;</a>
+<a name="103"><span class="lineNum">     103 </span>            : inline T real(T a) {</a>
+<a name="104"><span class="lineNum">     104 </span>            :     return a;</a>
+<a name="105"><span class="lineNum">     105 </span>            : }</a>
+<a name="106"><span class="lineNum">     106 </span>            : </a>
+<a name="107"><span class="lineNum">     107 </span>            : template &lt;class T&gt;</a>
+<a name="108"><span class="lineNum">     108 </span>            : inline T real(std::complex&lt;T&gt; a) {</a>
+<a name="109"><span class="lineNum">     109 </span>            :     return std::real(a);</a>
+<a name="110"><span class="lineNum">     110 </span>            : }</a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span>            : /// In-place QR factorization.</a>
+<a name="113"><span class="lineNum">     113 </span>            : template &lt;typename value_type, class Enable = void&gt;</a>
+<a name="114"><span class="lineNum">     114 </span>            : class QR {</a>
+<a name="115"><span class="lineNum">     115 </span>            :     public:</a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :         QR() : m(0), n(0), row_stride(0), col_stride(0), r(NULL) {}</span></a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :         void compute(int rows, int cols, int row_stride, int col_stride, value_type *A) {</span></a>
+<a name="119"><span class="lineNum">     119 </span>            :             /*</a>
+<a name="120"><span class="lineNum">     120 </span>            :              *  Ported from ZGEQR2</a>
+<a name="121"><span class="lineNum">     121 </span>            :              *  ==================</a>
+<a name="122"><span class="lineNum">     122 </span>            :              *</a>
+<a name="123"><span class="lineNum">     123 </span>            :              *  Computes a QR factorization of an matrix A:</a>
+<a name="124"><span class="lineNum">     124 </span>            :              *  A = Q * R.</a>
+<a name="125"><span class="lineNum">     125 </span>            :              *</a>
+<a name="126"><span class="lineNum">     126 </span>            :              *  Arguments</a>
+<a name="127"><span class="lineNum">     127 </span>            :              *  =========</a>
+<a name="128"><span class="lineNum">     128 </span>            :              *</a>
+<a name="129"><span class="lineNum">     129 </span>            :              *  rows    The number of rows of the matrix A.</a>
+<a name="130"><span class="lineNum">     130 </span>            :              *  cols    The number of columns of the matrix A.</a>
+<a name="131"><span class="lineNum">     131 </span>            :              *</a>
+<a name="132"><span class="lineNum">     132 </span>            :              *  A       On entry, the rows by cols matrix A.</a>
+<a name="133"><span class="lineNum">     133 </span>            :              *          On exit, the elements on and above the diagonal of the</a>
+<a name="134"><span class="lineNum">     134 </span>            :              *          array contain the min(m,n) by n upper trapezoidal</a>
+<a name="135"><span class="lineNum">     135 </span>            :              *          matrix R (R is upper triangular if m &gt;= n); the</a>
+<a name="136"><span class="lineNum">     136 </span>            :              *          elements below the diagonal, with the array TAU,</a>
+<a name="137"><span class="lineNum">     137 </span>            :              *          represent the unitary matrix Q as a product of</a>
+<a name="138"><span class="lineNum">     138 </span>            :              *          elementary reflectors (see Further Details).</a>
+<a name="139"><span class="lineNum">     139 </span>            :              *</a>
+<a name="140"><span class="lineNum">     140 </span>            :              *  Further Details</a>
+<a name="141"><span class="lineNum">     141 </span>            :              *  ===============</a>
+<a name="142"><span class="lineNum">     142 </span>            :              *</a>
+<a name="143"><span class="lineNum">     143 </span>            :              *  The matrix Q is represented as a product of elementary reflectors</a>
+<a name="144"><span class="lineNum">     144 </span>            :              *</a>
+<a name="145"><span class="lineNum">     145 </span>            :              *     Q = H(1) H(2) . . . H(k), where k = min(m,n).</a>
+<a name="146"><span class="lineNum">     146 </span>            :              *</a>
+<a name="147"><span class="lineNum">     147 </span>            :              *  Each H(i) has the form</a>
+<a name="148"><span class="lineNum">     148 </span>            :              *</a>
+<a name="149"><span class="lineNum">     149 </span>            :              *     H(i) = I - tau * v * v'</a>
+<a name="150"><span class="lineNum">     150 </span>            :              *</a>
+<a name="151"><span class="lineNum">     151 </span>            :              *  where tau is a value_type scalar, and v is a value_type vector</a>
+<a name="152"><span class="lineNum">     152 </span>            :              *  with v[0:i) = 0 and v[i] = 1; v[i:m) is stored on exit in</a>
+<a name="153"><span class="lineNum">     153 </span>            :              *  A[i+1:m)[i], and tau in tau[i].</a>
+<a name="154"><span class="lineNum">     154 </span>            :              *  ==============================================================</a>
+<a name="155"><span class="lineNum">     155 </span>            :              */</a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :             const int m = rows;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :             const int n = cols;</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :             const int k = std::min(m, n);</span></a>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :             if (k &lt;= 0) return;</span></a>
+<a name="161"><span class="lineNum">     161 </span>            : </a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :             r = A;</span></a>
+<a name="163"><span class="lineNum">     163 </span>            : </a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :             tau.resize(k);</span></a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :             for(int i = 0, ii = 0; i &lt; k; ++i, ii += row_stride + col_stride) {</span></a>
+<a name="167"><span class="lineNum">     167 </span>            :                 // Generate elementary reflector H(i) to annihilate A[i+1:m)[i]</a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :                 tau[i] = gen_reflector(m-i, A[ii], A + ii + row_stride, row_stride);</span></a>
+<a name="169"><span class="lineNum">     169 </span>            : </a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :                 if (i+1 &lt; n) {</span></a>
+<a name="171"><span class="lineNum">     171 </span>            :                     // Apply H(i)' to A[i:m)[i+1:n) from the left</a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineNoCov">          0 :                     apply_reflector(m-i, n-i-1, A + ii, row_stride, math::adjoint(tau[i]),</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineNoCov">          0 :                             A + ii + col_stride, row_stride, col_stride);</span></a>
+<a name="174"><span class="lineNum">     174 </span>            :                 }</a>
+<a name="175"><span class="lineNum">     175 </span>            :             }</a>
+<a name="176"><span class="lineNum">     176 </span>            :         }</a>
+<a name="177"><span class="lineNum">     177 </span>            : </a>
+<a name="178"><span class="lineNum">     178 </span>            :         void compute(int rows, int cols, value_type *A, storage_order order = row_major) {</a>
+<a name="179"><span class="lineNum">     179 </span>            :             int row_stride = (order == row_major ? cols : 1);</a>
+<a name="180"><span class="lineNum">     180 </span>            :             int col_stride = (order == row_major ? 1 : rows);</a>
+<a name="181"><span class="lineNum">     181 </span>            :             compute(rows, cols, row_stride, col_stride, A);</a>
+<a name="182"><span class="lineNum">     182 </span>            :         }</a>
+<a name="183"><span class="lineNum">     183 </span>            : </a>
+<a name="184"><span class="lineNum">     184 </span>            :         // Computes Q explicitly.</a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :         void factorize(int rows, int cols, int row_stride, int col_stride, value_type *A) {</span></a>
+<a name="186"><span class="lineNum">     186 </span>            :             /*</a>
+<a name="187"><span class="lineNum">     187 </span>            :              *  Ported from ZUNG2R</a>
+<a name="188"><span class="lineNum">     188 </span>            :              *  ==================</a>
+<a name="189"><span class="lineNum">     189 </span>            :              *</a>
+<a name="190"><span class="lineNum">     190 </span>            :              *  Generates an m by n matrix Q with orthonormal columns, which is</a>
+<a name="191"><span class="lineNum">     191 </span>            :              *  defined as the first n columns of a product of k elementary</a>
+<a name="192"><span class="lineNum">     192 </span>            :              *  reflectors of order m</a>
+<a name="193"><span class="lineNum">     193 </span>            :              *</a>
+<a name="194"><span class="lineNum">     194 </span>            :              *        Q  =  H(1) H(2) . . . H(k)</a>
+<a name="195"><span class="lineNum">     195 </span>            :              *</a>
+<a name="196"><span class="lineNum">     196 </span>            :              *  as returned by compute() [ZGEQR2].</a>
+<a name="197"><span class="lineNum">     197 </span>            :              *</a>
+<a name="198"><span class="lineNum">     198 </span>            :              *  ==============================================================</a>
+<a name="199"><span class="lineNum">     199 </span>            :              */</a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :             compute(rows, cols, row_stride, col_stride, A);</span></a>
+<a name="201"><span class="lineNum">     201 </span>            : </a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :             m = rows;</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineNoCov">          0 :             n = cols;</span></a>
+<a name="204"><span class="lineNum">     204 </span>            : </a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :             int k = std::min(m, n);</span></a>
+<a name="206"><span class="lineNum">     206 </span>            : </a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineNoCov">          0 :             this-&gt;row_stride = row_stride;</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :             this-&gt;col_stride = col_stride;</span></a>
+<a name="209"><span class="lineNum">     209 </span>            : </a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :             q.resize(m * n);</span></a>
+<a name="211"><span class="lineNum">     211 </span>            : </a>
+<a name="212"><span class="lineNum">     212 </span>            :             // Initialise columns k+1:n to zero.</a>
+<a name="213"><span class="lineNum">     213 </span>            :             // [In the original code these were initialized to the columns of</a>
+<a name="214"><span class="lineNum">     214 </span>            :             // the unit matrix, but since k = min(n,m), the main diagonal is</a>
+<a name="215"><span class="lineNum">     215 </span>            :             // never seen here].</a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :             for(int i = 0, ia = 0; i &lt; m; ++i, ia += row_stride)</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :                 for(int j = k, ja = k * col_stride; j &lt; n; ++j, ja += col_stride)</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :                     q[ia + ja] = (i == j ? math::identity&lt;value_type&gt;() : math::zero&lt;value_type&gt;());</span></a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :             for(int i = k-1, ic = i * col_stride, ii = i*(row_stride + col_stride);</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :                     i &gt;= 0; --i, ic -= col_stride, ii -= row_stride + col_stride)</span></a>
+<a name="222"><span class="lineNum">     222 </span>            :             {</a>
+<a name="223"><span class="lineNum">     223 </span>            :                 // Apply H(i) to A[i:m)[i+1:n) from the left</a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :                 if (i &lt; n-1)</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :                     apply_reflector(m-i, n-i-1, r+ii, row_stride, tau[i], &amp;q[ii+col_stride], row_stride, col_stride);</span></a>
+<a name="226"><span class="lineNum">     226 </span>            : </a>
+<a name="227"><span class="lineNum">     227 </span>            :                 // Copy i-th reflector (including zeros and unit diagonal)</a>
+<a name="228"><span class="lineNum">     228 </span>            :                 // to the column of Q to be processed next</a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :                 for(int j = 0, jr = 0; j &lt; i; ++j, jr += row_stride)</span></a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :                     q[jr+ic] = math::zero&lt;value_type&gt;();</span></a>
+<a name="231"><span class="lineNum">     231 </span>            : </a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :                 q[ii] = math::identity&lt;value_type&gt;() - tau[i];</span></a>
+<a name="233"><span class="lineNum">     233 </span>            : </a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :                 for(int j = i + 1, jr=j*row_stride; j &lt; m; ++j, jr += row_stride)</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :                     q[jr + ic] = -tau[i] * r[jr + ic];</span></a>
+<a name="236"><span class="lineNum">     236 </span>            :             }</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         }</span></a>
+<a name="238"><span class="lineNum">     238 </span>            : </a>
+<a name="239"><span class="lineNum">     239 </span>            :         void factorize(int rows, int cols, value_type *A, storage_order order = row_major) {</a>
+<a name="240"><span class="lineNum">     240 </span>            :             int row_stride = (order == row_major ? cols : 1);</a>
+<a name="241"><span class="lineNum">     241 </span>            :             int col_stride = (order == row_major ? 1 : rows);</a>
+<a name="242"><span class="lineNum">     242 </span>            :             factorize(rows, cols, row_stride, col_stride, A);</a>
+<a name="243"><span class="lineNum">     243 </span>            :         }</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span>            :         // Returns element of the matrix R.</a>
+<a name="246"><span class="lineNum">     246 </span>            :         value_type R(int i, int j) const {</a>
+<a name="247"><span class="lineNum">     247 </span>            :             if (j &lt; i) return math::zero&lt;value_type&gt;();</a>
+<a name="248"><span class="lineNum">     248 </span>            :             return r[i*row_stride + j*col_stride];</a>
+<a name="249"><span class="lineNum">     249 </span>            :         }</a>
+<a name="250"><span class="lineNum">     250 </span>            : </a>
+<a name="251"><span class="lineNum">     251 </span>            :         // Returns element of the matrix Q.</a>
+<a name="252"><span class="lineNum">     252 </span>            :         value_type Q(int i, int j) const {</a>
+<a name="253"><span class="lineNum">     253 </span>            :             return q[i*row_stride + j*col_stride];</a>
+<a name="254"><span class="lineNum">     254 </span>            :         }</a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span>            :         // Solves the system Q R x = f</a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineNoCov">          0 :         void solve(</span></a>
+<a name="258"><span class="lineNum">     258 </span>            :                 int rows, int cols, int row_stride, int col_stride, value_type *A,</a>
+<a name="259"><span class="lineNum">     259 </span>            :                 const value_type *b, value_type *x, bool computed = false)</a>
+<a name="260"><span class="lineNum">     260 </span>            :         {</a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :             f.resize(rows);</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :             std::copy(b, b + rows, f.begin());</span></a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :             if (rows &gt;= cols) {</span></a>
+<a name="265"><span class="lineNum">     265 </span>            :                 // We are solving overdetermined (tall) system Ax = f by</a>
+<a name="266"><span class="lineNum">     266 </span>            :                 // writing the matrix A as A = QR and solving for x as</a>
+<a name="267"><span class="lineNum">     267 </span>            :                 // x = R^-1 Q^-1 f = R^-1 Q^T f.</a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :                 if (!computed) compute(rows, cols, row_stride, col_stride, A);</span></a>
+<a name="269"><span class="lineNum">     269 </span>            : </a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :                 for(int i = 0, ii = 0; i &lt; cols; ++i, ii += row_stride + col_stride)</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineNoCov">          0 :                     apply_reflector(rows-i, 1, r+ii, row_stride, math::adjoint(tau[i]), &amp;f[i], 1, 1);</span></a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span>            :                 std::copy(f.begin(), f.begin()+cols, x);</a>
+<a name="274"><span class="lineNum">     274 </span>            : </a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :                 for(int i = cols, ia = (cols-1) * col_stride; i --&gt; 0; ia -= col_stride) {</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :                     value_type rii = r[i*(row_stride+col_stride)];</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineNoCov">          0 :                     if (math::is_zero(rii)) continue;</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :                     x[i] = math::inverse(rii) * x[i];</span></a>
+<a name="279"><span class="lineNum">     279 </span>            : </a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :                     for(int j = 0, ja = 0; j &lt; i; ++j, ja += row_stride)</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineNoCov">          0 :                         x[j] -= r[ia + ja] * x[i];</span></a>
+<a name="282"><span class="lineNum">     282 </span>            :                 }</a>
+<a name="283"><span class="lineNum">     283 </span>            :             } else {</a>
+<a name="284"><span class="lineNum">     284 </span>            :                 // We are solving underdetermined (wide) system Ax = f by</a>
+<a name="285"><span class="lineNum">     285 </span>            :                 // writing the matrix A^T as A^T = QR and solving for x as</a>
+<a name="286"><span class="lineNum">     286 </span>            :                 // x = Q^-T R^-T f = Q R^-T f.</a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineNoCov">          0 :                 if (!computed) {</span></a>
+<a name="288"><span class="lineNum">     288 </span>            :                     for(int i = 0, n = cols * rows; i &lt; n; ++i)</a>
+<a name="289"><span class="lineNum">     289 </span>            :                         A[i] = math::adjoint(A[i]);</a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :                     compute(cols, rows, col_stride, row_stride, A);</span></a>
+<a name="291"><span class="lineNum">     291 </span>            :                 }</a>
+<a name="292"><span class="lineNum">     292 </span>            : </a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :                 for(int i = 0, ia = 0; i &lt; rows; ++i, ia += col_stride) {</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :                     value_type rii = math::adjoint(r[i*(row_stride+col_stride)]);</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :                     if (math::is_zero(rii)) continue;</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :                     f[i] = math::inverse(rii) * f[i];</span></a>
+<a name="297"><span class="lineNum">     297 </span>            : </a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :                     for(int j = i+1, ja = j * row_stride; j &lt; rows; ++j, ja += row_stride)</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :                         f[j] -= math::adjoint(r[ia + ja]) * f[i];</span></a>
+<a name="300"><span class="lineNum">     300 </span>            :                 }</a>
+<a name="301"><span class="lineNum">     301 </span>            : </a>
+<a name="302"><span class="lineNum">     302 </span>            :                 std::copy(f.begin(), f.end(), x);</a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :                 std::fill(x+rows, x+cols, math::zero&lt;value_type&gt;());</span></a>
+<a name="304"><span class="lineNum">     304 </span>            : </a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :                 for(int i = rows; i --&gt; 0; ) {</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :                     int ii = i * (col_stride + row_stride);</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :                     apply_reflector(cols-i, 1, r+ii, col_stride, tau[i], x+i, 1, 1);</span></a>
+<a name="308"><span class="lineNum">     308 </span>            :                 }</a>
+<a name="309"><span class="lineNum">     309 </span>            :             }</a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :         }</span></a>
+<a name="311"><span class="lineNum">     311 </span>            : </a>
+<a name="312"><span class="lineNum">     312 </span>            :         void solve(</a>
+<a name="313"><span class="lineNum">     313 </span>            :                 int rows, int cols, value_type *A, const value_type *b, value_type *x,</a>
+<a name="314"><span class="lineNum">     314 </span>            :                 storage_order order = row_major, bool computed = false</a>
+<a name="315"><span class="lineNum">     315 </span>            :                 )</a>
+<a name="316"><span class="lineNum">     316 </span>            :         {</a>
+<a name="317"><span class="lineNum">     317 </span>            :             int row_stride = (order == row_major ? cols : 1);</a>
+<a name="318"><span class="lineNum">     318 </span>            :             int col_stride = (order == row_major ? 1 : rows);</a>
+<a name="319"><span class="lineNum">     319 </span>            :             solve(rows, cols, row_stride, col_stride, A, b, x, computed);</a>
+<a name="320"><span class="lineNum">     320 </span>            :         }</a>
+<a name="321"><span class="lineNum">     321 </span>            : </a>
+<a name="322"><span class="lineNum">     322 </span>            :         size_t bytes() {</a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :             return sizeof(value_type) * (tau.size() + f.size() + q.size());</span></a>
+<a name="324"><span class="lineNum">     324 </span>            :         }</a>
+<a name="325"><span class="lineNum">     325 </span>            : </a>
+<a name="326"><span class="lineNum">     326 </span>            :     private:</a>
+<a name="327"><span class="lineNum">     327 </span>            :         typedef typename math::scalar_of&lt;value_type&gt;::type scalar_type;</a>
+<a name="328"><span class="lineNum">     328 </span>            : </a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :         static scalar_type sqr(scalar_type x) { return x * x; }</span></a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span>            :         int m, n, row_stride, col_stride;</a>
+<a name="332"><span class="lineNum">     332 </span>            : </a>
+<a name="333"><span class="lineNum">     333 </span>            :         value_type *r;</a>
+<a name="334"><span class="lineNum">     334 </span>            :         std::vector&lt;value_type&gt; tau, f;</a>
+<a name="335"><span class="lineNum">     335 </span>            :         std::vector&lt;value_type&gt; q;</a>
+<a name="336"><span class="lineNum">     336 </span>            : </a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :         static value_type gen_reflector(int order, value_type &amp;alpha, value_type *x, int stride) {</span></a>
+<a name="338"><span class="lineNum">     338 </span>            :             /*</a>
+<a name="339"><span class="lineNum">     339 </span>            :              *  Ported from ZLARFG</a>
+<a name="340"><span class="lineNum">     340 </span>            :              *  ==================</a>
+<a name="341"><span class="lineNum">     341 </span>            :              *</a>
+<a name="342"><span class="lineNum">     342 </span>            :              *  Generates a value_type elementary reflector H of order n, such</a>
+<a name="343"><span class="lineNum">     343 </span>            :              *  that</a>
+<a name="344"><span class="lineNum">     344 </span>            :              *</a>
+<a name="345"><span class="lineNum">     345 </span>            :              *        H' * ( alpha ) = ( beta ),   H' * H = I.</a>
+<a name="346"><span class="lineNum">     346 </span>            :              *             (   x   )   (   0  )</a>
+<a name="347"><span class="lineNum">     347 </span>            :              *</a>
+<a name="348"><span class="lineNum">     348 </span>            :              *  where alpha and beta are scalars, with beta real, and x is an</a>
+<a name="349"><span class="lineNum">     349 </span>            :              *  (n-1)-element value_type vector. H is represented in the form</a>
+<a name="350"><span class="lineNum">     350 </span>            :              *</a>
+<a name="351"><span class="lineNum">     351 </span>            :              *        H = I - tau * ( 1 ) * ( 1 v' ) ,</a>
+<a name="352"><span class="lineNum">     352 </span>            :              *                      ( v )</a>
+<a name="353"><span class="lineNum">     353 </span>            :              *</a>
+<a name="354"><span class="lineNum">     354 </span>            :              *  where tau is a value_type scalar and v is a value_type</a>
+<a name="355"><span class="lineNum">     355 </span>            :              *  (n-1)-element vector. Note that H is not hermitian.</a>
+<a name="356"><span class="lineNum">     356 </span>            :              *</a>
+<a name="357"><span class="lineNum">     357 </span>            :              *  If the elements of x are all zero and alpha is real,</a>
+<a name="358"><span class="lineNum">     358 </span>            :              *  then tau = 0 and H is taken to be the unit matrix.</a>
+<a name="359"><span class="lineNum">     359 </span>            :              *</a>
+<a name="360"><span class="lineNum">     360 </span>            :              *  Otherwise  1 &lt;= real(tau) &lt;= 2  and  abs(tau-1) &lt;= 1 .</a>
+<a name="361"><span class="lineNum">     361 </span>            :              *</a>
+<a name="362"><span class="lineNum">     362 </span>            :              *  Arguments</a>
+<a name="363"><span class="lineNum">     363 </span>            :              *  =========</a>
+<a name="364"><span class="lineNum">     364 </span>            :              *</a>
+<a name="365"><span class="lineNum">     365 </span>            :              *  order   The order of the elementary reflector.</a>
+<a name="366"><span class="lineNum">     366 </span>            :              *</a>
+<a name="367"><span class="lineNum">     367 </span>            :              *  alpha   On entry, the value alpha.</a>
+<a name="368"><span class="lineNum">     368 </span>            :              *          On exit, it is overwritten with the value beta.</a>
+<a name="369"><span class="lineNum">     369 </span>            :              *</a>
+<a name="370"><span class="lineNum">     370 </span>            :              *  x       dimension (1+(order-2)*abs(stride))</a>
+<a name="371"><span class="lineNum">     371 </span>            :              *          On entry, the vector x.</a>
+<a name="372"><span class="lineNum">     372 </span>            :              *          On exit, it is overwritten with the vector v.</a>
+<a name="373"><span class="lineNum">     373 </span>            :              *</a>
+<a name="374"><span class="lineNum">     374 </span>            :              *  stride  The increment between elements of x.</a>
+<a name="375"><span class="lineNum">     375 </span>            :              *</a>
+<a name="376"><span class="lineNum">     376 </span>            :              *  Returns the value tau.</a>
+<a name="377"><span class="lineNum">     377 </span>            :              *</a>
+<a name="378"><span class="lineNum">     378 </span>            :              *  ==============================================================</a>
+<a name="379"><span class="lineNum">     379 </span>            :              */</a>
+<a name="380"><span class="lineNum">     380 </span>            :             value_type tau = math::zero&lt;value_type&gt;();</a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :             if (order &lt;= 1) return tau;</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineNoCov">          0 :             int n = order - 1;</span></a>
+<a name="383"><span class="lineNum">     383 </span>            : </a>
+<a name="384"><span class="lineNum">     384 </span>            :             scalar_type xnorm2 = 0;</a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :             for(int i = 0, ii = 0; i &lt; n; ++i, ii += stride)</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :                 xnorm2 += sqr(math::norm(x[ii]));</span></a>
+<a name="387"><span class="lineNum">     387 </span>            : </a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :             if (math::is_zero(xnorm2)) return tau;</span></a>
+<a name="389"><span class="lineNum">     389 </span>            : </a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 :             scalar_type beta = -std::abs(sqrt(sqr(math::norm(alpha)) + xnorm2));</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :             if (amgcl::detail::real(alpha) &lt; 0) beta = -beta;</span></a>
+<a name="392"><span class="lineNum">     392 </span>            : </a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineNoCov">          0 :             tau = math::identity&lt;value_type&gt;() - math::inverse(beta) * alpha;</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :             alpha = math::inverse(alpha - beta * math::identity&lt;value_type&gt;());</span></a>
+<a name="395"><span class="lineNum">     395 </span>            : </a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineNoCov">          0 :             for(int i = 0, ii = 0; i &lt; n; ++i, ii += stride)</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineNoCov">          0 :                 x[ii] = alpha * x[ii];</span></a>
+<a name="398"><span class="lineNum">     398 </span>            : </a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 :             alpha = beta * math::identity&lt;value_type&gt;();</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :             return tau;</span></a>
+<a name="401"><span class="lineNum">     401 </span>            :         }</a>
+<a name="402"><span class="lineNum">     402 </span>            : </a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineNoCov">          0 :         static void apply_reflector(</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :                 int m, int n, const value_type *v, int v_stride, value_type tau,</a>
+<a name="405"><span class="lineNum">     405 </span>            :                 value_type *C, int row_stride, int col_stride</a>
+<a name="406"><span class="lineNum">     406 </span>            :                 )</a>
+<a name="407"><span class="lineNum">     407 </span>            :         {</a>
+<a name="408"><span class="lineNum">     408 </span>            :             /*</a>
+<a name="409"><span class="lineNum">     409 </span>            :              *  Ported from ZLARF</a>
+<a name="410"><span class="lineNum">     410 </span>            :              *  =================</a>
+<a name="411"><span class="lineNum">     411 </span>            :              *</a>
+<a name="412"><span class="lineNum">     412 </span>            :              *  Applies an elementary reflector H to an m-by-n matrix C from</a>
+<a name="413"><span class="lineNum">     413 </span>            :              *  the left. H is represented in the form</a>
+<a name="414"><span class="lineNum">     414 </span>            :              *</a>
+<a name="415"><span class="lineNum">     415 </span>            :              *        H = I - v * tau * v'</a>
+<a name="416"><span class="lineNum">     416 </span>            :              *</a>
+<a name="417"><span class="lineNum">     417 </span>            :              *  where tau is a value_type scalar and v is a value_type vector.</a>
+<a name="418"><span class="lineNum">     418 </span>            :              *</a>
+<a name="419"><span class="lineNum">     419 </span>            :              *  If tau = 0, then H is taken to be the unit matrix.</a>
+<a name="420"><span class="lineNum">     420 </span>            :              *</a>
+<a name="421"><span class="lineNum">     421 </span>            :              *  To apply H' (the conjugate transpose of H), supply adjoint(tau)</a>
+<a name="422"><span class="lineNum">     422 </span>            :              *  instead of tau.</a>
+<a name="423"><span class="lineNum">     423 </span>            :              *</a>
+<a name="424"><span class="lineNum">     424 </span>            :              *  Arguments</a>
+<a name="425"><span class="lineNum">     425 </span>            :              *  =========</a>
+<a name="426"><span class="lineNum">     426 </span>            :              *</a>
+<a name="427"><span class="lineNum">     427 </span>            :              *  m          The number of rows of the matrix C.</a>
+<a name="428"><span class="lineNum">     428 </span>            :              *</a>
+<a name="429"><span class="lineNum">     429 </span>            :              *  n          The number of columns of the matrix C.</a>
+<a name="430"><span class="lineNum">     430 </span>            :              *</a>
+<a name="431"><span class="lineNum">     431 </span>            :              *  v          The vector v in the representation of H.</a>
+<a name="432"><span class="lineNum">     432 </span>            :              *             v is not used if tau = 0.</a>
+<a name="433"><span class="lineNum">     433 </span>            :              *             The value of v[0] is ignored and assumed to be 1.</a>
+<a name="434"><span class="lineNum">     434 </span>            :              *</a>
+<a name="435"><span class="lineNum">     435 </span>            :              *  v_stride   The increment between elements of v.</a>
+<a name="436"><span class="lineNum">     436 </span>            :              *</a>
+<a name="437"><span class="lineNum">     437 </span>            :              *  tau        The value tau in the representation of H.</a>
+<a name="438"><span class="lineNum">     438 </span>            :              *</a>
+<a name="439"><span class="lineNum">     439 </span>            :              *  C          On entry, the m-by-n matrix C.</a>
+<a name="440"><span class="lineNum">     440 </span>            :              *             On exit, C is overwritten by the matrix H * C.</a>
+<a name="441"><span class="lineNum">     441 </span>            :              *</a>
+<a name="442"><span class="lineNum">     442 </span>            :              *  row_stride The increment between the rows of C.</a>
+<a name="443"><span class="lineNum">     443 </span>            :              *  col_stride The increment between the columns of C.</a>
+<a name="444"><span class="lineNum">     444 </span>            :              *</a>
+<a name="445"><span class="lineNum">     445 </span>            :              *  ==============================================================</a>
+<a name="446"><span class="lineNum">     446 </span>            :              */</a>
+<a name="447"><span class="lineNum">     447 </span>            : </a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineNoCov">          0 :             if (math::is_zero(tau)) return;</span></a>
+<a name="449"><span class="lineNum">     449 </span>            : </a>
+<a name="450"><span class="lineNum">     450 </span>            :             // w = C` * v; C -= tau * v * w`</a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineNoCov">          0 :             for(int i = 0, ia=0; i &lt; n; ++i, ia += col_stride) {</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineNoCov">          0 :                 value_type s = math::adjoint(C[ia]);</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineNoCov">          0 :                 for(int j = 1, jv = v_stride, ja=row_stride; j &lt; m; ++j, jv += v_stride, ja += row_stride) {</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineNoCov">          0 :                     s += math::adjoint(C[ja+ia]) * v[jv];</span></a>
+<a name="455"><span class="lineNum">     455 </span>            :                 }</a>
+<a name="456"><span class="lineNum">     456 </span>            : </a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :                 s = tau * math::adjoint(s);</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 :                 C[ia] -= s;</span></a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineNoCov">          0 :                 for(int j = 1, jv = v_stride, ja=row_stride; j &lt; m; ++j, jv += v_stride, ja += row_stride) {</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineNoCov">          0 :                     C[ja+ia] -= v[jv] * s;</span></a>
+<a name="461"><span class="lineNum">     461 </span>            :                 }</a>
+<a name="462"><span class="lineNum">     462 </span>            :             }</a>
+<a name="463"><span class="lineNum">     463 </span>            :         }</a>
+<a name="464"><span class="lineNum">     464 </span>            : </a>
+<a name="465"><span class="lineNum">     465 </span>            : };</a>
+<a name="466"><span class="lineNum">     466 </span>            : </a>
+<a name="467"><span class="lineNum">     467 </span>            : template &lt;class value_type&gt;</a>
+<a name="468"><span class="lineNum">     468 </span>            : class QR&lt;value_type, typename std::enable_if&lt;math::is_static_matrix&lt;value_type&gt;::value&gt;::type&gt;</a>
+<a name="469"><span class="lineNum">     469 </span>            : {</a>
+<a name="470"><span class="lineNum">     470 </span>            :     public:</a>
+<a name="471"><span class="lineNum">     471 </span>            :         typedef typename amgcl::math::rhs_of&lt;value_type&gt;::type rhs_type;</a>
+<a name="472"><span class="lineNum">     472 </span>            : </a>
+<a name="473"><span class="lineNum">     473 </span>            :         QR() {}</a>
+<a name="474"><span class="lineNum">     474 </span>            : </a>
+<a name="475"><span class="lineNum">     475 </span>            :         void compute(int rows, int cols, int row_stride, int col_stride, value_type *A) {</a>
+<a name="476"><span class="lineNum">     476 </span>            :             const int M = math::static_rows&lt;value_type&gt;::value;</a>
+<a name="477"><span class="lineNum">     477 </span>            :             const int N = math::static_cols&lt;value_type&gt;::value;</a>
+<a name="478"><span class="lineNum">     478 </span>            : </a>
+<a name="479"><span class="lineNum">     479 </span>            :             m = rows;</a>
+<a name="480"><span class="lineNum">     480 </span>            :             n = cols;</a>
+<a name="481"><span class="lineNum">     481 </span>            : </a>
+<a name="482"><span class="lineNum">     482 </span>            :             r = A;</a>
+<a name="483"><span class="lineNum">     483 </span>            : </a>
+<a name="484"><span class="lineNum">     484 </span>            :             copy_to_scalar_buf(rows, cols, row_stride, col_stride, A);</a>
+<a name="485"><span class="lineNum">     485 </span>            :             base.compute(rows * M, cols * N, 1, rows * M, buf.data());</a>
+<a name="486"><span class="lineNum">     486 </span>            :         }</a>
+<a name="487"><span class="lineNum">     487 </span>            : </a>
+<a name="488"><span class="lineNum">     488 </span>            :         void factorize(int rows, int cols, int row_stride, int col_stride, value_type *A) {</a>
+<a name="489"><span class="lineNum">     489 </span>            :             const int M = math::static_rows&lt;value_type&gt;::value;</a>
+<a name="490"><span class="lineNum">     490 </span>            :             const int N = math::static_cols&lt;value_type&gt;::value;</a>
+<a name="491"><span class="lineNum">     491 </span>            : </a>
+<a name="492"><span class="lineNum">     492 </span>            :             m = rows * M;</a>
+<a name="493"><span class="lineNum">     493 </span>            :             n = cols * N;</a>
+<a name="494"><span class="lineNum">     494 </span>            : </a>
+<a name="495"><span class="lineNum">     495 </span>            :             r = A;</a>
+<a name="496"><span class="lineNum">     496 </span>            : </a>
+<a name="497"><span class="lineNum">     497 </span>            :             copy_to_scalar_buf(rows, cols, row_stride, col_stride, A);</a>
+<a name="498"><span class="lineNum">     498 </span>            :             base.factorize(m, n, 1, m, buf.data());</a>
+<a name="499"><span class="lineNum">     499 </span>            :         }</a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span>            :         void factorize(int rows, int cols, value_type *A, storage_order order = row_major) {</a>
+<a name="502"><span class="lineNum">     502 </span>            :             int row_stride = (order == row_major ? cols : 1);</a>
+<a name="503"><span class="lineNum">     503 </span>            :             int col_stride = (order == row_major ? 1 : rows);</a>
+<a name="504"><span class="lineNum">     504 </span>            :             factorize(rows, cols, row_stride, col_stride, A);</a>
+<a name="505"><span class="lineNum">     505 </span>            :         }</a>
+<a name="506"><span class="lineNum">     506 </span>            : </a>
+<a name="507"><span class="lineNum">     507 </span>            :         value_type R(int i, int j) const {</a>
+<a name="508"><span class="lineNum">     508 </span>            :             const int N = math::static_rows&lt;value_type&gt;::value;</a>
+<a name="509"><span class="lineNum">     509 </span>            :             const int M = math::static_cols&lt;value_type&gt;::value;</a>
+<a name="510"><span class="lineNum">     510 </span>            : </a>
+<a name="511"><span class="lineNum">     511 </span>            :             value_type v;</a>
+<a name="512"><span class="lineNum">     512 </span>            : </a>
+<a name="513"><span class="lineNum">     513 </span>            :             if (j &lt; i) {</a>
+<a name="514"><span class="lineNum">     514 </span>            :                 v = math::zero&lt;value_type&gt;();</a>
+<a name="515"><span class="lineNum">     515 </span>            :             } else {</a>
+<a name="516"><span class="lineNum">     516 </span>            :                 for(int ii = 0; ii &lt; N; ++ii)</a>
+<a name="517"><span class="lineNum">     517 </span>            :                     for(int jj = 0; jj &lt; M; ++jj)</a>
+<a name="518"><span class="lineNum">     518 </span>            :                         v(ii,jj) = base.R(i * N + ii, j * M + jj);</a>
+<a name="519"><span class="lineNum">     519 </span>            :             }</a>
+<a name="520"><span class="lineNum">     520 </span>            : </a>
+<a name="521"><span class="lineNum">     521 </span>            :             return v;</a>
+<a name="522"><span class="lineNum">     522 </span>            :         }</a>
+<a name="523"><span class="lineNum">     523 </span>            : </a>
+<a name="524"><span class="lineNum">     524 </span>            :         // Returns element of the matrix Q.</a>
+<a name="525"><span class="lineNum">     525 </span>            :         value_type Q(int i, int j) const {</a>
+<a name="526"><span class="lineNum">     526 </span>            :             const int N = math::static_rows&lt;value_type&gt;::value;</a>
+<a name="527"><span class="lineNum">     527 </span>            :             const int M = math::static_cols&lt;value_type&gt;::value;</a>
+<a name="528"><span class="lineNum">     528 </span>            : </a>
+<a name="529"><span class="lineNum">     529 </span>            :             value_type v;</a>
+<a name="530"><span class="lineNum">     530 </span>            : </a>
+<a name="531"><span class="lineNum">     531 </span>            :             for(int ii = 0; ii &lt; N; ++ii)</a>
+<a name="532"><span class="lineNum">     532 </span>            :                 for(int jj = 0; jj &lt; M; ++jj)</a>
+<a name="533"><span class="lineNum">     533 </span>            :                     v(ii,jj) = base.Q(i * N + ii, j * M + jj);</a>
+<a name="534"><span class="lineNum">     534 </span>            : </a>
+<a name="535"><span class="lineNum">     535 </span>            :             return v;</a>
+<a name="536"><span class="lineNum">     536 </span>            :         }</a>
+<a name="537"><span class="lineNum">     537 </span>            : </a>
+<a name="538"><span class="lineNum">     538 </span>            :         // Solves the system Q R x = f</a>
+<a name="539"><span class="lineNum">     539 </span>            :         void solve(</a>
+<a name="540"><span class="lineNum">     540 </span>            :                 int rows, int cols, int row_stride, int col_stride, value_type *A,</a>
+<a name="541"><span class="lineNum">     541 </span>            :                 const rhs_type *f, rhs_type *x, bool computed = false)</a>
+<a name="542"><span class="lineNum">     542 </span>            :         {</a>
+<a name="543"><span class="lineNum">     543 </span>            :             const int M = math::static_rows&lt;value_type&gt;::value;</a>
+<a name="544"><span class="lineNum">     544 </span>            :             const int N = math::static_cols&lt;value_type&gt;::value;</a>
+<a name="545"><span class="lineNum">     545 </span>            : </a>
+<a name="546"><span class="lineNum">     546 </span>            :             m = rows * M;</a>
+<a name="547"><span class="lineNum">     547 </span>            :             n = cols * N;</a>
+<a name="548"><span class="lineNum">     548 </span>            : </a>
+<a name="549"><span class="lineNum">     549 </span>            :             r = A;</a>
+<a name="550"><span class="lineNum">     550 </span>            : </a>
+<a name="551"><span class="lineNum">     551 </span>            :             copy_to_scalar_buf(rows, cols, row_stride, col_stride, A);</a>
+<a name="552"><span class="lineNum">     552 </span>            :             base.solve(m, n, 1, m, buf.data(),</a>
+<a name="553"><span class="lineNum">     553 </span>            :                     reinterpret_cast&lt;const scalar_type*&gt;(f),</a>
+<a name="554"><span class="lineNum">     554 </span>            :                     reinterpret_cast&lt;scalar_type*&gt;(x),</a>
+<a name="555"><span class="lineNum">     555 </span>            :                     computed</a>
+<a name="556"><span class="lineNum">     556 </span>            :                     );</a>
+<a name="557"><span class="lineNum">     557 </span>            :         }</a>
+<a name="558"><span class="lineNum">     558 </span>            : </a>
+<a name="559"><span class="lineNum">     559 </span>            :         void solve(</a>
+<a name="560"><span class="lineNum">     560 </span>            :                 int rows, int cols, value_type *A, const rhs_type *f, rhs_type *x,</a>
+<a name="561"><span class="lineNum">     561 </span>            :                 storage_order order = row_major, bool computed = false</a>
+<a name="562"><span class="lineNum">     562 </span>            :                 )</a>
+<a name="563"><span class="lineNum">     563 </span>            :         {</a>
+<a name="564"><span class="lineNum">     564 </span>            :             int row_stride = (order == row_major ? cols : 1);</a>
+<a name="565"><span class="lineNum">     565 </span>            :             int col_stride = (order == row_major ? 1 : rows);</a>
+<a name="566"><span class="lineNum">     566 </span>            :             solve(rows, cols, row_stride, col_stride, A, f, x, computed);</a>
+<a name="567"><span class="lineNum">     567 </span>            :         }</a>
+<a name="568"><span class="lineNum">     568 </span>            : </a>
+<a name="569"><span class="lineNum">     569 </span>            :         size_t bytes() const {</a>
+<a name="570"><span class="lineNum">     570 </span>            :             return base.bytes() + sizeof(scalar_type) * buf.size();</a>
+<a name="571"><span class="lineNum">     571 </span>            :         }</a>
+<a name="572"><span class="lineNum">     572 </span>            : </a>
+<a name="573"><span class="lineNum">     573 </span>            :     private:</a>
+<a name="574"><span class="lineNum">     574 </span>            :         typedef typename amgcl::math::scalar_of&lt;value_type&gt;::type scalar_type;</a>
+<a name="575"><span class="lineNum">     575 </span>            : </a>
+<a name="576"><span class="lineNum">     576 </span>            :         int m, n;</a>
+<a name="577"><span class="lineNum">     577 </span>            :         value_type *r;</a>
+<a name="578"><span class="lineNum">     578 </span>            : </a>
+<a name="579"><span class="lineNum">     579 </span>            :         QR&lt;scalar_type&gt; base;</a>
+<a name="580"><span class="lineNum">     580 </span>            :         std::vector&lt;scalar_type&gt; buf;</a>
+<a name="581"><span class="lineNum">     581 </span>            : </a>
+<a name="582"><span class="lineNum">     582 </span>            :         void copy_to_scalar_buf(int rows, int cols, int row_stride, int col_stride, value_type *A) {</a>
+<a name="583"><span class="lineNum">     583 </span>            :             const int M = math::static_rows&lt;value_type&gt;::value;</a>
+<a name="584"><span class="lineNum">     584 </span>            :             const int N = math::static_cols&lt;value_type&gt;::value;</a>
+<a name="585"><span class="lineNum">     585 </span>            : </a>
+<a name="586"><span class="lineNum">     586 </span>            :             buf.resize(M * rows * N * cols);</a>
+<a name="587"><span class="lineNum">     587 </span>            : </a>
+<a name="588"><span class="lineNum">     588 </span>            :             const int scalar_rows = M * rows;</a>
+<a name="589"><span class="lineNum">     589 </span>            : </a>
+<a name="590"><span class="lineNum">     590 </span>            :             for(int i = 0, ib = 0; i &lt; rows; ++i)</a>
+<a name="591"><span class="lineNum">     591 </span>            :                 for(int ii = 0; ii &lt; M; ++ii, ++ib)</a>
+<a name="592"><span class="lineNum">     592 </span>            :                     for(int j = 0, jb = 0; j &lt; cols; ++j)</a>
+<a name="593"><span class="lineNum">     593 </span>            :                         for(int jj = 0; jj &lt; N; ++jj, jb += scalar_rows)</a>
+<a name="594"><span class="lineNum">     594 </span>            :                             buf[ib + jb] = A[i * row_stride + j * col_stride](ii, jj);</a>
+<a name="595"><span class="lineNum">     595 </span>            :         }</a>
+<a name="596"><span class="lineNum">     596 </span>            : };</a>
+<a name="597"><span class="lineNum">     597 </span>            : </a>
+<a name="598"><span class="lineNum">     598 </span>            : } // namespace detail</a>
+<a name="599"><span class="lineNum">     599 </span>            : } // namespace amgcl</a>
+<a name="600"><span class="lineNum">     600 </span>            : </a>
+<a name="601"><span class="lineNum">     601 </span>            : #endif</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
