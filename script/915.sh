@@ -29,13 +29,13 @@ export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 
 # 编译
 echo "开始编译Kratos..."
-/root/kratos_testcase/script/7_kratos.sh 9f786e857248a22b35ca93d90443faaa26f42788
+/root/kratos_testcase/script/7_kratos.sh ef49044637ce61cd542cf846e5e0812386d28e22
 echo "Kratos编译完成。"
 
 # 运行
 echo "开始运行测试用例..."
 cd /root/Kratos/applications/StructuralMechanicsApplication/tests
-python3 /root/Kratos/applications/StructuralMechanicsApplication/tests/test_loading_conditions_line.py
+python3 /root/Kratos/applications/StructuralMechanicsApplication/tests/test_loading_conditions.py
 echo "测试用例运行完成。"
 
 # 生成覆盖率报告
