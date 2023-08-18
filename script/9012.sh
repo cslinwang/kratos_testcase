@@ -9,6 +9,7 @@
 
 # 运行文件
 # /root/Kratos/applications/FluidDynamicsApplication/tests/fluid_analysis_test.py
+# /root/Kratos/applications/FluidDynamicsApplication/tests/artificial_compressibility_test.py
 
 # 新版
 
@@ -39,7 +40,7 @@ echo "Kratos编译完成。"
 # 运行
 echo "开始运行测试用例..."
 cd /root/Kratos/applications/FluidDynamicsApplication/tests
-python3 /root/Kratos/applications/FluidDynamicsApplication/tests/fluid_analysis_test.py
+python3 /root/Kratos/applications/FluidDynamicsApplication/tests/artificial_compressibility_test.py
 echo "BUG测试用例运行完成。"
 
 # 生成覆盖率报告
