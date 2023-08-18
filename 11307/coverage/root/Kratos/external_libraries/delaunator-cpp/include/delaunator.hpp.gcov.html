@@ -1,0 +1,662 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /root/Kratos/external_libraries/delaunator-cpp/include/delaunator.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">root/Kratos/external_libraries/delaunator-cpp/include</a> - delaunator.hpp<span style="font-size: 80%;"> (source / <a href="delaunator.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">248</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 13:12:02</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #pragma once</a>
+<a name="2"><span class="lineNum">       2 </span>            : </a>
+<a name="3"><span class="lineNum">       3 </span>            : #include &lt;algorithm&gt;</a>
+<a name="4"><span class="lineNum">       4 </span>            : #include &lt;cmath&gt;</a>
+<a name="5"><span class="lineNum">       5 </span>            : #include &lt;exception&gt;</a>
+<a name="6"><span class="lineNum">       6 </span>            : #include &lt;iostream&gt;</a>
+<a name="7"><span class="lineNum">       7 </span>            : #include &lt;limits&gt;</a>
+<a name="8"><span class="lineNum">       8 </span>            : #include &lt;memory&gt;</a>
+<a name="9"><span class="lineNum">       9 </span>            : #include &lt;utility&gt;</a>
+<a name="10"><span class="lineNum">      10 </span>            : #include &lt;vector&gt;</a>
+<a name="11"><span class="lineNum">      11 </span>            : #include &lt;tuple&gt;</a>
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<a name="13"><span class="lineNum">      13 </span>            : namespace delaunator {</a>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<a name="15"><span class="lineNum">      15 </span>            : //@see https://stackoverflow.com/questions/33333363/built-in-mod-vs-custom-mod-function-improve-the-performance-of-modulus-op/33333636#33333636</a>
+<a name="16"><span class="lineNum">      16 </span>            : inline size_t fast_mod(const size_t i, const size_t c) {</a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 :     return i &gt;= c ? i % c : i;</span></a>
+<a name="18"><span class="lineNum">      18 </span>            : }</a>
+<a name="19"><span class="lineNum">      19 </span>            : </a>
+<a name="20"><span class="lineNum">      20 </span>            : // Kahan and Babuska summation, Neumaier variant; accumulates less FP error</a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 : inline double sum(const std::vector&lt;double&gt;&amp; x) {</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :     double sum = x[0];</span></a>
+<a name="23"><span class="lineNum">      23 </span>            :     double err = 0.0;</a>
+<a name="24"><span class="lineNum">      24 </span>            : </a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineNoCov">          0 :     for (size_t i = 1; i &lt; x.size(); i++) {</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :         const double k = x[i];</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :         const double m = sum + k;</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :         err += std::fabs(sum) &gt;= std::fabs(k) ? sum - m + k : k - m + sum;</span></a>
+<a name="29"><span class="lineNum">      29 </span>            :         sum = m;</a>
+<a name="30"><span class="lineNum">      30 </span>            :     }</a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 :     return sum + err;</span></a>
+<a name="32"><span class="lineNum">      32 </span>            : }</a>
+<a name="33"><span class="lineNum">      33 </span>            : </a>
+<a name="34"><span class="lineNum">      34 </span>            : inline double dist(</a>
+<a name="35"><span class="lineNum">      35 </span>            :     const double ax,</a>
+<a name="36"><span class="lineNum">      36 </span>            :     const double ay,</a>
+<a name="37"><span class="lineNum">      37 </span>            :     const double bx,</a>
+<a name="38"><span class="lineNum">      38 </span>            :     const double by) {</a>
+<a name="39"><span class="lineNum">      39 </span><span class="lineNoCov">          0 :     const double dx = ax - bx;</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineNoCov">          0 :     const double dy = ay - by;</span></a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     return dx * dx + dy * dy;</span></a>
+<a name="42"><span class="lineNum">      42 </span>            : }</a>
+<a name="43"><span class="lineNum">      43 </span>            : </a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 : inline double circumradius(</span></a>
+<a name="45"><span class="lineNum">      45 </span>            :     const double ax,</a>
+<a name="46"><span class="lineNum">      46 </span>            :     const double ay,</a>
+<a name="47"><span class="lineNum">      47 </span>            :     const double bx,</a>
+<a name="48"><span class="lineNum">      48 </span>            :     const double by,</a>
+<a name="49"><span class="lineNum">      49 </span>            :     const double cx,</a>
+<a name="50"><span class="lineNum">      50 </span>            :     const double cy) {</a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :     const double dx = bx - ax;</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :     const double dy = by - ay;</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :     const double ex = cx - ax;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :     const double ey = cy - ay;</span></a>
+<a name="55"><span class="lineNum">      55 </span>            : </a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :     const double bl = dx * dx + dy * dy;</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineNoCov">          0 :     const double cl = ex * ex + ey * ey;</span></a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :     const double d = dx * ey - dy * ex;</span></a>
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<a name="60"><span class="lineNum">      60 </span><span class="lineNoCov">          0 :     const double x = (ey * bl - dy * cl) * 0.5 / d;</span></a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 :     const double y = (dx * cl - ex * bl) * 0.5 / d;</span></a>
+<a name="62"><span class="lineNum">      62 </span>            : </a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :     if ((bl &gt; 0.0 || bl &lt; 0.0) &amp;&amp; (cl &gt; 0.0 || cl &lt; 0.0) &amp;&amp; (d &gt; 0.0 || d &lt; 0.0)) {</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :         return x * x + y * y;</span></a>
+<a name="65"><span class="lineNum">      65 </span>            :     } else {</a>
+<a name="66"><span class="lineNum">      66 </span>            :         return std::numeric_limits&lt;double&gt;::max();</a>
+<a name="67"><span class="lineNum">      67 </span>            :     }</a>
+<a name="68"><span class="lineNum">      68 </span>            : }</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            : inline bool orient(</a>
+<a name="71"><span class="lineNum">      71 </span>            :     const double px,</a>
+<a name="72"><span class="lineNum">      72 </span>            :     const double py,</a>
+<a name="73"><span class="lineNum">      73 </span>            :     const double qx,</a>
+<a name="74"><span class="lineNum">      74 </span>            :     const double qy,</a>
+<a name="75"><span class="lineNum">      75 </span>            :     const double rx,</a>
+<a name="76"><span class="lineNum">      76 </span>            :     const double ry) {</a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineNoCov">          0 :     return (qy - py) * (rx - qx) - (qx - px) * (ry - qy) &lt; 0.0;</span></a>
+<a name="78"><span class="lineNum">      78 </span>            : }</a>
+<a name="79"><span class="lineNum">      79 </span>            : </a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 : inline std::pair&lt;double, double&gt; circumcenter(</span></a>
+<a name="81"><span class="lineNum">      81 </span>            :     const double ax,</a>
+<a name="82"><span class="lineNum">      82 </span>            :     const double ay,</a>
+<a name="83"><span class="lineNum">      83 </span>            :     const double bx,</a>
+<a name="84"><span class="lineNum">      84 </span>            :     const double by,</a>
+<a name="85"><span class="lineNum">      85 </span>            :     const double cx,</a>
+<a name="86"><span class="lineNum">      86 </span>            :     const double cy) {</a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :     const double dx = bx - ax;</span></a>
+<a name="88"><span class="lineNum">      88 </span><span class="lineNoCov">          0 :     const double dy = by - ay;</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :     const double ex = cx - ax;</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineNoCov">          0 :     const double ey = cy - ay;</span></a>
+<a name="91"><span class="lineNum">      91 </span>            : </a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineNoCov">          0 :     const double bl = dx * dx + dy * dy;</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 :     const double cl = ex * ex + ey * ey;</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :     const double d = dx * ey - dy * ex;</span></a>
+<a name="95"><span class="lineNum">      95 </span>            : </a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineNoCov">          0 :     const double x = ax + (ey * bl - dy * cl) * 0.5 / d;</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :     const double y = ay + (dx * cl - ex * bl) * 0.5 / d;</span></a>
+<a name="98"><span class="lineNum">      98 </span>            : </a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :     return std::make_pair(x, y);</span></a>
+<a name="100"><span class="lineNum">     100 </span>            : }</a>
+<a name="101"><span class="lineNum">     101 </span>            : </a>
+<a name="102"><span class="lineNum">     102 </span>            : struct compare {</a>
+<a name="103"><span class="lineNum">     103 </span>            : </a>
+<a name="104"><span class="lineNum">     104 </span>            :     std::vector&lt;double&gt; const&amp; coords;</a>
+<a name="105"><span class="lineNum">     105 </span>            :     double cx;</a>
+<a name="106"><span class="lineNum">     106 </span>            :     double cy;</a>
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :     bool operator()(std::size_t i, std::size_t j) {</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :         const double d1 = dist(coords[2 * i], coords[2 * i + 1], cx, cy);</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :         const double d2 = dist(coords[2 * j], coords[2 * j + 1], cx, cy);</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :         const double diff1 = d1 - d2;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :         const double diff2 = coords[2 * i] - coords[2 * j];</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :         const double diff3 = coords[2 * i + 1] - coords[2 * j + 1];</span></a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineNoCov">          0 :         if (diff1 &gt; 0.0 || diff1 &lt; 0.0) {</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :             return diff1 &lt; 0;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :         } else if (diff2 &gt; 0.0 || diff2 &lt; 0.0) {</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :             return diff2 &lt; 0;</span></a>
+<a name="119"><span class="lineNum">     119 </span>            :         } else {</a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :             return diff3 &lt; 0;</span></a>
+<a name="121"><span class="lineNum">     121 </span>            :         }</a>
+<a name="122"><span class="lineNum">     122 </span>            :     }</a>
+<a name="123"><span class="lineNum">     123 </span>            : };</a>
+<a name="124"><span class="lineNum">     124 </span>            : </a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 : inline bool in_circle(</span></a>
+<a name="126"><span class="lineNum">     126 </span>            :     const double ax,</a>
+<a name="127"><span class="lineNum">     127 </span>            :     const double ay,</a>
+<a name="128"><span class="lineNum">     128 </span>            :     const double bx,</a>
+<a name="129"><span class="lineNum">     129 </span>            :     const double by,</a>
+<a name="130"><span class="lineNum">     130 </span>            :     const double cx,</a>
+<a name="131"><span class="lineNum">     131 </span>            :     const double cy,</a>
+<a name="132"><span class="lineNum">     132 </span>            :     const double px,</a>
+<a name="133"><span class="lineNum">     133 </span>            :     const double py) {</a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :     const double dx = ax - px;</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :     const double dy = ay - py;</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :     const double ex = bx - px;</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :     const double ey = by - py;</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :     const double fx = cx - px;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :     const double fy = cy - py;</span></a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :     const double ap = dx * dx + dy * dy;</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineNoCov">          0 :     const double bp = ex * ex + ey * ey;</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :     const double cp = fx * fx + fy * fy;</span></a>
+<a name="144"><span class="lineNum">     144 </span>            : </a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :     return (dx * (ey * cp - bp * fy) -</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :             dy * (ex * cp - bp * fx) +</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :             ap * (ex * fy - ey * fx)) &lt; 0.0;</span></a>
+<a name="148"><span class="lineNum">     148 </span>            : }</a>
+<a name="149"><span class="lineNum">     149 </span>            : </a>
+<a name="150"><span class="lineNum">     150 </span>            : constexpr double EPSILON = std::numeric_limits&lt;double&gt;::epsilon();</a>
+<a name="151"><span class="lineNum">     151 </span>            : constexpr std::size_t INVALID_INDEX = std::numeric_limits&lt;std::size_t&gt;::max();</a>
+<a name="152"><span class="lineNum">     152 </span>            : </a>
+<a name="153"><span class="lineNum">     153 </span>            : inline bool check_pts_equal(double x1, double y1, double x2, double y2) {</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :     return std::fabs(x1 - x2) &lt;= EPSILON &amp;&amp;</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :            std::fabs(y1 - y2) &lt;= EPSILON;</span></a>
+<a name="156"><span class="lineNum">     156 </span>            : }</a>
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+<a name="158"><span class="lineNum">     158 </span>            : // monotonically increases with real angle, but doesn't need expensive trigonometry</a>
+<a name="159"><span class="lineNum">     159 </span>            : inline double pseudo_angle(const double dx, const double dy) {</a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :     const double p = dx / (std::abs(dx) + std::abs(dy));</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :     return (dy &gt; 0.0 ? 3.0 - p : 1.0 + p) / 4.0; // [0..1)</span></a>
+<a name="162"><span class="lineNum">     162 </span>            : }</a>
+<a name="163"><span class="lineNum">     163 </span>            : </a>
+<a name="164"><span class="lineNum">     164 </span>            : struct DelaunatorPoint {</a>
+<a name="165"><span class="lineNum">     165 </span>            :     std::size_t i;</a>
+<a name="166"><span class="lineNum">     166 </span>            :     double x;</a>
+<a name="167"><span class="lineNum">     167 </span>            :     double y;</a>
+<a name="168"><span class="lineNum">     168 </span>            :     std::size_t t;</a>
+<a name="169"><span class="lineNum">     169 </span>            :     std::size_t prev;</a>
+<a name="170"><span class="lineNum">     170 </span>            :     std::size_t next;</a>
+<a name="171"><span class="lineNum">     171 </span>            :     bool removed;</a>
+<a name="172"><span class="lineNum">     172 </span>            : };</a>
+<a name="173"><span class="lineNum">     173 </span>            : </a>
+<a name="174"><span class="lineNum">     174 </span>            : class Delaunator {</a>
+<a name="175"><span class="lineNum">     175 </span>            : </a>
+<a name="176"><span class="lineNum">     176 </span>            : public:</a>
+<a name="177"><span class="lineNum">     177 </span>            :     std::vector&lt;double&gt; const&amp; coords;</a>
+<a name="178"><span class="lineNum">     178 </span>            :     std::vector&lt;std::size_t&gt; triangles;</a>
+<a name="179"><span class="lineNum">     179 </span>            :     std::vector&lt;std::size_t&gt; halfedges;</a>
+<a name="180"><span class="lineNum">     180 </span>            :     std::vector&lt;std::size_t&gt; hull_prev;</a>
+<a name="181"><span class="lineNum">     181 </span>            :     std::vector&lt;std::size_t&gt; hull_next;</a>
+<a name="182"><span class="lineNum">     182 </span>            :     std::vector&lt;std::size_t&gt; hull_tri;</a>
+<a name="183"><span class="lineNum">     183 </span>            :     std::size_t hull_start;</a>
+<a name="184"><span class="lineNum">     184 </span>            : </a>
+<a name="185"><span class="lineNum">     185 </span>            :     Delaunator(std::vector&lt;double&gt; const&amp; in_coords);</a>
+<a name="186"><span class="lineNum">     186 </span>            : </a>
+<a name="187"><span class="lineNum">     187 </span>            :     double get_hull_area();</a>
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<a name="189"><span class="lineNum">     189 </span>            : private:</a>
+<a name="190"><span class="lineNum">     190 </span>            :     std::vector&lt;std::size_t&gt; m_hash;</a>
+<a name="191"><span class="lineNum">     191 </span>            :     double m_center_x;</a>
+<a name="192"><span class="lineNum">     192 </span>            :     double m_center_y;</a>
+<a name="193"><span class="lineNum">     193 </span>            :     std::size_t m_hash_size;</a>
+<a name="194"><span class="lineNum">     194 </span>            :     std::vector&lt;std::size_t&gt; m_edge_stack;</a>
+<a name="195"><span class="lineNum">     195 </span>            : </a>
+<a name="196"><span class="lineNum">     196 </span>            :     std::size_t legalize(std::size_t a);</a>
+<a name="197"><span class="lineNum">     197 </span>            :     std::size_t hash_key(double x, double y) const;</a>
+<a name="198"><span class="lineNum">     198 </span>            :     std::size_t add_triangle(</a>
+<a name="199"><span class="lineNum">     199 </span>            :         std::size_t i0,</a>
+<a name="200"><span class="lineNum">     200 </span>            :         std::size_t i1,</a>
+<a name="201"><span class="lineNum">     201 </span>            :         std::size_t i2,</a>
+<a name="202"><span class="lineNum">     202 </span>            :         std::size_t a,</a>
+<a name="203"><span class="lineNum">     203 </span>            :         std::size_t b,</a>
+<a name="204"><span class="lineNum">     204 </span>            :         std::size_t c);</a>
+<a name="205"><span class="lineNum">     205 </span>            :     void link(std::size_t a, std::size_t b);</a>
+<a name="206"><span class="lineNum">     206 </span>            : };</a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 : Delaunator::Delaunator(std::vector&lt;double&gt; const&amp; in_coords)</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :     : coords(in_coords),</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :       triangles(),</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :       halfedges(),</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :       hull_prev(),</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :       hull_next(),</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :       hull_tri(),</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :       hull_start(),</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :       m_hash(),</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :       m_center_x(),</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :       m_center_y(),</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :       m_hash_size(),</span></a>
+<a name="220"><span class="lineNum">     220 </span>            :       m_edge_stack() {</a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :     std::size_t n = coords.size() &gt;&gt; 1;</span></a>
+<a name="222"><span class="lineNum">     222 </span>            : </a>
+<a name="223"><span class="lineNum">     223 </span>            :     double max_x = std::numeric_limits&lt;double&gt;::min();</a>
+<a name="224"><span class="lineNum">     224 </span>            :     double max_y = std::numeric_limits&lt;double&gt;::min();</a>
+<a name="225"><span class="lineNum">     225 </span>            :     double min_x = std::numeric_limits&lt;double&gt;::max();</a>
+<a name="226"><span class="lineNum">     226 </span>            :     double min_y = std::numeric_limits&lt;double&gt;::max();</a>
+<a name="227"><span class="lineNum">     227 </span>            :     std::vector&lt;std::size_t&gt; ids;</a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :     ids.reserve(n);</span></a>
+<a name="229"><span class="lineNum">     229 </span>            : </a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :     for (std::size_t i = 0; i &lt; n; i++) {</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :         const double x = coords[2 * i];</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :         const double y = coords[2 * i + 1];</span></a>
+<a name="233"><span class="lineNum">     233 </span>            : </a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :         if (x &lt; min_x) min_x = x;</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :         if (y &lt; min_y) min_y = y;</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :         if (x &gt; max_x) max_x = x;</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         if (y &gt; max_y) max_y = y;</span></a>
+<a name="238"><span class="lineNum">     238 </span>            : </a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :         ids.push_back(i);</span></a>
+<a name="240"><span class="lineNum">     240 </span>            :     }</a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineNoCov">          0 :     const double cx = (min_x + max_x) / 2;</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineNoCov">          0 :     const double cy = (min_y + max_y) / 2;</span></a>
+<a name="243"><span class="lineNum">     243 </span>            :     double min_dist = std::numeric_limits&lt;double&gt;::max();</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span>            :     std::size_t i0 = INVALID_INDEX;</a>
+<a name="246"><span class="lineNum">     246 </span>            :     std::size_t i1 = INVALID_INDEX;</a>
+<a name="247"><span class="lineNum">     247 </span>            :     std::size_t i2 = INVALID_INDEX;</a>
+<a name="248"><span class="lineNum">     248 </span>            : </a>
+<a name="249"><span class="lineNum">     249 </span>            :     // pick a seed point close to the centroid</a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineNoCov">          0 :     for (std::size_t i = 0; i &lt; n; i++) {</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :         const double d = dist(cx, cy, coords[2 * i], coords[2 * i + 1]);</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         if (d &lt; min_dist) {</span></a>
+<a name="253"><span class="lineNum">     253 </span>            :             i0 = i;</a>
+<a name="254"><span class="lineNum">     254 </span>            :             min_dist = d;</a>
+<a name="255"><span class="lineNum">     255 </span>            :         }</a>
+<a name="256"><span class="lineNum">     256 </span>            :     }</a>
+<a name="257"><span class="lineNum">     257 </span>            : </a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineNoCov">          0 :     const double i0x = coords[2 * i0];</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineNoCov">          0 :     const double i0y = coords[2 * i0 + 1];</span></a>
+<a name="260"><span class="lineNum">     260 </span>            : </a>
+<a name="261"><span class="lineNum">     261 </span>            :     min_dist = std::numeric_limits&lt;double&gt;::max();</a>
+<a name="262"><span class="lineNum">     262 </span>            : </a>
+<a name="263"><span class="lineNum">     263 </span>            :     // find the point closest to the seed</a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :     for (std::size_t i = 0; i &lt; n; i++) {</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :         if (i == i0) continue;</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :         const double d = dist(i0x, i0y, coords[2 * i], coords[2 * i + 1]);</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineNoCov">          0 :         if (d &lt; min_dist &amp;&amp; d &gt; 0.0) {</span></a>
+<a name="268"><span class="lineNum">     268 </span>            :             i1 = i;</a>
+<a name="269"><span class="lineNum">     269 </span>            :             min_dist = d;</a>
+<a name="270"><span class="lineNum">     270 </span>            :         }</a>
+<a name="271"><span class="lineNum">     271 </span>            :     }</a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineNoCov">          0 :     double i1x = coords[2 * i1];</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :     double i1y = coords[2 * i1 + 1];</span></a>
+<a name="275"><span class="lineNum">     275 </span>            : </a>
+<a name="276"><span class="lineNum">     276 </span>            :     double min_radius = std::numeric_limits&lt;double&gt;::max();</a>
+<a name="277"><span class="lineNum">     277 </span>            : </a>
+<a name="278"><span class="lineNum">     278 </span>            :     // find the third point which forms the smallest circumcircle with the first two</a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :     for (std::size_t i = 0; i &lt; n; i++) {</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :         if (i == i0 || i == i1) continue;</span></a>
+<a name="281"><span class="lineNum">     281 </span>            : </a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :         const double r = circumradius(</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineNoCov">          0 :             i0x, i0y, i1x, i1y, coords[2 * i], coords[2 * i + 1]);</span></a>
+<a name="284"><span class="lineNum">     284 </span>            : </a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :         if (r &lt; min_radius) {</span></a>
+<a name="286"><span class="lineNum">     286 </span>            :             i2 = i;</a>
+<a name="287"><span class="lineNum">     287 </span>            :             min_radius = r;</a>
+<a name="288"><span class="lineNum">     288 </span>            :         }</a>
+<a name="289"><span class="lineNum">     289 </span>            :     }</a>
+<a name="290"><span class="lineNum">     290 </span>            : </a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :     if (!(min_radius &lt; std::numeric_limits&lt;double&gt;::max())) {</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineNoCov">          0 :         throw std::runtime_error(&quot;not triangulation&quot;);</span></a>
+<a name="293"><span class="lineNum">     293 </span>            :     }</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :     double i2x = coords[2 * i2];</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :     double i2y = coords[2 * i2 + 1];</span></a>
+<a name="297"><span class="lineNum">     297 </span>            : </a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :     if (orient(i0x, i0y, i1x, i1y, i2x, i2y)) {</span></a>
+<a name="299"><span class="lineNum">     299 </span>            :         std::swap(i1, i2);</a>
+<a name="300"><span class="lineNum">     300 </span>            :         std::swap(i1x, i2x);</a>
+<a name="301"><span class="lineNum">     301 </span>            :         std::swap(i1y, i2y);</a>
+<a name="302"><span class="lineNum">     302 </span>            :     }</a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :     std::tie(m_center_x, m_center_y) = circumcenter(i0x, i0y, i1x, i1y, i2x, i2y);</span></a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span>            :     // sort the points by distance from the seed triangle circumcenter</a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineNoCov">          0 :     std::sort(ids.begin(), ids.end(), compare{ coords, m_center_x, m_center_y });</span></a>
+<a name="308"><span class="lineNum">     308 </span>            : </a>
+<a name="309"><span class="lineNum">     309 </span>            :     // initialize a hash table for storing edges of the advancing convex hull</a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineNoCov">          0 :     m_hash_size = static_cast&lt;std::size_t&gt;(std::llround(std::ceil(std::sqrt(n))));</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineNoCov">          0 :     m_hash.resize(m_hash_size);</span></a>
+<a name="312"><span class="lineNum">     312 </span>            :     std::fill(m_hash.begin(), m_hash.end(), INVALID_INDEX);</a>
+<a name="313"><span class="lineNum">     313 </span>            : </a>
+<a name="314"><span class="lineNum">     314 </span>            :     // initialize arrays for tracking the edges of the advancing convex hull</a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :     hull_prev.resize(n);</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :     hull_next.resize(n);</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :     hull_tri.resize(n);</span></a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :     hull_start = i0;</span></a>
+<a name="320"><span class="lineNum">     320 </span>            : </a>
+<a name="321"><span class="lineNum">     321 </span>            :     size_t hull_size = 3;</a>
+<a name="322"><span class="lineNum">     322 </span>            : </a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :     hull_next[i0] = hull_prev[i2] = i1;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :     hull_next[i1] = hull_prev[i0] = i2;</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineNoCov">          0 :     hull_next[i2] = hull_prev[i1] = i0;</span></a>
+<a name="326"><span class="lineNum">     326 </span>            : </a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :     hull_tri[i0] = 0;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :     hull_tri[i1] = 1;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :     hull_tri[i2] = 2;</span></a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :     m_hash[hash_key(i0x, i0y)] = i0;</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :     m_hash[hash_key(i1x, i1y)] = i1;</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineNoCov">          0 :     m_hash[hash_key(i2x, i2y)] = i2;</span></a>
+<a name="334"><span class="lineNum">     334 </span>            : </a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :     std::size_t max_triangles = n &lt; 3 ? 1 : 2 * n - 5;</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     triangles.reserve(max_triangles * 3);</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :     halfedges.reserve(max_triangles * 3);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineNoCov">          0 :     add_triangle(i0, i1, i2, INVALID_INDEX, INVALID_INDEX, INVALID_INDEX);</span></a>
+<a name="339"><span class="lineNum">     339 </span>            :     double xp = std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="340"><span class="lineNum">     340 </span>            :     double yp = std::numeric_limits&lt;double&gt;::quiet_NaN();</a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :     for (std::size_t k = 0; k &lt; n; k++) {</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :         const std::size_t i = ids[k];</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :         const double x = coords[2 * i];</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :         const double y = coords[2 * i + 1];</span></a>
+<a name="345"><span class="lineNum">     345 </span>            : </a>
+<a name="346"><span class="lineNum">     346 </span>            :         // skip near-duplicate points</a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :         if (k &gt; 0 &amp;&amp; check_pts_equal(x, y, xp, yp)) continue;</span></a>
+<a name="348"><span class="lineNum">     348 </span>            :         xp = x;</a>
+<a name="349"><span class="lineNum">     349 </span>            :         yp = y;</a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span>            :         // skip seed triangle points</a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineNoCov">          0 :         if (</span></a>
+<a name="353"><span class="lineNum">     353 </span>            :             check_pts_equal(x, y, i0x, i0y) ||</a>
+<a name="354"><span class="lineNum">     354 </span>            :             check_pts_equal(x, y, i1x, i1y) ||</a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineNoCov">          0 :             check_pts_equal(x, y, i2x, i2y)) continue;</span></a>
+<a name="356"><span class="lineNum">     356 </span>            : </a>
+<a name="357"><span class="lineNum">     357 </span>            :         // find a visible edge on the convex hull using edge hash</a>
+<a name="358"><span class="lineNum">     358 </span>            :         std::size_t start = 0;</a>
+<a name="359"><span class="lineNum">     359 </span>            : </a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :         size_t key = hash_key(x, y);</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :         for (size_t j = 0; j &lt; m_hash_size; j++) {</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineNoCov">          0 :             start = m_hash[fast_mod(key + j, m_hash_size)];</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineNoCov">          0 :             if (start != INVALID_INDEX &amp;&amp; start != hull_next[start]) break;</span></a>
+<a name="364"><span class="lineNum">     364 </span>            :         }</a>
+<a name="365"><span class="lineNum">     365 </span>            : </a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineNoCov">          0 :         start = hull_prev[start];</span></a>
+<a name="367"><span class="lineNum">     367 </span>            :         size_t e = start;</a>
+<a name="368"><span class="lineNum">     368 </span>            :         size_t q;</a>
+<a name="369"><span class="lineNum">     369 </span>            : </a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :         while (q = hull_next[e], !orient(x, y, coords[2 * e], coords[2 * e + 1], coords[2 * q], coords[2 * q + 1])) { //TODO: does it works in a same way as in JS</span></a>
+<a name="371"><span class="lineNum">     371 </span>            :             e = q;</a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :             if (e == start) {</span></a>
+<a name="373"><span class="lineNum">     373 </span>            :                 e = INVALID_INDEX;</a>
+<a name="374"><span class="lineNum">     374 </span>            :                 break;</a>
+<a name="375"><span class="lineNum">     375 </span>            :             }</a>
+<a name="376"><span class="lineNum">     376 </span>            :         }</a>
+<a name="377"><span class="lineNum">     377 </span>            : </a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :         if (e == INVALID_INDEX) continue; // likely a near-duplicate point; skip it</span></a>
+<a name="379"><span class="lineNum">     379 </span>            : </a>
+<a name="380"><span class="lineNum">     380 </span>            :         // add the first triangle from the point</a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineNoCov">          0 :         std::size_t t = add_triangle(</span></a>
+<a name="382"><span class="lineNum">     382 </span>            :             e,</a>
+<a name="383"><span class="lineNum">     383 </span>            :             i,</a>
+<a name="384"><span class="lineNum">     384 </span>            :             hull_next[e],</a>
+<a name="385"><span class="lineNum">     385 </span>            :             INVALID_INDEX,</a>
+<a name="386"><span class="lineNum">     386 </span>            :             INVALID_INDEX,</a>
+<a name="387"><span class="lineNum">     387 </span>            :             hull_tri[e]);</a>
+<a name="388"><span class="lineNum">     388 </span>            : </a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineNoCov">          0 :         hull_tri[i] = legalize(t + 2);</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 :         hull_tri[e] = t;</span></a>
+<a name="391"><span class="lineNum">     391 </span>            :         hull_size++;</a>
+<a name="392"><span class="lineNum">     392 </span>            : </a>
+<a name="393"><span class="lineNum">     393 </span>            :         // walk forward through the hull, adding more triangles and flipping recursively</a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :         std::size_t next = hull_next[e];</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineNoCov">          0 :         while (</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineNoCov">          0 :             q = hull_next[next],</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineNoCov">          0 :             orient(x, y, coords[2 * next], coords[2 * next + 1], coords[2 * q], coords[2 * q + 1])) {</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineNoCov">          0 :             t = add_triangle(next, i, q, hull_tri[i], INVALID_INDEX, hull_tri[next]);</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineNoCov">          0 :             hull_tri[i] = legalize(t + 2);</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :             hull_next[next] = next; // mark as removed</span></a>
+<a name="401"><span class="lineNum">     401 </span>            :             hull_size--;</a>
+<a name="402"><span class="lineNum">     402 </span>            :             next = q;</a>
+<a name="403"><span class="lineNum">     403 </span>            :         }</a>
+<a name="404"><span class="lineNum">     404 </span>            : </a>
+<a name="405"><span class="lineNum">     405 </span>            :         // walk backward from the other side, adding more triangles and flipping</a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :         if (e == start) {</span></a>
+<a name="407"><span class="lineNum">     407 </span>            :             while (</a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :                 q = hull_prev[e],</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :                 orient(x, y, coords[2 * q], coords[2 * q + 1], coords[2 * e], coords[2 * e + 1])) {</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :                 t = add_triangle(q, i, e, INVALID_INDEX, hull_tri[e], hull_tri[q]);</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :                 legalize(t + 2);</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineNoCov">          0 :                 hull_tri[q] = t;</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineNoCov">          0 :                 hull_next[e] = e; // mark as removed</span></a>
+<a name="414"><span class="lineNum">     414 </span>            :                 hull_size--;</a>
+<a name="415"><span class="lineNum">     415 </span>            :                 e = q;</a>
+<a name="416"><span class="lineNum">     416 </span>            :             }</a>
+<a name="417"><span class="lineNum">     417 </span>            :         }</a>
+<a name="418"><span class="lineNum">     418 </span>            : </a>
+<a name="419"><span class="lineNum">     419 </span>            :         // update the hull indices</a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :         hull_prev[i] = e;</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :         hull_start = e;</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineNoCov">          0 :         hull_prev[next] = i;</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineNoCov">          0 :         hull_next[e] = i;</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineNoCov">          0 :         hull_next[i] = next;</span></a>
+<a name="425"><span class="lineNum">     425 </span>            : </a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineNoCov">          0 :         m_hash[hash_key(x, y)] = i;</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineNoCov">          0 :         m_hash[hash_key(coords[2 * e], coords[2 * e + 1])] = e;</span></a>
+<a name="428"><span class="lineNum">     428 </span>            :     }</a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="430"><span class="lineNum">     430 </span>            : </a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineNoCov">          0 : double Delaunator::get_hull_area() {</span></a>
+<a name="432"><span class="lineNum">     432 </span>            :     std::vector&lt;double&gt; hull_area;</a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :     size_t e = hull_start;</span></a>
+<a name="434"><span class="lineNum">     434 </span>            :     do {</a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineNoCov">          0 :         hull_area.push_back((coords[2 * e] - coords[2 * hull_prev[e]]) * (coords[2 * e + 1] + coords[2 * hull_prev[e] + 1]));</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineNoCov">          0 :         e = hull_next[e];</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :     } while (e != hull_start);</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineNoCov">          0 :     return sum(hull_area);</span></a>
+<a name="439"><span class="lineNum">     439 </span>            : }</a>
+<a name="440"><span class="lineNum">     440 </span>            : </a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineNoCov">          0 : std::size_t Delaunator::legalize(std::size_t a) {</span></a>
+<a name="442"><span class="lineNum">     442 </span>            :     std::size_t i = 0;</a>
+<a name="443"><span class="lineNum">     443 </span>            :     std::size_t ar = 0;</a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :     m_edge_stack.clear();</span></a>
+<a name="445"><span class="lineNum">     445 </span>            : </a>
+<a name="446"><span class="lineNum">     446 </span>            :     // recursion eliminated with a fixed-size stack</a>
+<a name="447"><span class="lineNum">     447 </span>            :     while (true) {</a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineNoCov">          0 :         const size_t b = halfedges[a];</span></a>
+<a name="449"><span class="lineNum">     449 </span>            : </a>
+<a name="450"><span class="lineNum">     450 </span>            :         /* if the pair of triangles doesn't satisfy the Delaunay condition</a>
+<a name="451"><span class="lineNum">     451 </span>            :         * (p1 is inside the circumcircle of [p0, pl, pr]), flip them,</a>
+<a name="452"><span class="lineNum">     452 </span>            :         * then do the same check/flip recursively for the new pair of triangles</a>
+<a name="453"><span class="lineNum">     453 </span>            :         *</a>
+<a name="454"><span class="lineNum">     454 </span>            :         *           pl                    pl</a>
+<a name="455"><span class="lineNum">     455 </span>            :         *          /||\                  /  \</a>
+<a name="456"><span class="lineNum">     456 </span>            :         *       al/ || \bl            al/    \a</a>
+<a name="457"><span class="lineNum">     457 </span>            :         *        /  ||  \              /      \</a>
+<a name="458"><span class="lineNum">     458 </span>            :         *       /  a||b  \    flip    /___ar___\</a>
+<a name="459"><span class="lineNum">     459 </span>            :         *     p0\   ||   /p1   =&gt;   p0\---bl---/p1</a>
+<a name="460"><span class="lineNum">     460 </span>            :         *        \  ||  /              \      /</a>
+<a name="461"><span class="lineNum">     461 </span>            :         *       ar\ || /br             b\    /br</a>
+<a name="462"><span class="lineNum">     462 </span>            :         *          \||/                  \  /</a>
+<a name="463"><span class="lineNum">     463 </span>            :         *           pr                    pr</a>
+<a name="464"><span class="lineNum">     464 </span>            :         */</a>
+<a name="465"><span class="lineNum">     465 </span><span class="lineNoCov">          0 :         const size_t a0 = 3 * (a / 3);</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineNoCov">          0 :         ar = a0 + (a + 2) % 3;</span></a>
+<a name="467"><span class="lineNum">     467 </span>            : </a>
+<a name="468"><span class="lineNum">     468 </span><span class="lineNoCov">          0 :         if (b == INVALID_INDEX) {</span></a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :             if (i &gt; 0) {</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 :                 i--;</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :                 a = m_edge_stack[i];</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :                 continue;</span></a>
+<a name="473"><span class="lineNum">     473 </span>            :             } else {</a>
+<a name="474"><span class="lineNum">     474 </span>            :                 //i = INVALID_INDEX;</a>
+<a name="475"><span class="lineNum">     475 </span>            :                 break;</a>
+<a name="476"><span class="lineNum">     476 </span>            :             }</a>
+<a name="477"><span class="lineNum">     477 </span>            :         }</a>
+<a name="478"><span class="lineNum">     478 </span>            : </a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineNoCov">          0 :         const size_t b0 = 3 * (b / 3);</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineNoCov">          0 :         const size_t al = a0 + (a + 1) % 3;</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :         const size_t bl = b0 + (b + 2) % 3;</span></a>
+<a name="482"><span class="lineNum">     482 </span>            : </a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineNoCov">          0 :         const std::size_t p0 = triangles[ar];</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :         const std::size_t pr = triangles[a];</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineNoCov">          0 :         const std::size_t pl = triangles[al];</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 :         const std::size_t p1 = triangles[bl];</span></a>
+<a name="487"><span class="lineNum">     487 </span>            : </a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineNoCov">          0 :         const bool illegal = in_circle(</span></a>
+<a name="489"><span class="lineNum">     489 </span>            :             coords[2 * p0],</a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineNoCov">          0 :             coords[2 * p0 + 1],</span></a>
+<a name="491"><span class="lineNum">     491 </span>            :             coords[2 * pr],</a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineNoCov">          0 :             coords[2 * pr + 1],</span></a>
+<a name="493"><span class="lineNum">     493 </span>            :             coords[2 * pl],</a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineNoCov">          0 :             coords[2 * pl + 1],</span></a>
+<a name="495"><span class="lineNum">     495 </span>            :             coords[2 * p1],</a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :             coords[2 * p1 + 1]);</span></a>
+<a name="497"><span class="lineNum">     497 </span>            : </a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :         if (illegal) {</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineNoCov">          0 :             triangles[a] = p1;</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineNoCov">          0 :             triangles[b] = p0;</span></a>
+<a name="501"><span class="lineNum">     501 </span>            : </a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineNoCov">          0 :             auto hbl = halfedges[bl];</span></a>
+<a name="503"><span class="lineNum">     503 </span>            : </a>
+<a name="504"><span class="lineNum">     504 </span>            :             // edge swapped on the other side of the hull (rare); fix the halfedge reference</a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineNoCov">          0 :             if (hbl == INVALID_INDEX) {</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineNoCov">          0 :                 std::size_t e = hull_start;</span></a>
+<a name="507"><span class="lineNum">     507 </span>            :                 do {</a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineNoCov">          0 :                     if (hull_tri[e] == bl) {</span></a>
+<a name="509"><span class="lineNum">     509 </span><span class="lineNoCov">          0 :                         hull_tri[e] = a;</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 :                         break;</span></a>
+<a name="511"><span class="lineNum">     511 </span>            :                     }</a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :                     e = hull_next[e];</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :                 } while (e != hull_start);</span></a>
+<a name="514"><span class="lineNum">     514 </span>            :             }</a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineNoCov">          0 :             link(a, hbl);</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineNoCov">          0 :             link(b, halfedges[ar]);</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineNoCov">          0 :             link(ar, bl);</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineNoCov">          0 :             std::size_t br = b0 + (b + 1) % 3;</span></a>
+<a name="519"><span class="lineNum">     519 </span>            : </a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :             if (i &lt; m_edge_stack.size()) {</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineNoCov">          0 :                 m_edge_stack[i] = br;</span></a>
+<a name="522"><span class="lineNum">     522 </span>            :             } else {</a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :                 m_edge_stack.push_back(br);</span></a>
+<a name="524"><span class="lineNum">     524 </span>            :             }</a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :             i++;</span></a>
+<a name="526"><span class="lineNum">     526 </span>            : </a>
+<a name="527"><span class="lineNum">     527 </span>            :         } else {</a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :             if (i &gt; 0) {</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineNoCov">          0 :                 i--;</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :                 a = m_edge_stack[i];</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :                 continue;</span></a>
+<a name="532"><span class="lineNum">     532 </span>            :             } else {</a>
+<a name="533"><span class="lineNum">     533 </span>            :                 break;</a>
+<a name="534"><span class="lineNum">     534 </span>            :             }</a>
+<a name="535"><span class="lineNum">     535 </span>            :         }</a>
+<a name="536"><span class="lineNum">     536 </span>            :     }</a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :     return ar;</span></a>
+<a name="538"><span class="lineNum">     538 </span>            : }</a>
+<a name="539"><span class="lineNum">     539 </span>            : </a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 : inline std::size_t Delaunator::hash_key(const double x, const double y) const {</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :     const double dx = x - m_center_x;</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :     const double dy = y - m_center_y;</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 :     return fast_mod(</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 :         static_cast&lt;std::size_t&gt;(std::llround(std::floor(pseudo_angle(dx, dy) * static_cast&lt;double&gt;(m_hash_size)))),</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineNoCov">          0 :         m_hash_size);</span></a>
+<a name="546"><span class="lineNum">     546 </span>            : }</a>
+<a name="547"><span class="lineNum">     547 </span>            : </a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineNoCov">          0 : std::size_t Delaunator::add_triangle(</span></a>
+<a name="549"><span class="lineNum">     549 </span>            :     std::size_t i0,</a>
+<a name="550"><span class="lineNum">     550 </span>            :     std::size_t i1,</a>
+<a name="551"><span class="lineNum">     551 </span>            :     std::size_t i2,</a>
+<a name="552"><span class="lineNum">     552 </span>            :     std::size_t a,</a>
+<a name="553"><span class="lineNum">     553 </span>            :     std::size_t b,</a>
+<a name="554"><span class="lineNum">     554 </span>            :     std::size_t c) {</a>
+<a name="555"><span class="lineNum">     555 </span>            :     std::size_t t = triangles.size();</a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :     triangles.push_back(i0);</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineNoCov">          0 :     triangles.push_back(i1);</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :     triangles.push_back(i2);</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :     link(t, a);</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineNoCov">          0 :     link(t + 1, b);</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineNoCov">          0 :     link(t + 2, c);</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :     return t;</span></a>
+<a name="563"><span class="lineNum">     563 </span>            : }</a>
+<a name="564"><span class="lineNum">     564 </span>            : </a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineNoCov">          0 : void Delaunator::link(const std::size_t a, const std::size_t b) {</span></a>
+<a name="566"><span class="lineNum">     566 </span>            :     std::size_t s = halfedges.size();</a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineNoCov">          0 :     if (a == s) {</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineNoCov">          0 :         halfedges.push_back(b);</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :     } else if (a &lt; s) {</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineNoCov">          0 :         halfedges[a] = b;</span></a>
+<a name="571"><span class="lineNum">     571 </span>            :     } else {</a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineNoCov">          0 :         throw std::runtime_error(&quot;Cannot link edge&quot;);</span></a>
+<a name="573"><span class="lineNum">     573 </span>            :     }</a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineNoCov">          0 :     if (b != INVALID_INDEX) {</span></a>
+<a name="575"><span class="lineNum">     575 </span>            :         std::size_t s2 = halfedges.size();</a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineNoCov">          0 :         if (b == s2) {</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :             halfedges.push_back(a);</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineNoCov">          0 :         } else if (b &lt; s2) {</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineNoCov">          0 :             halfedges[b] = a;</span></a>
+<a name="580"><span class="lineNum">     580 </span>            :         } else {</a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :             throw std::runtime_error(&quot;Cannot link edge&quot;);</span></a>
+<a name="582"><span class="lineNum">     582 </span>            :         }</a>
+<a name="583"><span class="lineNum">     583 </span>            :     }</a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="585"><span class="lineNum">     585 </span>            : </a>
+<a name="586"><span class="lineNum">     586 </span>            : } //namespace delaunator</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

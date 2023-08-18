@@ -1,0 +1,669 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - python/add_search_strategies_to_python.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">python</a> - add_search_strategies_to_python.cpp<span style="font-size: 80%;"> (source / <a href="add_search_strategies_to_python.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntry">232</td>
+            <td class="headerCovTableEntryLo">24.1 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 13:12:02</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">44</td>
+            <td class="headerCovTableEntryLo">11.4 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //    |  /           |</a>
+<a name="2"><span class="lineNum">       2 </span>            : //    ' /   __| _` | __|  _ \   __|</a>
+<a name="3"><span class="lineNum">       3 </span>            : //    . \  |   (   | |   (   |\__ `</a>
+<a name="4"><span class="lineNum">       4 </span>            : //   _|\_\_|  \__,_|\__|\___/ ____/</a>
+<a name="5"><span class="lineNum">       5 </span>            : //                   Multi-Physics</a>
+<a name="6"><span class="lineNum">       6 </span>            : //</a>
+<a name="7"><span class="lineNum">       7 </span>            : //  License:         BSD License</a>
+<a name="8"><span class="lineNum">       8 </span>            : //                   Kratos default license: kratos/license.txt</a>
+<a name="9"><span class="lineNum">       9 </span>            : //</a>
+<a name="10"><span class="lineNum">      10 </span>            : //  Main authors:    Pooyan Dadvand</a>
+<a name="11"><span class="lineNum">      11 </span>            : //                   Riccardo Rossi</a>
+<a name="12"><span class="lineNum">      12 </span>            : //</a>
+<a name="13"><span class="lineNum">      13 </span>            : </a>
+<a name="14"><span class="lineNum">      14 </span>            : // System includes</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            : // External includes</a>
+<a name="17"><span class="lineNum">      17 </span>            : </a>
+<a name="18"><span class="lineNum">      18 </span>            : // Project includes</a>
+<a name="19"><span class="lineNum">      19 </span>            : #include &quot;includes/define_python.h&quot;</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &quot;python/add_search_strategies_to_python.h&quot;</a>
+<a name="21"><span class="lineNum">      21 </span>            : #include &quot;utilities/parallel_utilities.h&quot;</a>
+<a name="22"><span class="lineNum">      22 </span>            : #include &quot;spatial_containers/spatial_search.h&quot;</a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;spatial_containers/specialized_spatial_search.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;spatial_containers/specialized_spatial_search_factory.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &quot;spatial_containers/geometrical_objects_bins.h&quot;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &quot;spatial_containers/spatial_search_result.h&quot;</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : namespace Kratos::Python</a>
+<a name="29"><span class="lineNum">      29 </span>            : {</a>
+<a name="30"><span class="lineNum">      30 </span>            : </a>
+<a name="31"><span class="lineNum">      31 </span>            : /**</a>
+<a name="32"><span class="lineNum">      32 </span>            :  * @brief Generates a list of lists from a vector of vectors</a>
+<a name="33"><span class="lineNum">      33 </span>            :  * @param rList The list to be filled</a>
+<a name="34"><span class="lineNum">      34 </span>            :  * @param rVector The vector of vectors to be copied</a>
+<a name="35"><span class="lineNum">      35 </span>            :  * @tparam TClass The type of the vector of vectors</a>
+<a name="36"><span class="lineNum">      36 </span>            :  */</a>
+<a name="37"><span class="lineNum">      37 </span>            : template&lt;class TClass&gt;</a>
+<a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 : void GenerateListFromVectorOfVector(</span></a>
+<a name="39"><span class="lineNum">      39 </span>            :     pybind11::list&amp; rList,</a>
+<a name="40"><span class="lineNum">      40 </span>            :     const TClass&amp; rVector</a>
+<a name="41"><span class="lineNum">      41 </span>            :     )</a>
+<a name="42"><span class="lineNum">      42 </span>            : {</a>
+<a name="43"><span class="lineNum">      43 </span>            :     // Clear the result list</a>
+<a name="44"><span class="lineNum">      44 </span><span class="lineNoCov">          0 :     rList.attr(&quot;clear&quot;)();</span></a>
+<a name="45"><span class="lineNum">      45 </span>            : </a>
+<a name="46"><span class="lineNum">      46 </span>            :     // Copy to the result list</a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :     for (std::size_t i = 0; i &lt; rVector.size(); ++i) {</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :         pybind11::list results_list_i;</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :         for (auto&amp; result : rVector[i]) {</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :             results_list_i.append(result);</span></a>
+<a name="51"><span class="lineNum">      51 </span>            :         }</a>
+<a name="52"><span class="lineNum">      52 </span>            :         rList.append(results_list_i);</a>
+<a name="53"><span class="lineNum">      53 </span>            :     }</a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="55"><span class="lineNum">      55 </span>            : </a>
+<a name="56"><span class="lineNum">      56 </span>            : /**</a>
+<a name="57"><span class="lineNum">      57 </span>            :  * @brief Copies a list of doubles to a radius array</a>
+<a name="58"><span class="lineNum">      58 </span>            :  * @param rListOfRadius The list of doubles to be copied </a>
+<a name="59"><span class="lineNum">      59 </span>            :  * @param rRadiusArray The radius array to be filled</a>
+<a name="60"><span class="lineNum">      60 </span>            :  */</a>
+<a name="61"><span class="lineNum">      61 </span><span class="lineNoCov">          0 : void CopyRadiusArrayToPython(</span></a>
+<a name="62"><span class="lineNum">      62 </span>            :     const pybind11::list&amp; rListOfRadius,</a>
+<a name="63"><span class="lineNum">      63 </span>            :     SpatialSearch::RadiusArrayType&amp; rRadiusArray</a>
+<a name="64"><span class="lineNum">      64 </span>            :     )</a>
+<a name="65"><span class="lineNum">      65 </span>            : {</a>
+<a name="66"><span class="lineNum">      66 </span>            :     // Get the size of the radius array</a>
+<a name="67"><span class="lineNum">      67 </span>            :     const std::size_t size_array = rListOfRadius.size();</a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span>            :     // Create the radius array</a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :     rRadiusArray.resize(size_array);</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineNoCov">          0 :     IndexPartition&lt;std::size_t&gt;(size_array).for_each([&amp;](std::size_t i) {</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineNoCov">          0 :         rRadiusArray[i] = rListOfRadius[i].cast&lt;double&gt;();</span></a>
+<a name="73"><span class="lineNum">      73 </span>            :         //rRadiusArray[i] = rListOfRadius[i];</a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 :     });</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="76"><span class="lineNum">      76 </span>            : </a>
+<a name="77"><span class="lineNum">      77 </span>            : /**</a>
+<a name="78"><span class="lineNum">      78 </span>            :  * @brief Copies a Python list of radius to a C++ radius array.</a>
+<a name="79"><span class="lineNum">      79 </span>            :  * @param rListOfRadius list of radius to copy</a>
+<a name="80"><span class="lineNum">      80 </span>            :  * @return Radius array with copied radius</a>
+<a name="81"><span class="lineNum">      81 </span>            :  */</a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 : SpatialSearch::RadiusArrayType CopyRadiusArrayToPython(const pybind11::list&amp; rListOfRadius)</span></a>
+<a name="83"><span class="lineNum">      83 </span>            : {</a>
+<a name="84"><span class="lineNum">      84 </span>            :     // Create the radius array</a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineNoCov">          0 :     SpatialSearch::RadiusArrayType radius_array(rListOfRadius.size());</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :     CopyRadiusArrayToPython(rListOfRadius, radius_array);</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :     return radius_array;</span></a>
+<a name="88"><span class="lineNum">      88 </span>            : }</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            : /**</a>
+<a name="91"><span class="lineNum">      91 </span>            :  * @brief Generates a tuple of two python lists containing the elements and distances of a spatial search result.</a>
+<a name="92"><span class="lineNum">      92 </span>            :  * @param rResults a reference to a vector containing the result elements to be copied to the python list</a>
+<a name="93"><span class="lineNum">      93 </span>            :  * @param rDistances a reference to a vector containing the distances to be copied to the python list</a>
+<a name="94"><span class="lineNum">      94 </span>            :  * @return A tuple containing two python lists, the first one containing the result elements and the second one containing the distances</a>
+<a name="95"><span class="lineNum">      95 </span>            :  * @tparam TClass The type of the class.</a>
+<a name="96"><span class="lineNum">      96 </span>            :  */</a>
+<a name="97"><span class="lineNum">      97 </span>            : template&lt;class TClass&gt;</a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 : std::tuple&lt;pybind11::list, pybind11::list&gt; GenerateSpatialSearchSolutionTuple(</span></a>
+<a name="99"><span class="lineNum">      99 </span>            :     const TClass&amp; rResults, </a>
+<a name="100"><span class="lineNum">     100 </span>            :     SpatialSearch::VectorDistanceType&amp; rDistances</a>
+<a name="101"><span class="lineNum">     101 </span>            :     )</a>
+<a name="102"><span class="lineNum">     102 </span>            : {</a>
+<a name="103"><span class="lineNum">     103 </span>            :     std::tuple&lt;pybind11::list, pybind11::list&gt; results_tuple;</a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :     GenerateListFromVectorOfVector(std::get&lt;0&gt;(results_tuple), rResults);</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :     GenerateListFromVectorOfVector(std::get&lt;1&gt;(results_tuple), rDistances);</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :     return results_tuple;</span></a>
+<a name="107"><span class="lineNum">     107 </span>            : }</a>
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<a name="109"><span class="lineNum">     109 </span>            : /**</a>
+<a name="110"><span class="lineNum">     110 </span>            :  * @brief Defines a specialized spatial search module in Pybind11.</a>
+<a name="111"><span class="lineNum">     111 </span>            :  * @param m The Pybind11 module to define the specialized spatial search in.</a>
+<a name="112"><span class="lineNum">     112 </span>            :  * @param rClassName The name of the specialized spatial search class.</a>
+<a name="113"><span class="lineNum">     113 </span>            :  */</a>
+<a name="114"><span class="lineNum">     114 </span>            : template &lt;SpatialContainer TSearchBackend&gt;</a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          4 : void DefineSpecializedSpatialSearch(pybind11::module&amp; m, const std::string&amp; rClassName)</span></a>
+<a name="116"><span class="lineNum">     116 </span>            : {</a>
+<a name="117"><span class="lineNum">     117 </span>            :     using SpatialSearchType = SpecializedSpatialSearch&lt;TSearchBackend&gt;;</a>
+<a name="118"><span class="lineNum">     118 </span>            :     using SpatialSearchPointerType = typename SpecializedSpatialSearch&lt;TSearchBackend&gt;::Pointer;</a>
+<a name="119"><span class="lineNum">     119 </span>            :     using BaseSpatialSearchType = SpatialSearch;</a>
+<a name="120"><span class="lineNum">     120 </span>            : </a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 :     pybind11::class_&lt;SpatialSearchType, SpatialSearchPointerType, BaseSpatialSearchType&gt;(m, rClassName.c_str())</span></a>
+<a name="122"><span class="lineNum">     122 </span>            :     .def(pybind11::init&lt;&gt;())</a>
+<a name="123"><span class="lineNum">     123 </span>            :     .def(pybind11::init&lt;Parameters&gt;())</a>
+<a name="124"><span class="lineNum">     124 </span>            :     ;</a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          4 : }</span></a>
+<a name="126"><span class="lineNum">     126 </span>            : </a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 : void AddSearchStrategiesToPython(pybind11::module&amp; m)</span></a>
+<a name="128"><span class="lineNum">     128 </span>            : {</a>
+<a name="129"><span class="lineNum">     129 </span>            :     namespace py = pybind11;</a>
+<a name="130"><span class="lineNum">     130 </span>            : </a>
+<a name="131"><span class="lineNum">     131 </span>            :     /// The variables of the spatial search</a>
+<a name="132"><span class="lineNum">     132 </span>            :     using VectorResultElementsContainerType = SpatialSearch::VectorResultElementsContainerType;</a>
+<a name="133"><span class="lineNum">     133 </span>            :     using VectorResultNodesContainerType = SpatialSearch::VectorResultNodesContainerType;</a>
+<a name="134"><span class="lineNum">     134 </span>            :     using VectorResultConditionsContainerType = SpatialSearch::VectorResultConditionsContainerType;</a>
+<a name="135"><span class="lineNum">     135 </span>            :     using VectorDistanceType = SpatialSearch::VectorDistanceType;</a>
+<a name="136"><span class="lineNum">     136 </span>            :     using ElementsContainerType = SpatialSearch::ElementsContainerType;</a>
+<a name="137"><span class="lineNum">     137 </span>            :     using NodesContainerType = SpatialSearch::NodesContainerType;</a>
+<a name="138"><span class="lineNum">     138 </span>            :     using ConditionsContainerType = SpatialSearch::ConditionsContainerType;</a>
+<a name="139"><span class="lineNum">     139 </span>            : </a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 :     py::class_&lt;SpatialSearch, SpatialSearch::Pointer&gt;(m, &quot;SpatialSearch&quot;)</span></a>
+<a name="141"><span class="lineNum">     141 </span>            :     .def(py::init&lt; &gt;())</a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart, py::list&amp; rListOfRadius) {</span></a>
+<a name="143"><span class="lineNum">     143 </span>            :         // Get the size of the radius array</a>
+<a name="144"><span class="lineNum">     144 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="145"><span class="lineNum">     145 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rModelPart.NumberOfElements()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span>            :         // Perform the search</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :         VectorResultElementsContainerType results(size_array);</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusExclusive(rModelPart, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="151"><span class="lineNum">     151 </span>            : </a>
+<a name="152"><span class="lineNum">     152 </span>            :         // Copy the results to the python list</a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart,</span></a>
+<a name="156"><span class="lineNum">     156 </span>            :     const ElementsContainerType&amp; rInputElements, py::list&amp; rListOfRadius) {</a>
+<a name="157"><span class="lineNum">     157 </span>            :         // Get the size of the radius array</a>
+<a name="158"><span class="lineNum">     158 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="159"><span class="lineNum">     159 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputElements.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="160"><span class="lineNum">     160 </span>            : </a>
+<a name="161"><span class="lineNum">     161 </span>            :         // Perform the search</a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :         VectorResultElementsContainerType results(size_array);</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusExclusive(rModelPart, rInputElements, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span>            :         // Copy the results to the python list</a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="170"><span class="lineNum">     170 </span>            :     const ElementsContainerType&amp; rStructureElements, py::list&amp; rListOfRadius) {</a>
+<a name="171"><span class="lineNum">     171 </span>            :         // Get the size of the radius array</a>
+<a name="172"><span class="lineNum">     172 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="173"><span class="lineNum">     173 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rStructureElements.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="174"><span class="lineNum">     174 </span>            : </a>
+<a name="175"><span class="lineNum">     175 </span>            :         // Perform the search</a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineNoCov">          0 :         VectorResultElementsContainerType results(size_array);</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusExclusive(rStructureElements, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="179"><span class="lineNum">     179 </span>            : </a>
+<a name="180"><span class="lineNum">     180 </span>            :         // Copy the results to the python list</a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="184"><span class="lineNum">     184 </span>            :     const ElementsContainerType&amp; rStructureElements,</a>
+<a name="185"><span class="lineNum">     185 </span>            :     const ElementsContainerType&amp; rInputElements, py::list&amp; rListOfRadius) {</a>
+<a name="186"><span class="lineNum">     186 </span>            :         // Get the size of the radius array</a>
+<a name="187"><span class="lineNum">     187 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="188"><span class="lineNum">     188 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputElements.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="189"><span class="lineNum">     189 </span>            : </a>
+<a name="190"><span class="lineNum">     190 </span>            :         // Perform the search</a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineNoCov">          0 :         VectorResultElementsContainerType results(size_array);</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusExclusive(rStructureElements, rInputElements, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="194"><span class="lineNum">     194 </span>            : </a>
+<a name="195"><span class="lineNum">     195 </span>            :         // Copy the results to the python list</a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart, py::list&amp; rListOfRadius) {</span></a>
+<a name="199"><span class="lineNum">     199 </span>            :         // Get the size of the radius array</a>
+<a name="200"><span class="lineNum">     200 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="201"><span class="lineNum">     201 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rModelPart.NumberOfElements()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="202"><span class="lineNum">     202 </span>            : </a>
+<a name="203"><span class="lineNum">     203 </span>            :         // Perform the search</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusInclusive(rModelPart, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span>            :         // Copy the results to the python list</a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart,</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :     const ElementsContainerType&amp; rInputElements, py::list&amp; rListOfRadius) {</a>
+<a name="213"><span class="lineNum">     213 </span>            :         // Get the size of the radius array</a>
+<a name="214"><span class="lineNum">     214 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="215"><span class="lineNum">     215 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputElements.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="216"><span class="lineNum">     216 </span>            : </a>
+<a name="217"><span class="lineNum">     217 </span>            :         // Perform the search</a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusInclusive(rModelPart, rInputElements, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="221"><span class="lineNum">     221 </span>            : </a>
+<a name="222"><span class="lineNum">     222 </span>            :         // Copy the results to the python list</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="226"><span class="lineNum">     226 </span>            :     const ElementsContainerType&amp; rStructureElements, py::list&amp; rListOfRadius) {</a>
+<a name="227"><span class="lineNum">     227 </span>            :         // Get the size of the radius array</a>
+<a name="228"><span class="lineNum">     228 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="229"><span class="lineNum">     229 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rStructureElements.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="230"><span class="lineNum">     230 </span>            : </a>
+<a name="231"><span class="lineNum">     231 </span>            :         // Perform the search</a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusInclusive(rStructureElements, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="235"><span class="lineNum">     235 </span>            : </a>
+<a name="236"><span class="lineNum">     236 </span>            :         // Copy the results to the python list</a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 :     .def(&quot;SearchElementsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="240"><span class="lineNum">     240 </span>            :     const ElementsContainerType&amp; rStructureElements,</a>
+<a name="241"><span class="lineNum">     241 </span>            :     const ElementsContainerType&amp; rInputElements, py::list&amp; rListOfRadius) {</a>
+<a name="242"><span class="lineNum">     242 </span>            :         // Get the size of the radius array</a>
+<a name="243"><span class="lineNum">     243 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="244"><span class="lineNum">     244 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputElements.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input elements array&quot; &lt;&lt; std::endl;</a>
+<a name="245"><span class="lineNum">     245 </span>            : </a>
+<a name="246"><span class="lineNum">     246 </span>            :         // Perform the search</a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :         self.SearchElementsInRadiusInclusive(rStructureElements, rInputElements, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="250"><span class="lineNum">     250 </span>            : </a>
+<a name="251"><span class="lineNum">     251 </span>            :         // Copy the results to the python list</a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart, py::list&amp; rListOfRadius) {</span></a>
+<a name="255"><span class="lineNum">     255 </span>            :         // Get the size of the radius array</a>
+<a name="256"><span class="lineNum">     256 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="257"><span class="lineNum">     257 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rModelPart.NumberOfNodes()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="258"><span class="lineNum">     258 </span>            : </a>
+<a name="259"><span class="lineNum">     259 </span>            :         // Perform the search</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusExclusive(rModelPart, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span>            :         // Copy the results to the python list</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart,</span></a>
+<a name="268"><span class="lineNum">     268 </span>            :     const NodesContainerType&amp; rInputNodes, py::list&amp; rListOfRadius) {</a>
+<a name="269"><span class="lineNum">     269 </span>            :         // Get the size of the radius array</a>
+<a name="270"><span class="lineNum">     270 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="271"><span class="lineNum">     271 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputNodes.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span>            :         // Perform the search</a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusExclusive(rModelPart, rInputNodes, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="277"><span class="lineNum">     277 </span>            : </a>
+<a name="278"><span class="lineNum">     278 </span>            :         // Copy the results to the python list</a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="282"><span class="lineNum">     282 </span>            :     const NodesContainerType&amp; rStructureNodes, py::list&amp; rListOfRadius) {</a>
+<a name="283"><span class="lineNum">     283 </span>            :         // Get the size of the radius array</a>
+<a name="284"><span class="lineNum">     284 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="285"><span class="lineNum">     285 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rStructureNodes.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="286"><span class="lineNum">     286 </span>            : </a>
+<a name="287"><span class="lineNum">     287 </span>            :         // Perform the search</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusExclusive(rStructureNodes, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            :         // Copy the results to the python list</a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="296"><span class="lineNum">     296 </span>            :     const NodesContainerType&amp; rStructureNodes,</a>
+<a name="297"><span class="lineNum">     297 </span>            :     const NodesContainerType&amp; rInputNodes, py::list&amp; rListOfRadius) {</a>
+<a name="298"><span class="lineNum">     298 </span>            :         // Get the size of the radius array</a>
+<a name="299"><span class="lineNum">     299 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="300"><span class="lineNum">     300 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputNodes.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="301"><span class="lineNum">     301 </span>            : </a>
+<a name="302"><span class="lineNum">     302 </span>            :         // Perform the search</a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusExclusive(rStructureNodes, rInputNodes, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="306"><span class="lineNum">     306 </span>            : </a>
+<a name="307"><span class="lineNum">     307 </span>            :         // Copy the results to the python list</a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart, py::list&amp; rListOfRadius) {</span></a>
+<a name="311"><span class="lineNum">     311 </span>            :         // Get the size of the radius array</a>
+<a name="312"><span class="lineNum">     312 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="313"><span class="lineNum">     313 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rModelPart.NumberOfNodes()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="314"><span class="lineNum">     314 </span>            : </a>
+<a name="315"><span class="lineNum">     315 </span>            :         // Perform the search</a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusInclusive(rModelPart, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="319"><span class="lineNum">     319 </span>            : </a>
+<a name="320"><span class="lineNum">     320 </span>            :         // Copy the results to the python list</a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart,</span></a>
+<a name="324"><span class="lineNum">     324 </span>            :     const NodesContainerType&amp; rInputNodes, py::list&amp; rListOfRadius) {</a>
+<a name="325"><span class="lineNum">     325 </span>            :         // Get the size of the radius array</a>
+<a name="326"><span class="lineNum">     326 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="327"><span class="lineNum">     327 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputNodes.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="328"><span class="lineNum">     328 </span>            : </a>
+<a name="329"><span class="lineNum">     329 </span>            :         // Perform the search</a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusInclusive(rModelPart, rInputNodes, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="333"><span class="lineNum">     333 </span>            : </a>
+<a name="334"><span class="lineNum">     334 </span>            :         // Copy the results to the python list</a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="338"><span class="lineNum">     338 </span>            :     const NodesContainerType&amp; rStructureNodes, py::list&amp; rListOfRadius) {</a>
+<a name="339"><span class="lineNum">     339 </span>            :         // Get the size of the radius array</a>
+<a name="340"><span class="lineNum">     340 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="341"><span class="lineNum">     341 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rStructureNodes.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="342"><span class="lineNum">     342 </span>            : </a>
+<a name="343"><span class="lineNum">     343 </span>            :         // Perform the search</a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusInclusive(rStructureNodes, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="347"><span class="lineNum">     347 </span>            : </a>
+<a name="348"><span class="lineNum">     348 </span>            :         // Copy the results to the python list</a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          1 :     .def(&quot;SearchNodesInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="352"><span class="lineNum">     352 </span>            :     const NodesContainerType&amp; rStructureNodes,</a>
+<a name="353"><span class="lineNum">     353 </span>            :     const NodesContainerType&amp; rInputNodes, py::list&amp; rListOfRadius) {</a>
+<a name="354"><span class="lineNum">     354 </span>            :         // Get the size of the radius array</a>
+<a name="355"><span class="lineNum">     355 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="356"><span class="lineNum">     356 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputNodes.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input nodes array&quot; &lt;&lt; std::endl;</a>
+<a name="357"><span class="lineNum">     357 </span>            : </a>
+<a name="358"><span class="lineNum">     358 </span>            :         // Perform the search</a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineNoCov">          0 :         self.SearchNodesInRadiusInclusive(rStructureNodes, rInputNodes, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="362"><span class="lineNum">     362 </span>            : </a>
+<a name="363"><span class="lineNum">     363 </span>            :         // Copy the results to the python list</a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart, py::list&amp; rListOfRadius) {</span></a>
+<a name="367"><span class="lineNum">     367 </span>            :         // Get the size of the radius array</a>
+<a name="368"><span class="lineNum">     368 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="369"><span class="lineNum">     369 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rModelPart.NumberOfConditions()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="370"><span class="lineNum">     370 </span>            : </a>
+<a name="371"><span class="lineNum">     371 </span>            :         // Perform the search</a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineNoCov">          0 :         VectorResultConditionsContainerType results(size_array);</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusExclusive(rModelPart, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="375"><span class="lineNum">     375 </span>            : </a>
+<a name="376"><span class="lineNum">     376 </span>            :         // Copy the results to the python list</a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart,</span></a>
+<a name="380"><span class="lineNum">     380 </span>            :     const ConditionsContainerType&amp; rInputConditions, py::list&amp; rListOfRadius) {</a>
+<a name="381"><span class="lineNum">     381 </span>            :         // Get the size of the radius array</a>
+<a name="382"><span class="lineNum">     382 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="383"><span class="lineNum">     383 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputConditions.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="384"><span class="lineNum">     384 </span>            : </a>
+<a name="385"><span class="lineNum">     385 </span>            :         // Perform the search</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :         VectorResultConditionsContainerType results(size_array);</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusExclusive(rModelPart, rInputConditions, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="389"><span class="lineNum">     389 </span>            : </a>
+<a name="390"><span class="lineNum">     390 </span>            :         // Copy the results to the python list</a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="394"><span class="lineNum">     394 </span>            :     const ConditionsContainerType&amp; rStructureConditions, py::list&amp; rListOfRadius) {</a>
+<a name="395"><span class="lineNum">     395 </span>            :         // Get the size of the radius array</a>
+<a name="396"><span class="lineNum">     396 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="397"><span class="lineNum">     397 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rStructureConditions.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="398"><span class="lineNum">     398 </span>            : </a>
+<a name="399"><span class="lineNum">     399 </span>            :         // Perform the search</a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :         VectorResultConditionsContainerType results(size_array);</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusExclusive(rStructureConditions, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="403"><span class="lineNum">     403 </span>            : </a>
+<a name="404"><span class="lineNum">     404 </span>            :         // Copy the results to the python list</a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusExclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="408"><span class="lineNum">     408 </span>            :     const ConditionsContainerType&amp; rStructureConditions,</a>
+<a name="409"><span class="lineNum">     409 </span>            :     const ConditionsContainerType&amp; rInputConditions, py::list&amp; rListOfRadius) {</a>
+<a name="410"><span class="lineNum">     410 </span>            :         // Get the size of the radius array</a>
+<a name="411"><span class="lineNum">     411 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="412"><span class="lineNum">     412 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputConditions.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="413"><span class="lineNum">     413 </span>            : </a>
+<a name="414"><span class="lineNum">     414 </span>            :         // Perform the search</a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineNoCov">          0 :         VectorResultConditionsContainerType results(size_array);</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusExclusive(rStructureConditions, rInputConditions, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="418"><span class="lineNum">     418 </span>            : </a>
+<a name="419"><span class="lineNum">     419 </span>            :         // Copy the results to the python list</a>
+<a name="420"><span class="lineNum">     420 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart, py::list&amp; rListOfRadius) {</span></a>
+<a name="423"><span class="lineNum">     423 </span>            :         // Get the size of the radius array</a>
+<a name="424"><span class="lineNum">     424 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="425"><span class="lineNum">     425 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rModelPart.NumberOfConditions()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="426"><span class="lineNum">     426 </span>            : </a>
+<a name="427"><span class="lineNum">     427 </span>            :         // Perform the search</a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusInclusive(rModelPart, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="431"><span class="lineNum">     431 </span>            : </a>
+<a name="432"><span class="lineNum">     432 </span>            :         // Copy the results to the python list</a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self, ModelPart&amp; rModelPart,</span></a>
+<a name="436"><span class="lineNum">     436 </span>            :     const ConditionsContainerType&amp; rInputConditions, py::list&amp; rListOfRadius) {</a>
+<a name="437"><span class="lineNum">     437 </span>            :         // Get the size of the radius array</a>
+<a name="438"><span class="lineNum">     438 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="439"><span class="lineNum">     439 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputConditions.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="440"><span class="lineNum">     440 </span>            : </a>
+<a name="441"><span class="lineNum">     441 </span>            :         // Perform the search</a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusInclusive(rModelPart, rInputConditions, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="445"><span class="lineNum">     445 </span>            : </a>
+<a name="446"><span class="lineNum">     446 </span>            :         // Copy the results to the python list</a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="450"><span class="lineNum">     450 </span>            :     const ConditionsContainerType&amp; rStructureConditions, py::list&amp; rListOfRadius) {</a>
+<a name="451"><span class="lineNum">     451 </span>            :         // Get the size of the radius array</a>
+<a name="452"><span class="lineNum">     452 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="453"><span class="lineNum">     453 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rStructureConditions.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="454"><span class="lineNum">     454 </span>            : </a>
+<a name="455"><span class="lineNum">     455 </span>            :         // Perform the search</a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="457"><span class="lineNum">     457 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusInclusive(rStructureConditions, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="459"><span class="lineNum">     459 </span>            : </a>
+<a name="460"><span class="lineNum">     460 </span>            :         // Copy the results to the python list</a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">          1 :     .def(&quot;SearchConditionsInRadiusInclusive&quot;, [&amp;](SpatialSearch&amp; self,</span></a>
+<a name="464"><span class="lineNum">     464 </span>            :     const ConditionsContainerType&amp; rStructureConditions,</a>
+<a name="465"><span class="lineNum">     465 </span>            :     const ConditionsContainerType&amp; rInputConditions, py::list&amp; rListOfRadius) {</a>
+<a name="466"><span class="lineNum">     466 </span>            :         // Get the size of the radius array</a>
+<a name="467"><span class="lineNum">     467 </span>            :         const std::size_t size_array = rListOfRadius.size();</a>
+<a name="468"><span class="lineNum">     468 </span>            :         KRATOS_DEBUG_ERROR_IF(size_array != rInputConditions.size()) &lt;&lt; &quot;The size of the radius array must be equal to the size of the input conditions array&quot; &lt;&lt; std::endl;</a>
+<a name="469"><span class="lineNum">     469 </span>            : </a>
+<a name="470"><span class="lineNum">     470 </span>            :         // Perform the search</a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineNoCov">          0 :         VectorResultNodesContainerType results(size_array);</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :         VectorDistanceType distances(size_array);</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineNoCov">          0 :         self.SearchConditionsInRadiusInclusive(rStructureConditions, rInputConditions, CopyRadiusArrayToPython(rListOfRadius), results, distances);</span></a>
+<a name="474"><span class="lineNum">     474 </span>            : </a>
+<a name="475"><span class="lineNum">     475 </span>            :         // Copy the results to the python list</a>
+<a name="476"><span class="lineNum">     476 </span><span class="lineNoCov">          0 :         return GenerateSpatialSearchSolutionTuple(results, distances);</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="478"><span class="lineNum">     478 </span>            :     ;</a>
+<a name="479"><span class="lineNum">     479 </span>            : </a>
+<a name="480"><span class="lineNum">     480 </span>            :     // The factory of the search strategies</a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">          1 :     py::class_&lt;SpecializedSpatialSearchFactory, SpecializedSpatialSearchFactory::Pointer, SpatialSearch&gt;(m, &quot;SpecializedSpatialSearch&quot;)</span></a>
+<a name="482"><span class="lineNum">     482 </span>            :     .def(py::init&lt; &gt;())</a>
+<a name="483"><span class="lineNum">     483 </span>            :     .def(py::init&lt;Parameters&gt;())</a>
+<a name="484"><span class="lineNum">     484 </span>            :     ;</a>
+<a name="485"><span class="lineNum">     485 </span>            : </a>
+<a name="486"><span class="lineNum">     486 </span>            :     // Register the specializations</a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">          1 :     DefineSpecializedSpatialSearch&lt;SpatialContainer::KDTree&gt;(m, &quot;SpatialSearchKDTree&quot;);</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">          1 :     DefineSpecializedSpatialSearch&lt;SpatialContainer::Octree&gt;(m, &quot;SpatialSearchOctree&quot;);</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">          1 :     DefineSpecializedSpatialSearch&lt;SpatialContainer::BinsStatic&gt;(m, &quot;SpatialSearchBinsStatic&quot;);</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">          1 :     DefineSpecializedSpatialSearch&lt;SpatialContainer::BinsDynamic&gt;(m, &quot;SpatialSearchBinsDynamic&quot;);</span></a>
+<a name="491"><span class="lineNum">     491 </span>            : </a>
+<a name="492"><span class="lineNum">     492 </span>            :     using ResultType = SpatialSearchResult&lt;GeometricalObject&gt;;</a>
+<a name="493"><span class="lineNum">     493 </span>            : </a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">          1 :     py::class_&lt;ResultType, ResultType::Pointer&gt;(m, &quot;ResultType&quot;)</span></a>
+<a name="495"><span class="lineNum">     495 </span>            :     .def(py::init&lt; &gt;())</a>
+<a name="496"><span class="lineNum">     496 </span>            :     .def(py::init&lt;GeometricalObject*&gt;())</a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">          1 :     .def(&quot;Reset&quot;, &amp;ResultType::Reset)</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">          1 :     .def(&quot;Get&quot;, [&amp;](ResultType&amp; self) {return self.Get().get();})</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          1 :     .def(&quot;Set&quot;, &amp;ResultType::Set)</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">          1 :     .def(&quot;GetDistance&quot;, &amp;ResultType::GetDistance)</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">          1 :     .def(&quot;SetDistance&quot;, &amp;ResultType::SetDistance)</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">          1 :     .def(&quot;IsObjectFound&quot;, &amp;ResultType::IsObjectFound)</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">          1 :     .def(&quot;IsDistanceCalculated&quot;, &amp;ResultType::IsDistanceCalculated)</span></a>
+<a name="504"><span class="lineNum">     504 </span>            :     ;</a>
+<a name="505"><span class="lineNum">     505 </span>            : </a>
+<a name="506"><span class="lineNum">     506 </span>            :     using NodesContainerType = ModelPart::NodesContainerType;</a>
+<a name="507"><span class="lineNum">     507 </span>            :     using ElementsContainerType = ModelPart::ElementsContainerType;</a>
+<a name="508"><span class="lineNum">     508 </span>            :     using ConditionsContainerType = ModelPart::ConditionsContainerType;</a>
+<a name="509"><span class="lineNum">     509 </span>            : </a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">          1 :     py::class_&lt;GeometricalObjectsBins, GeometricalObjectsBins::Pointer&gt;(m, &quot;GeometricalObjectsBins&quot;)</span></a>
+<a name="511"><span class="lineNum">     511 </span>            :     .def(py::init&lt;ElementsContainerType&amp;&gt;())</a>
+<a name="512"><span class="lineNum">     512 </span>            :     .def(py::init&lt;ConditionsContainerType&amp;&gt;())</a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">          1 :     .def(&quot;GetBoundingBox&quot;, &amp;GeometricalObjectsBins::GetBoundingBox)</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">          1 :     .def(&quot;GetCellSizes&quot;, &amp;GeometricalObjectsBins::GetCellSizes)</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          1 :     .def(&quot;GetNumberOfCells&quot;, &amp;GeometricalObjectsBins::GetNumberOfCells)</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">          1 :     .def(&quot;GetTotalNumberOfCells&quot;, &amp;GeometricalObjectsBins::GetTotalNumberOfCells)</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">          1 :     .def(&quot;SearchInRadius&quot;, [&amp;](GeometricalObjectsBins&amp; self, const Point&amp; rPoint, const double Radius) {</span></a>
+<a name="518"><span class="lineNum">     518 </span>            :         // Perform the search</a>
+<a name="519"><span class="lineNum">     519 </span>            :         std::vector&lt;ResultType&gt; results;</a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineNoCov">          0 :         self.SearchInRadius(rPoint, Radius, results);</span></a>
+<a name="521"><span class="lineNum">     521 </span>            : </a>
+<a name="522"><span class="lineNum">     522 </span>            :         // Copy the results to the python list</a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineNoCov">          0 :         py::list list_results;</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineNoCov">          0 :         for (auto&amp; r_result : results) {</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineNoCov">          0 :             list_results.append(r_result);</span></a>
+<a name="526"><span class="lineNum">     526 </span>            :         }</a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineNoCov">          0 :         return list_results;</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">          1 :     .def(&quot;SearchInRadius&quot;, [&amp;](GeometricalObjectsBins&amp; self, const NodesContainerType&amp; rNodes, const double Radius) {</span></a>
+<a name="530"><span class="lineNum">     530 </span>            :         // Perform the search</a>
+<a name="531"><span class="lineNum">     531 </span>            :         std::vector&lt;std::vector&lt;ResultType&gt;&gt; results;</a>
+<a name="532"><span class="lineNum">     532 </span><span class="lineNoCov">          0 :         self.SearchInRadius(rNodes.begin(), rNodes.end(), Radius, results);</span></a>
+<a name="533"><span class="lineNum">     533 </span>            : </a>
+<a name="534"><span class="lineNum">     534 </span>            :         // Copy the results to the python list</a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineNoCov">          0 :         py::list list_results;</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineNoCov">          0 :         for (auto&amp; r_result : results) {</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineNoCov">          0 :             py::list sub_list_results;</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineNoCov">          0 :             for (auto&amp; r_sub_result : r_result) {</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineNoCov">          0 :                 sub_list_results.append(r_sub_result);</span></a>
+<a name="540"><span class="lineNum">     540 </span>            :             }</a>
+<a name="541"><span class="lineNum">     541 </span>            :             list_results.append(sub_list_results);</a>
+<a name="542"><span class="lineNum">     542 </span>            :         }</a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 :         return list_results;</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">          1 :     .def(&quot;SearchNearestInRadius&quot;, [&amp;](GeometricalObjectsBins&amp; self, const Point&amp; rPoint, const double Radius) {</span></a>
+<a name="546"><span class="lineNum">     546 </span>            :         // Perform the search</a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineNoCov">          0 :         return self.SearchNearestInRadius(rPoint, Radius);</span></a>
+<a name="548"><span class="lineNum">     548 </span>            :     })</a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">          1 :     .def(&quot;SearchNearestInRadius&quot;, [&amp;](GeometricalObjectsBins&amp; self, const NodesContainerType&amp; rNodes, const double Radius) {</span></a>
+<a name="550"><span class="lineNum">     550 </span>            :         // Perform the search</a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineNoCov">          0 :         std::vector&lt;ResultType&gt; results = self.SearchNearestInRadius(rNodes.begin(), rNodes.end(), Radius);</span></a>
+<a name="552"><span class="lineNum">     552 </span>            : </a>
+<a name="553"><span class="lineNum">     553 </span>            :         // Copy the results to the python list</a>
+<a name="554"><span class="lineNum">     554 </span><span class="lineNoCov">          0 :         py::list list_results;</span></a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineNoCov">          0 :         for (auto&amp; r_result : results) {</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineNoCov">          0 :             list_results.append(r_result);</span></a>
+<a name="557"><span class="lineNum">     557 </span>            :         }</a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineNoCov">          0 :         return list_results;</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">          1 :     .def(&quot;SearchNearest&quot;, [&amp;](GeometricalObjectsBins&amp; self, const Point&amp; rPoint) {</span></a>
+<a name="561"><span class="lineNum">     561 </span>            :         // Perform the search</a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :         return self.SearchNearest(rPoint);</span></a>
+<a name="563"><span class="lineNum">     563 </span>            :     })</a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">          1 :     .def(&quot;SearchNearest&quot;, [&amp;](GeometricalObjectsBins&amp; self, const NodesContainerType&amp; rNodes) {</span></a>
+<a name="565"><span class="lineNum">     565 </span>            :         // Perform the search</a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineNoCov">          0 :         std::vector&lt;ResultType&gt; results = self.SearchNearest(rNodes.begin(), rNodes.end());</span></a>
+<a name="567"><span class="lineNum">     567 </span>            : </a>
+<a name="568"><span class="lineNum">     568 </span>            :         // Copy the results to the python list</a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineNoCov">          0 :         py::list list_results;</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineNoCov">          0 :         for (auto&amp; r_result : results) {</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :             list_results.append(r_result);</span></a>
+<a name="572"><span class="lineNum">     572 </span>            :         }</a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineNoCov">          0 :         return list_results;</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">          1 :     .def(&quot;SearchIsInside&quot;, [&amp;](GeometricalObjectsBins&amp; self, const Point&amp; rPoint) {</span></a>
+<a name="576"><span class="lineNum">     576 </span>            :         // Perform the search</a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :         return self.SearchIsInside(rPoint);</span></a>
+<a name="578"><span class="lineNum">     578 </span>            :     })</a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">          1 :     .def(&quot;SearchIsInside&quot;, [&amp;](GeometricalObjectsBins&amp; self, const NodesContainerType&amp; rNodes) {</span></a>
+<a name="580"><span class="lineNum">     580 </span>            :         // Perform the search</a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :         std::vector&lt;ResultType&gt; results = self.SearchIsInside(rNodes.begin(), rNodes.end());</span></a>
+<a name="582"><span class="lineNum">     582 </span>            : </a>
+<a name="583"><span class="lineNum">     583 </span>            :         // Copy the results to the python list</a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineNoCov">          0 :         py::list list_results;</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineNoCov">          0 :         for (auto&amp; r_result : results) {</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineNoCov">          0 :             list_results.append(r_result);</span></a>
+<a name="587"><span class="lineNum">     587 </span>            :         }</a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineNoCov">          0 :         return list_results;</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineNoCov">          0 :     })</span></a>
+<a name="590"><span class="lineNum">     590 </span>            :     ;</a>
+<a name="591"><span class="lineNum">     591 </span><span class="lineCov">          1 : }</span></a>
+<a name="592"><span class="lineNum">     592 </span>            : </a>
+<a name="593"><span class="lineNum">     593 </span>            : }  // namespace Kratos::Python.</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
