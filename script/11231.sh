@@ -33,7 +33,7 @@ echo "Kratos编译完成。"
 
 # 运行
 echo "开始运行测试用例..."
-cd /root/kratos_testcase/11231
+cd /root/Kratos/applications/DEMApplication/tests
 python3 /root/Kratos/applications/DEMApplication/tests/test_history_dependent_CLs.py
 echo "BUG测试用例运行完成。"
 
