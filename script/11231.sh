@@ -7,7 +7,7 @@
 # AssertionError: -1152.7766935045422 != -1219.77524 within 0.001 delta (66.99854649545773 difference)
 
 # 运行文件
-# /root/kratos_testcase/11231/11231.py
+# /root/Kratos/applications/DEMApplication/tests/test_history_dependent_CLs.py
 
 # 新版
 
