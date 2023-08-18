@@ -1,0 +1,363 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - utilities/openmp_utils.h</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">utilities</a> - openmp_utils.h<span style="font-size: 80%;"> (source / <a href="openmp_utils.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 13:12:02</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //    |  /           |</a>
+<a name="2"><span class="lineNum">       2 </span>            : //    ' /   __| _` | __|  _ \   __|</a>
+<a name="3"><span class="lineNum">       3 </span>            : //    . \  |   (   | |   (   |\__ \.</a>
+<a name="4"><span class="lineNum">       4 </span>            : //   _|\_\_|  \__,_|\__|\___/ ____/</a>
+<a name="5"><span class="lineNum">       5 </span>            : //                   Multi-Physics</a>
+<a name="6"><span class="lineNum">       6 </span>            : //</a>
+<a name="7"><span class="lineNum">       7 </span>            : //  License:             BSD License</a>
+<a name="8"><span class="lineNum">       8 </span>            : //                                       Kratos default license: kratos/license.txt</a>
+<a name="9"><span class="lineNum">       9 </span>            : //</a>
+<a name="10"><span class="lineNum">      10 </span>            : //  Main authors:    Riccardo Rossi</a>
+<a name="11"><span class="lineNum">      11 </span>            : //</a>
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<a name="13"><span class="lineNum">      13 </span>            : #ifndef KRATOS_OPENMP_UTILS_H</a>
+<a name="14"><span class="lineNum">      14 </span>            : #define KRATOS_OPENMP_UTILS_H</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            : #include &lt;stdio.h&gt;</a>
+<a name="17"><span class="lineNum">      17 </span>            : #include &lt;vector&gt;</a>
+<a name="18"><span class="lineNum">      18 </span>            : #include &lt;iostream&gt;</a>
+<a name="19"><span class="lineNum">      19 </span>            : #ifdef KRATOS_SMP_OPENMP</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &lt;omp.h&gt;</a>
+<a name="21"><span class="lineNum">      21 </span>            : #else</a>
+<a name="22"><span class="lineNum">      22 </span>            : #include &lt;ctime&gt;</a>
+<a name="23"><span class="lineNum">      23 </span>            : #endif</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;parallel_utilities.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : </a>
+<a name="26"><span class="lineNum">      26 </span>            : namespace Kratos</a>
+<a name="27"><span class="lineNum">      27 </span>            : {</a>
+<a name="28"><span class="lineNum">      28 </span>            : ///@addtogroup KratosCore</a>
+<a name="29"><span class="lineNum">      29 </span>            : ///@{</a>
+<a name="30"><span class="lineNum">      30 </span>            : </a>
+<a name="31"><span class="lineNum">      31 </span>            : ///@name Kratos Classes</a>
+<a name="32"><span class="lineNum">      32 </span>            : ///@{</a>
+<a name="33"><span class="lineNum">      33 </span>            : </a>
+<a name="34"><span class="lineNum">      34 </span>            : /// Implements basic tasks for OpenMP parallelism and suitable scalar alternatives</a>
+<a name="35"><span class="lineNum">      35 </span>            : /**</a>
+<a name="36"><span class="lineNum">      36 </span>            :  This class defines utility functions that implement some basic OpenMP</a>
+<a name="37"><span class="lineNum">      37 </span>            :  capabilities and an equivalent scalar alternative to use in compilations</a>
+<a name="38"><span class="lineNum">      38 </span>            :  where OpenMP is not enabled. The idea is to allow Kratos developers to</a>
+<a name="39"><span class="lineNum">      39 </span>            :  design their code in parallel, knowing that it will work in scalar runs</a>
+<a name="40"><span class="lineNum">      40 </span>            :  as well.</a>
+<a name="41"><span class="lineNum">      41 </span>            :  */</a>
+<a name="42"><span class="lineNum">      42 </span>            : class OpenMPUtils</a>
+<a name="43"><span class="lineNum">      43 </span>            : {</a>
+<a name="44"><span class="lineNum">      44 </span>            : public:</a>
+<a name="45"><span class="lineNum">      45 </span>            : </a>
+<a name="46"><span class="lineNum">      46 </span>            :     ///@name Type definitions</a>
+<a name="47"><span class="lineNum">      47 </span>            :     ///@{</a>
+<a name="48"><span class="lineNum">      48 </span>            : </a>
+<a name="49"><span class="lineNum">      49 </span>            :     /// Vector type for the output of DivideInPartitions method</a>
+<a name="50"><span class="lineNum">      50 </span>            :     /**</a>
+<a name="51"><span class="lineNum">      51 </span>            :      *  @see OpenMPUtils::DivideInPartitions</a>
+<a name="52"><span class="lineNum">      52 </span>            :      */</a>
+<a name="53"><span class="lineNum">      53 </span>            :     typedef std::vector&lt;int&gt; PartitionVector;</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span>            :     ///@}</a>
+<a name="56"><span class="lineNum">      56 </span>            :     ///@name Operations</a>
+<a name="57"><span class="lineNum">      57 </span>            :     ///@{</a>
+<a name="58"><span class="lineNum">      58 </span>            : </a>
+<a name="59"><span class="lineNum">      59 </span>            :     /// Wrapper for omp_get_max_threads().</a>
+<a name="60"><span class="lineNum">      60 </span>            :     /**</a>
+<a name="61"><span class="lineNum">      61 </span>            :      @return Maximum number of OpenMP threads that will be used in</a>
+<a name="62"><span class="lineNum">      62 </span>            :      parallel regions.</a>
+<a name="63"><span class="lineNum">      63 </span>            :      */</a>
+<a name="64"><span class="lineNum">      64 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy version, please use the \&quot;ParallelUtilities\&quot; instead&quot;) static inline int GetNumThreads()</a>
+<a name="65"><span class="lineNum">      65 </span>            :     {</a>
+<a name="66"><span class="lineNum">      66 </span>            :         return ParallelUtilities::GetNumThreads();</a>
+<a name="67"><span class="lineNum">      67 </span>            :     }</a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span>            :     /// Wrapper for omp_get_num_threads().</a>
+<a name="70"><span class="lineNum">      70 </span>            :     /**</a>
+<a name="71"><span class="lineNum">      71 </span>            :      @return Number of OpenMP threads in the current team.</a>
+<a name="72"><span class="lineNum">      72 </span>            :      */</a>
+<a name="73"><span class="lineNum">      73 </span>            :     static int GetCurrentNumberOfThreads()</a>
+<a name="74"><span class="lineNum">      74 </span>            :     {</a>
+<a name="75"><span class="lineNum">      75 </span>            : #ifdef _OPENMP</a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 :         return omp_get_num_threads();</span></a>
+<a name="77"><span class="lineNum">      77 </span>            : #else</a>
+<a name="78"><span class="lineNum">      78 </span>            :         return 1;</a>
+<a name="79"><span class="lineNum">      79 </span>            : #endif</a>
+<a name="80"><span class="lineNum">      80 </span>            :     }</a>
+<a name="81"><span class="lineNum">      81 </span>            : </a>
+<a name="82"><span class="lineNum">      82 </span>            :     /// Wrapper for omp_get_num_procs().</a>
+<a name="83"><span class="lineNum">      83 </span>            :     /**</a>
+<a name="84"><span class="lineNum">      84 </span>            :      @return Number of processors available to the device.</a>
+<a name="85"><span class="lineNum">      85 </span>            :      */</a>
+<a name="86"><span class="lineNum">      86 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy version, please use the \&quot;ParallelUtilities\&quot; instead&quot;) static int GetNumberOfProcessors()</a>
+<a name="87"><span class="lineNum">      87 </span>            :     {</a>
+<a name="88"><span class="lineNum">      88 </span>            :         return ParallelUtilities::GetNumProcs();</a>
+<a name="89"><span class="lineNum">      89 </span>            :     }</a>
+<a name="90"><span class="lineNum">      90 </span>            : </a>
+<a name="91"><span class="lineNum">      91 </span>            :     /// Wrapper for omp_get_dynamic().</a>
+<a name="92"><span class="lineNum">      92 </span>            :     /**</a>
+<a name="93"><span class="lineNum">      93 </span>            :      @return Dynamic teams are enabled.</a>
+<a name="94"><span class="lineNum">      94 </span>            :      */</a>
+<a name="95"><span class="lineNum">      95 </span>            :     static int IsDynamic()</a>
+<a name="96"><span class="lineNum">      96 </span>            :     {</a>
+<a name="97"><span class="lineNum">      97 </span>            : #ifdef _OPENMP</a>
+<a name="98"><span class="lineNum">      98 </span>            :         return omp_get_dynamic();</a>
+<a name="99"><span class="lineNum">      99 </span>            : #else</a>
+<a name="100"><span class="lineNum">     100 </span>            :         return 0;</a>
+<a name="101"><span class="lineNum">     101 </span>            : #endif</a>
+<a name="102"><span class="lineNum">     102 </span>            :     }</a>
+<a name="103"><span class="lineNum">     103 </span>            : </a>
+<a name="104"><span class="lineNum">     104 </span>            :     /// Wrapper for omp_get_thread_num().</a>
+<a name="105"><span class="lineNum">     105 </span>            :     /**</a>
+<a name="106"><span class="lineNum">     106 </span>            :      @return The thread number for this thread, 0 if scalar run.</a>
+<a name="107"><span class="lineNum">     107 </span>            :      */</a>
+<a name="108"><span class="lineNum">     108 </span>            :     static inline int ThisThread()</a>
+<a name="109"><span class="lineNum">     109 </span>            :     {</a>
+<a name="110"><span class="lineNum">     110 </span>            : #ifdef _OPENMP</a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :         return omp_get_thread_num();</span></a>
+<a name="112"><span class="lineNum">     112 </span>            : #else</a>
+<a name="113"><span class="lineNum">     113 </span>            :         return 0;</a>
+<a name="114"><span class="lineNum">     114 </span>            : #endif</a>
+<a name="115"><span class="lineNum">     115 </span>            :     }</a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span>            :     /// Wrapper for omp_in_parallel().</a>
+<a name="118"><span class="lineNum">     118 </span>            :     /**</a>
+<a name="119"><span class="lineNum">     119 </span>            :      @return Maximum number of OpenMP threads that will be used in</a>
+<a name="120"><span class="lineNum">     120 </span>            :      parallel regions.</a>
+<a name="121"><span class="lineNum">     121 </span>            :      */</a>
+<a name="122"><span class="lineNum">     122 </span>            :     static inline int IsInParallel()</a>
+<a name="123"><span class="lineNum">     123 </span>            :     {</a>
+<a name="124"><span class="lineNum">     124 </span>            : #ifdef _OPENMP</a>
+<a name="125"><span class="lineNum">     125 </span>            :         return omp_in_parallel();</a>
+<a name="126"><span class="lineNum">     126 </span>            : #else</a>
+<a name="127"><span class="lineNum">     127 </span>            :         return 0;</a>
+<a name="128"><span class="lineNum">     128 </span>            : #endif</a>
+<a name="129"><span class="lineNum">     129 </span>            :     }</a>
+<a name="130"><span class="lineNum">     130 </span>            : </a>
+<a name="131"><span class="lineNum">     131 </span>            :     /// Timing routine.</a>
+<a name="132"><span class="lineNum">     132 </span>            :     /**</a>
+<a name="133"><span class="lineNum">     133 </span>            :      Determine the current time by calling an appropiate</a>
+<a name="134"><span class="lineNum">     134 </span>            :      (scalar or parallel) timer class.</a>
+<a name="135"><span class="lineNum">     135 </span>            :      @return Current time</a>
+<a name="136"><span class="lineNum">     136 </span>            :      */</a>
+<a name="137"><span class="lineNum">     137 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy version, please use the \&quot;utilities/builtin_timer.h\&quot; instead&quot;) static double GetCurrentTime()</a>
+<a name="138"><span class="lineNum">     138 </span>            :     {</a>
+<a name="139"><span class="lineNum">     139 </span>            : #ifndef _OPENMP</a>
+<a name="140"><span class="lineNum">     140 </span>            :         return std::clock()/static_cast&lt;double&gt;(CLOCKS_PER_SEC);</a>
+<a name="141"><span class="lineNum">     141 </span>            : #else</a>
+<a name="142"><span class="lineNum">     142 </span>            :         return  omp_get_wtime();</a>
+<a name="143"><span class="lineNum">     143 </span>            : #endif</a>
+<a name="144"><span class="lineNum">     144 </span>            :     }</a>
+<a name="145"><span class="lineNum">     145 </span>            : </a>
+<a name="146"><span class="lineNum">     146 </span>            :     /// Divide an array of length NumTerms between NumThreads threads.</a>
+<a name="147"><span class="lineNum">     147 </span>            :     /**</a>
+<a name="148"><span class="lineNum">     148 </span>            :      Creates a std::vector containing NumThreads + 1 terms, where term k</a>
+<a name="149"><span class="lineNum">     149 </span>            :      is the first and position of the array that corresponds to thread k.</a>
+<a name="150"><span class="lineNum">     150 </span>            :      The k+1 term is the end of the array, so that the vector can be used</a>
+<a name="151"><span class="lineNum">     151 </span>            :      to iterate the array between 'k' and 'k+1' in each thread.</a>
+<a name="152"><span class="lineNum">     152 </span>            :      @param NumTerms Number of objects to be divided between the threads.</a>
+<a name="153"><span class="lineNum">     153 </span>            :      @param NumThreads The number of parallel threads that will be used.</a>
+<a name="154"><span class="lineNum">     154 </span>            :      @param Partitions This object will contain the begin and end positions</a>
+<a name="155"><span class="lineNum">     155 </span>            :      for each thread.</a>
+<a name="156"><span class="lineNum">     156 </span>            :      */</a>
+<a name="157"><span class="lineNum">     157 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy, please use the \&quot;ParallelUtilities\&quot; instead&quot;)</a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :     static inline void DivideInPartitions(</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :         const int NumTerms,</a>
+<a name="160"><span class="lineNum">     160 </span>            :         const int NumThreads,</a>
+<a name="161"><span class="lineNum">     161 </span>            :         PartitionVector&amp; Partitions)</a>
+<a name="162"><span class="lineNum">     162 </span>            :     {</a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :         Partitions.resize(NumThreads + 1);</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :         int PartitionSize = NumTerms / NumThreads;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :         Partitions[0] = 0;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineNoCov">          0 :         Partitions[NumThreads] = NumTerms;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :         for(int i = 1; i &lt; NumThreads; i++)</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :             Partitions[i] = Partitions[i-1] + PartitionSize ;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :     }</span></a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span>            :     /// Generate a partition for an std::vector-like array, providing iterators to the begin and end positions for each thread.</a>
+<a name="172"><span class="lineNum">     172 </span>            :     /** This function assumes that the vector class will have an iterator type and implement begin(), end() and size() methods.</a>
+<a name="173"><span class="lineNum">     173 </span>            :       * @param rVector An arary containing the elements to be distributed between the threads.</a>
+<a name="174"><span class="lineNum">     174 </span>            :       * @param rBegin Iterator pointing to the first element in rVector to be used in the current thread.</a>
+<a name="175"><span class="lineNum">     175 </span>            :       * @param rEnd Iterator pointing to the end position for the current thread in rVector.</a>
+<a name="176"><span class="lineNum">     176 </span>            :       */</a>
+<a name="177"><span class="lineNum">     177 </span>            :     template&lt; class TVector &gt;</a>
+<a name="178"><span class="lineNum">     178 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy, please use the \&quot;ParallelUtilities\&quot; instead&quot;)</a>
+<a name="179"><span class="lineNum">     179 </span>            :     static void PartitionedIterators(TVector&amp; rVector,</a>
+<a name="180"><span class="lineNum">     180 </span>            :                                      typename TVector::iterator&amp; rBegin,</a>
+<a name="181"><span class="lineNum">     181 </span>            :                                      typename TVector::iterator&amp; rEnd)</a>
+<a name="182"><span class="lineNum">     182 </span>            :     {</a>
+<a name="183"><span class="lineNum">     183 </span>            : #ifdef _OPENMP</a>
+<a name="184"><span class="lineNum">     184 </span>            :         int NumTerms = rVector.size();</a>
+<a name="185"><span class="lineNum">     185 </span>            :         int ThreadNum = omp_get_thread_num();</a>
+<a name="186"><span class="lineNum">     186 </span>            :         int NumThreads = omp_get_max_threads();</a>
+<a name="187"><span class="lineNum">     187 </span>            :         int PartitionSize = NumTerms / NumThreads;</a>
+<a name="188"><span class="lineNum">     188 </span>            :         // Set Partition start</a>
+<a name="189"><span class="lineNum">     189 </span>            :         rBegin = rVector.begin() + ThreadNum * PartitionSize;</a>
+<a name="190"><span class="lineNum">     190 </span>            :         // Partition ends after 'PartitionSize' terms, except if this is the last partition</a>
+<a name="191"><span class="lineNum">     191 </span>            :         if ( (ThreadNum + 1) != NumThreads )</a>
+<a name="192"><span class="lineNum">     192 </span>            :             rEnd = rBegin + PartitionSize;</a>
+<a name="193"><span class="lineNum">     193 </span>            :         else</a>
+<a name="194"><span class="lineNum">     194 </span>            :             rEnd = rVector.end();</a>
+<a name="195"><span class="lineNum">     195 </span>            : #else</a>
+<a name="196"><span class="lineNum">     196 </span>            :         rBegin = rVector.begin();</a>
+<a name="197"><span class="lineNum">     197 </span>            :         rEnd = rVector.end();</a>
+<a name="198"><span class="lineNum">     198 </span>            : #endif</a>
+<a name="199"><span class="lineNum">     199 </span>            :     }</a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span>            :     /// A function to set the number of threads from Python.</a>
+<a name="202"><span class="lineNum">     202 </span>            :     /**</a>
+<a name="203"><span class="lineNum">     203 </span>            :      This is an auxiliary mainly intended for test purposes, to help with the</a>
+<a name="204"><span class="lineNum">     204 </span>            :      detection of race conditions.</a>
+<a name="205"><span class="lineNum">     205 </span>            :      @param NumThreads Number of threads to use in parallel regions. Note</a>
+<a name="206"><span class="lineNum">     206 </span>            :      that values greater than the environment variable OMP_NUM_THREADS</a>
+<a name="207"><span class="lineNum">     207 </span>            :      will be ignored.</a>
+<a name="208"><span class="lineNum">     208 </span>            :      */</a>
+<a name="209"><span class="lineNum">     209 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy version, please use the \&quot;ParallelUtilities\&quot; instead&quot;) static inline void SetNumThreads(int NumThreads = 1)</a>
+<a name="210"><span class="lineNum">     210 </span>            :     {</a>
+<a name="211"><span class="lineNum">     211 </span>            :         ParallelUtilities::SetNumThreads(NumThreads);</a>
+<a name="212"><span class="lineNum">     212 </span>            :     }</a>
+<a name="213"><span class="lineNum">     213 </span>            : </a>
+<a name="214"><span class="lineNum">     214 </span>            :     /**</a>
+<a name="215"><span class="lineNum">     215 </span>            :      A method to print the OMP information</a>
+<a name="216"><span class="lineNum">     216 </span>            :      */</a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :     static inline void PrintOMPInfo()</span></a>
+<a name="218"><span class="lineNum">     218 </span>            :     {</a>
+<a name="219"><span class="lineNum">     219 </span>            : #ifdef _OPENMP</a>
+<a name="220"><span class="lineNum">     220 </span>            : </a>
+<a name="221"><span class="lineNum">     221 </span>            :       int nthreads,tid, procs, maxt, inpar, dynamic, nested;</a>
+<a name="222"><span class="lineNum">     222 </span>            : </a>
+<a name="223"><span class="lineNum">     223 </span>            :       /* Start parallel region */</a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 : #pragma omp parallel private(nthreads, tid)</span></a>
+<a name="226"><span class="lineNum">     226 </span>            :       {</a>
+<a name="227"><span class="lineNum">     227 </span>            :         /* Obtain thread number */</a>
+<a name="228"><span class="lineNum">     228 </span>            :         tid = omp_get_thread_num();</a>
+<a name="229"><span class="lineNum">     229 </span>            : </a>
+<a name="230"><span class="lineNum">     230 </span>            :         /* Only master thread does this */</a>
+<a name="231"><span class="lineNum">     231 </span>            :         if (tid == 0)</a>
+<a name="232"><span class="lineNum">     232 </span>            :           {</a>
+<a name="233"><span class="lineNum">     233 </span>            :             printf(&quot;  Thread %d getting environment info...\n&quot;, tid);</a>
+<a name="234"><span class="lineNum">     234 </span>            : </a>
+<a name="235"><span class="lineNum">     235 </span>            :             /* Get environment information */</a>
+<a name="236"><span class="lineNum">     236 </span>            :             procs    = omp_get_num_procs();</a>
+<a name="237"><span class="lineNum">     237 </span>            :             nthreads = omp_get_num_threads();</a>
+<a name="238"><span class="lineNum">     238 </span>            :             maxt     = omp_get_max_threads();</a>
+<a name="239"><span class="lineNum">     239 </span>            :             inpar    = omp_in_parallel();</a>
+<a name="240"><span class="lineNum">     240 </span>            :             //omp_set_dynamic(true);</a>
+<a name="241"><span class="lineNum">     241 </span>            :             dynamic  = omp_get_dynamic();</a>
+<a name="242"><span class="lineNum">     242 </span>            :             //omp_set_nested(true);</a>
+<a name="243"><span class="lineNum">     243 </span>            :             nested   = omp_get_nested();</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span>            :             /* Print environment information */</a>
+<a name="246"><span class="lineNum">     246 </span>            :             printf( &quot;  | ------------ OMP IN USE --------- |\n&quot;);</a>
+<a name="247"><span class="lineNum">     247 </span>            :             printf( &quot;  | Machine number of processors  = %d |\n&quot;, procs);</a>
+<a name="248"><span class="lineNum">     248 </span>            :             printf( &quot;  | Number of threads set         = %d |\n&quot;, nthreads);</a>
+<a name="249"><span class="lineNum">     249 </span>            :             printf( &quot;  | Max threads in use            = %d |\n&quot;, maxt);</a>
+<a name="250"><span class="lineNum">     250 </span>            :             printf( &quot;  | In parallel?                  = %d |\n&quot;, inpar);</a>
+<a name="251"><span class="lineNum">     251 </span>            :             printf( &quot;  | Dynamic threads enabled?      = %d |\n&quot;, dynamic);</a>
+<a name="252"><span class="lineNum">     252 </span>            :             printf( &quot;  | Nested parallelism supported? = %d |\n&quot;, nested);</a>
+<a name="253"><span class="lineNum">     253 </span>            :             printf( &quot;  | --------------------------------- |\n&quot;);</a>
+<a name="254"><span class="lineNum">     254 </span>            : </a>
+<a name="255"><span class="lineNum">     255 </span>            : </a>
+<a name="256"><span class="lineNum">     256 </span>            :             if( procs &lt; nthreads )</a>
+<a name="257"><span class="lineNum">     257 </span>            :               std::cout&lt;&lt;&quot; ( WARNING: Maximimun number of threads is EXCEEDED )&quot;&lt;&lt;std::endl;</a>
+<a name="258"><span class="lineNum">     258 </span>            : </a>
+<a name="259"><span class="lineNum">     259 </span>            :           }</a>
+<a name="260"><span class="lineNum">     260 </span>            : </a>
+<a name="261"><span class="lineNum">     261 </span>            :       }</a>
+<a name="262"><span class="lineNum">     262 </span>            : </a>
+<a name="263"><span class="lineNum">     263 </span>            : #endif</a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :     }</span></a>
+<a name="265"><span class="lineNum">     265 </span>            : </a>
+<a name="266"><span class="lineNum">     266 </span>            :     template&lt;class T&gt;</a>
+<a name="267"><span class="lineNum">     267 </span>            :     KRATOS_DEPRECATED_MESSAGE(&quot;This is legacy, please use the \&quot;ParallelUtilities\&quot; instead&quot;)</a>
+<a name="268"><span class="lineNum">     268 </span>            :     static inline void CreatePartition(unsigned int number_of_threads, const int number_of_rows, T&amp; partitions)</a>
+<a name="269"><span class="lineNum">     269 </span>            :     {</a>
+<a name="270"><span class="lineNum">     270 </span>            :         partitions.resize(number_of_threads+1);</a>
+<a name="271"><span class="lineNum">     271 </span>            :         int partition_size = number_of_rows / number_of_threads;</a>
+<a name="272"><span class="lineNum">     272 </span>            :         partitions[0] = 0;</a>
+<a name="273"><span class="lineNum">     273 </span>            :         partitions[number_of_threads] = number_of_rows;</a>
+<a name="274"><span class="lineNum">     274 </span>            :         for(unsigned int i = 1; i&lt;number_of_threads; i++)</a>
+<a name="275"><span class="lineNum">     275 </span>            :             partitions[i] = partitions[i-1] + partition_size ;</a>
+<a name="276"><span class="lineNum">     276 </span>            :     }</a>
+<a name="277"><span class="lineNum">     277 </span>            : </a>
+<a name="278"><span class="lineNum">     278 </span>            :     ///@} //Operations</a>
+<a name="279"><span class="lineNum">     279 </span>            : };</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span>            : ///@} //Kratos classes</a>
+<a name="282"><span class="lineNum">     282 </span>            : </a>
+<a name="283"><span class="lineNum">     283 </span>            : ///@} addtogroup block</a>
+<a name="284"><span class="lineNum">     284 </span>            : }</a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span>            : #endif  /* KRATOS_OPENMP_UTILS_H */</a>
+<a name="287"><span class="lineNum">     287 </span>            : </a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

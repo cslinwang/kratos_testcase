@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - utilities/tessellation_utilities/delaunator_utilities.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">utilities/tessellation_utilities</a> - delaunator_utilities.cpp<span style="font-size: 80%;"> (source / <a href="delaunator_utilities.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 13:12:02</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //    |  /           |</a>
+<a name="2"><span class="lineNum">       2 </span>            : //    ' /   __| _` | __|  _ \   __|</a>
+<a name="3"><span class="lineNum">       3 </span>            : //    . \  |   (   | |   (   |\__ `</a>
+<a name="4"><span class="lineNum">       4 </span>            : //   _|\_\_|  \__,_|\__|\___/ ____/</a>
+<a name="5"><span class="lineNum">       5 </span>            : //                   Multi-Physics</a>
+<a name="6"><span class="lineNum">       6 </span>            : //</a>
+<a name="7"><span class="lineNum">       7 </span>            : //  License:             BSD License</a>
+<a name="8"><span class="lineNum">       8 </span>            : //                                       Kratos default license: kratos/license.txt</a>
+<a name="9"><span class="lineNum">       9 </span>            : //</a>
+<a name="10"><span class="lineNum">      10 </span>            : //  Main authors:    Vicente Mataix Ferrandiz</a>
+<a name="11"><span class="lineNum">      11 </span>            : //</a>
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<a name="13"><span class="lineNum">      13 </span>            : // System includes</a>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<a name="15"><span class="lineNum">      15 </span>            : // External includes</a>
+<a name="16"><span class="lineNum">      16 </span>            : #define REAL double</a>
+<a name="17"><span class="lineNum">      17 </span>            : #if USE_TRIANGLE_NONFREE_TPL</a>
+<a name="18"><span class="lineNum">      18 </span>            : #include &quot;triangle.h&quot;</a>
+<a name="19"><span class="lineNum">      19 </span>            : #else </a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &lt;delaunator.hpp&gt;</a>
+<a name="21"><span class="lineNum">      21 </span>            : #endif</a>
+<a name="22"><span class="lineNum">      22 </span>            : </a>
+<a name="23"><span class="lineNum">      23 </span>            : // Project includes</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;includes/model_part.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &quot;utilities/tessellation_utilities/delaunator_utilities.h&quot;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &quot;utilities/parallel_utilities.h&quot;</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : namespace Kratos</a>
+<a name="29"><span class="lineNum">      29 </span>            : {</a>
+<a name="30"><span class="lineNum">      30 </span>            : namespace DelaunatorUtilities</a>
+<a name="31"><span class="lineNum">      31 </span>            : {</a>
+<a name="32"><span class="lineNum">      32 </span>            : #if USE_TRIANGLE_NONFREE_TPL</a>
+<a name="33"><span class="lineNum">      33 </span>            : extern &quot;C&quot; {</a>
+<a name="34"><span class="lineNum">      34 </span>            :     void triangulate(char *, struct triangulateio *, struct triangulateio *,struct triangulateio *);</a>
+<a name="35"><span class="lineNum">      35 </span>            : }</a>
+<a name="36"><span class="lineNum">      36 </span>            : </a>
+<a name="37"><span class="lineNum">      37 </span>            : /**</a>
+<a name="38"><span class="lineNum">      38 </span>            : * @brief This method initializes the triangulate IO</a>
+<a name="39"><span class="lineNum">      39 </span>            : * @param rTriangles The triangles to be initialized</a>
+<a name="40"><span class="lineNum">      40 </span>            : */</a>
+<a name="41"><span class="lineNum">      41 </span>            : void InitializeTriangulateIO( triangulateio&amp; rTriangles )</a>
+<a name="42"><span class="lineNum">      42 </span>            : {</a>
+<a name="43"><span class="lineNum">      43 </span>            :     rTriangles.pointlist                  = (REAL*) nullptr;</a>
+<a name="44"><span class="lineNum">      44 </span>            :     rTriangles.pointattributelist         = (REAL*) nullptr;</a>
+<a name="45"><span class="lineNum">      45 </span>            :     rTriangles.pointmarkerlist            = (int*) nullptr;</a>
+<a name="46"><span class="lineNum">      46 </span>            :     rTriangles.numberofpoints             = 0;</a>
+<a name="47"><span class="lineNum">      47 </span>            :     rTriangles.numberofpointattributes    = 0;</a>
+<a name="48"><span class="lineNum">      48 </span>            :     rTriangles.trianglelist               = (int*) nullptr;</a>
+<a name="49"><span class="lineNum">      49 </span>            :     rTriangles.triangleattributelist      = (REAL*) nullptr;</a>
+<a name="50"><span class="lineNum">      50 </span>            :     rTriangles.trianglearealist           = (REAL*) nullptr;</a>
+<a name="51"><span class="lineNum">      51 </span>            :     rTriangles.neighborlist               = (int*) nullptr;</a>
+<a name="52"><span class="lineNum">      52 </span>            :     rTriangles.numberoftriangles          = 0;</a>
+<a name="53"><span class="lineNum">      53 </span>            :     rTriangles.numberofcorners            = 3;</a>
+<a name="54"><span class="lineNum">      54 </span>            :     rTriangles.numberoftriangleattributes = 0;</a>
+<a name="55"><span class="lineNum">      55 </span>            :     rTriangles.segmentlist                = (int*) nullptr;</a>
+<a name="56"><span class="lineNum">      56 </span>            :     rTriangles.segmentmarkerlist          = (int*) nullptr;</a>
+<a name="57"><span class="lineNum">      57 </span>            :     rTriangles.numberofsegments           = 0;</a>
+<a name="58"><span class="lineNum">      58 </span>            :     rTriangles.holelist                   = (REAL*) nullptr;</a>
+<a name="59"><span class="lineNum">      59 </span>            :     rTriangles.numberofholes              = 0;</a>
+<a name="60"><span class="lineNum">      60 </span>            :     rTriangles.regionlist                 = (REAL*) nullptr;</a>
+<a name="61"><span class="lineNum">      61 </span>            :     rTriangles.numberofregions            = 0;</a>
+<a name="62"><span class="lineNum">      62 </span>            :     rTriangles.edgelist                   = (int*) nullptr;</a>
+<a name="63"><span class="lineNum">      63 </span>            :     rTriangles.edgemarkerlist             = (int*) nullptr;</a>
+<a name="64"><span class="lineNum">      64 </span>            :     rTriangles.normlist                   = (REAL*) nullptr;</a>
+<a name="65"><span class="lineNum">      65 </span>            :     rTriangles.numberofedges              = 0;</a>
+<a name="66"><span class="lineNum">      66 </span>            : };</a>
+<a name="67"><span class="lineNum">      67 </span>            : </a>
+<a name="68"><span class="lineNum">      68 </span>            : /**</a>
+<a name="69"><span class="lineNum">      69 </span>            : * @brief This method cleans the triangulate IO</a>
+<a name="70"><span class="lineNum">      70 </span>            : * @param rTriangles The triangles to be cleaned</a>
+<a name="71"><span class="lineNum">      71 </span>            : */</a>
+<a name="72"><span class="lineNum">      72 </span>            : void CleanTriangulateIO( triangulateio&amp; rTriangles )</a>
+<a name="73"><span class="lineNum">      73 </span>            : {</a>
+<a name="74"><span class="lineNum">      74 </span>            :     if(rTriangles.pointlist != nullptr) free(rTriangles.pointlist );</a>
+<a name="75"><span class="lineNum">      75 </span>            :     if(rTriangles.pointattributelist != nullptr) free(rTriangles.pointattributelist );</a>
+<a name="76"><span class="lineNum">      76 </span>            :     if(rTriangles.pointmarkerlist != nullptr) free(rTriangles.pointmarkerlist   );</a>
+<a name="77"><span class="lineNum">      77 </span>            :     if(rTriangles.trianglelist != nullptr) free(rTriangles.trianglelist  );</a>
+<a name="78"><span class="lineNum">      78 </span>            :     if(rTriangles.triangleattributelist != nullptr) free(rTriangles.triangleattributelist );</a>
+<a name="79"><span class="lineNum">      79 </span>            :     if(rTriangles.trianglearealist != nullptr) free(rTriangles.trianglearealist );</a>
+<a name="80"><span class="lineNum">      80 </span>            :     if(rTriangles.neighborlist != nullptr) free(rTriangles.neighborlist   );</a>
+<a name="81"><span class="lineNum">      81 </span>            :     if(rTriangles.segmentlist != nullptr) free(rTriangles.segmentlist    );</a>
+<a name="82"><span class="lineNum">      82 </span>            :     if(rTriangles.segmentmarkerlist != nullptr) free(rTriangles.segmentmarkerlist   );</a>
+<a name="83"><span class="lineNum">      83 </span>            :     if(rTriangles.holelist != nullptr) free(rTriangles.holelist      );</a>
+<a name="84"><span class="lineNum">      84 </span>            :     if(rTriangles.regionlist != nullptr) free(rTriangles.regionlist  );</a>
+<a name="85"><span class="lineNum">      85 </span>            :     if(rTriangles.edgelist != nullptr) free(rTriangles.edgelist   );</a>
+<a name="86"><span class="lineNum">      86 </span>            :     if(rTriangles.edgemarkerlist != nullptr) free(rTriangles.edgemarkerlist   );</a>
+<a name="87"><span class="lineNum">      87 </span>            :     if(rTriangles.normlist != nullptr) free(rTriangles.normlist  );</a>
+<a name="88"><span class="lineNum">      88 </span>            : };</a>
+<a name="89"><span class="lineNum">      89 </span>            : #endif</a>
+<a name="90"><span class="lineNum">      90 </span>            : /***********************************************************************************/</a>
+<a name="91"><span class="lineNum">      91 </span>            : /***********************************************************************************/</a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineNoCov">          0 : void CreateTriangleMeshFromNodes(ModelPart&amp; rModelPart)</span></a>
+<a name="94"><span class="lineNum">      94 </span>            : {</a>
+<a name="95"><span class="lineNum">      95 </span>            :     KRATOS_TRY</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span>            :     // Ensure node order</a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :     auto&amp; r_nodes_root_array = rModelPart.GetRootModelPart().Nodes();</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :     const auto it_node_root_begin = r_nodes_root_array.begin();</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 :     IndexPartition&lt;std::size_t&gt;(r_nodes_root_array.size()).for_each(</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :         [&amp;it_node_root_begin](std::size_t i_node)</a>
+<a name="102"><span class="lineNum">     102 </span>            :         { (it_node_root_begin + i_node)-&gt;SetId(i_node + 1); }</a>
+<a name="103"><span class="lineNum">     103 </span>            :     );</a>
+<a name="104"><span class="lineNum">     104 </span>            : </a>
+<a name="105"><span class="lineNum">     105 </span>            :     // Getting nodes array</a>
+<a name="106"><span class="lineNum">     106 </span>            :     const auto&amp; r_nodes_array = rModelPart.Nodes();</a>
+<a name="107"><span class="lineNum">     107 </span>            :     const auto it_node_begin = r_nodes_array.begin();</a>
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<a name="109"><span class="lineNum">     109 </span>            :     // The vector to fill</a>
+<a name="110"><span class="lineNum">     110 </span>            :     const std::size_t number_of_nodes = r_nodes_array.size();</a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :     std::vector&lt;double&gt; coordinates(2*number_of_nodes, 0.0);</span></a>
+<a name="112"><span class="lineNum">     112 </span>            : </a>
+<a name="113"><span class="lineNum">     113 </span>            :     // NOTE: 2D asssumed</a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :     for(std::size_t i=0; i&lt;number_of_nodes; ++i) {</span></a>
+<a name="115"><span class="lineNum">     115 </span>            :         auto it_node = it_node_begin + i;</a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span>            :         // Filling coordinates buffer</a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :         coordinates[2*i]   = it_node-&gt;X();</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :         coordinates[2*i+1] = it_node-&gt;Y();</span></a>
+<a name="120"><span class="lineNum">     120 </span>            :     }</a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span>            :     // Creating the triangles</a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :     Properties::Pointer p_elem_prop = rModelPart.CreateNewProperties(0);</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :     const auto&amp; r_triangles = ComputeTrianglesConnectivity(coordinates);</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :     std::size_t counter = rModelPart.GetRootModelPart().Elements().size() + 1;</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :     for (std::size_t i = 0; i &lt; r_triangles.size(); i += 3) {</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :         rModelPart.CreateNewElement(&quot;Element2D3N&quot;, counter, {{r_triangles[i] + 1,r_triangles[i + 1] + 1, r_triangles[i + 2] + 1}}, p_elem_prop);</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :         ++counter;</span></a>
+<a name="129"><span class="lineNum">     129 </span>            :     }</a>
+<a name="130"><span class="lineNum">     130 </span>            : </a>
+<a name="131"><span class="lineNum">     131 </span>            :     // Check orientation</a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :     for (auto&amp; r_elem : rModelPart.Elements()) {</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineNoCov">          0 :         if(r_elem.GetGeometry().Area() &lt; 0.0) {</span></a>
+<a name="134"><span class="lineNum">     134 </span>            :             r_elem.GetGeometry()(0).swap(r_elem.GetGeometry()(1));</a>
+<a name="135"><span class="lineNum">     135 </span>            :         }</a>
+<a name="136"><span class="lineNum">     136 </span>            :     }</a>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :     KRATOS_CATCH(&quot;&quot;)</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="140"><span class="lineNum">     140 </span>            : </a>
+<a name="141"><span class="lineNum">     141 </span>            : /***********************************************************************************/</a>
+<a name="142"><span class="lineNum">     142 </span>            : /***********************************************************************************/</a>
+<a name="143"><span class="lineNum">     143 </span>            : </a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 : std::vector&lt;std::size_t&gt; ComputeTrianglesConnectivity(const std::vector&lt;double&gt;&amp; rCoordinates)</span></a>
+<a name="145"><span class="lineNum">     145 </span>            : {</a>
+<a name="146"><span class="lineNum">     146 </span>            : #if USE_TRIANGLE_NONFREE_TPL</a>
+<a name="147"><span class="lineNum">     147 </span>            :     // Creating the containers for the input and output</a>
+<a name="148"><span class="lineNum">     148 </span>            :     struct triangulateio in_mid, out_mid, vorout_mid;</a>
+<a name="149"><span class="lineNum">     149 </span>            : </a>
+<a name="150"><span class="lineNum">     150 </span>            :     InitializeTriangulateIO(in_mid);</a>
+<a name="151"><span class="lineNum">     151 </span>            :     InitializeTriangulateIO(out_mid);</a>
+<a name="152"><span class="lineNum">     152 </span>            :     InitializeTriangulateIO(vorout_mid);</a>
+<a name="153"><span class="lineNum">     153 </span>            : </a>
+<a name="154"><span class="lineNum">     154 </span>            :     in_mid.numberofpoints = rCoordinates.size()/2;</a>
+<a name="155"><span class="lineNum">     155 </span>            :     in_mid.pointlist = (REAL *) malloc(in_mid.numberofpoints * 2 * sizeof(REAL));</a>
+<a name="156"><span class="lineNum">     156 </span>            : </a>
+<a name="157"><span class="lineNum">     157 </span>            :     for(std::size_t i = 0; i &lt; rCoordinates.size(); ++i) {</a>
+<a name="158"><span class="lineNum">     158 </span>            :         in_mid.pointlist[i] = rCoordinates[i];</a>
+<a name="159"><span class="lineNum">     159 </span>            :     }</a>
+<a name="160"><span class="lineNum">     160 </span>            : </a>
+<a name="161"><span class="lineNum">     161 </span>            :     // &quot;P&quot; suppresses the output .poly file. Saves disk space, but you</a>
+<a name="162"><span class="lineNum">     162 </span>            :     // lose the ability to maintain constraining segments  on later refinements of the mesh.</a>
+<a name="163"><span class="lineNum">     163 </span>            :     // &quot;B&quot; Suppresses boundary markers in the output .node, .poly, and .edge output files</a>
+<a name="164"><span class="lineNum">     164 </span>            :     // &quot;e&quot; outputs edge list (i.e. all the &quot;connectivities&quot;)</a>
+<a name="165"><span class="lineNum">     165 </span>            :     // &quot;Q&quot; Quiet:  No terminal output except errors.</a>
+<a name="166"><span class="lineNum">     166 </span>            :     // &quot;z&quot; Numbers all items starting from zero (rather than one)</a>
+<a name="167"><span class="lineNum">     167 </span>            :     // &quot;c&quot; Encloses the convex hull with segments</a>
+<a name="168"><span class="lineNum">     168 </span>            :     // &quot;D&quot; Conforming Delaunay:  all triangles are truly Delaunay</a>
+<a name="169"><span class="lineNum">     169 </span>            :     char options1[] = &quot;QPez&quot;;</a>
+<a name="170"><span class="lineNum">     170 </span>            :     triangulate(options1, &amp;in_mid, &amp;out_mid, &amp;vorout_mid);</a>
+<a name="171"><span class="lineNum">     171 </span>            : </a>
+<a name="172"><span class="lineNum">     172 </span>            :     const std::size_t number_of_triangles = out_mid.numberoftriangles;</a>
+<a name="173"><span class="lineNum">     173 </span>            : </a>
+<a name="174"><span class="lineNum">     174 </span>            :     std::vector&lt;std::size_t&gt; connectivities(3 * number_of_triangles);</a>
+<a name="175"><span class="lineNum">     175 </span>            : </a>
+<a name="176"><span class="lineNum">     176 </span>            :     const auto&amp; r_triangles_list = out_mid.trianglelist;</a>
+<a name="177"><span class="lineNum">     177 </span>            : </a>
+<a name="178"><span class="lineNum">     178 </span>            :     // Must be copied into a std::vector</a>
+<a name="179"><span class="lineNum">     179 </span>            :     for (std::size_t i = 0; i &lt; number_of_triangles * 3; i += 3) {</a>
+<a name="180"><span class="lineNum">     180 </span>            :         connectivities[i] = r_triangles_list[i];</a>
+<a name="181"><span class="lineNum">     181 </span>            :         connectivities[i + 1] = r_triangles_list[i + 1];</a>
+<a name="182"><span class="lineNum">     182 </span>            :         connectivities[i + 2] = r_triangles_list[i + 2];</a>
+<a name="183"><span class="lineNum">     183 </span>            :     }</a>
+<a name="184"><span class="lineNum">     184 </span>            : </a>
+<a name="185"><span class="lineNum">     185 </span>            :     CleanTriangulateIO(in_mid);</a>
+<a name="186"><span class="lineNum">     186 </span>            :     CleanTriangulateIO(out_mid);</a>
+<a name="187"><span class="lineNum">     187 </span>            :     CleanTriangulateIO(vorout_mid);</a>
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<a name="189"><span class="lineNum">     189 </span>            :     return connectivities;</a>
+<a name="190"><span class="lineNum">     190 </span>            : #else</a>
+<a name="191"><span class="lineNum">     191 </span>            :     // Calling the library Delaunator</a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :     delaunator::Delaunator delaunator(rCoordinates);</span></a>
+<a name="193"><span class="lineNum">     193 </span>            :     const auto&amp; r_triangles = delaunator.triangles;</a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :     return r_triangles;</span></a>
+<a name="195"><span class="lineNum">     195 </span>            : #endif</a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span>            : /***********************************************************************************/</a>
+<a name="199"><span class="lineNum">     199 </span>            : /***********************************************************************************/</a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 : std::vector&lt;std::size_t&gt; ComputeTrianglesConnectivity(const std::vector&lt;Point&gt;&amp; rPoints)</span></a>
+<a name="202"><span class="lineNum">     202 </span>            : {</a>
+<a name="203"><span class="lineNum">     203 </span>            :     const std::size_t number_of_nodes = rPoints.size();</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :     std::vector&lt;double&gt; coordinates(2*number_of_nodes, 0.0);</span></a>
+<a name="205"><span class="lineNum">     205 </span>            : </a>
+<a name="206"><span class="lineNum">     206 </span>            :     // NOTE: 2D asssumed</a>
+<a name="207"><span class="lineNum">     207 </span>            :     // Filling coordinates buffer</a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :     for(std::size_t i=0; i&lt;number_of_nodes; ++i) {</span></a>
+<a name="209"><span class="lineNum">     209 </span>            :         const auto&amp; r_point = rPoints[i];</a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineNoCov">          0 :         coordinates[2*i]   = r_point.X();</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :         coordinates[2*i+1] = r_point.Y();</span></a>
+<a name="212"><span class="lineNum">     212 </span>            :     }</a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :     return ComputeTrianglesConnectivity(coordinates);</span></a>
+<a name="214"><span class="lineNum">     214 </span>            : }</a>
+<a name="215"><span class="lineNum">     215 </span>            : </a>
+<a name="216"><span class="lineNum">     216 </span>            : /***********************************************************************************/</a>
+<a name="217"><span class="lineNum">     217 </span>            : /***********************************************************************************/</a>
+<a name="218"><span class="lineNum">     218 </span>            : </a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 : std::pair&lt;std::vector&lt;std::size_t&gt;, std::vector&lt;double&gt;&gt; ComputeTrianglesConnectivity(</span></a>
+<a name="220"><span class="lineNum">     220 </span>            :     const std::vector&lt;double&gt;&amp; rCoordinates,</a>
+<a name="221"><span class="lineNum">     221 </span>            :     const std::vector&lt;std::array&lt;double,2&gt;&gt;&amp; rSegments,</a>
+<a name="222"><span class="lineNum">     222 </span>            :     const double AreaConstraint</a>
+<a name="223"><span class="lineNum">     223 </span>            :     )</a>
+<a name="224"><span class="lineNum">     224 </span>            : {</a>
+<a name="225"><span class="lineNum">     225 </span>            : #if USE_TRIANGLE_NONFREE_TPL</a>
+<a name="226"><span class="lineNum">     226 </span>            :     // Creating the containers for the input and output</a>
+<a name="227"><span class="lineNum">     227 </span>            :     struct triangulateio in_mid, out_mid, vorout_mid;</a>
+<a name="228"><span class="lineNum">     228 </span>            : </a>
+<a name="229"><span class="lineNum">     229 </span>            :     InitializeTriangulateIO(in_mid);</a>
+<a name="230"><span class="lineNum">     230 </span>            :     InitializeTriangulateIO(out_mid);</a>
+<a name="231"><span class="lineNum">     231 </span>            :     InitializeTriangulateIO(vorout_mid);</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span>            :     // Initialize the boundary points coordinates list</a>
+<a name="234"><span class="lineNum">     234 </span>            :     // Note 1: that InitializeTriangulateIO allocates nothing for this by default</a>
+<a name="235"><span class="lineNum">     235 </span>            :     // Note 2: this will be deallocated within the ClearTriangulateIO call below</a>
+<a name="236"><span class="lineNum">     236 </span>            :     in_mid.numberofpoints = rCoordinates.size()/2;</a>
+<a name="237"><span class="lineNum">     237 </span>            :     in_mid.pointlist = (REAL *) malloc(in_mid.numberofpoints * 2 * sizeof(REAL));</a>
+<a name="238"><span class="lineNum">     238 </span>            : </a>
+<a name="239"><span class="lineNum">     239 </span>            :     for(std::size_t i = 0; i &lt; rCoordinates.size(); ++i) {</a>
+<a name="240"><span class="lineNum">     240 </span>            :         in_mid.pointlist[i] = rCoordinates[i];</a>
+<a name="241"><span class="lineNum">     241 </span>            :     }</a>
+<a name="242"><span class="lineNum">     242 </span>            : </a>
+<a name="243"><span class="lineNum">     243 </span>            :     // Initilize the segment list (note that default zero markers are assumed)</a>
+<a name="244"><span class="lineNum">     244 </span>            :     in_mid.numberofsegments = rSegments.size();</a>
+<a name="245"><span class="lineNum">     245 </span>            :     in_mid.segmentlist = (int*) malloc(in_mid.numberofsegments * 2 * sizeof(int));</a>
+<a name="246"><span class="lineNum">     246 </span>            :     in_mid.segmentmarkerlist = (int*) malloc(in_mid.numberofsegments * sizeof(int));</a>
+<a name="247"><span class="lineNum">     247 </span>            :     for (std::size_t i = 0; i &lt; rSegments.size(); ++i) {</a>
+<a name="248"><span class="lineNum">     248 </span>            :         const auto&amp; r_segment = rSegments[i];</a>
+<a name="249"><span class="lineNum">     249 </span>            :         in_mid.segmentlist[2*i] = r_segment[0];</a>
+<a name="250"><span class="lineNum">     250 </span>            :         in_mid.segmentlist[2*i + 1] = r_segment[1];</a>
+<a name="251"><span class="lineNum">     251 </span>            :     }</a>
+<a name="252"><span class="lineNum">     252 </span>            : </a>
+<a name="253"><span class="lineNum">     253 </span>            :     // Check https://www.cs.cmu.edu/~quake/triangle.switch.html for a detailed Triangle switches description</a>
+<a name="254"><span class="lineNum">     254 </span>            :     // &quot;Q&quot; quiet (no terminal output except errors)</a>
+<a name="255"><span class="lineNum">     255 </span>            :     // &quot;q&quot; quality mesh generation with no angles smaller than 20 degrees</a>
+<a name="256"><span class="lineNum">     256 </span>            :     // &quot;p&quot; triangulates a Planar Straight Line Graph</a>
+<a name="257"><span class="lineNum">     257 </span>            :     // &quot;z&quot; numbers all items starting from zero (rather than one)</a>
+<a name="258"><span class="lineNum">     258 </span>            :     // &quot;a&quot; imposes a maximum triangle area constrain</a>
+<a name="259"><span class="lineNum">     259 </span>            :     std::string meshing_options = AreaConstraint &gt; 0.0 ? &quot;Qqpza&quot; + std::to_string(AreaConstraint) : &quot;Qqpz&quot;;</a>
+<a name="260"><span class="lineNum">     260 </span>            :     triangulate(&amp;meshing_options[0], &amp;in_mid, &amp;out_mid, &amp;vorout_mid);</a>
+<a name="261"><span class="lineNum">     261 </span>            : </a>
+<a name="262"><span class="lineNum">     262 </span>            :     // Save the obtained connectivities in an output std::vector</a>
+<a name="263"><span class="lineNum">     263 </span>            :     const auto&amp; r_triangles_list = out_mid.trianglelist;</a>
+<a name="264"><span class="lineNum">     264 </span>            :     const std::size_t number_of_triangles = out_mid.numberoftriangles;</a>
+<a name="265"><span class="lineNum">     265 </span>            :     std::vector&lt;std::size_t&gt; connectivities(3 * number_of_triangles);</a>
+<a name="266"><span class="lineNum">     266 </span>            :     IndexPartition&lt;std::size_t&gt;(number_of_triangles).for_each([&amp;](std::size_t iTriangle){</a>
+<a name="267"><span class="lineNum">     267 </span>            :         connectivities[3 * iTriangle] = r_triangles_list[3 * iTriangle];</a>
+<a name="268"><span class="lineNum">     268 </span>            :         connectivities[3 * iTriangle + 1] = r_triangles_list[3 * iTriangle + 1];</a>
+<a name="269"><span class="lineNum">     269 </span>            :         connectivities[3 * iTriangle + 2] = r_triangles_list[3 * iTriangle + 2];</a>
+<a name="270"><span class="lineNum">     270 </span>            :     });</a>
+<a name="271"><span class="lineNum">     271 </span>            : </a>
+<a name="272"><span class="lineNum">     272 </span>            :     // Save the obtained coordinates in an output std::vector</a>
+<a name="273"><span class="lineNum">     273 </span>            :     const auto&amp; r_out_points_list = out_mid.pointlist;</a>
+<a name="274"><span class="lineNum">     274 </span>            :     const std::size_t number_of_output_points = out_mid.numberofpoints;</a>
+<a name="275"><span class="lineNum">     275 </span>            :     std::vector&lt;double&gt; output_coordinates(2 * number_of_output_points);</a>
+<a name="276"><span class="lineNum">     276 </span>            :     IndexPartition&lt;std::size_t&gt;(number_of_output_points).for_each([&amp;](std::size_t iPoint){</a>
+<a name="277"><span class="lineNum">     277 </span>            :         output_coordinates[2 * iPoint] = r_out_points_list[2 * iPoint];</a>
+<a name="278"><span class="lineNum">     278 </span>            :         output_coordinates[2 * iPoint + 1] = r_out_points_list[2 * iPoint + 1];</a>
+<a name="279"><span class="lineNum">     279 </span>            :     });</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span>            :     // Clean the triangle database</a>
+<a name="282"><span class="lineNum">     282 </span>            :     CleanTriangulateIO(in_mid);</a>
+<a name="283"><span class="lineNum">     283 </span>            :     CleanTriangulateIO(out_mid);</a>
+<a name="284"><span class="lineNum">     284 </span>            :     CleanTriangulateIO(vorout_mid);</a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span>            :     return std::make_pair(connectivities, output_coordinates);</a>
+<a name="287"><span class="lineNum">     287 </span>            : #else</a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :     KRATOS_ERROR &lt;&lt; &quot;The current implementation requires Triangle. Please avoid this utility&quot; &lt;&lt; std::endl;</span></a>
+<a name="289"><span class="lineNum">     289 </span>            :     std::vector&lt;std::size_t&gt; connectivities;</a>
+<a name="290"><span class="lineNum">     290 </span>            :     std::vector&lt;double&gt; output_coordinates;</a>
+<a name="291"><span class="lineNum">     291 </span>            :     return std::make_pair(connectivities, output_coordinates);</a>
+<a name="292"><span class="lineNum">     292 </span>            : #endif</a>
+<a name="293"><span class="lineNum">     293 </span>            : }</a>
+<a name="294"><span class="lineNum">     294 </span>            : </a>
+<a name="295"><span class="lineNum">     295 </span>            : } // namespace DelaunatorUtilities</a>
+<a name="296"><span class="lineNum">     296 </span>            : } // namespace Kratos</a>
+<a name="297"><span class="lineNum">     297 </span>            : </a>
+<a name="298"><span class="lineNum">     298 </span>            : #undef REAL</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
