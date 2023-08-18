@@ -1,0 +1,380 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /root/Kratos/external_libraries/amgcl/solver/bicgstab.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">root/Kratos/external_libraries/amgcl/solver</a> - bicgstab.hpp<span style="font-size: 80%;"> (source / <a href="bicgstab.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 13:51:11</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef AMGCL_SOLVERS_BICGSTAB_HPP</a>
+<a name="2"><span class="lineNum">       2 </span>            : #define AMGCL_SOLVERS_BICGSTAB_HPP</a>
+<a name="3"><span class="lineNum">       3 </span>            : </a>
+<a name="4"><span class="lineNum">       4 </span>            : /*</a>
+<a name="5"><span class="lineNum">       5 </span>            : The MIT License</a>
+<a name="6"><span class="lineNum">       6 </span>            : </a>
+<a name="7"><span class="lineNum">       7 </span>            : Copyright (c) 2012-2022 Denis Demidov &lt;dennis.demidov@gmail.com&gt;</a>
+<a name="8"><span class="lineNum">       8 </span>            : </a>
+<a name="9"><span class="lineNum">       9 </span>            : Permission is hereby granted, free of charge, to any person obtaining a copy</a>
+<a name="10"><span class="lineNum">      10 </span>            : of this software and associated documentation files (the &quot;Software&quot;), to deal</a>
+<a name="11"><span class="lineNum">      11 </span>            : in the Software without restriction, including without limitation the rights</a>
+<a name="12"><span class="lineNum">      12 </span>            : to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</a>
+<a name="13"><span class="lineNum">      13 </span>            : copies of the Software, and to permit persons to whom the Software is</a>
+<a name="14"><span class="lineNum">      14 </span>            : furnished to do so, subject to the following conditions:</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            : The above copyright notice and this permission notice shall be included in</a>
+<a name="17"><span class="lineNum">      17 </span>            : all copies or substantial portions of the Software.</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span>            : THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</a>
+<a name="20"><span class="lineNum">      20 </span>            : IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</a>
+<a name="21"><span class="lineNum">      21 </span>            : FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE</a>
+<a name="22"><span class="lineNum">      22 </span>            : AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</a>
+<a name="23"><span class="lineNum">      23 </span>            : LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</a>
+<a name="24"><span class="lineNum">      24 </span>            : OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</a>
+<a name="25"><span class="lineNum">      25 </span>            : THE SOFTWARE.</a>
+<a name="26"><span class="lineNum">      26 </span>            : */</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : /**</a>
+<a name="29"><span class="lineNum">      29 </span>            :  * \file   amgcl/solver/bicgstab.hpp</a>
+<a name="30"><span class="lineNum">      30 </span>            :  * \author Denis Demidov &lt;dennis.demidov@gmail.com&gt;</a>
+<a name="31"><span class="lineNum">      31 </span>            :  * \brief  BiCGStab iterative method.</a>
+<a name="32"><span class="lineNum">      32 </span>            :  */</a>
+<a name="33"><span class="lineNum">      33 </span>            : </a>
+<a name="34"><span class="lineNum">      34 </span>            : #include &lt;tuple&gt;</a>
+<a name="35"><span class="lineNum">      35 </span>            : #include &lt;iostream&gt;</a>
+<a name="36"><span class="lineNum">      36 </span>            : </a>
+<a name="37"><span class="lineNum">      37 </span>            : #include &lt;amgcl/backend/interface.hpp&gt;</a>
+<a name="38"><span class="lineNum">      38 </span>            : #include &lt;amgcl/solver/detail/default_inner_product.hpp&gt;</a>
+<a name="39"><span class="lineNum">      39 </span>            : #include &lt;amgcl/solver/precond_side.hpp&gt;</a>
+<a name="40"><span class="lineNum">      40 </span>            : #include &lt;amgcl/util.hpp&gt;</a>
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<a name="42"><span class="lineNum">      42 </span>            : namespace amgcl {</a>
+<a name="43"><span class="lineNum">      43 </span>            : namespace solver {</a>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<a name="45"><span class="lineNum">      45 </span>            : /** BiConjugate Gradient Stabilized (BiCGSTAB) method.</a>
+<a name="46"><span class="lineNum">      46 </span>            :  * \rst</a>
+<a name="47"><span class="lineNum">      47 </span>            :  * The BiConjugate Gradient Stabilized method (Bi-CGSTAB) was developed to</a>
+<a name="48"><span class="lineNum">      48 </span>            :  * solve nonsymmetric linear systems while avoiding the often irregular</a>
+<a name="49"><span class="lineNum">      49 </span>            :  * convergence patterns of the Conjugate Gradient [Barr94]_.</a>
+<a name="50"><span class="lineNum">      50 </span>            :  * \endrst</a>
+<a name="51"><span class="lineNum">      51 </span>            :  */</a>
+<a name="52"><span class="lineNum">      52 </span>            : template &lt;</a>
+<a name="53"><span class="lineNum">      53 </span>            :     class Backend,</a>
+<a name="54"><span class="lineNum">      54 </span>            :     class InnerProduct = detail::default_inner_product</a>
+<a name="55"><span class="lineNum">      55 </span>            :     &gt;</a>
+<a name="56"><span class="lineNum">      56 </span>            : class bicgstab {</a>
+<a name="57"><span class="lineNum">      57 </span>            :     public:</a>
+<a name="58"><span class="lineNum">      58 </span>            :         typedef Backend backend_type;</a>
+<a name="59"><span class="lineNum">      59 </span>            : </a>
+<a name="60"><span class="lineNum">      60 </span>            :         typedef typename Backend::vector     vector;</a>
+<a name="61"><span class="lineNum">      61 </span>            :         typedef typename Backend::value_type value_type;</a>
+<a name="62"><span class="lineNum">      62 </span>            :         typedef typename Backend::params     backend_params;</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span>            :         typedef typename math::scalar_of&lt;value_type&gt;::type scalar_type;</a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            :         typedef typename math::inner_product_impl&lt;</a>
+<a name="67"><span class="lineNum">      67 </span>            :             typename math::rhs_of&lt;value_type&gt;::type</a>
+<a name="68"><span class="lineNum">      68 </span>            :             &gt;::return_type coef_type;</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            : </a>
+<a name="71"><span class="lineNum">      71 </span>            :         /// Solver parameters.</a>
+<a name="72"><span class="lineNum">      72 </span>            :         struct params {</a>
+<a name="73"><span class="lineNum">      73 </span>            :             /// Preconditioning kind (left/right).</a>
+<a name="74"><span class="lineNum">      74 </span>            :             preconditioner::side::type pside;</a>
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<a name="76"><span class="lineNum">      76 </span>            :             /// Maximum number of iterations.</a>
+<a name="77"><span class="lineNum">      77 </span>            :             size_t maxiter;</a>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<a name="79"><span class="lineNum">      79 </span>            :             /// Target relative residual error.</a>
+<a name="80"><span class="lineNum">      80 </span>            :             scalar_type tol;</a>
+<a name="81"><span class="lineNum">      81 </span>            : </a>
+<a name="82"><span class="lineNum">      82 </span>            :             /// Target absolute residual error.</a>
+<a name="83"><span class="lineNum">      83 </span>            :             scalar_type abstol;</a>
+<a name="84"><span class="lineNum">      84 </span>            : </a>
+<a name="85"><span class="lineNum">      85 </span>            :             /// Always do at least one iteration.</a>
+<a name="86"><span class="lineNum">      86 </span>            :             bool check_after;</a>
+<a name="87"><span class="lineNum">      87 </span>            : </a>
+<a name="88"><span class="lineNum">      88 </span>            :             /// Ignore the trivial solution x=0 when rhs is zero.</a>
+<a name="89"><span class="lineNum">      89 </span>            :             //** Useful for searching for the null-space vectors of the system */</a>
+<a name="90"><span class="lineNum">      90 </span>            :             bool ns_search;</a>
+<a name="91"><span class="lineNum">      91 </span>            : </a>
+<a name="92"><span class="lineNum">      92 </span>            :             /// Verbose output (show iterations and error)</a>
+<a name="93"><span class="lineNum">      93 </span>            :             bool verbose;</a>
+<a name="94"><span class="lineNum">      94 </span>            : </a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineNoCov">          0 :             params()</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineNoCov">          0 :                 : pside(preconditioner::side::right), maxiter(100), tol(1e-8),</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineNoCov">          0 :                   abstol(std::numeric_limits&lt;scalar_type&gt;::min()),</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :                   check_after(false), ns_search(false), verbose(false)</span></a>
+<a name="99"><span class="lineNum">      99 </span>            :             {}</a>
+<a name="100"><span class="lineNum">     100 </span>            : </a>
+<a name="101"><span class="lineNum">     101 </span>            : #ifndef AMGCL_NO_BOOST</a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineNoCov">          0 :             params(const boost::property_tree::ptree &amp;p)</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :                 : AMGCL_PARAMS_IMPORT_VALUE(p, pside),</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineNoCov">          0 :                   AMGCL_PARAMS_IMPORT_VALUE(p, maxiter),</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :                   AMGCL_PARAMS_IMPORT_VALUE(p, tol),</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineNoCov">          0 :                   AMGCL_PARAMS_IMPORT_VALUE(p, abstol),</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :                   AMGCL_PARAMS_IMPORT_VALUE(p, check_after),</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineNoCov">          0 :                   AMGCL_PARAMS_IMPORT_VALUE(p, ns_search),</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :                   AMGCL_PARAMS_IMPORT_VALUE(p, verbose)</span></a>
+<a name="110"><span class="lineNum">     110 </span>            :             {</a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :                 check_params(p, {&quot;pside&quot;, &quot;maxiter&quot;, &quot;tol&quot;, &quot;abstol&quot;,</span></a>
+<a name="112"><span class="lineNum">     112 </span>            :                         &quot;check_after&quot;, &quot;ns_search&quot;, &quot;verbose&quot;});</a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :             }</span></a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span>            :             void get(boost::property_tree::ptree &amp;p, const std::string &amp;path) const {</a>
+<a name="116"><span class="lineNum">     116 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, pside);</a>
+<a name="117"><span class="lineNum">     117 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, maxiter);</a>
+<a name="118"><span class="lineNum">     118 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, tol);</a>
+<a name="119"><span class="lineNum">     119 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, abstol);</a>
+<a name="120"><span class="lineNum">     120 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, check_after);</a>
+<a name="121"><span class="lineNum">     121 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, ns_search);</a>
+<a name="122"><span class="lineNum">     122 </span>            :                 AMGCL_PARAMS_EXPORT_VALUE(p, path, verbose);</a>
+<a name="123"><span class="lineNum">     123 </span>            :             }</a>
+<a name="124"><span class="lineNum">     124 </span>            : #endif</a>
+<a name="125"><span class="lineNum">     125 </span>            :         };</a>
+<a name="126"><span class="lineNum">     126 </span>            : </a>
+<a name="127"><span class="lineNum">     127 </span>            :         /// Preallocates necessary data structures for the system of size \p n.</a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :         bicgstab(</span></a>
+<a name="129"><span class="lineNum">     129 </span>            :                 size_t n,</a>
+<a name="130"><span class="lineNum">     130 </span>            :                 const params &amp;prm = params(),</a>
+<a name="131"><span class="lineNum">     131 </span>            :                 const backend_params &amp;backend_prm = backend_params(),</a>
+<a name="132"><span class="lineNum">     132 </span>            :                 const InnerProduct &amp;inner_product = InnerProduct()</a>
+<a name="133"><span class="lineNum">     133 </span>            :                 )</a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :             : prm(prm), n(n),</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :               r ( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineNoCov">          0 :               p ( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineNoCov">          0 :               v ( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineNoCov">          0 :               s ( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :               t ( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :               rh( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineNoCov">          0 :               T ( Backend::create_vector(n, backend_prm) ),</span></a>
+<a name="142"><span class="lineNum">     142 </span>            :               inner_product(inner_product)</a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :         { }</span></a>
+<a name="144"><span class="lineNum">     144 </span>            : </a>
+<a name="145"><span class="lineNum">     145 </span>            :         /* Computes the solution for the given system matrix \p A and the</a>
+<a name="146"><span class="lineNum">     146 </span>            :          * right-hand side \p rhs.  Returns the number of iterations made and</a>
+<a name="147"><span class="lineNum">     147 </span>            :          * the achieved residual as a ``std::tuple``. The solution vector</a>
+<a name="148"><span class="lineNum">     148 </span>            :          * \p x provides initial approximation in input and holds the computed</a>
+<a name="149"><span class="lineNum">     149 </span>            :          * solution on output.</a>
+<a name="150"><span class="lineNum">     150 </span>            :          *</a>
+<a name="151"><span class="lineNum">     151 </span>            :          * The system matrix may differ from the matrix used during</a>
+<a name="152"><span class="lineNum">     152 </span>            :          * initialization. This may be used for the solution of non-stationary</a>
+<a name="153"><span class="lineNum">     153 </span>            :          * problems with slowly changing coefficients. There is a strong chance</a>
+<a name="154"><span class="lineNum">     154 </span>            :          * that a preconditioner built for a time step will act as a reasonably</a>
+<a name="155"><span class="lineNum">     155 </span>            :          * good preconditioner for several subsequent time steps [DeSh12]_.</a>
+<a name="156"><span class="lineNum">     156 </span>            :          */</a>
+<a name="157"><span class="lineNum">     157 </span>            :         template &lt;class Matrix, class Precond, class Vec1, class Vec2&gt;</a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :         std::tuple&lt;size_t, scalar_type&gt; operator()(</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :                 const Matrix &amp;A, const Precond &amp;P, const Vec1 &amp;rhs, Vec2 &amp;&amp;x) const</a>
+<a name="160"><span class="lineNum">     160 </span>            :         {</a>
+<a name="161"><span class="lineNum">     161 </span>            :             namespace side = preconditioner::side;</a>
+<a name="162"><span class="lineNum">     162 </span>            : </a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :             static const coef_type one  = math::identity&lt;coef_type&gt;();</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :             static const coef_type zero = math::zero&lt;coef_type&gt;();</span></a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span>            :             ios_saver ss(std::cout);</a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span>            :             scalar_type norm_rhs = norm(rhs);</a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :             if (norm_rhs &lt; amgcl::detail::eps&lt;scalar_type&gt;(1)) {</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :                 if (prm.ns_search) {</span></a>
+<a name="171"><span class="lineNum">     171 </span>            :                     norm_rhs = math::identity&lt;scalar_type&gt;();</a>
+<a name="172"><span class="lineNum">     172 </span>            :                 } else {</a>
+<a name="173"><span class="lineNum">     173 </span>            :                     backend::clear(x);</a>
+<a name="174"><span class="lineNum">     174 </span>            :                     return std::make_tuple(0, norm_rhs);</a>
+<a name="175"><span class="lineNum">     175 </span>            :                 }</a>
+<a name="176"><span class="lineNum">     176 </span>            :             }</a>
+<a name="177"><span class="lineNum">     177 </span>            : </a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineNoCov">          0 :             if (prm.pside == side::left) {</span></a>
+<a name="179"><span class="lineNum">     179 </span>            :                 backend::residual(rhs, A, x, *rh);</a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :                 P.apply(*rh, *r);</span></a>
+<a name="181"><span class="lineNum">     181 </span>            :             } else {</a>
+<a name="182"><span class="lineNum">     182 </span>            :                 backend::residual(rhs, A, x, *r);</a>
+<a name="183"><span class="lineNum">     183 </span>            :             }</a>
+<a name="184"><span class="lineNum">     184 </span>            :             backend::copy(*r, *rh);</a>
+<a name="185"><span class="lineNum">     185 </span>            : </a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :             scalar_type eps = std::max(norm_rhs * prm.tol, prm.abstol);</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineNoCov">          0 :             scalar_type res = prm.check_after ? 2 * eps : norm(*r);</span></a>
+<a name="188"><span class="lineNum">     188 </span>            : </a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineNoCov">          0 :             coef_type rho1  = zero;</span></a>
+<a name="190"><span class="lineNum">     190 </span>            :             coef_type rho2  = zero;</a>
+<a name="191"><span class="lineNum">     191 </span>            :             coef_type alpha = zero;</a>
+<a name="192"><span class="lineNum">     192 </span>            :             coef_type omega = zero;</a>
+<a name="193"><span class="lineNum">     193 </span>            : </a>
+<a name="194"><span class="lineNum">     194 </span>            :             size_t iter = 0;</a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :             for(bool first = true; res &gt; eps &amp;&amp; iter &lt; prm.maxiter; ++iter) {</span></a>
+<a name="196"><span class="lineNum">     196 </span>            : </a>
+<a name="197"><span class="lineNum">     197 </span>            :                 rho2 = rho1;</a>
+<a name="198"><span class="lineNum">     198 </span>            :                 rho1 = inner_product(*r, *rh);</a>
+<a name="199"><span class="lineNum">     199 </span>            : </a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineNoCov">          0 :                 if (first) {</span></a>
+<a name="201"><span class="lineNum">     201 </span>            :                     backend::copy(*r, *p);</a>
+<a name="202"><span class="lineNum">     202 </span>            :                     first = false;</a>
+<a name="203"><span class="lineNum">     203 </span>            :                 } else {</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineNoCov">          0 :                     precondition(!math::is_zero(rho2), &quot;Zero rho in BiCGStab&quot;);</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :                     coef_type beta = (rho1 * alpha) / (rho2 * omega);</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineNoCov">          0 :                     backend::axpbypcz(one, *r, -beta * omega, *v, beta, *p);</span></a>
+<a name="207"><span class="lineNum">     207 </span>            :                 }</a>
+<a name="208"><span class="lineNum">     208 </span>            : </a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineNoCov">          0 :                 preconditioner::spmv(prm.pside, P, A, *p, *v, *T);</span></a>
+<a name="210"><span class="lineNum">     210 </span>            : </a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :                 alpha = rho1 / inner_product(*rh, *v);</span></a>
+<a name="212"><span class="lineNum">     212 </span>            : </a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineNoCov">          0 :                 if (prm.pside == side::left) {</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineNoCov">          0 :                     backend::axpby(alpha, *p, one, x);</span></a>
+<a name="215"><span class="lineNum">     215 </span>            :                 } else {</a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :                     backend::axpby(alpha, *T, one, x);</span></a>
+<a name="217"><span class="lineNum">     217 </span>            :                 }</a>
+<a name="218"><span class="lineNum">     218 </span>            : </a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineNoCov">          0 :                 backend::axpbypcz(one, *r, -alpha, *v, zero, *s);</span></a>
+<a name="220"><span class="lineNum">     220 </span>            : </a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :                 if ((res = norm(*s)) &gt; eps) {</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineNoCov">          0 :                     preconditioner::spmv(prm.pside, P, A, *s, *t, *T);</span></a>
+<a name="223"><span class="lineNum">     223 </span>            : </a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :                     omega = inner_product(*t, *s) / inner_product(*t, *t);</span></a>
+<a name="225"><span class="lineNum">     225 </span>            : </a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :                     precondition(!math::is_zero(omega), &quot;Zero omega in BiCGStab&quot;);</span></a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineNoCov">          0 :                     if (prm.pside == side::left) {</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineNoCov">          0 :                         backend::axpby(omega, *s, one, x);</span></a>
+<a name="230"><span class="lineNum">     230 </span>            :                     } else {</a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineNoCov">          0 :                         backend::axpby(omega, *T, one, x);</span></a>
+<a name="232"><span class="lineNum">     232 </span>            :                     }</a>
+<a name="233"><span class="lineNum">     233 </span>            : </a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :                     backend::axpbypcz(one, *s, -omega, *t, zero, *r);</span></a>
+<a name="235"><span class="lineNum">     235 </span>            : </a>
+<a name="236"><span class="lineNum">     236 </span>            :                     res = norm(*r);</a>
+<a name="237"><span class="lineNum">     237 </span>            :                 }</a>
+<a name="238"><span class="lineNum">     238 </span>            : </a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :                 if (prm.verbose &amp;&amp; iter % 5 == 0)</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :                     std::cout &lt;&lt; iter &lt;&lt; &quot;\t&quot; &lt;&lt; std::scientific &lt;&lt; res / norm_rhs &lt;&lt; std::endl;</span></a>
+<a name="241"><span class="lineNum">     241 </span>            :             }</a>
+<a name="242"><span class="lineNum">     242 </span>            : </a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :             return std::make_tuple(iter, res / norm_rhs);</span></a>
+<a name="244"><span class="lineNum">     244 </span>            :         }</a>
+<a name="245"><span class="lineNum">     245 </span>            : </a>
+<a name="246"><span class="lineNum">     246 </span>            :         /* Computes the solution for the given right-hand side \p rhs. The</a>
+<a name="247"><span class="lineNum">     247 </span>            :          * system matrix is the same that was used for the setup of the</a>
+<a name="248"><span class="lineNum">     248 </span>            :          * preconditioner \p P.  Returns the number of iterations made and the</a>
+<a name="249"><span class="lineNum">     249 </span>            :          * achieved residual as a ``std::tuple``. The solution vector \p x</a>
+<a name="250"><span class="lineNum">     250 </span>            :          * provides initial approximation in input and holds the computed</a>
+<a name="251"><span class="lineNum">     251 </span>            :          * solution on output.</a>
+<a name="252"><span class="lineNum">     252 </span>            :          */</a>
+<a name="253"><span class="lineNum">     253 </span>            :         template &lt;class Precond, class Vec1, class Vec2&gt;</a>
+<a name="254"><span class="lineNum">     254 </span>            :         std::tuple&lt;size_t, scalar_type&gt; operator()(</a>
+<a name="255"><span class="lineNum">     255 </span>            :                 const Precond &amp;P, const Vec1 &amp;rhs, Vec2 &amp;&amp;x) const</a>
+<a name="256"><span class="lineNum">     256 </span>            :         {</a>
+<a name="257"><span class="lineNum">     257 </span>            :             return (*this)(P.system_matrix(), P, rhs, x);</a>
+<a name="258"><span class="lineNum">     258 </span>            :         }</a>
+<a name="259"><span class="lineNum">     259 </span>            : </a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :         size_t bytes() const {</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :             return</a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :                 backend::bytes(*r) +</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineNoCov">          0 :                 backend::bytes(*p) +</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineNoCov">          0 :                 backend::bytes(*v) +</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :                 backend::bytes(*s) +</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineNoCov">          0 :                 backend::bytes(*t) +</span></a>
+<a name="267"><span class="lineNum">     267 </span>            :                 backend::bytes(*rh) +</a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineNoCov">          0 :                 backend::bytes(*T);</span></a>
+<a name="269"><span class="lineNum">     269 </span>            :         }</a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span>            :         friend std::ostream&amp; operator&lt;&lt;(std::ostream &amp;os, const bicgstab &amp;s) {</a>
+<a name="272"><span class="lineNum">     272 </span>            :             return os</a>
+<a name="273"><span class="lineNum">     273 </span>            :                 &lt;&lt; &quot;Type:             BiCGStab&quot;</a>
+<a name="274"><span class="lineNum">     274 </span>            :                 &lt;&lt; &quot;\nUnknowns:         &quot; &lt;&lt; s.n</a>
+<a name="275"><span class="lineNum">     275 </span>            :                 &lt;&lt; &quot;\nMemory footprint: &quot; &lt;&lt; human_readable_memory(s.bytes())</a>
+<a name="276"><span class="lineNum">     276 </span>            :                 &lt;&lt; std::endl;</a>
+<a name="277"><span class="lineNum">     277 </span>            :         }</a>
+<a name="278"><span class="lineNum">     278 </span>            :     public:</a>
+<a name="279"><span class="lineNum">     279 </span>            :         params prm;</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span>            :     private:</a>
+<a name="282"><span class="lineNum">     282 </span>            :         size_t n;</a>
+<a name="283"><span class="lineNum">     283 </span>            : </a>
+<a name="284"><span class="lineNum">     284 </span>            :         std::shared_ptr&lt;vector&gt; r;</a>
+<a name="285"><span class="lineNum">     285 </span>            :         std::shared_ptr&lt;vector&gt; p;</a>
+<a name="286"><span class="lineNum">     286 </span>            :         std::shared_ptr&lt;vector&gt; v;</a>
+<a name="287"><span class="lineNum">     287 </span>            :         std::shared_ptr&lt;vector&gt; s;</a>
+<a name="288"><span class="lineNum">     288 </span>            :         std::shared_ptr&lt;vector&gt; t;</a>
+<a name="289"><span class="lineNum">     289 </span>            :         std::shared_ptr&lt;vector&gt; rh;</a>
+<a name="290"><span class="lineNum">     290 </span>            :         std::shared_ptr&lt;vector&gt; T;</a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            :         InnerProduct inner_product;</a>
+<a name="293"><span class="lineNum">     293 </span>            : </a>
+<a name="294"><span class="lineNum">     294 </span>            :         template &lt;class Vec&gt;</a>
+<a name="295"><span class="lineNum">     295 </span>            :         scalar_type norm(const Vec &amp;x) const {</a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :             return sqrt(math::norm(inner_product(x, x)));</span></a>
+<a name="297"><span class="lineNum">     297 </span>            :         }</a>
+<a name="298"><span class="lineNum">     298 </span>            : };</a>
+<a name="299"><span class="lineNum">     299 </span>            : </a>
+<a name="300"><span class="lineNum">     300 </span>            : } // namespace solver</a>
+<a name="301"><span class="lineNum">     301 </span>            : } // namespace amgcl</a>
+<a name="302"><span class="lineNum">     302 </span>            : </a>
+<a name="303"><span class="lineNum">     303 </span>            : </a>
+<a name="304"><span class="lineNum">     304 </span>            : #endif</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

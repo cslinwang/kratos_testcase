@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /root/Kratos/external_libraries/amgcl/io/mm.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../index.html">top level</a> - <a href="index.html">root/Kratos/external_libraries/amgcl/io</a> - mm.hpp<span style="font-size: 80%;"> (source / <a href="mm.hpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-17 13:51:11</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #ifndef AMGCL_IO_MM_HPP</a>
+<a name="2"><span class="lineNum">       2 </span>            : #define AMGCL_IO_MM_HPP</a>
+<a name="3"><span class="lineNum">       3 </span>            : </a>
+<a name="4"><span class="lineNum">       4 </span>            : /*</a>
+<a name="5"><span class="lineNum">       5 </span>            : The MIT License</a>
+<a name="6"><span class="lineNum">       6 </span>            : </a>
+<a name="7"><span class="lineNum">       7 </span>            : Copyright (c) 2012-2022 Denis Demidov &lt;dennis.demidov@gmail.com&gt;</a>
+<a name="8"><span class="lineNum">       8 </span>            : </a>
+<a name="9"><span class="lineNum">       9 </span>            : Permission is hereby granted, free of charge, to any person obtaining a copy</a>
+<a name="10"><span class="lineNum">      10 </span>            : of this software and associated documentation files (the &quot;Software&quot;), to deal</a>
+<a name="11"><span class="lineNum">      11 </span>            : in the Software without restriction, including without limitation the rights</a>
+<a name="12"><span class="lineNum">      12 </span>            : to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</a>
+<a name="13"><span class="lineNum">      13 </span>            : copies of the Software, and to permit persons to whom the Software is</a>
+<a name="14"><span class="lineNum">      14 </span>            : furnished to do so, subject to the following conditions:</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span>            : The above copyright notice and this permission notice shall be included in</a>
+<a name="17"><span class="lineNum">      17 </span>            : all copies or substantial portions of the Software.</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span>            : THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</a>
+<a name="20"><span class="lineNum">      20 </span>            : IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</a>
+<a name="21"><span class="lineNum">      21 </span>            : FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE</a>
+<a name="22"><span class="lineNum">      22 </span>            : AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</a>
+<a name="23"><span class="lineNum">      23 </span>            : LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</a>
+<a name="24"><span class="lineNum">      24 </span>            : OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</a>
+<a name="25"><span class="lineNum">      25 </span>            : THE SOFTWARE.</a>
+<a name="26"><span class="lineNum">      26 </span>            : */</a>
+<a name="27"><span class="lineNum">      27 </span>            : </a>
+<a name="28"><span class="lineNum">      28 </span>            : /**</a>
+<a name="29"><span class="lineNum">      29 </span>            :  * \file   amgcl/io/mm.hpp</a>
+<a name="30"><span class="lineNum">      30 </span>            :  * \author Denis Demidov &lt;dennis.demidov@gmail.com&gt;</a>
+<a name="31"><span class="lineNum">      31 </span>            :  * \brief  Readers for Matrix Market sparse matrices and dense vectors.</a>
+<a name="32"><span class="lineNum">      32 </span>            :  */</a>
+<a name="33"><span class="lineNum">      33 </span>            : </a>
+<a name="34"><span class="lineNum">      34 </span>            : #include &lt;vector&gt;</a>
+<a name="35"><span class="lineNum">      35 </span>            : #include &lt;string&gt;</a>
+<a name="36"><span class="lineNum">      36 </span>            : #include &lt;fstream&gt;</a>
+<a name="37"><span class="lineNum">      37 </span>            : #include &lt;sstream&gt;</a>
+<a name="38"><span class="lineNum">      38 </span>            : #include &lt;numeric&gt;</a>
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<a name="40"><span class="lineNum">      40 </span>            : #include &lt;type_traits&gt;</a>
+<a name="41"><span class="lineNum">      41 </span>            : #include &lt;tuple&gt;</a>
+<a name="42"><span class="lineNum">      42 </span>            : </a>
+<a name="43"><span class="lineNum">      43 </span>            : #include &lt;amgcl/util.hpp&gt;</a>
+<a name="44"><span class="lineNum">      44 </span>            : #include &lt;amgcl/backend/interface.hpp&gt;</a>
+<a name="45"><span class="lineNum">      45 </span>            : #include &lt;amgcl/value_type/interface.hpp&gt;</a>
+<a name="46"><span class="lineNum">      46 </span>            : #include &lt;amgcl/detail/sort_row.hpp&gt;</a>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<a name="48"><span class="lineNum">      48 </span>            : namespace amgcl {</a>
+<a name="49"><span class="lineNum">      49 </span>            : namespace io {</a>
+<a name="50"><span class="lineNum">      50 </span>            : </a>
+<a name="51"><span class="lineNum">      51 </span>            : /// Matrix market reader.</a>
+<a name="52"><span class="lineNum">      52 </span>            : class mm_reader {</a>
+<a name="53"><span class="lineNum">      53 </span>            :     public:</a>
+<a name="54"><span class="lineNum">      54 </span>            :         /// Open the file by name</a>
+<a name="55"><span class="lineNum">      55 </span>            :         mm_reader(const std::string &amp;fname) : f(fname) {</a>
+<a name="56"><span class="lineNum">      56 </span>            :             precondition(f, &quot;Failed to open file \&quot;&quot; + fname + &quot;\&quot;&quot;);</a>
+<a name="57"><span class="lineNum">      57 </span>            : </a>
+<a name="58"><span class="lineNum">      58 </span>            :             // Read banner.</a>
+<a name="59"><span class="lineNum">      59 </span>            :             precondition(std::getline(f, line), format_error());</a>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<a name="61"><span class="lineNum">      61 </span>            :             std::istringstream is(line);</a>
+<a name="62"><span class="lineNum">      62 </span>            :             std::string banner, mtx, coord, dtype, storage;</a>
+<a name="63"><span class="lineNum">      63 </span>            : </a>
+<a name="64"><span class="lineNum">      64 </span>            :             precondition(</a>
+<a name="65"><span class="lineNum">      65 </span>            :                     is &gt;&gt; banner &gt;&gt; mtx &gt;&gt; coord &gt;&gt; dtype &gt;&gt; storage,</a>
+<a name="66"><span class="lineNum">      66 </span>            :                     format_error());</a>
+<a name="67"><span class="lineNum">      67 </span>            : </a>
+<a name="68"><span class="lineNum">      68 </span>            :             precondition(banner  == &quot;%%MatrixMarket&quot;, format_error(&quot;no banner&quot;));</a>
+<a name="69"><span class="lineNum">      69 </span>            :             precondition(mtx     == &quot;matrix&quot;,         format_error(&quot;not a matrix&quot;));</a>
+<a name="70"><span class="lineNum">      70 </span>            : </a>
+<a name="71"><span class="lineNum">      71 </span>            :             if (storage == &quot;general&quot;) {</a>
+<a name="72"><span class="lineNum">      72 </span>            :                 _symmetric = false;</a>
+<a name="73"><span class="lineNum">      73 </span>            :             } else if (storage == &quot;symmetric&quot;) {</a>
+<a name="74"><span class="lineNum">      74 </span>            :                 _symmetric = true;</a>
+<a name="75"><span class="lineNum">      75 </span>            :             } else {</a>
+<a name="76"><span class="lineNum">      76 </span>            :                 precondition(false, &quot;unsupported storage type&quot;);</a>
+<a name="77"><span class="lineNum">      77 </span>            :             }</a>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<a name="79"><span class="lineNum">      79 </span>            :             if (coord == &quot;coordinate&quot;) {</a>
+<a name="80"><span class="lineNum">      80 </span>            :                 _sparse = true;</a>
+<a name="81"><span class="lineNum">      81 </span>            :             } else if (coord == &quot;array&quot;) {</a>
+<a name="82"><span class="lineNum">      82 </span>            :                 _sparse = false;</a>
+<a name="83"><span class="lineNum">      83 </span>            :             } else {</a>
+<a name="84"><span class="lineNum">      84 </span>            :                 precondition(false, format_error(&quot;unsupported coordinate type&quot;));</a>
+<a name="85"><span class="lineNum">      85 </span>            :             }</a>
+<a name="86"><span class="lineNum">      86 </span>            : </a>
+<a name="87"><span class="lineNum">      87 </span>            :             if (dtype == &quot;real&quot;) {</a>
+<a name="88"><span class="lineNum">      88 </span>            :                 _complex = false;</a>
+<a name="89"><span class="lineNum">      89 </span>            :                 _integer = false;</a>
+<a name="90"><span class="lineNum">      90 </span>            :             } else if (dtype == &quot;complex&quot;) {</a>
+<a name="91"><span class="lineNum">      91 </span>            :                 _complex = true;</a>
+<a name="92"><span class="lineNum">      92 </span>            :                 _integer = false;</a>
+<a name="93"><span class="lineNum">      93 </span>            :             } else if (dtype == &quot;integer&quot;) {</a>
+<a name="94"><span class="lineNum">      94 </span>            :                 _complex = false;</a>
+<a name="95"><span class="lineNum">      95 </span>            :                 _integer = true;</a>
+<a name="96"><span class="lineNum">      96 </span>            :             } else {</a>
+<a name="97"><span class="lineNum">      97 </span>            :                 precondition(false, format_error(&quot;unsupported data type&quot;));</a>
+<a name="98"><span class="lineNum">      98 </span>            :             }</a>
+<a name="99"><span class="lineNum">      99 </span>            : </a>
+<a name="100"><span class="lineNum">     100 </span>            :             // Skip comments.</a>
+<a name="101"><span class="lineNum">     101 </span>            :             do {</a>
+<a name="102"><span class="lineNum">     102 </span>            :                 precondition(std::getline(f, line), format_error(&quot;unexpected eof&quot;));</a>
+<a name="103"><span class="lineNum">     103 </span>            :             } while (line[0] == '%');</a>
+<a name="104"><span class="lineNum">     104 </span>            : </a>
+<a name="105"><span class="lineNum">     105 </span>            :             // The last line is comment-free and holds the matrix sizes</a>
+<a name="106"><span class="lineNum">     106 </span>            :             is.clear(); is.str(line);</a>
+<a name="107"><span class="lineNum">     107 </span>            :             precondition(is &gt;&gt; nrows &gt;&gt; ncols, format_error());</a>
+<a name="108"><span class="lineNum">     108 </span>            :         }</a>
+<a name="109"><span class="lineNum">     109 </span>            : </a>
+<a name="110"><span class="lineNum">     110 </span>            :         /// Matrix in the file is symmetric.</a>
+<a name="111"><span class="lineNum">     111 </span>            :         bool is_symmetric()  const { return _symmetric; }</a>
+<a name="112"><span class="lineNum">     112 </span>            : </a>
+<a name="113"><span class="lineNum">     113 </span>            :         /// Matrix in the file is sparse.</a>
+<a name="114"><span class="lineNum">     114 </span>            :         bool is_sparse()  const { return _sparse; }</a>
+<a name="115"><span class="lineNum">     115 </span>            : </a>
+<a name="116"><span class="lineNum">     116 </span>            :         /// Matrix in the file is complex-valued.</a>
+<a name="117"><span class="lineNum">     117 </span>            :         bool is_complex() const { return _complex; }</a>
+<a name="118"><span class="lineNum">     118 </span>            : </a>
+<a name="119"><span class="lineNum">     119 </span>            :         /// Matrix in the file is integer-valued.</a>
+<a name="120"><span class="lineNum">     120 </span>            :         bool is_integer() const { return _integer; }</a>
+<a name="121"><span class="lineNum">     121 </span>            : </a>
+<a name="122"><span class="lineNum">     122 </span>            :         /// Number of rows.</a>
+<a name="123"><span class="lineNum">     123 </span>            :         size_t rows() const { return nrows; }</a>
+<a name="124"><span class="lineNum">     124 </span>            : </a>
+<a name="125"><span class="lineNum">     125 </span>            :         /// Number of rows.</a>
+<a name="126"><span class="lineNum">     126 </span>            :         size_t cols() const { return ncols; }</a>
+<a name="127"><span class="lineNum">     127 </span>            : </a>
+<a name="128"><span class="lineNum">     128 </span>            :         /// Read sparse matrix from the file.</a>
+<a name="129"><span class="lineNum">     129 </span>            :         template &lt;typename Idx, typename Val&gt;</a>
+<a name="130"><span class="lineNum">     130 </span>            :         std::tuple&lt;size_t, size_t&gt; operator()(</a>
+<a name="131"><span class="lineNum">     131 </span>            :                 std::vector&lt;Idx&gt; &amp;ptr,</a>
+<a name="132"><span class="lineNum">     132 </span>            :                 std::vector&lt;Idx&gt; &amp;col,</a>
+<a name="133"><span class="lineNum">     133 </span>            :                 std::vector&lt;Val&gt; &amp;val,</a>
+<a name="134"><span class="lineNum">     134 </span>            :                 ptrdiff_t row_beg = -1,</a>
+<a name="135"><span class="lineNum">     135 </span>            :                 ptrdiff_t row_end = -1</a>
+<a name="136"><span class="lineNum">     136 </span>            :                 )</a>
+<a name="137"><span class="lineNum">     137 </span>            :         {</a>
+<a name="138"><span class="lineNum">     138 </span>            :             precondition(_sparse, format_error(&quot;not a sparse matrix&quot;));</a>
+<a name="139"><span class="lineNum">     139 </span>            :             precondition(amgcl::is_complex&lt;Val&gt;::value == _complex,</a>
+<a name="140"><span class="lineNum">     140 </span>            :                     _complex ?</a>
+<a name="141"><span class="lineNum">     141 </span>            :                         &quot;attempt to read complex values into real vector&quot; :</a>
+<a name="142"><span class="lineNum">     142 </span>            :                         &quot;attempt to read real values into complex vector&quot;</a>
+<a name="143"><span class="lineNum">     143 </span>            :                         );</a>
+<a name="144"><span class="lineNum">     144 </span>            :             precondition(std::is_integral&lt;Val&gt;::value == _integer,</a>
+<a name="145"><span class="lineNum">     145 </span>            :                     _integer ?</a>
+<a name="146"><span class="lineNum">     146 </span>            :                         &quot;attempt to read integer values into real vector&quot; :</a>
+<a name="147"><span class="lineNum">     147 </span>            :                         &quot;attempt to read real values into integer vector&quot;</a>
+<a name="148"><span class="lineNum">     148 </span>            :                         );</a>
+<a name="149"><span class="lineNum">     149 </span>            : </a>
+<a name="150"><span class="lineNum">     150 </span>            :             // Read sizes</a>
+<a name="151"><span class="lineNum">     151 </span>            :             ptrdiff_t n, m;</a>
+<a name="152"><span class="lineNum">     152 </span>            :             size_t nnz;</a>
+<a name="153"><span class="lineNum">     153 </span>            :             std::istringstream is;</a>
+<a name="154"><span class="lineNum">     154 </span>            :             {</a>
+<a name="155"><span class="lineNum">     155 </span>            :                 // line already holds the matrix sizes</a>
+<a name="156"><span class="lineNum">     156 </span>            :                 is.clear(); is.str(line);</a>
+<a name="157"><span class="lineNum">     157 </span>            :                 precondition(is &gt;&gt; n &gt;&gt; m &gt;&gt; nnz, format_error());</a>
+<a name="158"><span class="lineNum">     158 </span>            :             }</a>
+<a name="159"><span class="lineNum">     159 </span>            : </a>
+<a name="160"><span class="lineNum">     160 </span>            :             if (row_beg &lt; 0) row_beg = 0;</a>
+<a name="161"><span class="lineNum">     161 </span>            :             if (row_end &lt; 0) row_end = n;</a>
+<a name="162"><span class="lineNum">     162 </span>            : </a>
+<a name="163"><span class="lineNum">     163 </span>            :             precondition(row_beg &gt;= 0 &amp;&amp; row_end &lt;= n,</a>
+<a name="164"><span class="lineNum">     164 </span>            :                     &quot;Wrong subset of rows is requested&quot;);</a>
+<a name="165"><span class="lineNum">     165 </span>            : </a>
+<a name="166"><span class="lineNum">     166 </span>            :             ptrdiff_t _nnz = _symmetric ? 2 * nnz : nnz;</a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span>            :             if (row_beg != 0 || row_end != n)</a>
+<a name="169"><span class="lineNum">     169 </span>            :                 _nnz *= 1.2 * (row_end - row_beg) / n;</a>
+<a name="170"><span class="lineNum">     170 </span>            : </a>
+<a name="171"><span class="lineNum">     171 </span>            :             std::vector&lt;Idx&gt; _row; _row.reserve(_nnz);</a>
+<a name="172"><span class="lineNum">     172 </span>            :             std::vector&lt;Idx&gt; _col; _col.reserve(_nnz);</a>
+<a name="173"><span class="lineNum">     173 </span>            :             std::vector&lt;Val&gt; _val; _val.reserve(_nnz);</a>
+<a name="174"><span class="lineNum">     174 </span>            : </a>
+<a name="175"><span class="lineNum">     175 </span>            :             ptrdiff_t chunk = row_end - row_beg;</a>
+<a name="176"><span class="lineNum">     176 </span>            : </a>
+<a name="177"><span class="lineNum">     177 </span>            :             ptr.resize(chunk + 1); std::fill(ptr.begin(), ptr.end(), 0);</a>
+<a name="178"><span class="lineNum">     178 </span>            : </a>
+<a name="179"><span class="lineNum">     179 </span>            :             for(size_t k = 0; k &lt; nnz; ++k) {</a>
+<a name="180"><span class="lineNum">     180 </span>            :                 precondition(std::getline(f, line), format_error(&quot;unexpected eof&quot;));</a>
+<a name="181"><span class="lineNum">     181 </span>            :                 is.clear(); is.str(line);</a>
+<a name="182"><span class="lineNum">     182 </span>            : </a>
+<a name="183"><span class="lineNum">     183 </span>            :                 Idx i, j;</a>
+<a name="184"><span class="lineNum">     184 </span>            :                 Val v;</a>
+<a name="185"><span class="lineNum">     185 </span>            : </a>
+<a name="186"><span class="lineNum">     186 </span>            :                 precondition(is &gt;&gt; i &gt;&gt; j, format_error());</a>
+<a name="187"><span class="lineNum">     187 </span>            : </a>
+<a name="188"><span class="lineNum">     188 </span>            :                 i -= 1;</a>
+<a name="189"><span class="lineNum">     189 </span>            :                 j -= 1;</a>
+<a name="190"><span class="lineNum">     190 </span>            : </a>
+<a name="191"><span class="lineNum">     191 </span>            :                 v = read_value&lt;Val&gt;(is);</a>
+<a name="192"><span class="lineNum">     192 </span>            : </a>
+<a name="193"><span class="lineNum">     193 </span>            :                 if (row_beg &lt;= i &amp;&amp; i &lt; row_end) {</a>
+<a name="194"><span class="lineNum">     194 </span>            :                     ++ptr[i - row_beg + 1];</a>
+<a name="195"><span class="lineNum">     195 </span>            : </a>
+<a name="196"><span class="lineNum">     196 </span>            :                     _row.push_back(i - row_beg);</a>
+<a name="197"><span class="lineNum">     197 </span>            :                     _col.push_back(j);</a>
+<a name="198"><span class="lineNum">     198 </span>            :                     _val.push_back(v);</a>
+<a name="199"><span class="lineNum">     199 </span>            :                 }</a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span>            :                 if (_symmetric &amp;&amp; i != j &amp;&amp; row_beg &lt;= j &amp;&amp; j &lt; row_end) {</a>
+<a name="202"><span class="lineNum">     202 </span>            :                     ++ptr[j - row_beg + 1];</a>
+<a name="203"><span class="lineNum">     203 </span>            : </a>
+<a name="204"><span class="lineNum">     204 </span>            :                     _row.push_back(j - row_beg);</a>
+<a name="205"><span class="lineNum">     205 </span>            :                     _col.push_back(i);</a>
+<a name="206"><span class="lineNum">     206 </span>            :                     _val.push_back(v);</a>
+<a name="207"><span class="lineNum">     207 </span>            :                 }</a>
+<a name="208"><span class="lineNum">     208 </span>            :             }</a>
+<a name="209"><span class="lineNum">     209 </span>            : </a>
+<a name="210"><span class="lineNum">     210 </span>            :             std::partial_sum(ptr.begin(), ptr.end(), ptr.begin());</a>
+<a name="211"><span class="lineNum">     211 </span>            : </a>
+<a name="212"><span class="lineNum">     212 </span>            :             col.resize(ptr.back());</a>
+<a name="213"><span class="lineNum">     213 </span>            :             val.resize(ptr.back());</a>
+<a name="214"><span class="lineNum">     214 </span>            : </a>
+<a name="215"><span class="lineNum">     215 </span>            :             for(size_t k = 0, e = val.size(); k &lt; e; ++k) {</a>
+<a name="216"><span class="lineNum">     216 </span>            :                 Idx i = _row[k];</a>
+<a name="217"><span class="lineNum">     217 </span>            :                 Idx j = _col[k];</a>
+<a name="218"><span class="lineNum">     218 </span>            :                 Val v = _val[k];</a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span>            :                 Idx head = ptr[i]++;</a>
+<a name="221"><span class="lineNum">     221 </span>            :                 col[head] = j;</a>
+<a name="222"><span class="lineNum">     222 </span>            :                 val[head] = v;</a>
+<a name="223"><span class="lineNum">     223 </span>            :             }</a>
+<a name="224"><span class="lineNum">     224 </span>            : </a>
+<a name="225"><span class="lineNum">     225 </span>            :             std::rotate(ptr.begin(), ptr.end() - 1, ptr.end());</a>
+<a name="226"><span class="lineNum">     226 </span>            :             ptr.front() = 0;</a>
+<a name="227"><span class="lineNum">     227 </span>            : </a>
+<a name="228"><span class="lineNum">     228 </span>            : #pragma omp parallel for</a>
+<a name="229"><span class="lineNum">     229 </span>            :             for(ptrdiff_t i = 0; i &lt; chunk; ++i) {</a>
+<a name="230"><span class="lineNum">     230 </span>            :                 Idx beg = ptr[i];</a>
+<a name="231"><span class="lineNum">     231 </span>            :                 Idx end = ptr[i+1];</a>
+<a name="232"><span class="lineNum">     232 </span>            : </a>
+<a name="233"><span class="lineNum">     233 </span>            :                 amgcl::detail::sort_row(&amp;col[0] + beg, &amp;val[0] + beg, end - beg);</a>
+<a name="234"><span class="lineNum">     234 </span>            :             }</a>
+<a name="235"><span class="lineNum">     235 </span>            : </a>
+<a name="236"><span class="lineNum">     236 </span>            :             return std::make_tuple(chunk, m);</a>
+<a name="237"><span class="lineNum">     237 </span>            :         }</a>
+<a name="238"><span class="lineNum">     238 </span>            : </a>
+<a name="239"><span class="lineNum">     239 </span>            :         /// Read dense array from the file.</a>
+<a name="240"><span class="lineNum">     240 </span>            :         template &lt;typename Val&gt;</a>
+<a name="241"><span class="lineNum">     241 </span>            :         std::tuple&lt;size_t, size_t&gt; operator()(</a>
+<a name="242"><span class="lineNum">     242 </span>            :                 std::vector&lt;Val&gt; &amp;val,</a>
+<a name="243"><span class="lineNum">     243 </span>            :                 ptrdiff_t row_beg = -1,</a>
+<a name="244"><span class="lineNum">     244 </span>            :                 ptrdiff_t row_end = -1</a>
+<a name="245"><span class="lineNum">     245 </span>            :                 )</a>
+<a name="246"><span class="lineNum">     246 </span>            :         {</a>
+<a name="247"><span class="lineNum">     247 </span>            :             precondition(!_sparse, format_error(&quot;not a dense array&quot;));</a>
+<a name="248"><span class="lineNum">     248 </span>            :             precondition(amgcl::is_complex&lt;Val&gt;::value == _complex,</a>
+<a name="249"><span class="lineNum">     249 </span>            :                     _complex ?</a>
+<a name="250"><span class="lineNum">     250 </span>            :                         &quot;attempt to read complex values into real vector&quot; :</a>
+<a name="251"><span class="lineNum">     251 </span>            :                         &quot;attempt to read real values into complex vector&quot;</a>
+<a name="252"><span class="lineNum">     252 </span>            :                         );</a>
+<a name="253"><span class="lineNum">     253 </span>            :             precondition(std::is_integral&lt;Val&gt;::value == _integer,</a>
+<a name="254"><span class="lineNum">     254 </span>            :                     _integer ?</a>
+<a name="255"><span class="lineNum">     255 </span>            :                         &quot;attempt to read integer values into real vector&quot; :</a>
+<a name="256"><span class="lineNum">     256 </span>            :                         &quot;attempt to read real values into integer vector&quot;</a>
+<a name="257"><span class="lineNum">     257 </span>            :                         );</a>
+<a name="258"><span class="lineNum">     258 </span>            : </a>
+<a name="259"><span class="lineNum">     259 </span>            :             // Read sizes</a>
+<a name="260"><span class="lineNum">     260 </span>            :             ptrdiff_t n, m;</a>
+<a name="261"><span class="lineNum">     261 </span>            :             std::istringstream is;</a>
+<a name="262"><span class="lineNum">     262 </span>            :             {</a>
+<a name="263"><span class="lineNum">     263 </span>            :                 // line already holds the matrix sizes</a>
+<a name="264"><span class="lineNum">     264 </span>            :                 is.clear(); is.str(line);</a>
+<a name="265"><span class="lineNum">     265 </span>            :                 precondition(is &gt;&gt; n &gt;&gt; m, format_error());</a>
+<a name="266"><span class="lineNum">     266 </span>            :             }</a>
+<a name="267"><span class="lineNum">     267 </span>            : </a>
+<a name="268"><span class="lineNum">     268 </span>            :             if (row_beg &lt; 0) row_beg = 0;</a>
+<a name="269"><span class="lineNum">     269 </span>            :             if (row_end &lt; 0) row_end = n;</a>
+<a name="270"><span class="lineNum">     270 </span>            : </a>
+<a name="271"><span class="lineNum">     271 </span>            :             precondition(row_beg &gt;= 0 &amp;&amp; row_end &lt;= n,</a>
+<a name="272"><span class="lineNum">     272 </span>            :                     &quot;Wrong subset of rows is requested&quot;);</a>
+<a name="273"><span class="lineNum">     273 </span>            : </a>
+<a name="274"><span class="lineNum">     274 </span>            :             val.resize((row_end - row_beg) * m);</a>
+<a name="275"><span class="lineNum">     275 </span>            : </a>
+<a name="276"><span class="lineNum">     276 </span>            :             for(ptrdiff_t j = 0; j &lt; m; ++j) {</a>
+<a name="277"><span class="lineNum">     277 </span>            :                 for(ptrdiff_t i = 0; i &lt; n; ++i) {</a>
+<a name="278"><span class="lineNum">     278 </span>            :                     precondition(std::getline(f, line), format_error(&quot;unexpected eof&quot;));</a>
+<a name="279"><span class="lineNum">     279 </span>            :                     if (row_beg &lt;= i &amp;&amp; i &lt; row_end) {</a>
+<a name="280"><span class="lineNum">     280 </span>            :                         is.clear(); is.str(line);</a>
+<a name="281"><span class="lineNum">     281 </span>            :                         val[(i - row_beg) * m + j] = read_value&lt;Val&gt;(is);</a>
+<a name="282"><span class="lineNum">     282 </span>            :                     }</a>
+<a name="283"><span class="lineNum">     283 </span>            :                 }</a>
+<a name="284"><span class="lineNum">     284 </span>            :             }</a>
+<a name="285"><span class="lineNum">     285 </span>            : </a>
+<a name="286"><span class="lineNum">     286 </span>            :             return std::make_tuple(row_end - row_beg, m);</a>
+<a name="287"><span class="lineNum">     287 </span>            :         }</a>
+<a name="288"><span class="lineNum">     288 </span>            :     private:</a>
+<a name="289"><span class="lineNum">     289 </span>            :         std::ifstream f;</a>
+<a name="290"><span class="lineNum">     290 </span>            :         std::string line;</a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            :         bool _sparse;</a>
+<a name="293"><span class="lineNum">     293 </span>            :         bool _symmetric;</a>
+<a name="294"><span class="lineNum">     294 </span>            :         bool _complex;</a>
+<a name="295"><span class="lineNum">     295 </span>            :         bool _integer;</a>
+<a name="296"><span class="lineNum">     296 </span>            : </a>
+<a name="297"><span class="lineNum">     297 </span>            :         size_t nrows, ncols;</a>
+<a name="298"><span class="lineNum">     298 </span>            : </a>
+<a name="299"><span class="lineNum">     299 </span>            :         std::string format_error(const std::string &amp;msg = &quot;&quot;) const {</a>
+<a name="300"><span class="lineNum">     300 </span>            :             std::string err_string = &quot;MatrixMarket format error&quot;;</a>
+<a name="301"><span class="lineNum">     301 </span>            :             if (!msg.empty())</a>
+<a name="302"><span class="lineNum">     302 </span>            :                 err_string += &quot; (&quot; + msg + &quot;)&quot;;</a>
+<a name="303"><span class="lineNum">     303 </span>            :             return err_string;</a>
+<a name="304"><span class="lineNum">     304 </span>            :         }</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span>            :         template &lt;typename T&gt;</a>
+<a name="307"><span class="lineNum">     307 </span>            :         typename std::enable_if&lt;amgcl::is_complex&lt;T&gt;::value, T&gt;::type</a>
+<a name="308"><span class="lineNum">     308 </span>            :         read_value(std::istream &amp;s) {</a>
+<a name="309"><span class="lineNum">     309 </span>            :             typename math::scalar_of&lt;T&gt;::type x,y;</a>
+<a name="310"><span class="lineNum">     310 </span>            :             precondition(s &gt;&gt; x &gt;&gt; y, format_error());</a>
+<a name="311"><span class="lineNum">     311 </span>            :             return T(x,y);</a>
+<a name="312"><span class="lineNum">     312 </span>            :         }</a>
+<a name="313"><span class="lineNum">     313 </span>            : </a>
+<a name="314"><span class="lineNum">     314 </span>            :         template &lt;typename T&gt;</a>
+<a name="315"><span class="lineNum">     315 </span>            :         typename std::enable_if&lt;!amgcl::is_complex&lt;T&gt;::value, T&gt;::type</a>
+<a name="316"><span class="lineNum">     316 </span>            :         read_value(std::istream &amp;s) {</a>
+<a name="317"><span class="lineNum">     317 </span>            :             T x;</a>
+<a name="318"><span class="lineNum">     318 </span>            :             if (std::is_same&lt;T, char&gt;::value) {</a>
+<a name="319"><span class="lineNum">     319 </span>            :                 // Special case:</a>
+<a name="320"><span class="lineNum">     320 </span>            :                 // We want to read 8bit integers from MatrixMarket, not chars.</a>
+<a name="321"><span class="lineNum">     321 </span>            :                 int i;</a>
+<a name="322"><span class="lineNum">     322 </span>            :                 precondition(s &gt;&gt; i, format_error());</a>
+<a name="323"><span class="lineNum">     323 </span>            :                 x = static_cast&lt;char&gt;(i);</a>
+<a name="324"><span class="lineNum">     324 </span>            :             } else {</a>
+<a name="325"><span class="lineNum">     325 </span>            :                 precondition(s &gt;&gt; x, format_error());</a>
+<a name="326"><span class="lineNum">     326 </span>            :             }</a>
+<a name="327"><span class="lineNum">     327 </span>            :             return x;</a>
+<a name="328"><span class="lineNum">     328 </span>            :         }</a>
+<a name="329"><span class="lineNum">     329 </span>            : </a>
+<a name="330"><span class="lineNum">     330 </span>            : };</a>
+<a name="331"><span class="lineNum">     331 </span>            : </a>
+<a name="332"><span class="lineNum">     332 </span>            : namespace detail {</a>
+<a name="333"><span class="lineNum">     333 </span>            : template &lt;typename Val&gt;</a>
+<a name="334"><span class="lineNum">     334 </span>            : typename std::enable_if&lt;is_complex&lt;Val&gt;::value, std::ostream&amp;&gt;::type</a>
+<a name="335"><span class="lineNum">     335 </span>            : write_value(std::ostream &amp;s, Val v) {</a>
+<a name="336"><span class="lineNum">     336 </span>            :     return s &lt;&lt; std::scientific &lt;&lt; std::setprecision(20) &lt;&lt; std::real(v) &lt;&lt; &quot; &quot; &lt;&lt; std::imag(v);</a>
+<a name="337"><span class="lineNum">     337 </span>            : }</a>
+<a name="338"><span class="lineNum">     338 </span>            : </a>
+<a name="339"><span class="lineNum">     339 </span>            : template &lt;typename Val&gt;</a>
+<a name="340"><span class="lineNum">     340 </span>            : typename std::enable_if&lt;!is_complex&lt;Val&gt;::value, std::ostream&amp;&gt;::type</a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 : write_value(std::ostream &amp;s, Val v) {</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :     return s &lt;&lt; std::scientific &lt;&lt; std::setprecision(20) &lt;&lt; v;</span></a>
+<a name="343"><span class="lineNum">     343 </span>            : }</a>
+<a name="344"><span class="lineNum">     344 </span>            : </a>
+<a name="345"><span class="lineNum">     345 </span>            : } // namespace detail</a>
+<a name="346"><span class="lineNum">     346 </span>            : </a>
+<a name="347"><span class="lineNum">     347 </span>            : /// Write dense array in Matrix Market format.</a>
+<a name="348"><span class="lineNum">     348 </span>            : template &lt;typename Val&gt;</a>
+<a name="349"><span class="lineNum">     349 </span>            : void mm_write(</a>
+<a name="350"><span class="lineNum">     350 </span>            :         const std::string &amp;fname,</a>
+<a name="351"><span class="lineNum">     351 </span>            :         const Val *data,</a>
+<a name="352"><span class="lineNum">     352 </span>            :         size_t rows,</a>
+<a name="353"><span class="lineNum">     353 </span>            :         size_t cols = 1</a>
+<a name="354"><span class="lineNum">     354 </span>            :         )</a>
+<a name="355"><span class="lineNum">     355 </span>            : {</a>
+<a name="356"><span class="lineNum">     356 </span>            :     std::ofstream f(fname.c_str());</a>
+<a name="357"><span class="lineNum">     357 </span>            :     precondition(f, &quot;Failed to open file \&quot;&quot; + fname + &quot;\&quot; for writing&quot;);</a>
+<a name="358"><span class="lineNum">     358 </span>            : </a>
+<a name="359"><span class="lineNum">     359 </span>            :     // Banner</a>
+<a name="360"><span class="lineNum">     360 </span>            :     f &lt;&lt; &quot;%%MatrixMarket matrix array &quot;;</a>
+<a name="361"><span class="lineNum">     361 </span>            :     if (is_complex&lt;Val&gt;::value) {</a>
+<a name="362"><span class="lineNum">     362 </span>            :         f &lt;&lt; &quot;complex &quot;;</a>
+<a name="363"><span class="lineNum">     363 </span>            :     } else if(std::is_integral&lt;Val&gt;::value) {</a>
+<a name="364"><span class="lineNum">     364 </span>            :         f &lt;&lt; &quot;integer &quot;;</a>
+<a name="365"><span class="lineNum">     365 </span>            :     } else {</a>
+<a name="366"><span class="lineNum">     366 </span>            :         f &lt;&lt; &quot;real &quot;;</a>
+<a name="367"><span class="lineNum">     367 </span>            :     }</a>
+<a name="368"><span class="lineNum">     368 </span>            :     f &lt;&lt; &quot;general\n&quot;;</a>
+<a name="369"><span class="lineNum">     369 </span>            : </a>
+<a name="370"><span class="lineNum">     370 </span>            :     // Sizes</a>
+<a name="371"><span class="lineNum">     371 </span>            :     f &lt;&lt; rows &lt;&lt; &quot; &quot; &lt;&lt; cols &lt;&lt; &quot;\n&quot;;</a>
+<a name="372"><span class="lineNum">     372 </span>            : </a>
+<a name="373"><span class="lineNum">     373 </span>            :     // Data</a>
+<a name="374"><span class="lineNum">     374 </span>            :     for(size_t j = 0; j &lt; cols; ++j) {</a>
+<a name="375"><span class="lineNum">     375 </span>            :         for(size_t i = 0; i &lt; rows; ++i) {</a>
+<a name="376"><span class="lineNum">     376 </span>            :             detail::write_value(f, data[i * cols + j]) &lt;&lt; &quot;\n&quot;;</a>
+<a name="377"><span class="lineNum">     377 </span>            :         }</a>
+<a name="378"><span class="lineNum">     378 </span>            :     }</a>
+<a name="379"><span class="lineNum">     379 </span>            : }</a>
+<a name="380"><span class="lineNum">     380 </span>            : </a>
+<a name="381"><span class="lineNum">     381 </span>            : /// Write sparse matrix in Matrix Market format.</a>
+<a name="382"><span class="lineNum">     382 </span>            : template &lt;class Matrix&gt;</a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 : void mm_write(const std::string &amp;fname, const Matrix &amp;A) {</span></a>
+<a name="384"><span class="lineNum">     384 </span>            :     typedef typename backend::value_type&lt;Matrix&gt;::type Val;</a>
+<a name="385"><span class="lineNum">     385 </span>            : </a>
+<a name="386"><span class="lineNum">     386 </span>            :     const size_t rows = backend::rows(A);</a>
+<a name="387"><span class="lineNum">     387 </span>            :     const size_t cols = backend::cols(A);</a>
+<a name="388"><span class="lineNum">     388 </span>            :     const size_t nnz  = backend::nonzeros(A);</a>
+<a name="389"><span class="lineNum">     389 </span>            : </a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineNoCov">          0 :     std::ofstream f(fname.c_str());</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineNoCov">          0 :     precondition(f, &quot;Failed to open file \&quot;&quot; + fname + &quot;\&quot; for writing&quot;);</span></a>
+<a name="392"><span class="lineNum">     392 </span>            : </a>
+<a name="393"><span class="lineNum">     393 </span>            :     // Banner</a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineNoCov">          0 :     f &lt;&lt; &quot;%%MatrixMarket matrix coordinate &quot;;</span></a>
+<a name="395"><span class="lineNum">     395 </span>            :     if (is_complex&lt;Val&gt;::value) {</a>
+<a name="396"><span class="lineNum">     396 </span>            :         f &lt;&lt; &quot;complex &quot;;</a>
+<a name="397"><span class="lineNum">     397 </span>            :     } else if(std::is_integral&lt;Val&gt;::value) {</a>
+<a name="398"><span class="lineNum">     398 </span>            :         f &lt;&lt; &quot;integer &quot;;</a>
+<a name="399"><span class="lineNum">     399 </span>            :     } else {</a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineNoCov">          0 :         f &lt;&lt; &quot;real &quot;;</span></a>
+<a name="401"><span class="lineNum">     401 </span>            :     }</a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineNoCov">          0 :     f &lt;&lt; &quot;general\n&quot;;</span></a>
+<a name="403"><span class="lineNum">     403 </span>            : </a>
+<a name="404"><span class="lineNum">     404 </span>            :     // Sizes</a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineNoCov">          0 :     f &lt;&lt; rows &lt;&lt; &quot; &quot; &lt;&lt; cols &lt;&lt; &quot; &quot; &lt;&lt; nnz &lt;&lt; &quot;\n&quot;;</span></a>
+<a name="406"><span class="lineNum">     406 </span>            : </a>
+<a name="407"><span class="lineNum">     407 </span>            :     // Data</a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineNoCov">          0 :     for(size_t i = 0; i &lt; rows; ++i) {</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :         for(auto a = backend::row_begin(A, i); a; ++a) {</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :             f &lt;&lt; i + 1 &lt;&lt; &quot; &quot; &lt;&lt; a.col() + 1 &lt;&lt; &quot; &quot;;</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineNoCov">          0 :             detail::write_value(f, a.value()) &lt;&lt; &quot;\n&quot;;</span></a>
+<a name="412"><span class="lineNum">     412 </span>            :         }</a>
+<a name="413"><span class="lineNum">     413 </span>            :     }</a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="415"><span class="lineNum">     415 </span>            : </a>
+<a name="416"><span class="lineNum">     416 </span>            : } // namespace io</a>
+<a name="417"><span class="lineNum">     417 </span>            : } // namespace amgcl</a>
+<a name="418"><span class="lineNum">     418 </span>            : </a>
+<a name="419"><span class="lineNum">     419 </span>            : </a>
+<a name="420"><span class="lineNum">     420 </span>            : #endif</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
