@@ -23,7 +23,7 @@
 
 export PYTHONPATH=$PYTHONPATH:/root/Kratos
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/Kratos/libs
-
+export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 # 运行命令
 
 # 编译
