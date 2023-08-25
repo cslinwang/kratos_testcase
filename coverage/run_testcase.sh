@@ -9,7 +9,8 @@ export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
 
 # 检查是否提供了三个输入参数
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+
+
   echo "请提供应用名称、测试用例名称和要执行的Python脚本的路径。"
   exit 1
 fi
@@ -35,6 +36,7 @@ python3 "$python_script_path"
 current_directory="$coverage_dir"
 
 # 执行 fastcov 命令，将输出文件保存在当前目录下
+cd /root
 fastcov --gcov gcov --exclude /usr/include --include /root/Kratos -o "$current_directory/coverage.json"
 fastcov --lcov -o "$current_directory/coverage.info"
 
