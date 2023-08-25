@@ -11,6 +11,13 @@ echo "生成名称文件：$output_md_names"
 echo -e "# Applications\n" > $output_md_names
 echo -e "# Applications\n" > $output_md_detailed
 
+if [[ -f "$output_md_detailed" ]]; then
+  rm "$output_md_detailed"
+fi
+if [[ -f "$output_md_names" ]]; then
+  rm "$output_md_names"
+fi
+
 # 用于跟踪所有文件的总数
 total_files_count=0
 
