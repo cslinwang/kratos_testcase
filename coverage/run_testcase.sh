@@ -31,10 +31,11 @@ mkdir -p "$coverage_dir"
 
 # 执行测试命令
 echo "正在执行应用 ${application_name} 的测试: $python_script_path"
+cd /root/Kratos/applications/"$application_name"/tests
 python3 "$python_script_path"
 
 # 获取当前文件所在目录
-# current_directory=$(cd "$(dirname "$0")"; pwd)
+current_directory="$coverage_dir"
 
 echo "current_directory: $current_directory"
 # 执行 fastcov 命令，将输出文件保存在当前目录下
@@ -43,6 +44,6 @@ fastcov --gcov gcov --exclude /usr/include --include /root/Kratos -o "$current_d
 fastcov --lcov -o "$current_directory/coverage.info"
 
 # 执行 genhtml 命令，将输出文件保存在当前目录下的 coverage 文件夹中
-genhtml "$current_directory/coverage.info" --output-directory "$current_directory/coverage"
+# genhtml "$current_directory/coverage.info" --output-directory "$current_directory/coverage"
 
-echo "测试完成，覆盖率报告在 $current_directory/coverage 目录中"
+echo "测试完成，覆盖率报告在 $current_directory 目录中"

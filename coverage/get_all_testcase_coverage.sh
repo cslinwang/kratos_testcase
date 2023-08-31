@@ -15,6 +15,12 @@ input_md_detailed="kratos_testcase_detailed.md"
 applications_file="8.1_all_run_application.sh"
 declare -a applications_list
 
+# 清空覆盖率文件夹/root/coverage_info
+if [ -d "/root/coverage_info" ]; then
+  echo "清空覆盖率文件夹/root/coverage_info"
+  rm -rf /root/coverage_info
+fi
+
 # 逐行读取应用程序列表文件
 while read -r app_line; do
   # 使用正则表达式提取应用程序名称，并将其添加到数组中
@@ -70,7 +76,8 @@ while read -r line; do
     # 如果找到路径，则打印文件名称和路径
     if [[ -n "$file_path" ]]; then
       echo "应用：$current_application  文件：$file_name_no_ext, 路径：$file_path"
-      ./run_testcase.sh "$current_application" "$file_name_no_ext" "$file_path"
+      # 增加计时功能，如果超时停止
+      timeout 600 ./run_testcase.sh "$current_application" "$file_name_no_ext" "$file_path"
       # echo ""
       continue
     else
