@@ -10,7 +10,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
 
 # 检查是否提供了三个输入参数
 
-
+if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
   echo "请提供应用名称、测试用例名称和要执行的Python脚本的路径。"
   exit 1
 fi
@@ -24,17 +24,19 @@ python_script_path="$3"
 echo "删除之前的覆盖率信息"
 lcov --directory /root/Kratos/ --zerocounters
 
+current_directory="/root"
 # 创建覆盖率信息保存的目录结构
-coverage_dir="./coverage_info/$application_name/$test_case_name"
+coverage_dir="$current_directory/coverage_info/$application_name/$test_case_name"
 mkdir -p "$coverage_dir"
 
 # 执行测试命令
 echo "正在执行应用 ${application_name} 的测试: $python_script_path"
 python3 "$python_script_path"
 
-# 获取当前命令行目录
-current_directory="$coverage_dir"
+# 获取当前文件所在目录
+# current_directory=$(cd "$(dirname "$0")"; pwd)
 
+echo "current_directory: $current_directory"
 # 执行 fastcov 命令，将输出文件保存在当前目录下
 cd /root
 fastcov --gcov gcov --exclude /usr/include --include /root/Kratos -o "$current_directory/coverage.json"
