@@ -5,8 +5,9 @@
 """
 import json
 import os
-from tqdm import tqdm
 import shutil
+from tqdm import tqdm
+
 
 
 def get_all_coverage_file_paths(base_path):
@@ -174,6 +175,15 @@ if __name__ == "__main__":
         normal_base_path)
 
     for file_path in tqdm(normal_coverage_file_paths):
+        directory = os.path.dirname(file_path)
+        print("process:", file_path)
+        delete_coverage_directories(directory)
+
+    bug_base_path = "/root/kratos_testcase/bug_testcase"
+    bug_coverage_file_paths = extract_coverage_data(
+        bug_base_path)
+
+    for file_path in tqdm(bug_base_path):
         directory = os.path.dirname(file_path)
         print("process:", file_path)
         delete_coverage_directories(directory)
