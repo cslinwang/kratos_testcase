@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "MainKratos.py", line 32, in <module>
+    simulation.Run()
+  File "E:\PROYECTOS\KratosGiD\kratos.gid\exec\kratos\kratos\python_scripts\analysis_stage.py", line 47, in Run
+    self.Initialize()
+  File "E:\PROYECTOS\KratosGiD\kratos.gid\exec\kratos\kratos\python_scripts\analysis_stage.py", line 84, in Initialize
+    process.ExecuteInitialize()
+  File "E:\PROYECTOS\KratosGiD\kratos.gid\exec\kratos\kratos\python_scripts\gid_output_process.py", line 144, in ExecuteInitialize
+    self.cut_model_part = ModelPart("CutPart")
+TypeError: Kratos.ModelPart: No constructor defined!
