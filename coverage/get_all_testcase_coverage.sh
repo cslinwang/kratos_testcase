@@ -86,3 +86,5 @@ while read -r line; do
     fi
   fi
 done < "$input_md_names"
+
+# tar -I pigz -cvf kratos_8.1_coverage_info.tar.gz coverage_info
