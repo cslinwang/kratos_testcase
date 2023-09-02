@@ -28,16 +28,23 @@ current_directory="/root"
 # 创建覆盖率信息保存的目录结构
 coverage_dir="$current_directory/coverage_info/$application_name/$test_case_name"
 mkdir -p "$coverage_dir"
+# 获取当前文件所在目录
+current_directory="$coverage_dir"
+
+echo "current_directory: $current_directory"
+
+# 如果存在覆盖率信息，则跳过
+if [ -f "$current_directory/coverage.info" ]; then
+  echo "覆盖率信息已存在，跳过测试"
+  exit 0
+fi
 
 # 执行测试命令
 echo "正在执行应用 ${application_name} 的测试: $python_script_path"
 cd /root/Kratos/applications/"$application_name"/tests
 python3 "$python_script_path"
 
-# 获取当前文件所在目录
-current_directory="$coverage_dir"
 
-echo "current_directory: $current_directory"
 # 执行 fastcov 命令，将输出文件保存在当前目录下
 cd /root
 fastcov --gcov gcov --exclude /usr/include --include /root/Kratos -o "$current_directory/coverage.json"

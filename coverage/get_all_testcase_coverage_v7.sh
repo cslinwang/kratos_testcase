@@ -70,7 +70,7 @@ while read -r line; do
     # 如果找到路径，则打印文件名称和路径
     if [[ -n "$file_path" ]]; then
       echo "应用：$current_application  文件：$file_name_no_ext, 路径：$file_path"
-      ./run_testcase.sh "$current_application" "$file_name_no_ext" "$file_path"
+      timeout 600 ./run_testcase.sh "$current_application" "$file_name_no_ext" "$file_path"
       # echo ""
       continue
     else

@@ -1,45 +1,45 @@
--DCOMPRESSIBLE_POTENTIAL_FLOW_APPLICATION=ON\               
--DCONSTITUTIVE_LAWS_APPLICATION=ON\                         
--DCONSTITUTIVE_MODELS_APPLICATION=ON\                       
--DCONTACT_MECHANICS_APPLICATION=ON\                         
--DCONTACT_STRUCTURAL_MECHANICS_APPLICATION=ON\              
--DCONVECTION_DIFFUSION_APPLICATION=ON\                      
--DCONVECTION_DIFFUSION_APPLICATION=ON\                      
--DCO_SIMULATION_APPLICATION=ON\                             
--DC_SHARP_WRAPPER_APPLICATION=ON\                           
--DDELAUNAY_MESHING_APPLICATION=ON\                          
--DD_E_M_APPLICATION=ON\                                     
--DEIGEN_SOLVERS_APPLICATION=ON\                             
--DEMPIRE_APPLICATION=ON\                                    
--DEXAQUTE_SANDBOX_APPLICATION=ON\                           
--DFLUID_DYNAMICS_APPLICATION=ON\                            
--DFREE_SURFACE_APPLICATION=ON\                              
--DF_S_IAPPLICATION=ON\                                      
--DF_S_I_APPLICATION=ON\                                     
--DGEO_MECHANICS_APPLICATION=ON\                             
--DH_D_F5_APPLICATION=ON\                                    
--DIGA_APPLICATION=ON\                                       
--DLAGRANGIAN_M_P_M_APPLICATION=ON\                          
--DLINEAR_SOLVERS_APPLICATION=ON\                            
--DMAPPING_APPLICATION=ON\                                   
--DMESHING_APPLICATION=ON\                                   
--DMESH_MOVING_APPLICATION=ON\                               
--DMPI_SEARCH_APPLICATION=ON\                                
--DMULTILEVEL_MONTE_CARLO_APPLICATION=ON\                    
--DOPTIMIZATION_APPLICATION=ON\                              
--DPARTICLE_MECHANICS_APPLICATION=ON\                        
--DP_F_E_M2_APPLICATION=ON\                                  
--DPFEM_APPLICATION=ON\                                      
--DPFEM_FLUID_DYNAMICS_APPLICATION=ON\                       
--DPOROMECHANICS_APPLICATION=ON\                             
--DSHALLOW_WATER_APPLICATION=ON\                             
--DSHAPE_OPTIMIZATION_APPLICATION=ON\                        
--DSOLID_MECHANICS_APPLICATION=ON\                           
--DSTABILIZED_C_F_D_APPLICATION=ON\                          
--DSTATISTICS_APPLICATION=ON\                                
--DSTRUCTURAL_MECHANICS_APPLICATION=ON\                      
--DSWIMMING_D_E_M_APPLICATION=ON\                            
--DTOPOLOGY_OPTIMIZATION_APPLICATION=ON\                     
--DTRILINOS_APPLICATION=ON\                                  
--DUMAT_APPLICATION=ON\                                      
--DWIND_ENGINEERING_APPLICATION=ON\                          
+add_app ${KRATOS_APP_DIR}/CompressiblePotentialFlowApplication
+add_app ${KRATOS_APP_DIR}/ConstitutiveLawsApplication
+add_app ${KRATOS_APP_DIR}/ConstitutiveModelsApplication
+add_app ${KRATOS_APP_DIR}/ContactMechanicsApplication
+add_app ${KRATOS_APP_DIR}/ContactStructuralMechanicsApplication
+add_app ${KRATOS_APP_DIR}/convection_diffusion_application
+add_app ${KRATOS_APP_DIR}/ConvectionDiffusionApplication
+add_app ${KRATOS_APP_DIR}/CoSimulationApplication
+add_app ${KRATOS_APP_DIR}/CSharpWrapperApplication
+add_app ${KRATOS_APP_DIR}/DelaunayMeshingApplication
+add_app ${KRATOS_APP_DIR}/DEMApplication
+add_app ${KRATOS_APP_DIR}/EigenSolversApplication
+add_app ${KRATOS_APP_DIR}/EmpireApplication
+add_app ${KRATOS_APP_DIR}/ExaquteSandboxApplication
+add_app ${KRATOS_APP_DIR}/FluidDynamicsApplication
+add_app ${KRATOS_APP_DIR}/FreeSurfaceApplication
+add_app ${KRATOS_APP_DIR}/FSIapplication
+add_app ${KRATOS_APP_DIR}/FSIApplication
+add_app ${KRATOS_APP_DIR}/GeoMechanicsApplication
+add_app ${KRATOS_APP_DIR}/HDF5Application
+add_app ${KRATOS_APP_DIR}/IgaApplication
+add_app ${KRATOS_APP_DIR}/LagrangianMPMApplication
+add_app ${KRATOS_APP_DIR}/LinearSolversApplication
+add_app ${KRATOS_APP_DIR}/MappingApplication
+add_app ${KRATOS_APP_DIR}/MeshingApplication
+add_app ${KRATOS_APP_DIR}/MeshMovingApplication
+add_app ${KRATOS_APP_DIR}/mpi_search_application
+add_app ${KRATOS_APP_DIR}/MultilevelMonteCarloApplication
+add_app ${KRATOS_APP_DIR}/OptimizationApplication
+add_app ${KRATOS_APP_DIR}/ParticleMechanicsApplication
+add_app ${KRATOS_APP_DIR}/PFEM2Application
+add_app ${KRATOS_APP_DIR}/PfemApplication
+add_app ${KRATOS_APP_DIR}/PfemFluidDynamicsApplication
+add_app ${KRATOS_APP_DIR}/PoromechanicsApplication
+add_app ${KRATOS_APP_DIR}/ShallowWaterApplication
+add_app ${KRATOS_APP_DIR}/ShapeOptimizationApplication
+add_app ${KRATOS_APP_DIR}/SolidMechanicsApplication
+add_app ${KRATOS_APP_DIR}/StabilizedCFDApplication
+add_app ${KRATOS_APP_DIR}/StatisticsApplication
+add_app ${KRATOS_APP_DIR}/StructuralMechanicsApplication
+add_app ${KRATOS_APP_DIR}/SwimmingDEMApplication
+add_app ${KRATOS_APP_DIR}/TopologyOptimizationApplication
+add_app ${KRATOS_APP_DIR}/trilinos_application
+add_app ${KRATOS_APP_DIR}/UmatApplication
+add_app ${KRATOS_APP_DIR}/WindEngineeringApplication
