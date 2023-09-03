@@ -12,14 +12,8 @@ exec > >(tee -a "$logfile") 2>&1
 # 定义输入的markdown文件
 input_md_names="kratos_testcase_names.md"
 input_md_detailed="kratos_testcase_detailed.md"
-applications_file="7.1_all_run_application.sh"
+applications_file="6_all_run_application.sh"
 declare -a applications_list
-
-# 清空覆盖率文件夹/root/coverage_info
-if [ -d "/root/coverage_info" ]; then
-  echo "清空覆盖率文件夹/root/coverage_info"
-  rm -rf /root/coverage_info
-fi
 
 # 逐行读取应用程序列表文件
 while read -r app_line; do
@@ -76,7 +70,6 @@ while read -r line; do
     # 如果找到路径，则打印文件名称和路径
     if [[ -n "$file_path" ]]; then
       echo "应用：$current_application  文件：$file_name_no_ext, 路径：$file_path"
-      # 增加计时功能，如果超时停止
       timeout 600 ./run_testcase.sh "$current_application" "$file_name_no_ext" "$file_path"
       # echo ""
       continue
@@ -86,6 +79,3 @@ while read -r line; do
     fi
   fi
 done < "$input_md_names"
-
-# tar -I pigz -cvf kratos_8.1_coverage_info.tar.gz coverage_info
-# tar -I pigz -cvf kratos_6_coverage_info.tar.gz coverage_info
