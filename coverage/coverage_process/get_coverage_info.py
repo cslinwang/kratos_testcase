@@ -156,7 +156,7 @@ def calculate_jaccard_matrix(bug_list, normal_list):
 if __name__ == "__main__":
     # 存储在代码同目录 Kratos_jaccard_similarity_matrix.xlsx 文件中
     current_path = os.path.dirname(os.path.abspath(__file__))
-    Kratos_jaccard_similarity_matrix_path = os.path.join(current_path, "Kratos_jaccard_similarity_matrix-v6.xlsx")
+    Kratos_jaccard_similarity_matrix_path = os.path.join(current_path, "Kratos_jaccard_similarity_matrix-v7.1.xlsx")
 
     # 调用函数提取 bug coverage 数据
     bug_base_path = "/root/kratos_testcase/bug_testcase"
