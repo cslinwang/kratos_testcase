@@ -154,6 +154,9 @@ def calculate_jaccard_matrix(bug_list, normal_list):
 
 
 if __name__ == "__main__":
+    # 存储在代码同目录 Kratos_jaccard_similarity_matrix.xlsx 文件中
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    Kratos_jaccard_similarity_matrix_path = os.path.join(current_path, "Kratos_jaccard_similarity_matrix-v6.xlsx")
 
     # 调用函数提取 bug coverage 数据
     bug_base_path = "/root/kratos_testcase/bug_testcase"
@@ -161,7 +164,7 @@ if __name__ == "__main__":
         bug_base_path)
 
     # 调用函数提取正常用例 coverage 数据
-    normal_base_path = "/root/kratos_testcase/coverage/coverage_info"
+    normal_base_path = "/root/coverage_info"
     normal_coverage_file_paths, normal_coverage_data_list = extract_coverage_data(
         normal_base_path)
 
@@ -173,5 +176,5 @@ if __name__ == "__main__":
     df = pd.DataFrame(jaccard_matrix, index=[normal_coverage_file_paths[i].split("/")[-2] for i in range(len(normal_coverage_data_list))],
                       columns=[bug_coverage_file_paths[i].split("/")[-2] for i in range(len(bug_coverage_data_list))])
 
-    df.to_excel("Kratos_jaccard_similarity_matrix.xlsx")
-    print("Jaccard 相似度矩阵已保存为 Kratos_jaccard_similarity_matrix.xlsx 文件。")
+    df.to_excel(Kratos_jaccard_similarity_matrix_path)
+    print("Jaccard 相似度矩阵已保存，路径为：", Kratos_jaccard_similarity_matrix_path)
