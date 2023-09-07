@@ -1,2 +1,3 @@
 script/kratos_build.log
 coverage/run_all_testcase_coverage.log
+coverage/coverage_process/coverage_res/*

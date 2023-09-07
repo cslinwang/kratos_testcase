@@ -102,7 +102,11 @@ def process_coverage_files(coverage_file_paths):
 
     """
     coverage_data_list = []
+    count = 0
     for coverage_file_path in tqdm(coverage_file_paths):
+        # count += 1
+        # if count > 5:
+        #     break
         coverage_data = read_coverage_json(coverage_file_path)
         coverage_data = extract_covered_lines(coverage_data)
         if coverage_data is not None:
@@ -156,7 +160,8 @@ def calculate_jaccard_matrix(bug_list, normal_list):
 if __name__ == "__main__":
     # 存储在代码同目录 Kratos_jaccard_similarity_matrix.xlsx 文件中
     current_path = os.path.dirname(os.path.abspath(__file__))
-    Kratos_jaccard_similarity_matrix_path = os.path.join(current_path, "Kratos_jaccard_similarity_matrix-v7.1.xlsx")
+    Kratos_jaccard_similarity_matrix_path = os.path.join(
+        current_path, "Kratos_jaccard_similarity_matrix-v9.3.2.xlsx")
 
     # 调用函数提取 bug coverage 数据
     bug_base_path = "/root/kratos_testcase/bug_testcase"
@@ -164,7 +169,7 @@ if __name__ == "__main__":
         bug_base_path)
 
     # 调用函数提取正常用例 coverage 数据
-    normal_base_path = "/root/coverage_info"
+    normal_base_path = "/root/coverage_info_all/kratos_9.3.2_coverage_info"
     normal_coverage_file_paths, normal_coverage_data_list = extract_coverage_data(
         normal_base_path)
 
@@ -173,7 +178,7 @@ if __name__ == "__main__":
         bug_coverage_data_list, normal_coverage_data_list)
 
     # 将结果转换为 DataFrame 并保存为 Excel 文件
-    df = pd.DataFrame(jaccard_matrix, index=[normal_coverage_file_paths[i].split("/")[-2] for i in range(len(normal_coverage_data_list))],
+    df = pd.DataFrame(jaccard_matrix, index=[normal_coverage_file_paths[i].split("/")[-3]+"_"+normal_coverage_file_paths[i].split("/")[-2] for i in range(len(normal_coverage_data_list))],
                       columns=[bug_coverage_file_paths[i].split("/")[-2] for i in range(len(bug_coverage_data_list))])
 
     df.to_excel(Kratos_jaccard_similarity_matrix_path)
