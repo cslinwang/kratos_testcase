@@ -43,6 +43,8 @@ fi
 echo "正在执行应用 ${application_name} 的测试: $python_script_path"
 cd /root/Kratos/applications/"$application_name"/tests
 python3 "$python_script_path"
+# 生成python覆盖率
+coverage xml -o "$current_directory/coverage.xml"
 
 
 # 执行 fastcov 命令，将输出文件保存在当前目录下
