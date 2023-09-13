@@ -21,8 +21,8 @@
 
 # 环境变量
 
-export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
+export PYTHONPATH=$PYTHONPATH:/root/Kratos
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/Kratos/libs
 
 # 运行命令
 

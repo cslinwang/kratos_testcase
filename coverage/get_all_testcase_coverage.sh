@@ -89,3 +89,4 @@ done < "$input_md_names"
 
 # tar -I pigz -cvf kratos_8.1_coverage_info.tar.gz coverage_info
 # tar -I pigz -cvf kratos_6_coverage_info.tar.gz coverage_info
+# tar -I pigz -cvf kratos_7.1_coverage_info.tar.gz coverage_info
