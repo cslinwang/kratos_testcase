@@ -13,10 +13,11 @@
 
 # 环境变量
 
-export PYTHONPATH=$PYTHONPATH:/root/Kratos/bin/Release
-export LD_LIBRARY_PATH=/root/Kratos/build/Release/kratos:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
-
+# export PYTHONPATH=$PYTHONPATH:/root/Kratos/bin/Release
+# export LD_LIBRARY_PATH=/root/Kratos/build/Release/kratos:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
+export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
 # 旧版
 
 # 环境变量
