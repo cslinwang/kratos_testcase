@@ -12,7 +12,7 @@ exec > >(tee -a "$logfile") 2>&1
 # 定义输入的markdown文件
 input_md_names="kratos_testcase_names.md"
 input_md_detailed="kratos_testcase_detailed.md"
-applications_file="8.1_all_run_application.sh"
+applications_file="9.3.2_all_run_application.sh"
 declare -a applications_list
 
 # 逐行读取应用程序列表文件

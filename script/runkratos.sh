@@ -4,13 +4,13 @@ echo -e "\033[34m#################################################\033[0m"
 echo -e "\033[34m## 开始运行  ##\033[0m"
 
 #9.3.2
-# export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
-# export LD_LIBRARY_PATH=/root/Kratos/build/Release/kratos:$LD_LIBRARY_PATH
-# export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
+export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
+export LD_LIBRARY_PATH=/root/Kratos/build/Release/kratos:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 
 #8.1
-export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
+# export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
 
 full_sha="$1"
 
