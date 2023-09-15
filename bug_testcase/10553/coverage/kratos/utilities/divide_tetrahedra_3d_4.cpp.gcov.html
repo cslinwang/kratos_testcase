@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - kratos/utilities/divide_tetrahedra_3d_4.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">kratos/utilities</a> - divide_tetrahedra_3d_4.cpp<span style="font-size: 80%;"> (source / <a href="divide_tetrahedra_3d_4.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">139</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2023-08-10 06:41:28</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">26</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : //    |  /           |</a>
+<a name="2"><span class="lineNum">       2 </span>            : //    ' /   __| _` | __|  _ \   __|</a>
+<a name="3"><span class="lineNum">       3 </span>            : //    . \  |   (   | |   (   |\__ `</a>
+<a name="4"><span class="lineNum">       4 </span>            : //   _|\_\_|  \__,_|\__|\___/ ____/</a>
+<a name="5"><span class="lineNum">       5 </span>            : //                   Multi-Physics</a>
+<a name="6"><span class="lineNum">       6 </span>            : //</a>
+<a name="7"><span class="lineNum">       7 </span>            : //  License:             BSD License</a>
+<a name="8"><span class="lineNum">       8 </span>            : //                                       Kratos default license: kratos/license.txt</a>
+<a name="9"><span class="lineNum">       9 </span>            : //</a>
+<a name="10"><span class="lineNum">      10 </span>            : //  Main authors:    Ruben Zorrilla</a>
+<a name="11"><span class="lineNum">      11 </span>            : //</a>
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<a name="13"><span class="lineNum">      13 </span>            : // System includes</a>
+<a name="14"><span class="lineNum">      14 </span>            : </a>
+<a name="15"><span class="lineNum">      15 </span>            : // External includes</a>
+<a name="16"><span class="lineNum">      16 </span>            : </a>
+<a name="17"><span class="lineNum">      17 </span>            : // Project includes</a>
+<a name="18"><span class="lineNum">      18 </span>            : </a>
+<a name="19"><span class="lineNum">      19 </span>            : #include &quot;utilities/split_tetrahedra.h&quot;</a>
+<a name="20"><span class="lineNum">      20 </span>            : #include &quot;utilities/divide_tetrahedra_3d_4.h&quot;</a>
+<a name="21"><span class="lineNum">      21 </span>            : </a>
+<a name="22"><span class="lineNum">      22 </span>            : namespace Kratos</a>
+<a name="23"><span class="lineNum">      23 </span>            : {</a>
+<a name="24"><span class="lineNum">      24 </span>            :     /// Default constructor</a>
+<a name="25"><span class="lineNum">      25 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :     DivideTetrahedra3D4&lt;TPointType&gt;::DivideTetrahedra3D4(const GeometryType&amp; rInputGeometry, const Vector&amp; rNodalDistances) :</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineNoCov">          0 :         DivideGeometry&lt;TPointType&gt;(rInputGeometry, rNodalDistances) {};</span></a>
+<a name="28"><span class="lineNum">      28 </span>            : </a>
+<a name="29"><span class="lineNum">      29 </span>            :     /// Destructor</a>
+<a name="30"><span class="lineNum">      30 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 :     DivideTetrahedra3D4&lt;TPointType&gt;::~DivideTetrahedra3D4() {};</span></a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            :     /// Turn back information as a string.</a>
+<a name="34"><span class="lineNum">      34 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="35"><span class="lineNum">      35 </span><span class="lineNoCov">          0 :     std::string DivideTetrahedra3D4&lt;TPointType&gt;::Info() const {</span></a>
+<a name="36"><span class="lineNum">      36 </span><span class="lineNoCov">          0 :         return &quot;Tetrahedra divide operations utility.&quot;;</span></a>
+<a name="37"><span class="lineNum">      37 </span>            :     };</a>
+<a name="38"><span class="lineNum">      38 </span>            : </a>
+<a name="39"><span class="lineNum">      39 </span>            :     /// Print information about this object.</a>
+<a name="40"><span class="lineNum">      40 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="41"><span class="lineNum">      41 </span><span class="lineNoCov">          0 :     void DivideTetrahedra3D4&lt;TPointType&gt;::PrintInfo(std::ostream&amp; rOStream) const {</span></a>
+<a name="42"><span class="lineNum">      42 </span><span class="lineNoCov">          0 :         rOStream &lt;&lt; &quot;Tetrahedra divide operations utility.&quot;;</span></a>
+<a name="43"><span class="lineNum">      43 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="44"><span class="lineNum">      44 </span>            : </a>
+<a name="45"><span class="lineNum">      45 </span>            :     /// Print object's data.</a>
+<a name="46"><span class="lineNum">      46 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="47"><span class="lineNum">      47 </span><span class="lineNoCov">          0 :     void DivideTetrahedra3D4&lt;TPointType&gt;::PrintData(std::ostream&amp; rOStream) const {</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineNoCov">          0 :         const GeometryType geometry = this-&gt;GetInputGeometry();</span></a>
+<a name="49"><span class="lineNum">      49 </span><span class="lineNoCov">          0 :         const Vector nodal_distances = this-&gt;GetNodalDistances();</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineNoCov">          0 :         rOStream &lt;&lt; &quot;Tetrahedra divide operations utility constructed with:\n&quot;;</span></a>
+<a name="51"><span class="lineNum">      51 </span><span class="lineNoCov">          0 :         rOStream &lt;&lt; &quot;   Geometry type: &quot; &lt;&lt; geometry.Info() &lt;&lt; &quot;\n&quot;;</span></a>
+<a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :         std::stringstream distances_buffer;</span></a>
+<a name="53"><span class="lineNum">      53 </span><span class="lineNoCov">          0 :         std::ostringstream stm;</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :         for (unsigned int i = 0; i &lt; nodal_distances.size(); ++i) {</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineNoCov">          0 :             stm &lt;&lt; nodal_distances(i);</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineNoCov">          0 :             distances_buffer &lt;&lt; stm.str() &lt;&lt; &quot; &quot;;</span></a>
+<a name="57"><span class="lineNum">      57 </span>            :         }</a>
+<a name="58"><span class="lineNum">      58 </span><span class="lineNoCov">          0 :         rOStream &lt;&lt; &quot;   Distance values: &quot; &lt;&lt; distances_buffer.str();</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="60"><span class="lineNum">      60 </span>            : </a>
+<a name="61"><span class="lineNum">      61 </span>            :     // Returns the mEdgeNodeI member vector</a>
+<a name="62"><span class="lineNum">      62 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineNoCov">          0 :     const std::vector&lt;int&gt;&amp; DivideTetrahedra3D4&lt;TPointType&gt;::GetEdgeIdsI() const {</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineNoCov">          0 :         return this-&gt;mEdgeNodeI;</span></a>
+<a name="65"><span class="lineNum">      65 </span>            :     }</a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span>            :     // Returns the mEdgeNodeJ member vector</a>
+<a name="68"><span class="lineNum">      68 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineNoCov">          0 :     const std::vector&lt;int&gt;&amp; DivideTetrahedra3D4&lt;TPointType&gt;::GetEdgeIdsJ() const {</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineNoCov">          0 :         return this-&gt;mEdgeNodeJ;</span></a>
+<a name="71"><span class="lineNum">      71 </span>            :     }</a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span>            :     // Returns the mSplitEdges member vector</a>
+<a name="74"><span class="lineNum">      74 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 :     std::vector&lt;int&gt;&amp; DivideTetrahedra3D4&lt;TPointType&gt;::GetSplitEdges() {</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineNoCov">          0 :         return this-&gt;mSplitEdges;</span></a>
+<a name="77"><span class="lineNum">      77 </span>            :     }</a>
+<a name="78"><span class="lineNum">      78 </span>            : </a>
+<a name="79"><span class="lineNum">      79 </span>            :     // Performs and saves the splitting pattern.</a>
+<a name="80"><span class="lineNum">      80 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 :     void DivideTetrahedra3D4&lt;TPointType&gt;::GenerateDivision() {</span></a>
+<a name="82"><span class="lineNum">      82 </span>            : </a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineNoCov">          0 :         const GeometryType geometry = this-&gt;GetInputGeometry();</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :         const Vector nodal_distances = this-&gt;GetNodalDistances();</span></a>
+<a name="85"><span class="lineNum">      85 </span>            : </a>
+<a name="86"><span class="lineNum">      86 </span>            :         // Fill the auxiliar points vector set</a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :         if (this-&gt;mIsSplit) {</span></a>
+<a name="88"><span class="lineNum">      88 </span>            : </a>
+<a name="89"><span class="lineNum">      89 </span>            :             // Set the Tetrahedra geometry parameters</a>
+<a name="90"><span class="lineNum">      90 </span>            :             const unsigned int n_nodes = 4;</a>
+<a name="91"><span class="lineNum">      91 </span>            :             const unsigned int n_edges = 6;</a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span>            :             // Clear the auxiliar vector points set</a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineNoCov">          0 :             this-&gt;mAuxPointsContainer.clear();</span></a>
+<a name="95"><span class="lineNum">      95 </span>            :             this-&gt;mAuxPointsContainer.reserve(10);</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span>            :             // Add the original geometry points</a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineNoCov">          0 :             std::vector&lt;int&gt; gl_ids_split_edges(this-&gt;mSplitEdges);</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineNoCov">          0 :             for (unsigned int i = 0; i &lt; n_nodes; ++i) {</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineNoCov">          0 :                 gl_ids_split_edges[i] = geometry[i].Id();</span></a>
+<a name="101"><span class="lineNum">     101 </span>            :                 const array_1d&lt;double, 3&gt; aux_point_coords = geometry[i].Coordinates();</a>
+<a name="102"><span class="lineNum">     102 </span>            :                 IndexedPointPointerType paux_point = Kratos::make_shared&lt;IndexedPoint&gt;(aux_point_coords, i);</a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineNoCov">          0 :                 this-&gt;mAuxPointsContainer.push_back(paux_point);</span></a>
+<a name="104"><span class="lineNum">     104 </span>            :             }</a>
+<a name="105"><span class="lineNum">     105 </span>            : </a>
+<a name="106"><span class="lineNum">     106 </span>            :             // Decide the splitting pattern</a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :             unsigned int aux_node_id = n_nodes;</span></a>
+<a name="108"><span class="lineNum">     108 </span>            : </a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineNoCov">          0 :             for(unsigned int idedge = 0; idedge &lt; n_edges; ++idedge) {</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :                 const unsigned int edge_node_i = this-&gt;mEdgeNodeI[idedge];</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :                 const unsigned int edge_node_j = this-&gt;mEdgeNodeJ[idedge];</span></a>
+<a name="112"><span class="lineNum">     112 </span>            : </a>
+<a name="113"><span class="lineNum">     113 </span>            :                 // Check if the edge is split</a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :                 if(nodal_distances(edge_node_i) * nodal_distances(edge_node_j) &lt; 0) {</span></a>
+<a name="115"><span class="lineNum">     115 </span>            :                     // Set the new node id. in the split edge array corresponding slot</a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineNoCov">          0 :                     this-&gt;mSplitEdges[idedge + n_nodes] = aux_node_id;</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :                     gl_ids_split_edges[idedge + n_nodes] = aux_node_id;</span></a>
+<a name="118"><span class="lineNum">     118 </span>            : </a>
+<a name="119"><span class="lineNum">     119 </span>            :                     // Edge nodes coordinates</a>
+<a name="120"><span class="lineNum">     120 </span>            :                     const array_1d&lt;double, 3&gt; i_node_coords = geometry[edge_node_i].Coordinates();</a>
+<a name="121"><span class="lineNum">     121 </span>            :                     const array_1d&lt;double, 3&gt; j_node_coords = geometry[edge_node_j].Coordinates();</a>
+<a name="122"><span class="lineNum">     122 </span>            : </a>
+<a name="123"><span class="lineNum">     123 </span>            :                     // Compute the coordinates of the point on the edge</a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :                     const double aux_node_rel_location = std::abs (nodal_distances(edge_node_i)/(nodal_distances(edge_node_j)-nodal_distances(edge_node_i)));</span></a>
+<a name="125"><span class="lineNum">     125 </span>            :                     array_1d&lt;double, 3&gt; aux_point_coords;</a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :                     for (unsigned int comp = 0; comp &lt; 3; ++comp) {</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :                         aux_point_coords(comp) = j_node_coords(comp)*aux_node_rel_location + i_node_coords(comp)*(1.0-aux_node_rel_location);</span></a>
+<a name="128"><span class="lineNum">     128 </span>            :                     }</a>
+<a name="129"><span class="lineNum">     129 </span>            : </a>
+<a name="130"><span class="lineNum">     130 </span>            :                     // Add the intersection point to the auxiliar points array</a>
+<a name="131"><span class="lineNum">     131 </span>            :                     IndexedPointPointerType paux_point = Kratos::make_shared&lt;IndexedPoint&gt;(aux_point_coords, aux_node_id);</a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineNoCov">          0 :                     this-&gt;mAuxPointsContainer.push_back(paux_point);</span></a>
+<a name="133"><span class="lineNum">     133 </span>            :                 }</a>
+<a name="134"><span class="lineNum">     134 </span>            : </a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineNoCov">          0 :                 aux_node_id++;</span></a>
+<a name="136"><span class="lineNum">     136 </span>            :             }</a>
+<a name="137"><span class="lineNum">     137 </span>            : </a>
+<a name="138"><span class="lineNum">     138 </span>            :             // Call the splitting mode computation function</a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineNoCov">          0 :             std::vector&lt;int&gt; edge_ids(6);</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineNoCov">          0 :             TetrahedraSplit::TetrahedraSplitMode(gl_ids_split_edges.data(), edge_ids.data());</span></a>
+<a name="141"><span class="lineNum">     141 </span>            : </a>
+<a name="142"><span class="lineNum">     142 </span>            :             // Call the splitting function</a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineNoCov">          0 :             std::vector&lt;int&gt; t(56);     // Ids of the generated subdivisions</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineNoCov">          0 :             int n_int = 0;              // Number of internal nodes (set to 0 since it is not needed for tetrahedra splitting)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineNoCov">          0 :             TetrahedraSplit::Split_Tetrahedra(edge_ids.data(), t.data(), &amp;this-&gt;mDivisionsNumber, &amp;this-&gt;mSplitEdgesNumber, &amp;n_int);</span></a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span>            :             // Fill the subdivisions arrays</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :             for (int idivision = 0; idivision &lt; this-&gt;mDivisionsNumber; ++idivision) {</span></a>
+<a name="149"><span class="lineNum">     149 </span>            :                 // Get the subdivision indices</a>
+<a name="150"><span class="lineNum">     150 </span>            :                 int i0, i1, i2, i3;</a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineNoCov">          0 :                 TetrahedraSplit::TetrahedraGetNewConnectivityGID(idivision, t.data(), this-&gt;mSplitEdges.data(), &amp;i0, &amp;i1, &amp;i2, &amp;i3);</span></a>
+<a name="152"><span class="lineNum">     152 </span>            : </a>
+<a name="153"><span class="lineNum">     153 </span>            :                 // Generate a pointer to an auxiliar triangular geometry made with the subdivision points</a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineNoCov">          0 :                 IndexedPointGeometryPointerType p_aux_partition = Kratos::make_shared&lt;IndexedPointTetrahedraType&gt;(</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineNoCov">          0 :                     this-&gt;mAuxPointsContainer(i0), </span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineNoCov">          0 :                     this-&gt;mAuxPointsContainer(i1), </span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineNoCov">          0 :                     this-&gt;mAuxPointsContainer(i2),</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineNoCov">          0 :                     this-&gt;mAuxPointsContainer(i3));</span></a>
+<a name="159"><span class="lineNum">     159 </span>            :                 </a>
+<a name="160"><span class="lineNum">     160 </span>            :                 // Determine if the subdivision is wether in the negative or the positive side                                                                                                 </a>
+<a name="161"><span class="lineNum">     161 </span>            :                 unsigned int neg = 0, pos = 0;</a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineNoCov">          0 :                 if(i0 &lt;= 3) {nodal_distances(i0) &lt; 0.0 ? neg++ : pos++;}</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineNoCov">          0 :                 if(i1 &lt;= 3) {nodal_distances(i1) &lt; 0.0 ? neg++ : pos++;}</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineNoCov">          0 :                 if(i2 &lt;= 3) {nodal_distances(i2) &lt; 0.0 ? neg++ : pos++;}</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineNoCov">          0 :                 if(i3 &lt;= 3) {nodal_distances(i3) &lt; 0.0 ? neg++ : pos++;}</span></a>
+<a name="166"><span class="lineNum">     166 </span>            : </a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineNoCov">          0 :                 if(neg &gt; 0 &amp;&amp; pos &gt; 0)</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineNoCov">          0 :                     KRATOS_ERROR &lt;&lt; &quot;The subgeometry &quot; &lt;&lt; i0 &lt;&lt; &quot; &quot; &lt;&lt; i1 &lt;&lt; &quot; &quot; &lt;&lt; i2 &lt;&lt; &quot; &quot; &lt;&lt; i3 &lt;&lt; &quot; in tetrahedra has nodes in both positive and negative sides.&quot; &lt;&lt; std::endl;</span></a>
+<a name="169"><span class="lineNum">     169 </span>            : </a>
+<a name="170"><span class="lineNum">     170 </span>            :                 bool is_positive = false;</a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :                 if(pos &gt; 0) {is_positive = true;}</span></a>
+<a name="172"><span class="lineNum">     172 </span>            : </a>
+<a name="173"><span class="lineNum">     173 </span>            :                 // Add the generated tetrahedra to its corresponding partition arrays</a>
+<a name="174"><span class="lineNum">     174 </span>            :                 if (is_positive) {</a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineNoCov">          0 :                     this-&gt;mPositiveSubdivisions.push_back(p_aux_partition);</span></a>
+<a name="176"><span class="lineNum">     176 </span>            :                 } else {</a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineNoCov">          0 :                     this-&gt;mNegativeSubdivisions.push_back(p_aux_partition);</span></a>
+<a name="178"><span class="lineNum">     178 </span>            :                 }</a>
+<a name="179"><span class="lineNum">     179 </span>            :             }</a>
+<a name="180"><span class="lineNum">     180 </span>            : </a>
+<a name="181"><span class="lineNum">     181 </span>            :         } else {</a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :             this-&gt;mDivisionsNumber = 1;</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :             this-&gt;mSplitEdgesNumber = 0;</span></a>
+<a name="184"><span class="lineNum">     184 </span>            :         }</a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="186"><span class="lineNum">     186 </span>            : </a>
+<a name="187"><span class="lineNum">     187 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :     void DivideTetrahedra3D4&lt;TPointType&gt;::GenerateIntersectionsSkin() {</span></a>
+<a name="189"><span class="lineNum">     189 </span>            :         // Set some geometry constant parameters</a>
+<a name="190"><span class="lineNum">     190 </span>            :         const int n_nodes = 4;</a>
+<a name="191"><span class="lineNum">     191 </span>            :         const unsigned int n_faces = 4;</a>
+<a name="192"><span class="lineNum">     192 </span>            : </a>
+<a name="193"><span class="lineNum">     193 </span>            :         // Clear the interfaces vectors</a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :         this-&gt;mPositiveInterfaces.clear();</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineNoCov">          0 :         this-&gt;mNegativeInterfaces.clear();</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :         this-&gt;mPositiveInterfacesParentIds.clear();</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineNoCov">          0 :         this-&gt;mNegativeInterfacesParentIds.clear();</span></a>
+<a name="198"><span class="lineNum">     198 </span>            : </a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineNoCov">          0 :         if (this-&gt;mIsSplit) {</span></a>
+<a name="200"><span class="lineNum">     200 </span>            : </a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineNoCov">          0 :             const unsigned int n_positive_subdivision = this-&gt;mPositiveSubdivisions.size();</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineNoCov">          0 :             const unsigned int n_negative_subdivision = this-&gt;mNegativeSubdivisions.size();</span></a>
+<a name="203"><span class="lineNum">     203 </span>            :             </a>
+<a name="204"><span class="lineNum">     204 </span>            :             // Compute the positive side intersection geometries</a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineNoCov">          0 :             for (unsigned int i_subdivision = 0; i_subdivision &lt; n_positive_subdivision; ++i_subdivision) {</span></a>
+<a name="206"><span class="lineNum">     206 </span>            :                 // Get the subdivision geometry faces</a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineNoCov">          0 :                 const IndexedPointGeometryPointerType p_subdivision_geom = this-&gt;mPositiveSubdivisions[i_subdivision];</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineNoCov">          0 :                 const IndexedGeometriesArrayType subdivision_faces = p_subdivision_geom-&gt;GenerateFaces();</span></a>
+<a name="209"><span class="lineNum">     209 </span>            : </a>
+<a name="210"><span class="lineNum">     210 </span>            :                 // Faces iteration</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineNoCov">          0 :                 for (unsigned int i_face = 0; i_face &lt; n_faces; ++i_face) {</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineNoCov">          0 :                     const IndexedPointGeometryType&amp; r_face = subdivision_faces[i_face];</span></a>
+<a name="213"><span class="lineNum">     213 </span>            : </a>
+<a name="214"><span class="lineNum">     214 </span>            :                     // Get the subdivision face nodal keys</a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineNoCov">          0 :                     int node_i_key = r_face[0].Id();</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineNoCov">          0 :                     int node_j_key = r_face[1].Id();</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineNoCov">          0 :                     int node_k_key = r_face[2].Id();</span></a>
+<a name="218"><span class="lineNum">     218 </span>            :                     </a>
+<a name="219"><span class="lineNum">     219 </span>            :                     // Check the nodal keys to state which nodes belong to the interface</a>
+<a name="220"><span class="lineNum">     220 </span>            :                     // If the indexed keys is larger or equal to the number of nodes means that they are the auxiliar interface points</a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :                     if ((node_i_key &gt;= n_nodes) &amp;&amp; (node_j_key &gt;= n_nodes) &amp;&amp; (node_k_key &gt;= n_nodes)) {</span></a>
+<a name="222"><span class="lineNum">     222 </span>            :                         // Generate an indexed point triangle geometry pointer with the two interface nodes</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineNoCov">          0 :                         IndexedPointGeometryPointerType p_intersection_tri = Kratos::make_shared&lt;IndexedPointTriangleType&gt;(this-&gt;mAuxPointsContainer(node_i_key), </span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineNoCov">          0 :                                                                                                                           this-&gt;mAuxPointsContainer(node_j_key),</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineNoCov">          0 :                                                                                                                           this-&gt;mAuxPointsContainer(node_k_key));</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineNoCov">          0 :                         this-&gt;mPositiveInterfaces.push_back(p_intersection_tri);</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineNoCov">          0 :                         this-&gt;mPositiveInterfacesParentIds.push_back(i_subdivision);</span></a>
+<a name="228"><span class="lineNum">     228 </span>            :                     }</a>
+<a name="229"><span class="lineNum">     229 </span>            :                 }</a>
+<a name="230"><span class="lineNum">     230 </span>            :             }</a>
+<a name="231"><span class="lineNum">     231 </span>            : </a>
+<a name="232"><span class="lineNum">     232 </span>            :             // Compute the negative side intersection geometries</a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineNoCov">          0 :             for (unsigned int i_subdivision = 0; i_subdivision &lt; n_negative_subdivision; ++i_subdivision) {</span></a>
+<a name="234"><span class="lineNum">     234 </span>            :                 // Get the subdivision geometry</a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :                 const IndexedPointGeometryPointerType p_subdivision_geom = this-&gt;mNegativeSubdivisions[i_subdivision];</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :                 const IndexedGeometriesArrayType subdivision_faces = p_subdivision_geom-&gt;GenerateFaces();</span></a>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<a name="238"><span class="lineNum">     238 </span>            :                 // Faces iteration</a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineNoCov">          0 :                 for (unsigned int i_face = 0; i_face &lt; n_faces; ++i_face) {</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineNoCov">          0 :                     const IndexedPointGeometryType&amp; r_face = subdivision_faces[i_face];</span></a>
+<a name="241"><span class="lineNum">     241 </span>            : </a>
+<a name="242"><span class="lineNum">     242 </span>            :                     // Get the subdivision face nodal keys</a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineNoCov">          0 :                     int node_i_key = r_face[0].Id();</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineNoCov">          0 :                     int node_j_key = r_face[1].Id();</span></a>
+<a name="245"><span class="lineNum">     245 </span><span class="lineNoCov">          0 :                     int node_k_key = r_face[2].Id();</span></a>
+<a name="246"><span class="lineNum">     246 </span>            :                     </a>
+<a name="247"><span class="lineNum">     247 </span>            :                     // Check the nodal keys to state which nodes belong to the interface</a>
+<a name="248"><span class="lineNum">     248 </span>            :                     // If the indexed keys is larger or equal to the number of nodes means that they are the auxiliar interface points</a>
+<a name="249"><span class="lineNum">     249 </span><span class="lineNoCov">          0 :                     if ((node_i_key &gt;= n_nodes) &amp;&amp; (node_j_key &gt;= n_nodes) &amp;&amp; (node_k_key &gt;= n_nodes)) {</span></a>
+<a name="250"><span class="lineNum">     250 </span>            :                         // Generate an indexed point triangle geometry pointer with the two interface nodes</a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineNoCov">          0 :                         IndexedPointGeometryPointerType p_intersection_tri = Kratos::make_shared&lt;IndexedPointTriangleType&gt;(this-&gt;mAuxPointsContainer(node_i_key), </span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineNoCov">          0 :                                                                                                                           this-&gt;mAuxPointsContainer(node_j_key),</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineNoCov">          0 :                                                                                                                           this-&gt;mAuxPointsContainer(node_k_key));</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineNoCov">          0 :                         this-&gt;mNegativeInterfaces.push_back(p_intersection_tri);</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineNoCov">          0 :                         this-&gt;mNegativeInterfacesParentIds.push_back(i_subdivision);</span></a>
+<a name="256"><span class="lineNum">     256 </span>            :                     }</a>
+<a name="257"><span class="lineNum">     257 </span>            :                 }</a>
+<a name="258"><span class="lineNum">     258 </span>            :             }</a>
+<a name="259"><span class="lineNum">     259 </span>            :         } else {</a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineNoCov">          0 :             KRATOS_ERROR &lt;&lt; &quot;Trying to generate the intersection skin in DivideTetrahedra3D4::GenerateIntersectionsSkin() for a non-split element.&quot;;</span></a>
+<a name="261"><span class="lineNum">     261 </span>            :         }</a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="263"><span class="lineNum">     263 </span>            : </a>
+<a name="264"><span class="lineNum">     264 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineNoCov">          0 :     void DivideTetrahedra3D4&lt;TPointType&gt;::GenerateExteriorFaces(</span></a>
+<a name="266"><span class="lineNum">     266 </span>            :         std::vector &lt; IndexedPointGeometryPointerType &gt; &amp;rExteriorFacesVector,</a>
+<a name="267"><span class="lineNum">     267 </span>            :         std::vector &lt; unsigned int &gt; &amp;rExteriorFacesParentSubdivisionsIdsVector,</a>
+<a name="268"><span class="lineNum">     268 </span>            :         const std::vector &lt; IndexedPointGeometryPointerType &gt; &amp;rSubdivisionsContainer) {</a>
+<a name="269"><span class="lineNum">     269 </span>            : </a>
+<a name="270"><span class="lineNum">     270 </span>            :         // Set some geometry constant parameters</a>
+<a name="271"><span class="lineNum">     271 </span>            :         const unsigned int n_faces = 4;</a>
+<a name="272"><span class="lineNum">     272 </span>            : </a>
+<a name="273"><span class="lineNum">     273 </span>            :         // Set the exterior faces vectors</a>
+<a name="274"><span class="lineNum">     274 </span>            :         rExteriorFacesVector.clear();</a>
+<a name="275"><span class="lineNum">     275 </span>            :         rExteriorFacesParentSubdivisionsIdsVector.clear();</a>
+<a name="276"><span class="lineNum">     276 </span>            : </a>
+<a name="277"><span class="lineNum">     277 </span>            :         // Iterate the triangle faces</a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineNoCov">          0 :         for (unsigned int i_face = 0; i_face &lt; n_faces; ++i_face) {</span></a>
+<a name="279"><span class="lineNum">     279 </span>            :             std::vector &lt; unsigned int &gt; aux_ext_faces_parent_ids;</a>
+<a name="280"><span class="lineNum">     280 </span>            :             std::vector &lt; DivideTetrahedra3D4::IndexedPointGeometryPointerType &gt; aux_ext_faces;</a>
+<a name="281"><span class="lineNum">     281 </span>            : </a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineNoCov">          0 :             DivideTetrahedra3D4::GenerateExteriorFaces(</span></a>
+<a name="283"><span class="lineNum">     283 </span>            :                 aux_ext_faces,</a>
+<a name="284"><span class="lineNum">     284 </span>            :                 aux_ext_faces_parent_ids,</a>
+<a name="285"><span class="lineNum">     285 </span>            :                 rSubdivisionsContainer, </a>
+<a name="286"><span class="lineNum">     286 </span>            :                 i_face);</a>
+<a name="287"><span class="lineNum">     287 </span>            :             </a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineNoCov">          0 :             rExteriorFacesVector.insert(rExteriorFacesVector.end(), aux_ext_faces.begin(), aux_ext_faces.end());</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineNoCov">          0 :             rExteriorFacesParentSubdivisionsIdsVector.insert(rExteriorFacesParentSubdivisionsIdsVector.end(), aux_ext_faces_parent_ids.begin(), aux_ext_faces_parent_ids.end());</span></a>
+<a name="290"><span class="lineNum">     290 </span>            :         }</a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="292"><span class="lineNum">     292 </span>            : </a>
+<a name="293"><span class="lineNum">     293 </span>            :     template&lt;class TPointType&gt;</a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :     void DivideTetrahedra3D4&lt;TPointType&gt;::GenerateExteriorFaces(</span></a>
+<a name="295"><span class="lineNum">     295 </span>            :         std::vector &lt; IndexedPointGeometryPointerType &gt; &amp;rExteriorFacesVector,</a>
+<a name="296"><span class="lineNum">     296 </span>            :         std::vector &lt; unsigned int &gt; &amp;rExteriorFacesParentSubdivisionsIdsVector,</a>
+<a name="297"><span class="lineNum">     297 </span>            :         const std::vector &lt; IndexedPointGeometryPointerType &gt; &amp;rSubdivisionsContainer,</a>
+<a name="298"><span class="lineNum">     298 </span>            :         const unsigned int FatherFaceId) {</a>
+<a name="299"><span class="lineNum">     299 </span>            :         // Set some geometry constant parameters</a>
+<a name="300"><span class="lineNum">     300 </span>            :         const unsigned int n_faces = 4;</a>
+<a name="301"><span class="lineNum">     301 </span>            : </a>
+<a name="302"><span class="lineNum">     302 </span>            :         // Set the exterior faces vector</a>
+<a name="303"><span class="lineNum">     303 </span>            :         rExteriorFacesVector.clear();</a>
+<a name="304"><span class="lineNum">     304 </span>            :         rExteriorFacesParentSubdivisionsIdsVector.clear();</a>
+<a name="305"><span class="lineNum">     305 </span>            : </a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineNoCov">          0 :         if (this-&gt;mIsSplit) {</span></a>
+<a name="307"><span class="lineNum">     307 </span>            :             // Create the face nodes data</a>
+<a name="308"><span class="lineNum">     308 </span>            :             // The position represents the face while the value the real and intersection nodes in that face edges</a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineNoCov">          0 :             std::array &lt; std::array&lt; unsigned int, 6 &gt;, 4&gt; edges_map = {{</span></a>
+<a name="310"><span class="lineNum">     310 </span>            :                 {{2, 3, 1, 7, 8, 9}},     // Face 0</a>
+<a name="311"><span class="lineNum">     311 </span>            :                 {{0, 2, 3, 5, 6, 9}},     // Face 1</a>
+<a name="312"><span class="lineNum">     312 </span>            :                 {{0, 1, 3, 4, 6, 8}},     // Face 2</a>
+<a name="313"><span class="lineNum">     313 </span>            :                 {{0, 2, 1, 4, 5, 7}}}};   // Face 3</a>
+<a name="314"><span class="lineNum">     314 </span>            : </a>
+<a name="315"><span class="lineNum">     315 </span>            :             // Compute the side exterior faces geometries</a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :             const unsigned int n_subdivision = rSubdivisionsContainer.size();</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineNoCov">          0 :             for (unsigned int i_subdivision = 0; i_subdivision &lt; n_subdivision; ++i_subdivision) {</span></a>
+<a name="318"><span class="lineNum">     318 </span>            :                 // Get the subdivision faces</a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineNoCov">          0 :                 const IndexedPointGeometryPointerType p_subdivision_geom = rSubdivisionsContainer[i_subdivision];</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineNoCov">          0 :                 const IndexedGeometriesArrayType subdivision_faces = p_subdivision_geom-&gt;GenerateFaces();</span></a>
+<a name="321"><span class="lineNum">     321 </span>            : </a>
+<a name="322"><span class="lineNum">     322 </span>            :                 // Subdivision geometry subfaces iteration</a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineNoCov">          0 :                 for (unsigned int i_face = 0; i_face &lt; n_faces; ++i_face) {</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :                     const IndexedPointGeometryType&amp; r_face = subdivision_faces[i_face];</span></a>
+<a name="325"><span class="lineNum">     325 </span>            : </a>
+<a name="326"><span class="lineNum">     326 </span>            :                     // Get the subdivision face nodal keys</a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineNoCov">          0 :                     int node_i_key = r_face[0].Id();</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineNoCov">          0 :                     int node_j_key = r_face[1].Id();</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineNoCov">          0 :                     int node_k_key = r_face[2].Id();</span></a>
+<a name="330"><span class="lineNum">     330 </span>            : </a>
+<a name="331"><span class="lineNum">     331 </span>            :                     // Get the parent geometry face key value (candidate nodes)</a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineNoCov">          0 :                     std::array&lt; unsigned int, 6 &gt; faces_edge_nodes = edges_map[FatherFaceId];</span></a>
+<a name="333"><span class="lineNum">     333 </span>            : </a>
+<a name="334"><span class="lineNum">     334 </span>            :                     // Search the subdivision nodal keys into the parent geometry face key value</a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineNoCov">          0 :                     if (std::find(faces_edge_nodes.begin(), faces_edge_nodes.end(), node_i_key) != faces_edge_nodes.end()) {</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineNoCov">          0 :                         if (std::find(faces_edge_nodes.begin(), faces_edge_nodes.end(), node_j_key) != faces_edge_nodes.end()) {</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineNoCov">          0 :                             if (std::find(faces_edge_nodes.begin(), faces_edge_nodes.end(), node_k_key) != faces_edge_nodes.end()) {</span></a>
+<a name="338"><span class="lineNum">     338 </span>            :                                 // If both nodes are in the candidate nodes list, the subface is exterior</a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineNoCov">          0 :                                 IndexedPointGeometryPointerType p_subface_triang = Kratos::make_shared&lt;IndexedPointTriangleType&gt;(</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineNoCov">          0 :                                     this-&gt;mAuxPointsContainer(node_i_key),</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineNoCov">          0 :                                     this-&gt;mAuxPointsContainer(node_j_key),</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineNoCov">          0 :                                     this-&gt;mAuxPointsContainer(node_k_key));</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :                                 rExteriorFacesVector.push_back(p_subface_triang);</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineNoCov">          0 :                                 rExteriorFacesParentSubdivisionsIdsVector.push_back(i_subdivision);</span></a>
+<a name="345"><span class="lineNum">     345 </span>            :                             }</a>
+<a name="346"><span class="lineNum">     346 </span>            :                         }</a>
+<a name="347"><span class="lineNum">     347 </span>            :                     }</a>
+<a name="348"><span class="lineNum">     348 </span>            :                 }</a>
+<a name="349"><span class="lineNum">     349 </span>            :             }</a>
+<a name="350"><span class="lineNum">     350 </span>            :         } else {</a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineNoCov">          0 :             KRATOS_ERROR &lt;&lt; &quot;Trying to generate the exterior faces in DivideTetrahedra3D4::GenerateExteriorFaces() for a non-split element.&quot;;</span></a>
+<a name="352"><span class="lineNum">     352 </span>            :         }</a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineNoCov">          0 :     };</span></a>
+<a name="354"><span class="lineNum">     354 </span>            : </a>
+<a name="355"><span class="lineNum">     355 </span>            :     </a>
+<a name="356"><span class="lineNum">     356 </span>            :     template class DivideTetrahedra3D4&lt;Node&lt;3&gt;&gt;;</a>
+<a name="357"><span class="lineNum">     357 </span>            :     template class DivideTetrahedra3D4&lt;IndexedPoint&gt;;</a>
+<a name="358"><span class="lineNum">     358 </span>            :         </a>
+<a name="359"><span class="lineNum">     359 </span>            : };</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

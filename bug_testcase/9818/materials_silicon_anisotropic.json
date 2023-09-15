@@ -1,0 +1,21 @@
+{
+    "properties" : [{
+        "model_part_name" : "Structure.solid_domain",
+        "properties_id"   : 1,
+        "Material"        : {
+            "constitutive_law" : {
+                "name" : "StructuralMechanicsApplication.UserProvidedLinearElastic3DLaw"
+            },
+            "Variables"        : {
+                "ELASTICITY_TENSOR": [[1.66e11,6.4e10,6.4e10,0,0,0],
+                                      [6.4e10,1.66e11,6.4e10,0,0,0],
+                                      [6.4e10,6.4e10,1.66e11,0,0,0],
+                                      [0,0,0,8e10,0,0],
+                                      [0,0,0,0,8e10,0],
+                                      [0,0,0,0,0,8e10]],
+                "DENSITY": 2330
+            },
+            "Tables"           : {}
+        }
+    }]
+}

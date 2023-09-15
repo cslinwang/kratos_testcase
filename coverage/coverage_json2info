@@ -1,0 +1,47 @@
+# Python code to convert JSON coverage data to INFO (lcov) format
+def json_to_info(json_data):
+    """
+    Convert JSON coverage data to INFO (lcov) format.
+
+    Parameters:
+        json_data (dict): The JSON coverage data.
+
+    Returns:
+        str: The INFO (lcov) formatted coverage data.
+    """
+    info_output = []
+
+    # Loop through each source file in the JSON data
+    for source_file in json_data.get("source_files", []):
+        # Source file name
+        info_output.append(f"SF:{source_file['name']}")
+
+        # Coverage data
+        for line_number, coverage in enumerate(source_file.get("coverage", []), start=1):
+            if coverage is not None:
+                info_output.append(f"DA:{line_number},{coverage}")
+
+        # End of record for this source file
+        info_output.append("end_of_record")
+
+    return "\n".join(info_output)
+
+# Sample JSON coverage data
+sample_json_data = {
+    "source_files": [
+        {
+            "name": "file1.js",
+            "source": "source code here",
+            "coverage": [None, 1, None]
+        },
+        {
+            "name": "file2.js",
+            "source": "source code here",
+            "coverage": [1, None, 1]
+        }
+    ]
+}
+
+# Convert JSON to INFO format
+info_data = json_to_info(sample_json_data)
+print(info_data)

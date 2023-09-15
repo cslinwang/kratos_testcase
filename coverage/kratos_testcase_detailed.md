@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## AdjointFluidApplication
 
 ## CableNetApplication
@@ -46,10 +47,15 @@
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/CompressiblePotentialFlowApplication/tests/body_fitted_opt/run_test.py
 
+=======
+## CompressiblePotentialFlowApplication
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### test_CompressiblePotentialFlowApplication
   - **Full Name:** test_CompressiblePotentialFlowApplication.py
   - **Path:** /root/Kratos/applications/CompressiblePotentialFlowApplication/tests/test_CompressiblePotentialFlowApplication.py
 
+<<<<<<< HEAD
 ### stochastic_body_fitted_opt/run_mlmc_test
   - **Full Name:** run_mlmc_test.py
   - **Path:** /root/Kratos/applications/CompressiblePotentialFlowApplication/tests/stochastic_body_fitted_opt/run_mlmc_test.py
@@ -58,10 +64,19 @@
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/CompressiblePotentialFlowApplication/tests/stochastic_body_fitted_opt/run_test.py
 
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### potential_flow_test_factory
   - **Full Name:** potential_flow_test_factory.py
   - **Path:** /root/Kratos/applications/CompressiblePotentialFlowApplication/tests/potential_flow_test_factory.py
 
+<<<<<<< HEAD
+=======
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/CompressiblePotentialFlowApplication/tests/run_cpp_unit_tests.py
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ## ConstitutiveLawsApplication
 
 ### test_factory
@@ -82,77 +97,81 @@
 
 ## ConstitutiveModelsApplication
 
-### validation/MainKratos
-  - **Full Name:** MainKratos.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/validation/MainKratos.py
-
 ### ValidationTests
   - **Full Name:** ValidationTests.py
   - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/ValidationTests.py
-
-### test_ConstitutiveModelsApplication
-  - **Full Name:** test_ConstitutiveModelsApplication.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/test_ConstitutiveModelsApplication.py
-
-### test_modified_cam_clay
-  - **Full Name:** test_modified_cam_clay.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/test_modified_cam_clay.py
-
-### TestFactory
-  - **Full Name:** TestFactory.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/TestFactory.py
-
-### examples/begin_J2_SS_example/assign_materials_process
-  - **Full Name:** assign_materials_process.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/assign_materials_process.py
-
-### examples/begin_J2_SS_example/call_constitutive_model
-  - **Full Name:** call_constitutive_model.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/call_constitutive_model.py
-
-### examples/begin_J2_SS_example/test_constitutive_model_process
-  - **Full Name:** test_constitutive_model_process.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/test_constitutive_model_process.py
-
-### examples/begin_J2_SS_example/example_constitutive_model_call
-  - **Full Name:** example_constitutive_model_call.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/example_constitutive_model_call.py
-
-### examples/cam_clay_example/call_constitutive_model
-  - **Full Name:** call_constitutive_model.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/cam_clay_example/call_constitutive_model.py
-
-### examples/cam_clay_example/test_constitutive_model_process
-  - **Full Name:** test_constitutive_model_process.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/cam_clay_example/test_constitutive_model_process.py
 
 ### examples/cam_clay_example/example_constitutive_model_call
   - **Full Name:** example_constitutive_model_call.py
   - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/cam_clay_example/example_constitutive_model_call.py
 
-### examples/clw_test_example/call_constitutive_model
-  - **Full Name:** call_constitutive_model.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/clw_test_example/call_constitutive_model.py
-
-### examples/clw_test_example/test_constitutive_model_process
+### examples/cam_clay_example/test_constitutive_model_process
   - **Full Name:** test_constitutive_model_process.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/clw_test_example/test_constitutive_model_process.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/cam_clay_example/test_constitutive_model_process.py
 
-### examples/clw_test_example/example_constitutive_model_call
-  - **Full Name:** example_constitutive_model_call.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/clw_test_example/example_constitutive_model_call.py
-
-### examples/real_cam_clay_example/call_constitutive_model
+### examples/cam_clay_example/call_constitutive_model
   - **Full Name:** call_constitutive_model.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/real_cam_clay_example/call_constitutive_model.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/cam_clay_example/call_constitutive_model.py
+
+### examples/begin_J2_SS_example/example_constitutive_model_call
+  - **Full Name:** example_constitutive_model_call.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/example_constitutive_model_call.py
+
+### examples/begin_J2_SS_example/test_constitutive_model_process
+  - **Full Name:** test_constitutive_model_process.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/test_constitutive_model_process.py
+
+### examples/begin_J2_SS_example/call_constitutive_model
+  - **Full Name:** call_constitutive_model.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/call_constitutive_model.py
+
+### examples/begin_J2_SS_example/assign_materials_process
+  - **Full Name:** assign_materials_process.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/begin_J2_SS_example/assign_materials_process.py
+
+### examples/real_cam_clay_example/example_constitutive_model_call
+  - **Full Name:** example_constitutive_model_call.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/real_cam_clay_example/example_constitutive_model_call.py
 
 ### examples/real_cam_clay_example/test_constitutive_model_process
   - **Full Name:** test_constitutive_model_process.py
   - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/real_cam_clay_example/test_constitutive_model_process.py
 
-### examples/real_cam_clay_example/example_constitutive_model_call
+### examples/real_cam_clay_example/call_constitutive_model
+  - **Full Name:** call_constitutive_model.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/real_cam_clay_example/call_constitutive_model.py
+
+### examples/clw_test_example/example_constitutive_model_call
   - **Full Name:** example_constitutive_model_call.py
-  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/real_cam_clay_example/example_constitutive_model_call.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/clw_test_example/example_constitutive_model_call.py
+
+### examples/clw_test_example/test_constitutive_model_process
+  - **Full Name:** test_constitutive_model_process.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/clw_test_example/test_constitutive_model_process.py
+
+### examples/clw_test_example/call_constitutive_model
+  - **Full Name:** call_constitutive_model.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/examples/clw_test_example/call_constitutive_model.py
+
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/TestFactory.py
+
+### test_ConstitutiveModelsApplication
+  - **Full Name:** test_ConstitutiveModelsApplication.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/test_ConstitutiveModelsApplication.py
+
+### run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/run_test.py
+
+### validation/MainKratos
+  - **Full Name:** MainKratos.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/validation/MainKratos.py
+
+### test_modified_cam_clay
+  - **Full Name:** test_modified_cam_clay.py
+  - **Path:** /root/Kratos/applications/ConstitutiveModelsApplication/tests/test_modified_cam_clay.py
 
 ### run_test
   - **Full Name:** run_test.py
@@ -164,25 +183,25 @@
   - **Full Name:** ValidationTests.py
   - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/ValidationTests.py
 
-### materials
-  - **Full Name:** materials.py
-  - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/materials.py
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/TestFactory.py
 
 ### NightTests
   - **Full Name:** NightTests.py
   - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/NightTests.py
 
-### TestFactory
-  - **Full Name:** TestFactory.py
-  - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/TestFactory.py
+### test_ContactMechanicsApplication
+  - **Full Name:** test_ContactMechanicsApplication.py
+  - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/test_ContactMechanicsApplication.py
 
 ### SmallTests
   - **Full Name:** SmallTests.py
   - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/SmallTests.py
 
-### test_ContactMechanicsApplication
-  - **Full Name:** test_ContactMechanicsApplication.py
-  - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/test_ContactMechanicsApplication.py
+### materials
+  - **Full Name:** materials.py
+  - **Path:** /root/Kratos/applications/ContactMechanicsApplication/tests/materials.py
 
 ## ContactStructuralMechanicsApplication
 
@@ -190,18 +209,11 @@
   - **Full Name:** ValidationTests.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/ValidationTests.py
 
-### test_ContactStructuralMechanicsApplication
-  - **Full Name:** test_ContactStructuralMechanicsApplication.py
-  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_ContactStructuralMechanicsApplication.py
-
-### test_dynamic_search
-  - **Full Name:** test_dynamic_search.py
-  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_dynamic_search.py
-
 ### NightlyTests
   - **Full Name:** NightlyTests.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/NightlyTests.py
 
+<<<<<<< HEAD
 ### test_check_normals_process
   - **Full Name:** test_check_normals_process.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_check_normals_process.py
@@ -213,11 +225,23 @@
 ### test_double_curvature_integration
   - **Full Name:** test_double_curvature_integration.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_double_curvature_integration.py
+=======
+### test_ContactStructuralMechanicsApplication
+  - **Full Name:** test_ContactStructuralMechanicsApplication.py
+  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_ContactStructuralMechanicsApplication.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### SmallTests
   - **Full Name:** SmallTests.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/SmallTests.py
 
+<<<<<<< HEAD
+=======
+### test_dynamic_search
+  - **Full Name:** test_dynamic_search.py
+  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_dynamic_search.py
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### test_process_factory
   - **Full Name:** test_process_factory.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_process_factory.py
@@ -225,6 +249,18 @@
 ### contact_structural_mechanics_test_factory
   - **Full Name:** contact_structural_mechanics_test_factory.py
   - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/contact_structural_mechanics_test_factory.py
+
+### test_double_curvature_integration
+  - **Full Name:** test_double_curvature_integration.py
+  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_double_curvature_integration.py
+
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/run_cpp_unit_tests.py
+
+### test_mortar_mapper
+  - **Full Name:** test_mortar_mapper.py
+  - **Path:** /root/Kratos/applications/ContactStructuralMechanicsApplication/tests/test_mortar_mapper.py
 
 ## convection_diffusion_application
 
@@ -246,6 +282,7 @@
   - **Full Name:** convection_diffusion_test_factory.py
   - **Path:** /root/Kratos/applications/ConvectionDiffusionApplication/tests/convection_diffusion_test_factory.py
 
+<<<<<<< HEAD
 ### run_cpp_unit_tests
   - **Full Name:** run_cpp_unit_tests.py
   - **Path:** /root/Kratos/applications/ConvectionDiffusionApplication/tests/run_cpp_unit_tests.py
@@ -254,6 +291,8 @@
   - **Full Name:** bfecc_convection_test.py
   - **Path:** /root/Kratos/applications/ConvectionDiffusionApplication/tests/bfecc_convection_test.py
 
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### source_term_test
   - **Full Name:** source_term_test.py
   - **Path:** /root/Kratos/applications/ConvectionDiffusionApplication/tests/source_term_test.py
@@ -270,12 +309,27 @@
   - **Full Name:** test_apply_thermal_face_process.py
   - **Path:** /root/Kratos/applications/ConvectionDiffusionApplication/tests/test_apply_thermal_face_process.py
 
+### test_apply_thermal_face_process
+  - **Full Name:** test_apply_thermal_face_process.py
+  - **Path:** /root/Kratos/applications/convection_diffusion_application/tests/test_apply_thermal_face_process.py
+
 ### thermal_coupling_test
   - **Full Name:** thermal_coupling_test.py
+<<<<<<< HEAD
   - **Path:** /root/Kratos/applications/ConvectionDiffusionApplication/tests/thermal_coupling_test.py
+=======
+  - **Path:** /root/Kratos/applications/convection_diffusion_application/tests/thermal_coupling_test.py
 
-## CoSimulationApplication
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/convection_diffusion_application/tests/run_cpp_unit_tests.py
 
+## ConvectionDiffusionApplication
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
+
+## CSharpWrapperApplication
+
+<<<<<<< HEAD
 ### co_simulation_test_factory
   - **Full Name:** co_simulation_test_factory.py
   - **Path:** /root/Kratos/applications/CoSimulationApplication/tests/co_simulation_test_factory.py
@@ -416,6 +470,8 @@
   - **Full Name:** generalTests.py
   - **Path:** /root/Kratos/applications/DamApplication/tests/generalTests.py
 
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ## DelaunayMeshingApplication
 
 ### generalTests
@@ -426,9 +482,37 @@
   - **Full Name:** test_DelaunayMeshingApplication.py
   - **Path:** /root/Kratos/applications/DelaunayMeshingApplication/tests/test_DelaunayMeshingApplication.py
 
+<<<<<<< HEAD
 ## DEM_application
 
 ## DEMApplication
+=======
+## DEMApplication
+
+### test_glued_particles
+  - **Full Name:** test_glued_particles.py
+  - **Path:** /root/Kratos/applications/DEMApplication/tests/test_glued_particles.py
+
+### test_analytics
+  - **Full Name:** test_analytics.py
+  - **Path:** /root/Kratos/applications/DEMApplication/tests/test_analytics.py
+
+### test_particle_creator_destructor
+  - **Full Name:** test_particle_creator_destructor.py
+  - **Path:** /root/Kratos/applications/DEMApplication/tests/test_particle_creator_destructor.py
+
+### test_guis
+  - **Full Name:** test_guis.py
+  - **Path:** /root/Kratos/applications/DEMApplication/tests/test_guis.py
+
+### test_DEMApplication
+  - **Full Name:** test_DEMApplication.py
+  - **Path:** /root/Kratos/applications/DEMApplication/tests/test_DEMApplication.py
+
+### test_wall_creator_destructor
+  - **Full Name:** test_wall_creator_destructor.py
+  - **Path:** /root/Kratos/applications/DEMApplication/tests/test_wall_creator_destructor.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_DEM_2D_restitution
   - **Full Name:** test_DEM_2D_restitution.py
@@ -438,6 +522,7 @@
   - **Full Name:** test_analytics.py
   - **Path:** /root/Kratos/applications/DEMApplication/tests/test_analytics.py
 
+<<<<<<< HEAD
 ### test_restart
   - **Full Name:** test_restart.py
   - **Path:** /root/Kratos/applications/DEMApplication/tests/test_restart.py
@@ -745,11 +830,71 @@
 ### distance_smoothing_test
   - **Full Name:** distance_smoothing_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/distance_smoothing_test.py
+=======
+### test_EigenSolversApplication
+  - **Full Name:** test_EigenSolversApplication.py
+  - **Path:** /root/Kratos/applications/EigenSolversApplication/tests/test_EigenSolversApplication.py
+
+### test_eigensystem_solver
+  - **Full Name:** test_eigensystem_solver.py
+  - **Path:** /root/Kratos/applications/EigenSolversApplication/tests/test_eigensystem_solver.py
+
+## EmpireApplication
+
+### co_simulation_solver_test_factory
+  - **Full Name:** co_simulation_solver_test_factory.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/co_simulation_solver_test_factory.py
+
+### co_simulation_test_case
+  - **Full Name:** co_simulation_test_case.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/co_simulation_test_case.py
+
+### co_simulation_test_factory
+  - **Full Name:** co_simulation_test_factory.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/co_simulation_test_factory.py
+
+### sdof_solver/PlotResults
+  - **Full Name:** PlotResults.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/sdof_solver/PlotResults.py
+
+### test_EmpireApplication
+  - **Full Name:** test_EmpireApplication.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/test_EmpireApplication.py
+
+### test_empire_solver/MainCoSim
+  - **Full Name:** MainCoSim.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/test_empire_solver/MainCoSim.py
+
+### test_empire_solver/fluid_dynamics_analysis_with_empire
+  - **Full Name:** fluid_dynamics_analysis_with_empire.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/test_empire_solver/fluid_dynamics_analysis_with_empire.py
+
+### mdof_solver/PlotResults
+  - **Full Name:** PlotResults.py
+  - **Path:** /root/Kratos/applications/EmpireApplication/tests/mdof_solver/PlotResults.py
+
+## ExaquteSandboxApplication
+
+## FluidDynamicsApplication
+
+### hdf5_io_test
+  - **Full Name:** hdf5_io_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/hdf5_io_test.py
+
+### fluid_analysis_without_solution
+  - **Full Name:** fluid_analysis_without_solution.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/fluid_analysis_without_solution.py
+
+### two_fluid_inlet_test
+  - **Full Name:** two_fluid_inlet_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/two_fluid_inlet_test.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### fluid_analysis_test
   - **Full Name:** fluid_analysis_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/fluid_analysis_test.py
 
+<<<<<<< HEAD
 ### fluid_analysis_without_solution
   - **Full Name:** fluid_analysis_without_solution.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/fluid_analysis_without_solution.py
@@ -770,18 +915,31 @@
   - **Full Name:** adjoint_vms_sensitivity_2d.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/adjoint_vms_sensitivity_2d.py
 
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### embedded_reservoir_test
   - **Full Name:** embedded_reservoir_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/embedded_reservoir_test.py
 
+<<<<<<< HEAD
 ### slip_spurious_tangential_correction_test
   - **Full Name:** slip_spurious_tangential_correction_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/slip_spurious_tangential_correction_test.py
+=======
+### embedded_velocity_inlet_emulation_test
+  - **Full Name:** embedded_velocity_inlet_emulation_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/embedded_velocity_inlet_emulation_test.py
+
+### adjoint_fluid_test
+  - **Full Name:** adjoint_fluid_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/adjoint_fluid_test.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### two_fluid_mass_conservation_test
   - **Full Name:** two_fluid_mass_conservation_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/two_fluid_mass_conservation_test.py
 
+<<<<<<< HEAD
 ### apply_compressible_navier_stokes_boundary_conditions_process_test
   - **Full Name:** apply_compressible_navier_stokes_boundary_conditions_process_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/apply_compressible_navier_stokes_boundary_conditions_process_test.py
@@ -805,6 +963,35 @@
 ### artificial_compressibility_test
   - **Full Name:** artificial_compressibility_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/artificial_compressibility_test.py
+=======
+### embedded_reservoir_discontinuous_test
+  - **Full Name:** embedded_reservoir_discontinuous_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/embedded_reservoir_discontinuous_test.py
+
+### test_statistics_process
+  - **Full Name:** test_statistics_process.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/test_statistics_process.py
+
+### two_fluid_hydrostatic_pool_test
+  - **Full Name:** two_fluid_hydrostatic_pool_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/two_fluid_hydrostatic_pool_test.py
+
+### test_FluidDynamicsApplication
+  - **Full Name:** test_FluidDynamicsApplication.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/test_FluidDynamicsApplication.py
+
+### adjoint_mpi_vms_sensitivity_2d
+  - **Full Name:** adjoint_mpi_vms_sensitivity_2d.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/adjoint_mpi_vms_sensitivity_2d.py
+
+### navier_stokes_wall_condition_test
+  - **Full Name:** navier_stokes_wall_condition_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/navier_stokes_wall_condition_test.py
+
+### test_FluidDynamicsApplication_mpi
+  - **Full Name:** test_FluidDynamicsApplication_mpi.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/test_FluidDynamicsApplication_mpi.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### compressible_navier_stokes_symbolic_generator_formulation_test
   - **Full Name:** compressible_navier_stokes_symbolic_generator_formulation_test.py
@@ -878,6 +1065,7 @@
   - **Full Name:** buoyancy_test.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/buoyancy_test.py
 
+<<<<<<< HEAD
 ### test_navier_stokes_compressible_explicit_solver
   - **Full Name:** test_navier_stokes_compressible_explicit_solver.py
   - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/test_navier_stokes_compressible_explicit_solver.py
@@ -897,6 +1085,47 @@
   - **Path:** /root/Kratos/applications/FluidDynamicsBiomedicalApplication/tests/test_FluidDynamicsBiomedicalApplication.py
 
 ## FluidTransportApplication
+=======
+### embedded_couette_imposed_test
+  - **Full Name:** embedded_couette_imposed_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/embedded_couette_imposed_test.py
+
+### adjoint_vms_element_2d
+  - **Full Name:** adjoint_vms_element_2d.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/adjoint_vms_element_2d.py
+
+### manufactured_solution_test
+  - **Full Name:** manufactured_solution_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/manufactured_solution_test.py
+
+### embedded_couette_test
+  - **Full Name:** embedded_couette_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/embedded_couette_test.py
+
+### artificial_compressibility_test
+  - **Full Name:** artificial_compressibility_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/artificial_compressibility_test.py
+
+### adjoint_vms_sensitivity_2d
+  - **Full Name:** adjoint_vms_sensitivity_2d.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/adjoint_vms_sensitivity_2d.py
+
+### darcy_channel_test
+  - **Full Name:** darcy_channel_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/darcy_channel_test.py
+
+### volume_source_test
+  - **Full Name:** volume_source_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/volume_source_test.py
+
+### time_integrated_fluid_element_test
+  - **Full Name:** time_integrated_fluid_element_test.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/time_integrated_fluid_element_test.py
+
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/FluidDynamicsApplication/tests/run_cpp_unit_tests.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### NightTests
   - **Full Name:** NightTests.py
@@ -930,6 +1159,7 @@
 
 ## FSIapplication
 
+<<<<<<< HEAD
 ## FSIApplication
 
 ### convergence_accelerator_spring_test
@@ -1122,11 +1352,50 @@
   - **Full Name:** test_soil_weight.py
   - **Path:** /root/Kratos/applications/GeoMechanicsApplication/tests/test_soil_weight.py
 
+=======
+### convergence_accelerator_test
+  - **Full Name:** convergence_accelerator_test.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/convergence_accelerator_test.py
+
+### test_mpi_FSIApplication
+  - **Full Name:** test_mpi_FSIApplication.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/test_mpi_FSIApplication.py
+
+### convergence_accelerator_spring_MPI_test
+  - **Full Name:** convergence_accelerator_spring_MPI_test.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/convergence_accelerator_spring_MPI_test.py
+
+### mok_benchmark_test
+  - **Full Name:** mok_benchmark_test.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/mok_benchmark_test.py
+
+### test_FSIApplication
+  - **Full Name:** test_FSIApplication.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/test_FSIApplication.py
+
+### non_conformant_one_side_map_test
+  - **Full Name:** non_conformant_one_side_map_test.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/non_conformant_one_side_map_test.py
+
+### FSI_problem_emulator_test
+  - **Full Name:** FSI_problem_emulator_test.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/FSI_problem_emulator_test.py
+
+### convergence_accelerator_spring_test
+  - **Full Name:** convergence_accelerator_spring_test.py
+  - **Path:** /root/Kratos/applications/FSIapplication/tests/convergence_accelerator_spring_test.py
+
+## FSIApplication
+
+## GeoMechanicsApplication
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ## HDF5Application
 
 ### test_HDF5Application_mpi
   - **Full Name:** test_HDF5Application_mpi.py
   - **Path:** /root/Kratos/applications/HDF5Application/tests/test_HDF5Application_mpi.py
+<<<<<<< HEAD
 
 ### test_line_output_process
   - **Full Name:** test_line_output_process.py
@@ -1151,6 +1420,8 @@
 ### test_hdf5_model_part_io_mpi
   - **Full Name:** test_hdf5_model_part_io_mpi.py
   - **Path:** /root/Kratos/applications/HDF5Application/tests/test_hdf5_model_part_io_mpi.py
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_hdf5_core_mpi
   - **Full Name:** test_hdf5_core_mpi.py
@@ -1160,9 +1431,13 @@
   - **Full Name:** test_HDF5Application.py
   - **Path:** /root/Kratos/applications/HDF5Application/tests/test_HDF5Application.py
 
-### run_cpp_unit_tests
-  - **Full Name:** run_cpp_unit_tests.py
-  - **Path:** /root/Kratos/applications/HDF5Application/tests/run_cpp_unit_tests.py
+### test_hdf5_model_part_io_mpi
+  - **Full Name:** test_hdf5_model_part_io_mpi.py
+  - **Path:** /root/Kratos/applications/HDF5Application/tests/test_hdf5_model_part_io_mpi.py
+
+### test_hdf5_processes
+  - **Full Name:** test_hdf5_processes.py
+  - **Path:** /root/Kratos/applications/HDF5Application/tests/test_hdf5_processes.py
 
 ### test_vertex
   - **Full Name:** test_vertex.py
@@ -1172,8 +1447,13 @@
   - **Full Name:** test_hdf5_model_part_io.py
   - **Path:** /root/Kratos/applications/HDF5Application/tests/test_hdf5_model_part_io.py
 
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/HDF5Application/tests/run_cpp_unit_tests.py
+
 ## IgaApplication
 
+<<<<<<< HEAD
 ### test_nurbs_volume_element
   - **Full Name:** test_nurbs_volume_element.py
   - **Path:** /root/Kratos/applications/IgaApplication/tests/test_nurbs_volume_element.py
@@ -1208,6 +1488,50 @@
 
 ## IGAStructuralMechanicsApplication
 
+=======
+### shell_kl_discrete_element_tests
+  - **Full Name:** shell_kl_discrete_element_tests.py
+  - **Path:** /root/Kratos/applications/IgaApplication/tests/shell_kl_discrete_element_tests.py
+
+### node_curve_geometry_3d_tests
+  - **Full Name:** node_curve_geometry_3d_tests.py
+  - **Path:** /root/Kratos/applications/IgaApplication/tests/node_curve_geometry_3d_tests.py
+
+### test_IgaApplication
+  - **Full Name:** test_IgaApplication.py
+  - **Path:** /root/Kratos/applications/IgaApplication/tests/test_IgaApplication.py
+
+### node_surface_geometry_3d_tests
+  - **Full Name:** node_surface_geometry_3d_tests.py
+  - **Path:** /root/Kratos/applications/IgaApplication/tests/node_surface_geometry_3d_tests.py
+
+### iga_truss_element_tests
+  - **Full Name:** iga_truss_element_tests.py
+  - **Path:** /root/Kratos/applications/IgaApplication/tests/iga_truss_element_tests.py
+
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/IgaApplication/tests/run_cpp_unit_tests.py
+
+## LagrangianMPMApplication
+
+### generalTests
+  - **Full Name:** generalTests.py
+  - **Path:** /root/Kratos/applications/LagrangianMPMApplication/tests/generalTests.py
+
+### test_LagrangianMPMApplication
+  - **Full Name:** test_LagrangianMPMApplication.py
+  - **Path:** /root/Kratos/applications/LagrangianMPMApplication/tests/test_LagrangianMPMApplication.py
+
+### impact01.gid/MPM
+  - **Full Name:** MPM.py
+  - **Path:** /root/Kratos/applications/LagrangianMPMApplication/tests/impact01.gid/MPM.py
+
+### impact01.gid/materials
+  - **Full Name:** materials.py
+  - **Path:** /root/Kratos/applications/LagrangianMPMApplication/tests/impact01.gid/materials.py
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ## LinearSolversApplication
 
 ### test_eigen_dense_direct_solver
@@ -1240,6 +1564,7 @@
 
 ## MappingApplication
 
+<<<<<<< HEAD
 ### blade_mapping_test
   - **Full Name:** blade_mapping_test.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/blade_mapping_test.py
@@ -1255,11 +1580,25 @@
 ### plot_sparsity_pattern_mapping_matrix
   - **Full Name:** plot_sparsity_pattern_mapping_matrix.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/plot_sparsity_pattern_mapping_matrix.py
+=======
+### runscript_test_MappingApplication
+  - **Full Name:** runscript_test_MappingApplication.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/runscript_test_MappingApplication.py
+
+### test_MappingApplication_mpi
+  - **Full Name:** test_MappingApplication_mpi.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/test_MappingApplication_mpi.py
+
+### test_patch_test_mappers
+  - **Full Name:** test_patch_test_mappers.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/test_patch_test_mappers.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_MappingApplication
   - **Full Name:** test_MappingApplication.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/test_MappingApplication.py
 
+<<<<<<< HEAD
 ### test_nearest_neighbor_mapper
   - **Full Name:** test_nearest_neighbor_mapper.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/test_nearest_neighbor_mapper.py
@@ -1279,10 +1618,16 @@
 ### runscript_test_MappingApplication
   - **Full Name:** runscript_test_MappingApplication.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/runscript_test_MappingApplication.py
+=======
+### plot_sparsity_pattern_mapping_matrix
+  - **Full Name:** plot_sparsity_pattern_mapping_matrix.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/plot_sparsity_pattern_mapping_matrix.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### run_cpp_unit_tests
   - **Full Name:** run_cpp_unit_tests.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/run_cpp_unit_tests.py
+<<<<<<< HEAD
 
 ### test_barycentric_mapper
   - **Full Name:** test_barycentric_mapper.py
@@ -1291,6 +1636,8 @@
 ### test_patch_test_mappers
   - **Full Name:** test_patch_test_mappers.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/test_patch_test_mappers.py
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_coupling_geometry_mapper
   - **Full Name:** test_coupling_geometry_mapper.py
@@ -1304,23 +1651,74 @@
   - **Full Name:** test_nearest_element_mapper.py
   - **Path:** /root/Kratos/applications/MappingApplication/tests/test_nearest_element_mapper.py
 
+### KratosExecuteMapperTests
+  - **Full Name:** KratosExecuteMapperTests.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/KratosExecuteMapperTests.py
+
+<<<<<<< HEAD
+=======
+### test_mapper_tests
+  - **Full Name:** test_mapper_tests.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/test_mapper_tests.py
+
+### SmallTests
+  - **Full Name:** SmallTests.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/SmallTests.py
+
+### base_mapper_tests
+  - **Full Name:** base_mapper_tests.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/base_mapper_tests.py
+
+### NearestElementMapperTest2D
+  - **Full Name:** NearestElementMapperTest2D.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/NearestElementMapperTest2D.py
+
+### test_mapper_flags_tests
+  - **Full Name:** test_mapper_flags_tests.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/test_mapper_flags_tests.py
+
+### test_mapper_mpi_tests
+  - **Full Name:** test_mapper_mpi_tests.py
+  - **Path:** /root/Kratos/applications/MappingApplication/tests/test_mapper_mpi_tests.py
+
 ## MeshingApplication
 
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### test_MeshingApplication
   - **Full Name:** test_MeshingApplication.py
   - **Path:** /root/Kratos/applications/MeshingApplication/tests/test_MeshingApplication.py
 
+<<<<<<< HEAD
 ### test_local_refine_parallel_to_boundaries
   - **Full Name:** test_local_refine_parallel_to_boundaries.py
   - **Path:** /root/Kratos/applications/MeshingApplication/tests/test_local_refine_parallel_to_boundaries.py
+=======
+### test_remesh_sphere
+  - **Full Name:** test_remesh_sphere.py
+  - **Path:** /root/Kratos/applications/MeshingApplication/tests/test_remesh_sphere.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_refine
   - **Full Name:** test_refine.py
   - **Path:** /root/Kratos/applications/MeshingApplication/tests/test_refine.py
 
+<<<<<<< HEAD
 ### meshing_application_test_factory
   - **Full Name:** meshing_application_test_factory.py
   - **Path:** /root/Kratos/applications/MeshingApplication/tests/meshing_application_test_factory.py
+=======
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/MeshingApplication/tests/run_cpp_unit_tests.py
+
+### ValidationTests
+  - **Full Name:** ValidationTests.py
+  - **Path:** /root/Kratos/applications/MeshingApplication/tests/ValidationTests.py
+
+### NightlyTests
+  - **Full Name:** NightlyTests.py
+  - **Path:** /root/Kratos/applications/MeshingApplication/tests/NightlyTests.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_remesh_rectangle
   - **Full Name:** test_remesh_rectangle.py
@@ -1342,9 +1740,9 @@
   - **Full Name:** test_local_refine_only_on_boundaries.py
   - **Path:** /root/Kratos/applications/MeshingApplication/tests/test_local_refine_only_on_boundaries.py
 
-### test_remesh_sphere
-  - **Full Name:** test_remesh_sphere.py
-  - **Path:** /root/Kratos/applications/MeshingApplication/tests/test_remesh_sphere.py
+### Kratos_Execute_Meshing_Test
+  - **Full Name:** Kratos_Execute_Meshing_Test.py
+  - **Path:** /root/Kratos/applications/MeshingApplication/tests/Kratos_Execute_Meshing_Test.py
 
 ### test_MeshingApplication_mpi
   - **Full Name:** test_MeshingApplication_mpi.py
@@ -1356,6 +1754,7 @@
 
 ## MeshMovingApplication
 
+<<<<<<< HEAD
 ### test_parametric_linear_transform
   - **Full Name:** test_parametric_linear_transform.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_parametric_linear_transform.py
@@ -1371,14 +1770,27 @@
 ### test_example/MainKratos
   - **Full Name:** MainKratos.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_example/MainKratos.py
+=======
+### test_ale_fluid_solver
+  - **Full Name:** test_ale_fluid_solver.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_ale_fluid_solver.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_structural_mesh_motion_3d
   - **Full Name:** test_structural_mesh_motion_3d.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_structural_mesh_motion_3d.py
 
-### test_MeshMovingApplication_mpi
-  - **Full Name:** test_MeshMovingApplication_mpi.py
-  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_MeshMovingApplication_mpi.py
+### mesh_moving_test_case
+  - **Full Name:** mesh_moving_test_case.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/mesh_moving_test_case.py
+
+### impose_ale_rectangle_test_motion_process
+  - **Full Name:** impose_ale_rectangle_test_motion_process.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/impose_ale_rectangle_test_motion_process.py
+
+### test_laplacian_mesh_motion_3d
+  - **Full Name:** test_laplacian_mesh_motion_3d.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_laplacian_mesh_motion_3d.py
 
 ### test_laplacian_mesh_motion_2d
   - **Full Name:** test_laplacian_mesh_motion_2d.py
@@ -1388,10 +1800,11 @@
   - **Full Name:** test_MeshMovingApplication.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_MeshMovingApplication.py
 
-### mesh_moving_test_case
-  - **Full Name:** mesh_moving_test_case.py
-  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/mesh_moving_test_case.py
+### test_example/MainKratos
+  - **Full Name:** MainKratos.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_example/MainKratos.py
 
+<<<<<<< HEAD
 ### test_ale_fluid_solver
   - **Full Name:** test_ale_fluid_solver.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_ale_fluid_solver.py
@@ -1399,6 +1812,15 @@
 ### test_laplacian_mesh_motion_3d
   - **Full Name:** test_laplacian_mesh_motion_3d.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_laplacian_mesh_motion_3d.py
+=======
+### test_MeshMovingApplication_mpi
+  - **Full Name:** test_MeshMovingApplication_mpi.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_MeshMovingApplication_mpi.py
+
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/run_cpp_unit_tests.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### run_cpp_unit_tests
   - **Full Name:** run_cpp_unit_tests.py
@@ -1408,6 +1830,7 @@
   - **Full Name:** test_structural_mesh_motion_2d.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_structural_mesh_motion_2d.py
 
+<<<<<<< HEAD
 ### test_impose_mesh_motion_process
   - **Full Name:** test_impose_mesh_motion_process.py
   - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/test_impose_mesh_motion_process.py
@@ -1439,11 +1862,37 @@
 ### test_randomGenerator
   - **Full Name:** test_randomGenerator.py
   - **Path:** /root/Kratos/applications/MultilevelMonteCarloApplication/tests/test_randomGenerator.py
+=======
+### mpi_test_structural_mesh_motion_2d
+  - **Full Name:** mpi_test_structural_mesh_motion_2d.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/mpi_test_structural_mesh_motion_2d.py
+
+### mpi_test_laplacian_mesh_motion_2d
+  - **Full Name:** mpi_test_laplacian_mesh_motion_2d.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/mpi_test_laplacian_mesh_motion_2d.py
+
+### mpi_test_laplacian_mesh_motion_3d
+  - **Full Name:** mpi_test_laplacian_mesh_motion_3d.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/mpi_test_laplacian_mesh_motion_3d.py
+
+### mpi_test_structural_mesh_motion_3d
+  - **Full Name:** mpi_test_structural_mesh_motion_3d.py
+  - **Path:** /root/Kratos/applications/MeshMovingApplication/tests/mpi_test_structural_mesh_motion_3d.py
+
+## mpi_search_application
+
+## MultilevelMonteCarloApplication
+
+### test_MultilevelMonteCarloApplication
+  - **Full Name:** test_MultilevelMonteCarloApplication.py
+  - **Path:** /root/Kratos/applications/MultilevelMonteCarloApplication/tests/test_MultilevelMonteCarloApplication.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_multilevel_montecarlo
   - **Full Name:** test_multilevel_montecarlo.py
   - **Path:** /root/Kratos/applications/MultilevelMonteCarloApplication/tests/test_multilevel_montecarlo.py
 
+<<<<<<< HEAD
 ### parameters/generate_vanderpol_reference
   - **Full Name:** generate_vanderpol_reference.py
   - **Path:** /root/Kratos/applications/MultilevelMonteCarloApplication/tests/parameters/generate_vanderpol_reference.py
@@ -1583,6 +2032,15 @@
 ### test_transfer_elements
   - **Full Name:** test_transfer_elements.py
   - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_transfer_elements.py
+=======
+## OptimizationApplication
+
+## ParticleMechanicsApplication
+
+### test_static_loading_conditions_line
+  - **Full Name:** test_static_loading_conditions_line.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_static_loading_conditions_line.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_search_mpm_particle
   - **Full Name:** test_search_mpm_particle.py
@@ -1596,6 +2054,7 @@
   - **Full Name:** particle_mechanics_test_factory.py
   - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/particle_mechanics_test_factory.py
 
+<<<<<<< HEAD
 ### test_static_loading_conditions_line
   - **Full Name:** test_static_loading_conditions_line.py
   - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_static_loading_conditions_line.py
@@ -1773,6 +2232,107 @@
   - **Path:** /root/Kratos/applications/RANSApplication/tests/flow_solver_test_case.py
 
 ## RomApplication
+=======
+### test_static_loading_conditions_surface
+  - **Full Name:** test_static_loading_conditions_surface.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_static_loading_conditions_surface.py
+
+### test_static_loading_conditions_point
+  - **Full Name:** test_static_loading_conditions_point.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_static_loading_conditions_point.py
+
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/run_cpp_unit_tests.py
+
+### test_generate_mpm_particle
+  - **Full Name:** test_generate_mpm_particle.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_generate_mpm_particle.py
+
+### test_generate_mpm_particle_condition
+  - **Full Name:** test_generate_mpm_particle_condition.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_generate_mpm_particle_condition.py
+
+### test_ParticleMechanicsApplication
+  - **Full Name:** test_ParticleMechanicsApplication.py
+  - **Path:** /root/Kratos/applications/ParticleMechanicsApplication/tests/test_ParticleMechanicsApplication.py
+
+## PFEM2Application
+
+## PfemApplication
+
+### ValidationTests
+  - **Full Name:** ValidationTests.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/ValidationTests.py
+
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/TestFactory.py
+
+### NightTests
+  - **Full Name:** NightTests.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/NightTests.py
+
+### run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/run_test.py
+
+### SmallTests
+  - **Full Name:** SmallTests.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/SmallTests.py
+
+### test_PfemApplication
+  - **Full Name:** test_PfemApplication.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/test_PfemApplication.py
+
+### materials
+  - **Full Name:** materials.py
+  - **Path:** /root/Kratos/applications/PfemApplication/tests/materials.py
+
+## PfemFluidDynamicsApplication
+
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/PfemFluidDynamicsApplication/tests/TestFactory.py
+
+### NightTests
+  - **Full Name:** NightTests.py
+  - **Path:** /root/Kratos/applications/PfemFluidDynamicsApplication/tests/NightTests.py
+
+### run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/PfemFluidDynamicsApplication/tests/run_test.py
+
+### SmallTests
+  - **Full Name:** SmallTests.py
+  - **Path:** /root/Kratos/applications/PfemFluidDynamicsApplication/tests/SmallTests.py
+
+### test_PfemFluidDynamicsApplication
+  - **Full Name:** test_PfemFluidDynamicsApplication.py
+  - **Path:** /root/Kratos/applications/PfemFluidDynamicsApplication/tests/test_PfemFluidDynamicsApplication.py
+
+## PoromechanicsApplication
+
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/PoromechanicsApplication/tests/TestFactory.py
+
+### NightTests
+  - **Full Name:** NightTests.py
+  - **Path:** /root/Kratos/applications/PoromechanicsApplication/tests/NightTests.py
+
+### test_PoromechanicsApplication
+  - **Full Name:** test_PoromechanicsApplication.py
+  - **Path:** /root/Kratos/applications/PoromechanicsApplication/tests/test_PoromechanicsApplication.py
+
+### run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/PoromechanicsApplication/tests/run_test.py
+
+### SmallTests
+  - **Full Name:** SmallTests.py
+  - **Path:** /root/Kratos/applications/PoromechanicsApplication/tests/SmallTests.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_RomApplication_mpi
   - **Full Name:** test_RomApplication_mpi.py
@@ -1844,13 +2404,9 @@
 
 ## ShallowWaterApplication
 
-### test_ShallowWaterApplication
-  - **Full Name:** test_ShallowWaterApplication.py
-  - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/test_ShallowWaterApplication.py
-
-### shallow_water_test_factory
-  - **Full Name:** shallow_water_test_factory.py
-  - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/shallow_water_test_factory.py
+### NightlyTests
+  - **Full Name:** NightlyTests.py
+  - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/NightlyTests.py
 
 ### run_tests
   - **Full Name:** run_tests.py
@@ -1868,8 +2424,21 @@
   - **Full Name:** test_line_graph_output_process.py
   - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/processes_tests/test_line_graph_output_process.py
 
+### shallow_water_test_factory
+  - **Full Name:** shallow_water_test_factory.py
+  - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/shallow_water_test_factory.py
+
+### test_ShallowWaterApplication
+  - **Full Name:** test_ShallowWaterApplication.py
+  - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/test_ShallowWaterApplication.py
+
+### run_cpp_unit_tests
+  - **Full Name:** run_cpp_unit_tests.py
+  - **Path:** /root/Kratos/applications/ShallowWaterApplication/tests/run_cpp_unit_tests.py
+
 ## ShapeOptimizationApplication
 
+<<<<<<< HEAD
 ### sliding_opt_test/run_test
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/sliding_opt_test/run_test.py
@@ -1879,13 +2448,17 @@
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/algorithm_gradient_projection_test/run_test.py
 
 ### opt_process_shell_test/run_test
+=======
+### trust_region_projector_test/run_test
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
   - **Full Name:** run_test.py
-  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_shell_test/run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/trust_region_projector_test/run_test.py
 
 ### opt_process_eigenfrequency_test/run_test
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_eigenfrequency_test/run_test.py
 
+<<<<<<< HEAD
 ### algorithm_trust_region_test/run_test
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/algorithm_trust_region_test/run_test.py
@@ -1993,6 +2566,11 @@
 ### opt_process_vertex_morphing_test/run_test
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_vertex_morphing_test/run_test.py
+=======
+### opt_process_step_adaption_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_step_adaption_test/run_test.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### opt_process_vertex_morphing_test/run_test_small
   - **Full Name:** run_test_small.py
@@ -2018,6 +2596,7 @@
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_solid_test/run_test.py
 
+<<<<<<< HEAD
 ### sensitivity_verification_process_test/run_semi_analytic_step_size_verification
   - **Full Name:** run_semi_analytic_step_size_verification.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/sensitivity_verification_process_test/run_semi_analytic_step_size_verification.py
@@ -2033,18 +2612,53 @@
 ### face_angle_response_test/test_face_angle_response
   - **Full Name:** test_face_angle_response.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/face_angle_response_test/test_face_angle_response.py
+=======
+### algorithm_steepest_descent_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/algorithm_steepest_descent_test/run_test.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_ShapeOptimizationApplication
   - **Full Name:** test_ShapeOptimizationApplication.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/test_ShapeOptimizationApplication.py
 
+<<<<<<< HEAD
 ### total_volume/test_total_volume_response
   - **Full Name:** test_total_volume_response.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/total_volume/test_total_volume_response.py
+=======
+### mapper_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/mapper_test/run_test.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### algorithm_penalized_projection_test/run_test
   - **Full Name:** run_test.py
   - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/algorithm_penalized_projection_test/run_test.py
+
+### opt_process_vertex_morphing_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_vertex_morphing_test/run_test.py
+
+### opt_process_weighted_eigenfrequency_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_weighted_eigenfrequency_test/run_test.py
+
+### algorithm_bead_optimization_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/algorithm_bead_optimization_test/run_test.py
+
+### opt_process_shell_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/opt_process_shell_test/run_test.py
+
+### algorithm_trust_region_test/run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/algorithm_trust_region_test/run_test.py
+
+### shape_optimization_test_factory
+  - **Full Name:** shape_optimization_test_factory.py
+  - **Path:** /root/Kratos/applications/ShapeOptimizationApplication/tests/shape_optimization_test_factory.py
 
 ## SolidMechanicsApplication
 
@@ -2052,9 +2666,9 @@
   - **Full Name:** ValidationTests.py
   - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/ValidationTests.py
 
-### materials
-  - **Full Name:** materials.py
-  - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/materials.py
+### run_cpp_tests
+  - **Full Name:** run_cpp_tests.py
+  - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/run_cpp_tests.py
 
 ### run_cpp_tests
   - **Full Name:** run_cpp_tests.py
@@ -2064,6 +2678,10 @@
   - **Full Name:** test_SolidMechanicsApplication.py
   - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/test_SolidMechanicsApplication.py
 
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/TestFactory.py
+
 ### CoreTests
   - **Full Name:** CoreTests.py
   - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/CoreTests.py
@@ -2072,9 +2690,9 @@
   - **Full Name:** NightTests.py
   - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/NightTests.py
 
-### TestFactory
-  - **Full Name:** TestFactory.py
-  - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/TestFactory.py
+### run_test
+  - **Full Name:** run_test.py
+  - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/run_test.py
 
 ### run_test
   - **Full Name:** run_test.py
@@ -2083,6 +2701,10 @@
 ### SmallTests
   - **Full Name:** SmallTests.py
   - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/SmallTests.py
+
+### materials
+  - **Full Name:** materials.py
+  - **Path:** /root/Kratos/applications/SolidMechanicsApplication/tests/materials.py
 
 ## StabilizedCFDApplication
 
@@ -2150,6 +2772,7 @@
 
 ## StructuralMechanicsApplication
 
+<<<<<<< HEAD
 ### test_patch_test_truss
   - **Full Name:** test_patch_test_truss.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_truss.py
@@ -2165,6 +2788,11 @@
 ### structural_mechanics_test_factory_mpi
   - **Full Name:** structural_mechanics_test_factory_mpi.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/structural_mechanics_test_factory_mpi.py
+=======
+### test_patch_test_small_strain_bbar
+  - **Full Name:** test_patch_test_small_strain_bbar.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_small_strain_bbar.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_prebuckling_analysis
   - **Full Name:** test_prebuckling_analysis.py
@@ -2174,10 +2802,11 @@
   - **Full Name:** test_eigen_solver_with_constraints.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_eigen_solver_with_constraints.py
 
-### test_quadratic_elements
-  - **Full Name:** test_quadratic_elements.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_quadratic_elements.py
+### test_patch_test_large_strain
+  - **Full Name:** test_patch_test_large_strain.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_large_strain.py
 
+<<<<<<< HEAD
 ### test_cr_beam_adjoint_element_3d2n
   - **Full Name:** test_cr_beam_adjoint_element_3d2n.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_cr_beam_adjoint_element_3d2n.py
@@ -2185,6 +2814,11 @@
 ### restart_tests
   - **Full Name:** restart_tests.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/restart_tests.py
+=======
+### test_patch_test_membrane
+  - **Full Name:** test_patch_test_membrane.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_membrane.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_axis_projection
   - **Full Name:** test_axis_projection.py
@@ -2210,6 +2844,7 @@
   - **Full Name:** structural_mechanics_test_factory.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/structural_mechanics_test_factory.py
 
+<<<<<<< HEAD
 ### test_rve_analytic
   - **Full Name:** test_rve_analytic.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_rve_analytic.py
@@ -2225,6 +2860,23 @@
 ### test_patch_test_membrane
   - **Full Name:** test_patch_test_membrane.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_membrane.py
+=======
+### test_patch_test_shells
+  - **Full Name:** test_patch_test_shells.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_shells.py
+
+### test_patch_test_truss
+  - **Full Name:** test_patch_test_truss.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_truss.py
+
+### test_harmonic_analysis
+  - **Full Name:** test_harmonic_analysis.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_harmonic_analysis.py
+
+### restart_tests
+  - **Full Name:** restart_tests.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/restart_tests.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_loading_conditions_surface
   - **Full Name:** test_loading_conditions_surface.py
@@ -2234,10 +2886,92 @@
   - **Full Name:** test_patch_test_small_strain.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_small_strain.py
 
+<<<<<<< HEAD
+=======
+### test_patch_test_cr_beam
+  - **Full Name:** test_patch_test_cr_beam.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_cr_beam.py
+
+### structural_mechanics_test_factory_mpi
+  - **Full Name:** structural_mechanics_test_factory_mpi.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/structural_mechanics_test_factory_mpi.py
+
+### test_spring_damper_element
+  - **Full Name:** test_spring_damper_element.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_spring_damper_element.py
+
+### test_compute_mass_moment_of_inertia
+  - **Full Name:** test_compute_mass_moment_of_inertia.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_compute_mass_moment_of_inertia.py
+
+### test_nodal_damping
+  - **Full Name:** test_nodal_damping.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_nodal_damping.py
+
+### test_postprocess_eigenvalues_process
+  - **Full Name:** test_postprocess_eigenvalues_process.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_postprocess_eigenvalues_process.py
+
+### test_quadratic_elements
+  - **Full Name:** test_quadratic_elements.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_quadratic_elements.py
+
+### test_mass_calculation
+  - **Full Name:** test_mass_calculation.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_mass_calculation.py
+
+### test_local_axis_visualization
+  - **Full Name:** test_local_axis_visualization.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_local_axis_visualization.py
+
+### test_StructuralMechanicsApplication_mpi
+  - **Full Name:** test_StructuralMechanicsApplication_mpi.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_StructuralMechanicsApplication_mpi.py
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### test_linear_thin_shell_adjoint_element_3d3n
   - **Full Name:** test_linear_thin_shell_adjoint_element_3d3n.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_linear_thin_shell_adjoint_element_3d3n.py
 
+<<<<<<< HEAD
+=======
+### test_patch_test_shells_stress
+  - **Full Name:** test_patch_test_shells_stress.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_shells_stress.py
+
+### structural_response_function_test_factory
+  - **Full Name:** structural_response_function_test_factory.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/structural_response_function_test_factory.py
+
+### test_compute_center_of_gravity
+  - **Full Name:** test_compute_center_of_gravity.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_compute_center_of_gravity.py
+
+### test_loading_conditions_line
+  - **Full Name:** test_loading_conditions_line.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_loading_conditions_line.py
+
+### test_perfect_plasticity_implementation_verification
+  - **Full Name:** test_perfect_plasticity_implementation_verification.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_perfect_plasticity_implementation_verification.py
+
+### test_cr_beam_adjoint_element_3d2n
+  - **Full Name:** test_cr_beam_adjoint_element_3d2n.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_cr_beam_adjoint_element_3d2n.py
+
+### test_patch_test_shells_orthotropic
+  - **Full Name:** test_patch_test_shells_orthotropic.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_shells_orthotropic.py
+
+### test_dynamic_schemes
+  - **Full Name:** test_dynamic_schemes.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_dynamic_schemes.py
+
+### test_truss_adjoint_element_3d2n
+  - **Full Name:** test_truss_adjoint_element_3d2n.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_truss_adjoint_element_3d2n.py
+
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### test_StructuralMechanicsApplication
   - **Full Name:** test_StructuralMechanicsApplication.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_StructuralMechanicsApplication.py
@@ -2250,10 +2984,11 @@
   - **Full Name:** run_cpp_unit_tests.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/run_cpp_unit_tests.py
 
-### test_mass_calculation
-  - **Full Name:** test_mass_calculation.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_mass_calculation.py
+### test_adjoint_sensitity_analysis_truss_3d2n_structure
+  - **Full Name:** test_adjoint_sensitity_analysis_truss_3d2n_structure.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_adjoint_sensitity_analysis_truss_3d2n_structure.py
 
+<<<<<<< HEAD
 ### test_compute_center_of_gravity
   - **Full Name:** test_compute_center_of_gravity.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_compute_center_of_gravity.py
@@ -2297,6 +3032,15 @@
 ### test_loading_conditions_line
   - **Full Name:** test_loading_conditions_line.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_loading_conditions_line.py
+=======
+### test_adjoint_sensitity_analysis_beam_3d2n_structure
+  - **Full Name:** test_adjoint_sensitity_analysis_beam_3d2n_structure.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_adjoint_sensitity_analysis_beam_3d2n_structure.py
+
+### test_adjoint_sensitity_analysis_shell_3d3n_structure
+  - **Full Name:** test_adjoint_sensitity_analysis_shell_3d3n_structure.py
+  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_adjoint_sensitity_analysis_shell_3d3n_structure.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_eigen_solver_different_dofs
   - **Full Name:** test_eigen_solver_different_dofs.py
@@ -2310,44 +3054,9 @@
   - **Full Name:** test_loading_conditions_moving.py
   - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_loading_conditions_moving.py
 
-### test_postprocess_eigenvalues_process
-  - **Full Name:** test_postprocess_eigenvalues_process.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_postprocess_eigenvalues_process.py
-
-### test_patch_test_shells_orthotropic
-  - **Full Name:** test_patch_test_shells_orthotropic.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_shells_orthotropic.py
-
-### test_spring_damper_element
-  - **Full Name:** test_spring_damper_element.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_spring_damper_element.py
-
-### test_nodal_damping
-  - **Full Name:** test_nodal_damping.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_nodal_damping.py
-
-### test_patch_test_large_strain
-  - **Full Name:** test_patch_test_large_strain.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_large_strain.py
-
-### test_patch_test_shells_stress
-  - **Full Name:** test_patch_test_shells_stress.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_shells_stress.py
-
-### structural_response_function_test_factory
-  - **Full Name:** structural_response_function_test_factory.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/structural_response_function_test_factory.py
-
-### test_patch_test_shells
-  - **Full Name:** test_patch_test_shells.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_patch_test_shells.py
-
-### test_harmonic_analysis
-  - **Full Name:** test_harmonic_analysis.py
-  - **Path:** /root/Kratos/applications/StructuralMechanicsApplication/tests/test_harmonic_analysis.py
-
 ## SwimmingDEMApplication
 
+<<<<<<< HEAD
 ### ValidationTests
   - **Full Name:** ValidationTests.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/ValidationTests.py
@@ -2379,11 +3088,21 @@
 ### define_output
   - **Full Name:** define_output.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/define_output.py
+=======
+### TestFactory
+  - **Full Name:** TestFactory.py
+  - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/TestFactory.py
+
+### candelier_tests/run_analysis_benchmark_candelier
+  - **Full Name:** run_analysis_benchmark_candelier.py
+  - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/candelier_tests/run_analysis_benchmark_candelier.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### NightTests
   - **Full Name:** NightTests.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/NightTests.py
 
+<<<<<<< HEAD
 ### GentleInjectionAndErasureTestFactory
   - **Full Name:** GentleInjectionAndErasureTestFactory.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/GentleInjectionAndErasureTestFactory.py
@@ -2484,10 +3203,13 @@
   - **Full Name:** chien_drag_test_analysis.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/drag_tests/chien_law/chien_drag_test_analysis.py
 
+=======
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 ### SmallTests
   - **Full Name:** SmallTests.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/SmallTests.py
 
+<<<<<<< HEAD
 ### SPFEMTestFactory
   - **Full Name:** SPFEMTestFactory.py
   - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/SPFEMTestFactory.py
@@ -2537,6 +3259,17 @@
 ### test_trilinos_matrix
   - **Full Name:** test_trilinos_matrix.py
   - **Path:** /root/Kratos/applications/TrilinosApplication/tests/test_trilinos_matrix.py
+=======
+### test_SwimmingDEMApplication
+  - **Full Name:** test_SwimmingDEMApplication.py
+  - **Path:** /root/Kratos/applications/SwimmingDEMApplication/tests/test_SwimmingDEMApplication.py
+
+## trilinos_application
+
+### test_mpi_communicator
+  - **Full Name:** test_mpi_communicator.py
+  - **Path:** /root/Kratos/applications/trilinos_application/tests/test_mpi_communicator.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ### test_trilinos_levelset_convection
   - **Full Name:** test_trilinos_levelset_convection.py
@@ -2550,6 +3283,7 @@
   - **Full Name:** test_trilinos_linear_solvers.py
   - **Path:** /root/Kratos/applications/TrilinosApplication/tests/test_trilinos_linear_solvers.py
 
+<<<<<<< HEAD
 ## ULFapplication
 
 ### test_ULFApplication
@@ -2559,6 +3293,23 @@
 ### generalTests
   - **Full Name:** generalTests.py
   - **Path:** /root/Kratos/applications/ULFapplication/tests/generalTests.py
+=======
+### test_trilinos_matrix
+  - **Full Name:** test_trilinos_matrix.py
+  - **Path:** /root/Kratos/applications/trilinos_application/tests/test_trilinos_matrix.py
+
+### test_kratos_mpi_interface
+  - **Full Name:** test_kratos_mpi_interface.py
+  - **Path:** /root/Kratos/applications/trilinos_application/tests/test_kratos_mpi_interface.py
+
+### test_trilinos_levelset_convection
+  - **Full Name:** test_trilinos_levelset_convection.py
+  - **Path:** /root/Kratos/applications/trilinos_application/tests/test_trilinos_levelset_convection.py
+
+### test_trilinos_redistance
+  - **Full Name:** test_trilinos_redistance.py
+  - **Path:** /root/Kratos/applications/trilinos_application/tests/test_trilinos_redistance.py
+>>>>>>> 25bbaa9eb38 (复制kratos_testcase中的11个故障用例到bug_testcase)
 
 ## UmatApplication
 
@@ -2587,4 +3338,6 @@
 ### test_WindEngineeringApplication_mpi
   - **Full Name:** test_WindEngineeringApplication_mpi.py
   - **Path:** /root/Kratos/applications/WindEngineeringApplication/tests/test_WindEngineeringApplication_mpi.py
+
+## WindEngineeringApplication
 

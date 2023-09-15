@@ -1,0 +1,56 @@
+{
+    "problem_data"             : {
+        "problem_name"    : "prism",
+        "parallel_type"   : "OpenMP",
+        "start_time"      : 0.0,
+        "end_time"        : 1.0,
+        "echo_level"      : 1
+    },
+    "solver_settings"          : {
+        "model_part_name" : "Structure",
+        "domain_size"     : 3,
+        "solver_type"                        : "eigen_value",
+        "echo_level"                         : 1,
+        "scheme_type"                        : "dynamic",
+        "model_import_settings"              : {
+            "input_type"     : "mdpa",
+            "input_filename" : "prism3D15N"
+        },
+        "material_import_settings"           : {
+            "materials_filename" : "materials_silicon_anisotropic.json"
+        },
+        "time_stepping" : {
+            "time_step"       : 1.1
+        },
+        "eigensolver_settings":{
+            "solver_type"           : "spectra_sym_g_eigs_shift",
+            "max_iteration"         : 1000,
+            "number_of_eigenvalues" : 1,
+            "echo_level"            : 1
+        },
+        "multi_point_constraints_used": false,
+        "builder_and_solver_settings" : {
+            "use_block_builder" : true,
+            "use_lagrange_BS"   : false,
+            "advanced_settings" : { }
+        },
+        "rotation_dofs"                      : false
+    },
+    "processes" : {
+        "constraints_process_list" : [{
+            "python_module" : "assign_vector_variable_process",
+            "kratos_module" : "KratosMultiphysics",
+            "help"          : "This process fixes the selected components of a given vector variable",
+            "process_name"  : "AssignVectorVariableProcess",
+            "Parameters"    : {
+                "mesh_id"         : 0,
+                "model_part_name" : "Structure.support",
+                "variable_name"   : "DISPLACEMENT",
+                "constrained"     : [true,true,true],
+                "value"           : [0.0,0.0,0.0],
+                "interval"        : [0.0,"End"]
+            }
+        }],
+        "list_other_processes" : []
+    }
+}
