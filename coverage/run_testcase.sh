@@ -5,8 +5,10 @@
 # ./run_testcase.sh CSharpWrapperApplication run_cpp_unit_tests /root/Kratos/applications/CSharpWrapperApplication/tests/run_cpp_unit_tests.py
 
 # 设置环境变量
-export PYTHONPATH=$PYTHONPATH:$HOME/Kratos/bin/Release
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Kratos/bin/Release/libs
+# v6
+export PYTHONPATH=$PYTHONPATH:/root/Kratos
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/root/Kratos/libs
+export LD_LIBRARY_PATH=/root/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
 
 # 检查是否提供了三个输入参数
 
